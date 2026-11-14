@@ -32,6 +32,11 @@
   --cat-field: #f0b660; --cat-field-bg: #3d2c10; --cat-video: #ff9db5; --cat-video-bg: #47182a;
   color-scheme: dark;
 }
+
+/* Daily colour: --h (hue) is set by the script from the digest date. */
+:root { --h: 215; --bg: hsl(var(--h) 30% 96%); --accent: hsl(var(--h) 65% 38%); --hero-a: hsl(var(--h) 70% 42%); --hero-b: hsl(calc(var(--h) + 45) 70% 55%); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: hsl(var(--h) 25% 8%); --accent: hsl(var(--h) 85% 74%); --hero-a: hsl(var(--h) 55% 28%); --hero-b: hsl(calc(var(--h) + 45) 55% 36%); } }
+:root[data-theme="dark"] { --bg: hsl(var(--h) 25% 8%); --accent: hsl(var(--h) 85% 74%); --hero-a: hsl(var(--h) 55% 28%); --hero-b: hsl(calc(var(--h) + 45) 55% 36%); }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
@@ -95,17 +100,45 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
 .yt .play { position: absolute; inset: 0; margin: auto; width: 68px; height: 48px; border-radius: 12px; background: rgba(204,0,0,.92); display: grid; place-items: center; }
 .yt .play::after { content: ""; border-style: solid; border-width: 10px 0 10px 18px; border-color: transparent transparent transparent #fff; margin-left: 4px; }
 .yt-frame { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 8px; display: block; }
+.hero { position: relative; height: 170px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, var(--hero-a), var(--hero-b)); }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.quote { margin: 0; padding: 16px 20px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); border-inline-start: 5px solid var(--accent); display: flex; flex-direction: column; gap: 6px; }
+.quote .q-label { font-size: 0.8rem; font-weight: 600; color: var(--accent); }
+.quote p { margin: 0; font-size: 1.15rem; line-height: 1.7; }
+.quote cite { font-style: normal; color: var(--muted); font-size: 0.88rem; }
+.icon-tile { width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; flex: none; }
+.icon-tile svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.card.ai .icon-tile { background: var(--cat-ai-bg); color: var(--cat-ai); }
+.card.is .icon-tile { background: var(--cat-is-bg); color: var(--cat-is); }
+.card.field .icon-tile { background: var(--cat-field-bg); color: var(--cat-field); }
 footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 16px; }
 @media (max-width: 480px) { .page { padding: 24px 16px 48px; } .card { padding: 16px; } }
 </style>
 </head>
-<body>
+<body data-date="2026-11-14">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.2 4.5 4.5 0 0 0 7 18z"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M15.5 14.5h2.5"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M11 3l1.8 5.2L18 10l-5.2 1.8L11 17l-1.8-5.2L4 10l5.2-1.8z"/><path d="M19 15l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16M7 20h10M5 7h14M5 7l-3 6h6zM19 7l-3 6h6z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16M7 16v-5M12 16V7M17 16v-8"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/></symbol>
+</svg>
+
 <div class="page">
 
 <div class="switch" role="group" aria-label="Language">
   <button type="button" id="btn-en" lang="en" aria-pressed="false">English</button>
   <button type="button" id="btn-fa" lang="fa" aria-pressed="true">فارسی</button>
 </div>
+
+<div class="hero" aria-hidden="true"><canvas id="hero-art"></canvas></div>
 
 <!-- ===================== ENGLISH ===================== -->
 <div class="lang" lang="en" dir="ltr" id="content-en" hidden>
@@ -118,6 +151,14 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
 </header>
 
 <section>
+  <figure class="quote">
+    <span class="q-label">Thought of the day</span>
+    <p>Whoever has knowledge has power; through knowledge, an old heart stays young.</p>
+    <cite>Ferdowsi, Shahnameh (around year 1000) · our own translation</cite>
+  </figure>
+</section>
+
+<section>
   <h2>Overview</h2>
   <p class="overview">The week ends with a leadership shock at Nvidia, the company whose chips run most AI systems, and with a two-day Microsoft 365 outage that is now fixed. OpenAI let its AI agents pay for purchases, Google released a faster everyday model, and a new lawsuit asks a court to stop the five largest AI developers from releasing new models. In Europe, lawmakers are pushing new rules on deepfakes and on manipulative interface design.</p>
   <p class="note">Four items are from 11–12 November. They are older than 24 hours but are still the main stories today, so they are included with their real dates.</p>
@@ -127,28 +168,28 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
   <h2>News</h2>
   <ol class="cards">
     <li class="card field">
-      <div class="card-top"><span class="num">01</span><span class="pill field">Field-wide · big company decisions</span></div>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-chip"/></svg></span><span class="num">01</span><span class="pill field">Field-wide · big company decisions</span></div>
       <h3>Nvidia's founder steps down as CEO and the finance chief takes over for now</h3>
       <p><span class="label">What happened</span>Nvidia said on 12 November that Jensen Huang has left his roles as president, CEO and board member, with immediate effect. Colette Kress, the chief financial officer, is interim CEO while the board looks for a permanent leader inside and outside the company. News reports link the exit to an investigation into Huang's personal relationships and a possible foreign intelligence connection.</p>
       <p><span class="label">Why it matters</span>Almost all large AI training and cloud AI services depend on Nvidia hardware. A sudden change at the top creates uncertainty about supply, prices and export rules for everyone who builds or buys AI systems.</p>
       <p class="source">Source: <a href="https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000082/nvidiaannouncesceotransiti.htm" target="_blank" rel="noopener">Nvidia announcement (SEC filing)</a> and <a href="https://techcrunch.com/2026/11/12/nvidias-jensen-huang-resigns-chipmaker-names-cfo-colette-kress-as-interim-ceo/" target="_blank" rel="noopener">TechCrunch</a> · 12 Nov 2026</p>
     </li>
     <li class="card is">
-      <div class="card-top"><span class="num">02</span><span class="pill is">Information systems</span></div>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">02</span><span class="pill is">Information systems</span></div>
       <h3>Microsoft 365 is back after an outage that reached more than 70 countries</h3>
       <p><span class="label">What happened</span>Outlook, Teams and Copilot stopped working for many users from around midday on Thursday (US time). Microsoft said on Saturday that all services are restored. Governments, hospitals, airlines and banks were affected. Microsoft says the cause was not a cyberattack and not AI agents; it pointed to servers that became unavailable during automated checks.</p>
       <p><span class="label">Why it matters</span>This is a clear teaching case about dependence on one cloud provider. It shows why organisations need continuity plans for email and communication, not only for their own systems.</p>
       <p class="source">Source: <a href="https://www.nbcnews.com/tech/tech-news/microsoft-says-services-fully-restored-global-outage-rcna609289" target="_blank" rel="noopener">NBC News</a> · 14 Nov 2026</p>
     </li>
     <li class="card ai">
-      <div class="card-top"><span class="num">03</span><span class="pill ai">Artificial intelligence · tools</span></div>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-wallet"/></svg></span><span class="num">03</span><span class="pill ai">Artificial intelligence · tools</span></div>
       <h3>OpenAI's agents can now pay: ChatGPT Wallet starts in the United States</h3>
       <p><span class="label">What happened</span>OpenAI launched ChatGPT Wallet on 13 November for its always-on agents, which it calls "dots". A user saves a card once; the agent prepares a purchase, and the user approves each one with a face or fingerprint check. The agent and the shop never see the real card number. It was built with American Express, Mastercard and Visa and is limited to US subscribers on the Pro plan.</p>
       <p><span class="label">Why it matters</span>It moves agents from giving advice to making transactions. The design question is where the human approval step sits, and web shops must now decide how to recognise real agent traffic instead of blocking it as bots.</p>
       <p class="source">Source: <a href="https://www.androidauthority.com/chatgpt-wallet-3735154/" target="_blank" rel="noopener">Android Authority</a> and <a href="https://m.gsmarena.com/chatgpt_wallet_lets_openais_agents_buy_things_for_you-news-75481.php" target="_blank" rel="noopener">GSMArena</a> · 13 Nov 2026</p>
     </li>
     <li class="card ai">
-      <div class="card-top"><span class="num">04</span><span class="pill ai">Artificial intelligence · new models</span></div>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-spark"/></svg></span><span class="num">04</span><span class="pill ai">Artificial intelligence · new models</span></div>
       <h3>Google releases Gemini 4 Hydrogen, a faster and cheaper everyday model</h3>
       <p><span class="label">What happened</span>Google released Gemini 4 Hydrogen on 12 November. It replaces Gemini 3.8 Flash for everyday tasks, coding and multi-step agent work, and is open to everyone, including free users of the Gemini app. The price for developers is $1.50 per million input tokens and $7.50 per million output tokens.</p>
       <p><span class="label">Why it matters</span>Cheaper, faster models make it realistic to put agents inside ordinary applications and search. It also changes cost calculations for student and research projects that use an API.</p>
@@ -156,7 +197,7 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
       <p class="source">Source: <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/" target="_blank" rel="noopener">Google blog</a> · 12 Nov 2026</p>
     </li>
     <li class="card ai">
-      <div class="card-top"><span class="num">05</span><span class="pill ai">Artificial intelligence · safety and law</span></div>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">05</span><span class="pill ai">Artificial intelligence · safety and law</span></div>
       <h3>Four advocacy groups ask a California court to stop new AI models</h3>
       <p><span class="label">What happened</span>On 12 November, Public Citizen, the Irreplaceable Education Fund, Heat Initiative and the Alliance for Secure AI sued Anthropic, Google, Meta, OpenAI and SpaceXSI in San Francisco. They want a judge to halt the development and release of new models, arguing the companies cannot prevent serious harm. The companies had not commented when the story was published.</p>
       <p><span class="label">Why it matters</span>It tests whether existing consumer and nuisance law can be used to govern AI development when no specific AI law applies. The result could influence how risk and responsibility are discussed in AI ethics courses.</p>
@@ -164,7 +205,7 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
       <p class="source">Source: <a href="https://abcnews.com/Technology/wireStory/advocacy-groups-sue-ai-giants-freeze-new-models-138081070" target="_blank" rel="noopener">Associated Press via ABC News</a> · 12 Nov 2026</p>
     </li>
     <li class="card field">
-      <div class="card-top"><span class="num">06</span><span class="pill field">Field-wide · regulation</span></div>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">06</span><span class="pill field">Field-wide · regulation</span></div>
       <h3>White House task force wants softer liability rules so AI firms report incidents</h3>
       <p><span class="label">What happened</span>At a meeting on Thursday, officials from the US president's AI task force advised government agencies to relax their cyber liability policies. The idea is that AI companies will share information about serious incidents more openly if reporting carries less legal risk.</p>
       <p><span class="label">Why it matters</span>Incident reporting is a core part of information security governance. This is a different approach from the EU, which relies more on legal duties and fines.</p>
@@ -172,14 +213,14 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
       <p class="source">Source: <a href="https://bloomberg.com/news/articles/2026-11-14/white-house-urges-easing-liability-to-encourage-ai-disclosure" target="_blank" rel="noopener">Bloomberg</a> · 14 Nov 2026</p>
     </li>
     <li class="card is">
-      <div class="card-top"><span class="num">07</span><span class="pill is">Information science · privacy</span></div>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">07</span><span class="pill is">Information science · privacy</span></div>
       <h3>European Parliament calls for a fundamental right to protect your own likeness from deepfakes</h3>
       <p><span class="label">What happened</span>EU lawmakers adopted a resolution on Thursday asking for the EU Charter of Fundamental Rights to be updated. They want it to protect a person's identity and likeness against AI deepfakes and to guard against discrimination by algorithms. Today the EU has no single rule for this and uses the AI Act, the Digital Services Act and GDPR together.</p>
       <p><span class="label">Why it matters</span>It treats a person's face and voice as protected information in their own right. A resolution is a political request and does not change the law by itself, but it shows the direction of future rules.</p>
       <p class="source">Source: <a href="https://www.mlex.com/mlex/technology/articles/2549759" target="_blank" rel="noopener">MLex</a> · 13 Nov 2026</p>
     </li>
     <li class="card is">
-      <div class="card-top"><span class="num">08</span><span class="pill is">Information science · UX</span></div>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-layout"/></svg></span><span class="num">08</span><span class="pill is">Information science · UX</span></div>
       <h3>EU proposes a Digital Fairness Act that bans dark patterns</h3>
       <p><span class="label">What happened</span>The European Commission presented the proposal on 11 November. It would ban manipulative interface tricks, with a list of ten prohibited patterns, and require that users can switch off features made to keep them hooked, such as autoplay and endless scrolling. It also demands clear prices and an easy way to cancel subscriptions. The Commission could fine companies up to 6% of worldwide turnover in large cross-border cases.</p>
       <p><span class="label">Why it matters</span>This would turn UX ethics into law. Interface designers would need to show that a design does not push users into choices they did not intend.</p>
@@ -187,7 +228,7 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
       <p class="source">Source: <a href="https://commission.europa.eu/law/law-topic/consumer-protection-law/digital-fairness-act_en" target="_blank" rel="noopener">European Commission</a> and <a href="https://qz.com/eu-digital-fairness-act-dark-patterns-addictive-features-111126" target="_blank" rel="noopener">Quartz</a> · 11 Nov 2026</p>
     </li>
     <li class="card field">
-      <div class="card-top"><span class="num">09</span><span class="pill field">Field-wide · job market</span></div>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-briefcase"/></svg></span><span class="num">09</span><span class="pill field">Field-wide · job market</span></div>
       <h3>Tech layoffs in 2026 pass 206,000, but AI explains only part of them</h3>
       <p><span class="label">What happened</span>The tracker TrueUp counted 206,817 affected tech workers in 712 layoff events as of 13 November. That is close to last year's total of about 211,000. Companies often give AI investment as the reason.</p>
       <p><span class="label">Why it matters</span>It affects what students can expect after graduation. It is also a good example of why claims about AI and jobs need careful reading of the data.</p>
@@ -254,6 +295,14 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
 </header>
 
 <section>
+  <figure class="quote">
+    <span class="q-label">اندیشهٔ روز</span>
+    <p>توانا بود هر که دانا بود / ز دانش دل پیر برنا بود</p>
+    <cite>فردوسی، شاهنامه</cite>
+  </figure>
+</section>
+
+<section>
   <h2>نگاه کلی</h2>
   <p class="overview">این هفته با یک تغییر ناگهانی در مدیریت شرکت Nvidia به پایان می‌رسد؛ شرکتی که تراشه‌هایش بیشتر سیستم‌های هوش مصنوعی را اجرا می‌کنند. همچنین قطعی دوروزهٔ Microsoft 365 اکنون برطرف شده است. OpenAI به عامل‌های هوش مصنوعی خود اجازهٔ پرداخت داد، Google یک مدل سریع‌تر برای کارهای روزمره منتشر کرد، و یک شکایت تازه از دادگاه می‌خواهد پنج شرکت بزرگ هوش مصنوعی را از انتشار مدل‌های جدید بازدارد. در اروپا، قانون‌گذاران به دنبال قوانین تازه دربارهٔ دیپ‌فیک و طراحی فریبندهٔ رابط کاربری هستند.</p>
   <p class="note">چهار خبر مربوط به ۱۱ و ۱۲ نوامبر است. این خبرها قدیمی‌تر از ۲۴ ساعت هستند، اما هنوز مهم‌ترین خبرهای امروزند و به همین دلیل با تاریخ واقعی‌شان آمده‌اند.</p>
@@ -263,28 +312,28 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
   <h2>اخبار</h2>
   <ol class="cards">
     <li class="card field">
-      <div class="card-top"><span class="num">۰۱</span><span class="pill field">کل حوزه · تصمیم‌های شرکت‌های بزرگ</span></div>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-chip"/></svg></span><span class="num">۰۱</span><span class="pill field">کل حوزه · تصمیم‌های شرکت‌های بزرگ</span></div>
       <h3>بنیان‌گذار Nvidia از مدیرعاملی کنار رفت و مدیر مالی موقتاً جای او را گرفت</h3>
       <p><span class="label">چه اتفاقی افتاد</span>شرکت Nvidia در ۱۲ نوامبر اعلام کرد که Jensen Huang از سمت‌های رئیس، مدیرعامل و عضو هیئت‌مدیره، بلافاصله کناره‌گیری کرده است. Colette Kress، مدیر مالی شرکت، مدیرعامل موقت است تا هیئت‌مدیره یک جانشین دائمی از داخل یا بیرون شرکت پیدا کند. گزارش‌های خبری این کناره‌گیری را به تحقیقاتی دربارهٔ روابط شخصی Huang و یک ارتباط احتمالی با سرویس اطلاعاتی خارجی مربوط می‌دانند.</p>
       <p><span class="label">چرا مهم است</span>تقریباً همهٔ آموزش‌های بزرگ هوش مصنوعی و سرویس‌های ابری هوش مصنوعی به سخت‌افزار Nvidia وابسته‌اند. تغییر ناگهانی در رأس شرکت، برای همهٔ کسانی که سیستم هوش مصنوعی می‌سازند یا می‌خرند، دربارهٔ عرضه، قیمت و قوانین صادرات ابهام ایجاد می‌کند.</p>
       <p class="source">منبع: <a href="https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000082/nvidiaannouncesceotransiti.htm" target="_blank" rel="noopener">اطلاعیهٔ Nvidia (سند SEC)</a> و <a href="https://techcrunch.com/2026/11/12/nvidias-jensen-huang-resigns-chipmaker-names-cfo-colette-kress-as-interim-ceo/" target="_blank" rel="noopener">TechCrunch</a> · ۱۲ نوامبر ۲۰۲۶</p>
     </li>
     <li class="card is">
-      <div class="card-top"><span class="num">۰۲</span><span class="pill is">سیستم‌های اطلاعاتی</span></div>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">۰۲</span><span class="pill is">سیستم‌های اطلاعاتی</span></div>
       <h3>Microsoft 365 پس از قطعی در بیش از ۷۰ کشور دوباره کار می‌کند</h3>
       <p><span class="label">چه اتفاقی افتاد</span>از حدود ظهر پنجشنبه (به وقت آمریکا) Outlook، Teams و Copilot برای بسیاری از کاربران از کار افتادند. Microsoft روز شنبه اعلام کرد که همهٔ سرویس‌ها بازگردانده شده‌اند. دولت‌ها، بیمارستان‌ها، شرکت‌های هواپیمایی و بانک‌ها تحت تأثیر قرار گرفتند. به گفتهٔ Microsoft علت آن حملهٔ سایبری یا عامل‌های هوش مصنوعی نبود، بلکه سرورهایی بودند که در جریان بررسی‌های خودکار از دسترس خارج شدند.</p>
       <p><span class="label">چرا مهم است</span>این یک نمونهٔ آموزشی روشن دربارهٔ وابستگی به یک ارائه‌دهندهٔ ابری است. نشان می‌دهد چرا سازمان‌ها برای ایمیل و ارتباطات هم به برنامهٔ تداوم کسب‌وکار نیاز دارند، نه فقط برای سیستم‌های خودشان.</p>
       <p class="source">منبع: <a href="https://www.nbcnews.com/tech/tech-news/microsoft-says-services-fully-restored-global-outage-rcna609289" target="_blank" rel="noopener">NBC News</a> · ۱۴ نوامبر ۲۰۲۶</p>
     </li>
     <li class="card ai">
-      <div class="card-top"><span class="num">۰۳</span><span class="pill ai">هوش مصنوعی · ابزارها</span></div>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-wallet"/></svg></span><span class="num">۰۳</span><span class="pill ai">هوش مصنوعی · ابزارها</span></div>
       <h3>عامل‌های OpenAI حالا می‌توانند پرداخت کنند: ChatGPT Wallet در آمریکا آغاز شد</h3>
       <p><span class="label">چه اتفاقی افتاد</span>OpenAI در ۱۳ نوامبر ChatGPT Wallet را برای عامل‌های همیشه‌فعال خود که آن‌ها را «dots» می‌نامد، راه‌اندازی کرد. کاربر یک بار کارت خود را ذخیره می‌کند؛ عامل خرید را آماده می‌کند و کاربر هر خرید را با تشخیص چهره یا اثر انگشت تأیید می‌کند. نه عامل و نه فروشگاه شمارهٔ واقعی کارت را نمی‌بینند. این سرویس با همکاری American Express، Mastercard و Visa ساخته شده و فقط برای مشترکان طرح Pro در آمریکا در دسترس است.</p>
       <p><span class="label">چرا مهم است</span>این کار عامل‌ها را از مشاوره دادن به انجام معامله می‌برد. پرسش طراحی این است که مرحلهٔ تأیید انسانی کجا قرار بگیرد، و فروشگاه‌های اینترنتی باید تصمیم بگیرند ترافیک واقعی عامل‌ها را چطور تشخیص دهند و آن را به‌عنوان ربات مسدود نکنند.</p>
       <p class="source">منبع: <a href="https://www.androidauthority.com/chatgpt-wallet-3735154/" target="_blank" rel="noopener">Android Authority</a> و <a href="https://m.gsmarena.com/chatgpt_wallet_lets_openais_agents_buy_things_for_you-news-75481.php" target="_blank" rel="noopener">GSMArena</a> · ۱۳ نوامبر ۲۰۲۶</p>
     </li>
     <li class="card ai">
-      <div class="card-top"><span class="num">۰۴</span><span class="pill ai">هوش مصنوعی · مدل‌های جدید</span></div>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-spark"/></svg></span><span class="num">۰۴</span><span class="pill ai">هوش مصنوعی · مدل‌های جدید</span></div>
       <h3>Google مدل Gemini 4 Hydrogen را منتشر کرد؛ سریع‌تر و ارزان‌تر برای کارهای روزمره</h3>
       <p><span class="label">چه اتفاقی افتاد</span>Google در ۱۲ نوامبر مدل Gemini 4 Hydrogen را منتشر کرد. این مدل برای کارهای روزمره، برنامه‌نویسی و کارهای چندمرحله‌ای عامل‌ها جایگزین Gemini 3.8 Flash می‌شود و برای همه، از جمله کاربران رایگان اپلیکیشن Gemini، در دسترس است. قیمت برای توسعه‌دهندگان ۱٫۵۰ دلار برای هر یک میلیون توکن ورودی و ۷٫۵۰ دلار برای هر یک میلیون توکن خروجی است.</p>
       <p><span class="label">چرا مهم است</span>مدل‌های ارزان‌تر و سریع‌تر، استفاده از عامل‌ها در نرم‌افزارهای معمولی و جست‌وجو را عملی‌تر می‌کنند. همچنین هزینهٔ پروژه‌های دانشجویی و پژوهشی که از API استفاده می‌کنند تغییر می‌کند.</p>
@@ -292,7 +341,7 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
       <p class="source">منبع: <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/" target="_blank" rel="noopener">وبلاگ Google</a> · ۱۲ نوامبر ۲۰۲۶</p>
     </li>
     <li class="card ai">
-      <div class="card-top"><span class="num">۰۵</span><span class="pill ai">هوش مصنوعی · ایمنی و قانون</span></div>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">۰۵</span><span class="pill ai">هوش مصنوعی · ایمنی و قانون</span></div>
       <h3>چهار گروه مدافع از دادگاهی در کالیفرنیا خواستند مدل‌های جدید هوش مصنوعی را متوقف کند</h3>
       <p><span class="label">چه اتفاقی افتاد</span>در ۱۲ نوامبر، گروه‌های Public Citizen، Irreplaceable Education Fund، Heat Initiative و Alliance for Secure AI در سان‌فرانسیسکو از Anthropic، Google، Meta، OpenAI و SpaceXSI شکایت کردند. آن‌ها از قاضی می‌خواهند توسعه و انتشار مدل‌های جدید را متوقف کند، چون معتقدند این شرکت‌ها نمی‌توانند از آسیب جدی جلوگیری کنند. تا زمان انتشار خبر، شرکت‌ها واکنشی نشان نداده بودند.</p>
       <p><span class="label">چرا مهم است</span>این پرونده آزمایش می‌کند که آیا قوانین موجود حمایت از مصرف‌کننده و مزاحمت عمومی را می‌توان برای کنترل توسعهٔ هوش مصنوعی به کار برد، وقتی قانون ویژه‌ای برای آن وجود ندارد. نتیجهٔ آن می‌تواند بر بحث خطر و مسئولیت در درس‌های اخلاق هوش مصنوعی اثر بگذارد.</p>
@@ -300,7 +349,7 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
       <p class="source">منبع: <a href="https://abcnews.com/Technology/wireStory/advocacy-groups-sue-ai-giants-freeze-new-models-138081070" target="_blank" rel="noopener">Associated Press از طریق ABC News</a> · ۱۲ نوامبر ۲۰۲۶</p>
     </li>
     <li class="card field">
-      <div class="card-top"><span class="num">۰۶</span><span class="pill field">کل حوزه · مقررات</span></div>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">۰۶</span><span class="pill field">کل حوزه · مقررات</span></div>
       <h3>کارگروه کاخ سفید خواهان قوانین مسئولیت ملایم‌تر است تا شرکت‌ها حوادث هوش مصنوعی را گزارش کنند</h3>
       <p><span class="label">چه اتفاقی افتاد</span>در جلسه‌ای در روز پنجشنبه، مقام‌های کارگروه هوش مصنوعی رئیس‌جمهور آمریکا به نهادهای دولتی توصیه کردند سیاست‌های مسئولیت سایبری خود را ملایم‌تر کنند. هدف این است که اگر گزارش دادن خطر حقوقی کمتری داشته باشد، شرکت‌های هوش مصنوعی اطلاعات حوادث جدی را آزادتر به اشتراک بگذارند.</p>
       <p><span class="label">چرا مهم است</span>گزارش حوادث بخش اصلی حاکمیت امنیت اطلاعات است. این رویکردی متفاوت با اتحادیهٔ اروپا است که بیشتر بر تکلیف قانونی و جریمه تکیه دارد.</p>
@@ -308,14 +357,14 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
       <p class="source">منبع: <a href="https://bloomberg.com/news/articles/2026-11-14/white-house-urges-easing-liability-to-encourage-ai-disclosure" target="_blank" rel="noopener">Bloomberg</a> · ۱۴ نوامبر ۲۰۲۶</p>
     </li>
     <li class="card is">
-      <div class="card-top"><span class="num">۰۷</span><span class="pill is">علم اطلاعات · حریم خصوصی</span></div>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">۰۷</span><span class="pill is">علم اطلاعات · حریم خصوصی</span></div>
       <h3>پارلمان اروپا خواستار حقی بنیادین برای محافظت از چهره و هویت افراد در برابر دیپ‌فیک شد</h3>
       <p><span class="label">چه اتفاقی افتاد</span>قانون‌گذاران اتحادیهٔ اروپا روز پنجشنبه قطعنامه‌ای تصویب کردند که خواستار به‌روزرسانی منشور حقوق بنیادین اتحادیهٔ اروپا است. آن‌ها می‌خواهند این منشور از هویت و چهرهٔ افراد در برابر دیپ‌فیک‌های هوش مصنوعی محافظت کند و جلوی تبعیض الگوریتمی را بگیرد. امروز اتحادیهٔ اروپا قانون واحدی برای این موضوع ندارد و از EU AI Act، Digital Services Act و GDPR با هم استفاده می‌کند.</p>
       <p><span class="label">چرا مهم است</span>این رویکرد چهره و صدای افراد را به‌خودی‌خود اطلاعات محافظت‌شده می‌داند. قطعنامه یک درخواست سیاسی است و به‌تنهایی قانون را تغییر نمی‌دهد، اما جهت قوانین آینده را نشان می‌دهد.</p>
       <p class="source">منبع: <a href="https://www.mlex.com/mlex/technology/articles/2549759" target="_blank" rel="noopener">MLex</a> · ۱۳ نوامبر ۲۰۲۶</p>
     </li>
     <li class="card is">
-      <div class="card-top"><span class="num">۰۸</span><span class="pill is">علم اطلاعات · تجربهٔ کاربری (UX)</span></div>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-layout"/></svg></span><span class="num">۰۸</span><span class="pill is">علم اطلاعات · تجربهٔ کاربری (UX)</span></div>
       <h3>اتحادیهٔ اروپا قانون Digital Fairness Act را برای ممنوعیت الگوهای فریبنده پیشنهاد داد</h3>
       <p><span class="label">چه اتفاقی افتاد</span>کمیسیون اروپا این پیشنهاد را در ۱۱ نوامبر ارائه کرد. بر اساس آن، ترفندهای فریبندهٔ رابط کاربری با فهرستی از ده الگوی ممنوع منع می‌شوند و کاربران باید بتوانند قابلیت‌هایی را که برای وابسته کردن آن‌ها ساخته شده‌اند، مثل پخش خودکار و اسکرول بی‌پایان، خاموش کنند. همچنین قیمت‌گذاری شفاف و راهی آسان برای لغو اشتراک لازم است. کمیسیون می‌تواند در پرونده‌های بزرگ فرامرزی تا ۶ درصد گردش مالی جهانی شرکت‌ها را جریمه کند.</p>
       <p><span class="label">چرا مهم است</span>این پیشنهاد اخلاق UX را به قانون تبدیل می‌کند. طراحان رابط کاربری باید نشان دهند که طراحی‌شان کاربر را به انتخابی که قصدش را نداشته، سوق نمی‌دهد.</p>
@@ -323,7 +372,7 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
       <p class="source">منبع: <a href="https://commission.europa.eu/law/law-topic/consumer-protection-law/digital-fairness-act_en" target="_blank" rel="noopener">کمیسیون اروپا</a> و <a href="https://qz.com/eu-digital-fairness-act-dark-patterns-addictive-features-111126" target="_blank" rel="noopener">Quartz</a> · ۱۱ نوامبر ۲۰۲۶</p>
     </li>
     <li class="card field">
-      <div class="card-top"><span class="num">۰۹</span><span class="pill field">کل حوزه · بازار کار</span></div>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-briefcase"/></svg></span><span class="num">۰۹</span><span class="pill field">کل حوزه · بازار کار</span></div>
       <h3>تعدیل نیرو در شرکت‌های فناوری در سال ۲۰۲۶ از ۲۰۶ هزار نفر گذشت، اما هوش مصنوعی فقط بخشی از آن را توضیح می‌دهد</h3>
       <p><span class="label">چه اتفاقی افتاد</span>ردیاب TrueUp تا ۱۳ نوامبر ۲۰۶٬۸۱۷ کارمند فناوری را در ۷۱۲ مورد تعدیل نیرو شمارش کرده است. این رقم نزدیک به مجموع سال گذشته، حدود ۲۱۱ هزار نفر، است. شرکت‌ها اغلب سرمایه‌گذاری در هوش مصنوعی را دلیل آن می‌دانند.</p>
       <p><span class="label">چرا مهم است</span>این موضوع بر انتظارات دانشجویان پس از فارغ‌التحصیلی اثر می‌گذارد. همچنین نمونهٔ خوبی است از اینکه چرا ادعاهای مربوط به هوش مصنوعی و شغل نیاز به خواندن دقیق داده‌ها دارد.</p>
@@ -414,6 +463,36 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
       b.replaceWith(f);
     });
   });
+})();
+
+(function () {
+  var hues = [215, 160, 280, 25, 340, 195, 95];
+  var d = document.body.getAttribute("data-date") || "";
+  var t = Date.parse(d + "T00:00:00Z");
+  var day = isNaN(t) ? 0 : Math.floor(t / 86400000);
+  document.documentElement.style.setProperty("--h", hues[day % hues.length]);
+  var seed = day * 2654435761 >>> 0;
+  function rnd() { seed = (seed + 0x6D2B79F5) >>> 0; var x = seed; x = Math.imul(x ^ (x >>> 15), x | 1); x ^= x + Math.imul(x ^ (x >>> 7), x | 61); return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }
+  var c = document.getElementById("hero-art");
+  if (!c || !c.getContext) return;
+  function draw() {
+    var s0 = day * 2654435761 >>> 0; seed = s0;
+    var r = window.devicePixelRatio || 1, w = c.clientWidth, h = c.clientHeight;
+    c.width = w * r; c.height = h * r;
+    var g = c.getContext("2d"); g.scale(r, r); g.clearRect(0, 0, w, h);
+    for (var i = 0; i < 16; i++) {
+      g.beginPath(); g.arc(rnd() * w, rnd() * h, 10 + rnd() * 70, 0, Math.PI * 2);
+      g.fillStyle = "rgba(255,255,255," + (0.04 + rnd() * 0.12) + ")"; g.fill();
+    }
+    for (var k = 0; k < 7; k++) {
+      var amp = 8 + rnd() * 28, freq = 0.004 + rnd() * 0.012, ph = rnd() * 6.3, y0 = h * (0.15 + rnd() * 0.7);
+      g.beginPath();
+      for (var x = 0; x <= w; x += 4) { var y = y0 + Math.sin(x * freq + ph) * amp + Math.sin(x * freq * 2.3 + ph) * amp * 0.3; if (x === 0) g.moveTo(x, y); else g.lineTo(x, y); }
+      g.strokeStyle = "rgba(255,255,255," + (0.18 + rnd() * 0.3) + ")"; g.lineWidth = 1 + rnd() * 2; g.stroke();
+    }
+  }
+  draw();
+  var to; window.addEventListener("resize", function () { clearTimeout(to); to = setTimeout(draw, 150); });
 })();
 </script>
 </body>

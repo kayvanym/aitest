@@ -58,6 +58,13 @@ instead of guessing.
 # Content of the digest
 At the very top, greet me by name: «سلام کیوان،» in the Farsi
 version and "Hello Kayvan," in the English version.
+Then a "Thought of the day" (اندیشهٔ روز): one short inspiring line about
+knowledge, learning, curiosity or work. Use only old, public-domain sources
+(for example Ferdowsi, Saadi, Hafez, Rumi, Khayyam, or thinkers who died
+before 1929), or write your own line. Never use a modern quote.
+Show the original (Farsi original for Persian poets) in the Farsi version and
+your own English translation in the English version, with the author's name.
+Use a different line every day; do not repeat one from an earlier digest.
 Start with a 2–3 sentence overview of the day.
 Then, for each news item:
 - Headline (your own words)
@@ -85,6 +92,15 @@ One self-contained HTML page (all CSS inside the file, only inline scripts).
 - Links, headlines and the card layout must be the same in both languages.
 - Do not use photos from news articles (copyright). Only YouTube thumbnails
   for the videos.
+- Daily colour: the page gets a new colour every day. Set the digest date on
+  the body tag (data-date="YYYY-MM-DD"); the page script picks the colour and
+  draws the daily image (the banner at the top) from that date.
+- Give every news card a small icon that fits the story. Choose from:
+  chip (hardware, AI chips), cloud (cloud services, outages), wallet (payments),
+  spark (new AI models), scale (law, lawsuits, regulation), shield (security),
+  lock (privacy), layout (UX, design), briefcase (jobs, companies' staff),
+  book (education, libraries, research), chart (market, numbers),
+  building (big company decisions).
 
 # Rules
 - Write in clear, simple English.
