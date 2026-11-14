@@ -88,6 +88,13 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
 .archive-list h2 .fa, .archive-list .fa { font-family: var(--font-fa); }
 .archive-list ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .archive-list a { display: inline-block; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; text-decoration: none; font-variant-numeric: tabular-nums; }
+.yt { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; padding: 0; border-radius: 8px; overflow: hidden; background: #000; cursor: pointer; }
+.yt img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.9; transition: opacity .2s; }
+.yt:hover img, .yt:focus-visible img { opacity: 1; }
+.yt:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.yt .play { position: absolute; inset: 0; margin: auto; width: 68px; height: 48px; border-radius: 12px; background: rgba(204,0,0,.92); display: grid; place-items: center; }
+.yt .play::after { content: ""; border-style: solid; border-width: 10px 0 10px 18px; border-color: transparent transparent transparent #fff; margin-left: 4px; }
+.yt-frame { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 8px; display: block; }
 footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 16px; }
 @media (max-width: 480px) { .page { padding: 24px 16px 48px; } .card { padding: 16px; } }
 </style>
@@ -209,6 +216,7 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
       <div class="facts"><span><b>Channel:</b> not confirmed</span><span><b>Published:</b> 27 Oct 2026</span><span><b>Views:</b> not confirmed</span></div>
       <p><span class="label">What it is about</span>A step-by-step tutorial that builds two practical agents in Claude Desktop. The agents automate real business tasks using reusable workflows.</p>
       <p><span class="label">Why it is worth watching</span>It is the most direct match for your interest: agents made inside Claude Desktop, shown from start to finish.</p>
+      <button type="button" class="yt" data-id="8pb6Xe6EZO8" aria-label="Play video"><img src="https://i.ytimg.com/vi/8pb6Xe6EZO8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
       <p class="source"><a href="https://www.youtube.com/watch?v=8pb6Xe6EZO8" target="_blank" rel="noopener">Watch on YouTube</a></p>
     </li>
     <li class="card video">
@@ -217,6 +225,7 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
       <div class="facts"><span><b>Channel:</b> not confirmed</span><span><b>Published:</b> about 9 Oct 2026</span><span><b>Views:</b> not confirmed</span></div>
       <p><span class="label">What it is about</span>The video starts from the point that most people only ask Claude questions and then do the work themselves. It shows Claude acting as a desktop agent that carries out the work.</p>
       <p><span class="label">Why it is worth watching</span>It shows a different use case from the first video: handing over existing desktop tasks instead of building new agents.</p>
+      <button type="button" class="yt" data-id="hxuizbiALZs" aria-label="Play video"><img src="https://i.ytimg.com/vi/hxuizbiALZs/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
       <p class="source"><a href="https://www.youtube.com/watch?v=hxuizbiALZs" target="_blank" rel="noopener">Watch on YouTube</a></p>
     </li>
     <li class="card video">
@@ -225,6 +234,7 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
       <div class="facts"><span><b>Channel:</b> not confirmed</span><span><b>Published:</b> about 20 Oct 2026</span><span><b>Views:</b> not confirmed</span></div>
       <p><span class="label">What it is about</span>A 52-minute course with real examples, done completely in the Claude desktop app and without coding. It begins with setup and then goes through the main features.</p>
       <p><span class="label">Why it is worth watching</span>It gives a complete picture of what the desktop app can do, which is useful before choosing which agent use cases to try.</p>
+      <button type="button" class="yt" data-id="KehcONjBUE8" aria-label="Play video"><img src="https://i.ytimg.com/vi/KehcONjBUE8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
       <p class="source"><a href="https://www.youtube.com/watch?v=KehcONjBUE8" target="_blank" rel="noopener">Watch on YouTube</a></p>
     </li>
   </ol>
@@ -342,6 +352,7 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
       <div class="facts"><span><b>کانال:</b> تأیید نشده</span><span><b>تاریخ انتشار:</b> ۲۷ اکتبر ۲۰۲۶</span><span><b>بازدید:</b> تأیید نشده</span></div>
       <p><span class="label">دربارهٔ چیست</span>آموزشی گام‌به‌گام که دو عامل کاربردی را در Claude Desktop می‌سازد. این عامل‌ها با گردش‌کارهای قابل استفادهٔ مجدد، کارهای واقعی کسب‌وکار را خودکار می‌کنند.</p>
       <p><span class="label">چرا ارزش دیدن دارد</span>نزدیک‌ترین ویدیو به علاقهٔ شماست: ساخت عامل در Claude Desktop، از ابتدا تا انتها.</p>
+      <button type="button" class="yt" data-id="8pb6Xe6EZO8" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/8pb6Xe6EZO8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
       <p class="source"><a href="https://www.youtube.com/watch?v=8pb6Xe6EZO8" target="_blank" rel="noopener">تماشا در YouTube</a></p>
     </li>
     <li class="card video">
@@ -350,6 +361,7 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
       <div class="facts"><span><b>کانال:</b> تأیید نشده</span><span><b>تاریخ انتشار:</b> حدود ۹ اکتبر ۲۰۲۶</span><span><b>بازدید:</b> تأیید نشده</span></div>
       <p><span class="label">دربارهٔ چیست</span>ویدیو با این نکته شروع می‌شود که بیشتر مردم فقط از Claude سؤال می‌پرسند و بعد خودشان کار را انجام می‌دهند. سپس نشان می‌دهد Claude چطور به‌عنوان عامل دسکتاپ خودش کار را انجام می‌دهد.</p>
       <p><span class="label">چرا ارزش دیدن دارد</span>کاربردی متفاوت با ویدیوی اول نشان می‌دهد: سپردن کارهای موجود دسکتاپ به Claude به‌جای ساختن عامل‌های جدید.</p>
+      <button type="button" class="yt" data-id="hxuizbiALZs" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/hxuizbiALZs/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
       <p class="source"><a href="https://www.youtube.com/watch?v=hxuizbiALZs" target="_blank" rel="noopener">تماشا در YouTube</a></p>
     </li>
     <li class="card video">
@@ -358,6 +370,7 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
       <div class="facts"><span><b>کانال:</b> تأیید نشده</span><span><b>تاریخ انتشار:</b> حدود ۲۰ اکتبر ۲۰۲۶</span><span><b>بازدید:</b> تأیید نشده</span></div>
       <p><span class="label">دربارهٔ چیست</span>یک دورهٔ ۵۲ دقیقه‌ای با مثال‌های واقعی که کاملاً در اپلیکیشن دسکتاپ Claude و بدون برنامه‌نویسی انجام می‌شود. با نصب شروع می‌شود و سپس قابلیت‌های اصلی را مرور می‌کند.</p>
       <p><span class="label">چرا ارزش دیدن دارد</span>تصویری کامل از توانایی‌های اپلیکیشن دسکتاپ می‌دهد که پیش از انتخاب کاربردهای عامل برای امتحان کردن، مفید است.</p>
+      <button type="button" class="yt" data-id="KehcONjBUE8" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/KehcONjBUE8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
       <p class="source"><a href="https://www.youtube.com/watch?v=KehcONjBUE8" target="_blank" rel="noopener">تماشا در YouTube</a></p>
     </li>
   </ol>
@@ -387,6 +400,20 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
   var saved = null;
   try { saved = localStorage.getItem("digest-lang"); } catch (e) {}
   show(saved === "en" ? "en" : "fa");
+})();
+
+(function () {
+  document.querySelectorAll("button.yt").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var f = document.createElement("iframe");
+      f.className = "yt-frame";
+      f.src = "https://www.youtube-nocookie.com/embed/" + b.dataset.id + "?autoplay=1&rel=0";
+      f.title = b.getAttribute("aria-label");
+      f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      f.allowFullscreen = true;
+      b.replaceWith(f);
+    });
+  });
 })();
 </script>
 </body>
