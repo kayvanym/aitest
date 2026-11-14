@@ -4,5 +4,5 @@ A daily news digest about AI, information science and information systems, in En
 
 Read it here: https://kayvanym.github.io/aitest/
 
-- `index.html` – start page with the newest digest and the archive
+- `index.html` – always shows the newest digest, with a list of all digests at the bottom
 - `digests/YYYY-MM-DD.html` – one page per day

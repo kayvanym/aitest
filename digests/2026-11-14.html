@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,6 +51,7 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--f
 .lang[lang="fa"] .label { text-transform: none; letter-spacing: 0; }
 header.masthead { border-bottom: 3px solid var(--ink); padding-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
 .masthead h1 { font-family: var(--font-display); font-size: clamp(2rem, 6vw, 2.9rem); line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
+.masthead .hello { margin: 0; font-size: 1.15rem; color: var(--accent); font-weight: 600; }
 .masthead .date { color: var(--muted); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
 .masthead .archive { font-size: 0.9rem; }
 .overview { font-size: 1.1rem; margin: 0; }
@@ -82,6 +83,11 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
 .watch { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
 .watch li { background: var(--surface); border: 1px dashed var(--line); border-radius: 8px; padding: 14px 18px; }
 .watch strong { display: block; margin-bottom: 2px; }
+.archive-list { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--line); padding-top: 24px; }
+.archive-list h2 { font-size: 1.1rem; margin: 0; }
+.archive-list h2 .fa, .archive-list .fa { font-family: var(--font-fa); }
+.archive-list ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.archive-list a { display: inline-block; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; text-decoration: none; font-variant-numeric: tabular-nums; }
 footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 16px; }
 @media (max-width: 480px) { .page { padding: 24px 16px 48px; } .card { padding: 16px; } }
 </style>
@@ -90,17 +96,18 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
 <div class="page">
 
 <div class="switch" role="group" aria-label="Language">
-  <button type="button" id="btn-en" lang="en" aria-pressed="true">English</button>
-  <button type="button" id="btn-fa" lang="fa" aria-pressed="false">فارسی</button>
+  <button type="button" id="btn-en" lang="en" aria-pressed="false">English</button>
+  <button type="button" id="btn-fa" lang="fa" aria-pressed="true">فارسی</button>
 </div>
 
 <!-- ===================== ENGLISH ===================== -->
-<div class="lang" lang="en" dir="ltr" id="content-en">
+<div class="lang" lang="en" dir="ltr" id="content-en" hidden>
 
 <header class="masthead">
+  <p class="hello">Hello Kayvan,</p>
   <h1>News digest</h1>
   <div class="date">Saturday 14 November 2026</div>
-  <a class="archive" href="../index.html">All digests</a>
+  <a class="archive" href="../index.html#archive">All digests</a>
 </header>
 
 <section>
@@ -227,12 +234,13 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
 </div>
 
 <!-- ===================== FARSI ===================== -->
-<div class="lang" lang="fa" dir="rtl" id="content-fa" hidden>
+<div class="lang" lang="fa" dir="rtl" id="content-fa">
 
 <header class="masthead">
+  <p class="hello">سلام کیوان،</p>
   <h1>خلاصهٔ اخبار</h1>
   <div class="date">شنبه ۱۴ نوامبر ۲۰۲۶</div>
-  <a class="archive" href="../index.html">همهٔ خلاصه‌ها</a>
+  <a class="archive" href="../index.html#archive">همهٔ خلاصه‌ها</a>
 </header>
 
 <section>
@@ -378,7 +386,7 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
   bFa.addEventListener("click", function () { show("fa"); });
   var saved = null;
   try { saved = localStorage.getItem("digest-lang"); } catch (e) {}
-  if (saved === "fa") show("fa");
+  show(saved === "en" ? "en" : "fa");
 })();
 </script>
 </body>
