@@ -6,3 +6,4 @@ Read it here: https://kayvanym.github.io/aitest/
 
 - `index.html` – always shows the newest digest, with a list of all digests at the bottom
 - `digests/YYYY-MM-DD.html` – one page per day
+- `INSTRUCTIONS.md` – what the daily digest should contain (edit this to change the digest)
