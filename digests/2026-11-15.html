@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>News digest 15 Nov 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one reading column, dated masthead with a language switch, stacked cards with a coloured category stripe. */
+:root {
+  --bg: #f3f5f8; --surface: #ffffff; --ink: #17212c; --muted: #586473; --line: #dbe1e8; --accent: #1d5bb8;
+  --cat-ai: #4a3fc4; --cat-ai-bg: #ecebfb; --cat-is: #0d7468; --cat-is-bg: #e2f3f0;
+  --cat-field: #9a5a00; --cat-field-bg: #fbf0dc; --cat-video: #b02a4c; --cat-video-bg: #fbe6ec;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-fa: "Vazirmatn", Tahoma, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f141a; --surface: #182029; --ink: #e7ecf2; --muted: #9ba8b6; --line: #2b3643; --accent: #86b4ff;
+    --cat-ai: #b3adff; --cat-ai-bg: #272452; --cat-is: #6fd3c5; --cat-is-bg: #123a36;
+    --cat-field: #f0b660; --cat-field-bg: #3d2c10; --cat-video: #ff9db5; --cat-video-bg: #47182a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f141a; --surface: #182029; --ink: #e7ecf2; --muted: #9ba8b6; --line: #2b3643; --accent: #86b4ff;
+  --cat-ai: #b3adff; --cat-ai-bg: #272452; --cat-is: #6fd3c5; --cat-is-bg: #123a36;
+  --cat-field: #f0b660; --cat-field-bg: #3d2c10; --cat-video: #ff9db5; --cat-video-bg: #47182a;
+  color-scheme: dark;
+}
+
+/* Daily colour: --h (hue) is set by the script from the digest date. */
+:root { --h: 215; --bg: hsl(var(--h) 30% 96%); --accent: hsl(var(--h) 65% 38%); --hero-a: hsl(var(--h) 70% 42%); --hero-b: hsl(calc(var(--h) + 45) 70% 55%); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: hsl(var(--h) 25% 8%); --accent: hsl(var(--h) 85% 74%); --hero-a: hsl(var(--h) 55% 28%); --hero-b: hsl(calc(var(--h) + 45) 55% 36%); } }
+:root[data-theme="dark"] { --bg: hsl(var(--h) 25% 8%); --accent: hsl(var(--h) 85% 74%); --hero-a: hsl(var(--h) 55% 28%); --hero-b: hsl(calc(var(--h) + 45) 55% 36%); }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+.page { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; display: flex; flex-direction: column; gap: 24px; }
+.switch { display: flex; gap: 8px; justify-content: flex-end; }
+.switch button {
+  font: 600 0.9rem var(--font-body); padding: 6px 16px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+}
+.switch button[lang="fa"] { font-family: var(--font-fa); }
+.switch button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.lang { display: flex; flex-direction: column; gap: 40px; }
+.lang[hidden] { display: none; }
+.lang[lang="fa"] { font-family: var(--font-fa); line-height: 1.9; }
+.lang[lang="fa"] h1, .lang[lang="fa"] h2, .lang[lang="fa"] h3 { font-family: var(--font-fa); font-weight: 700; letter-spacing: 0; }
+.lang[lang="fa"] .label { text-transform: none; letter-spacing: 0; }
+header.masthead { border-bottom: 3px solid var(--ink); padding-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
+.masthead h1 { font-family: var(--font-display); font-size: clamp(2rem, 6vw, 2.9rem); line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
+.masthead .hello { margin: 0; font-size: 1.15rem; color: var(--accent); font-weight: 600; }
+.masthead .date { color: var(--muted); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+.masthead .archive { font-size: 0.9rem; }
+.overview { font-size: 1.1rem; margin: 0; }
+.note { margin: 0; color: var(--muted); font-size: 0.9rem; border-inline-start: 3px solid var(--line); padding-inline-start: 12px; }
+section { display: flex; flex-direction: column; gap: 16px; }
+section > h2 { font-family: var(--font-display); font-size: 1.45rem; margin: 0; text-wrap: balance; }
+.cards { display: flex; flex-direction: column; gap: 16px; list-style: none; margin: 0; padding: 0; }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-inline-start: 5px solid var(--stripe, var(--line));
+  border-radius: 8px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;
+}
+.card.ai { --stripe: var(--cat-ai); } .card.is { --stripe: var(--cat-is); }
+.card.field { --stripe: var(--cat-field); } .card.video { --stripe: var(--cat-video); }
+.card-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.num { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 0.85rem; font-weight: 600; }
+.pill { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em; padding: 3px 10px; border-radius: 999px; }
+.lang[lang="fa"] .pill { letter-spacing: 0; font-size: 0.8rem; }
+.pill.ai { color: var(--cat-ai); background: var(--cat-ai-bg); } .pill.is { color: var(--cat-is); background: var(--cat-is-bg); }
+.pill.field { color: var(--cat-field); background: var(--cat-field-bg); } .pill.video { color: var(--cat-video); background: var(--cat-video-bg); }
+.card h3 { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.35; margin: 0; text-wrap: balance; }
+.card p { margin: 0; }
+.label { font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); display: block; margin-bottom: 2px; }
+.caveat { color: var(--muted); font-size: 0.92rem; }
+.source { border-top: 1px solid var(--line); padding-top: 10px; font-size: 0.88rem; color: var(--muted); }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.facts { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 0.9rem; color: var(--muted); }
+.facts b { color: var(--ink); font-weight: 600; }
+.watch { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.watch li { background: var(--surface); border: 1px dashed var(--line); border-radius: 8px; padding: 14px 18px; }
+.watch strong { display: block; margin-bottom: 2px; }
+.archive-list { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--line); padding-top: 24px; }
+.archive-list h2 { font-size: 1.1rem; margin: 0; }
+.archive-list h2 .fa, .archive-list .fa { font-family: var(--font-fa); }
+.archive-list ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.archive-list a { display: inline-block; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; text-decoration: none; font-variant-numeric: tabular-nums; }
+.yt { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; padding: 0; border-radius: 8px; overflow: hidden; background: #000; cursor: pointer; }
+.yt img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.9; transition: opacity .2s; }
+.yt:hover img, .yt:focus-visible img { opacity: 1; }
+.yt:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.yt .play { position: absolute; inset: 0; margin: auto; width: 68px; height: 48px; border-radius: 12px; background: rgba(204,0,0,.92); display: grid; place-items: center; }
+.yt .play::after { content: ""; border-style: solid; border-width: 10px 0 10px 18px; border-color: transparent transparent transparent #fff; margin-left: 4px; }
+.yt-frame { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 8px; display: block; }
+.hero { position: relative; height: 170px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, var(--hero-a), var(--hero-b)); }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.quote { margin: 0; padding: 16px 20px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); border-inline-start: 5px solid var(--accent); display: flex; flex-direction: column; gap: 6px; }
+.quote .q-label { font-size: 0.8rem; font-weight: 600; color: var(--accent); }
+.quote p { margin: 0; font-size: 1.15rem; line-height: 1.7; }
+.quote cite { font-style: normal; color: var(--muted); font-size: 0.88rem; }
+.icon-tile { width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; flex: none; }
+.icon-tile svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.card.ai .icon-tile { background: var(--cat-ai-bg); color: var(--cat-ai); }
+.card.is .icon-tile { background: var(--cat-is-bg); color: var(--cat-is); }
+.card.field .icon-tile { background: var(--cat-field-bg); color: var(--cat-field); }
+footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 16px; }
+@media (max-width: 480px) { .page { padding: 24px 16px 48px; } .card { padding: 16px; } }
+</style>
+</head>
+<body data-date="2026-11-15">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.2 4.5 4.5 0 0 0 7 18z"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M15.5 14.5h2.5"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M11 3l1.8 5.2L18 10l-5.2 1.8L11 17l-1.8-5.2L4 10l5.2-1.8z"/><path d="M19 15l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16M7 20h10M5 7h14M5 7l-3 6h6zM19 7l-3 6h6z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16M7 16v-5M12 16V7M17 16v-8"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/></symbol>
+</svg>
+
+<div class="page">
+
+<div class="switch" role="group" aria-label="Language">
+  <button type="button" id="btn-en" lang="en" aria-pressed="false">English</button>
+  <button type="button" id="btn-fa" lang="fa" aria-pressed="true">فارسی</button>
+</div>
+
+<div class="hero" aria-hidden="true"><canvas id="hero-art"></canvas></div>
+
+<!-- ===================== ENGLISH ===================== -->
+<div class="lang" lang="en" dir="ltr" id="content-en" hidden>
+
+<header class="masthead">
+  <p class="hello">Hello Kayvan,</p>
+  <h1>News digest</h1>
+  <div class="date">Sunday 15 November 2026</div>
+  <a class="archive" href="../index.html#archive">All digests</a>
+</header>
+
+<section>
+  <figure class="quote">
+    <span class="q-label">Thought of the day</span>
+    <p>However much you study, if you do not put your knowledge into practice, you are still ignorant.</p>
+    <cite>Saadi, Golestan (1258) · our own translation</cite>
+  </figure>
+</section>
+
+<section>
+  <h2>Overview</h2>
+  <p class="overview">A quiet weekend, so most of today's stories come from Friday. The code editor Cursor explained how one leaked partner key led to a backdoored coding extension on developer machines, and EU leaders held their first summit on AI. OpenAI folded its robotics team into its main research groups, Google showed results from teams of AI agents doing research, and the main details of Anthropic's stock market listing are now confirmed.</p>
+  <p class="note">All items except one are from 13 November. The weekend brought almost no new stories, so these are the most important ones not yet covered. We found no important new story on privacy or the job market in the last 24 hours.</p>
+</section>
+
+<section>
+  <h2>News</h2>
+  <ol class="cards">
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">01</span><span class="pill is">Information systems · security</span></div>
+      <h3>Cursor explains how a leaked partner key led to a backdoored coding extension</h3>
+      <p><span class="label">What happened</span>On 13 November, Cursor published its findings on an October breach. A storage key given to its AI supplier Fireworks AI exposed old agent logs that still held passwords and tokens. The attacker used them to put fake versions of the Claude Code extension into Cursor's extension store for about 11 hours on 29 October. Up to 5,000 users may have downloaded them. The fake versions added a hidden SSH login to the computer and tried to open a remote connection.</p>
+      <p><span class="label">Why it matters</span>It is a clear example of supply-chain risk: one supplier's key, and logs that were never cleaned, led to malware on developer machines. Agent logs are now sensitive data and need the same governance as any other company data.</p>
+      <p class="caveat">Note: 5,000 is the number of users who could have received the files, not confirmed infections. Anthropic says its own systems and official channels were not affected.</p>
+      <p class="source">Source: <a href="https://cybersecuritynews.com/cursor-data-breach/" target="_blank" rel="noopener">Cyber Security News</a> · 14 Nov 2026, and <a href="https://www.stepsecurity.io/blog/claude-code-extension-trojanized" target="_blank" rel="noopener">StepSecurity analysis</a> · 30 Oct 2026</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">02</span><span class="pill field">Field-wide · regulation</span></div>
+      <h3>EU leaders hold their first summit on AI, but agree on nothing concrete yet</h3>
+      <p><span class="label">What happened</span>The 27 EU heads of government met in Dublin on 13 November for their first meeting about AI. They talked about competing with the US and China, depending less on non-European suppliers, and protecting people from risks. Geoffrey Hinton and Mistral's CEO Arthur Mensch were invited speakers. Estonia and Finland asked in a letter for EU-wide arrangements to respond to serious AI incidents. A dispute about a Ukraine envoy took much of the attention.</p>
+      <p><span class="label">Why it matters</span>It shows that AI is now a question for heads of government, not only for ministers and regulators. The incident response idea could later become part of AI governance next to the EU AI Act.</p>
+      <p class="caveat">Note: the meeting was informal, and no decisions were made. Leaders plan to return to AI in 2027.</p>
+      <p class="source">Source: <a href="https://www.euronews.com/2026/11/13/eu-leaders-discuss-how-to-boost-europes-ai-industry-while-tackling-risks-at-dublin-summit" target="_blank" rel="noopener">Euronews</a> and <a href="https://www.euronews.com/2026/11/13/ukraine-envoy-row-hijacks-eu-leaders-first-ai-summit" target="_blank" rel="noopener">Euronews</a> · 13 Nov 2026</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-chart"/></svg></span><span class="num">03</span><span class="pill field">Field-wide · big company decisions</span></div>
+      <h3>Anthropic's stock market listing is confirmed: price set on 18 November, trading from 19 November</h3>
+      <p><span class="label">What happened</span>Yesterday's digest listed this as not confirmed. Fortune and CNBC report that Anthropic will sell 825 million shares at $70–78 each on Nasdaq under the name "ANT". At the top of the range that raises up to $64.4 billion and values the company at up to $1.4 trillion. Seven partners, including Google and Nvidia, will buy another $26 billion of shares. Bloomberg reports that investors have ordered several times more shares than are on offer.</p>
+      <p><span class="label">Why it matters</span>A company that builds AI models becomes listed on the stock market, with public reports and investor pressure. That can change how it talks about safety, prices and access for universities and researchers.</p>
+      <p class="caveat">Note: the price and the date can still change. The reports are from 10–11 November.</p>
+      <p class="source">Source: <a href="https://fortune.com/2026/11/10/anthropic-ipo-price-range-ai-stock-sell-off/" target="_blank" rel="noopener">Fortune</a> · 10 Nov 2026, and <a href="https://stockanalysis.com/news/anthropic-ipo-multiple-times-oversubscribed/" target="_blank" rel="noopener">StockAnalysis, citing Bloomberg</a> · 11 Nov 2026</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-book"/></svg></span><span class="num">04</span><span class="pill ai">Artificial intelligence · research</span></div>
+      <h3>Google shows teams of AI agents doing research, and offers free access to 10,000 academics</h3>
+      <p><span class="label">What happened</span>Google described results from the "Teamwork" feature in its Antigravity tool, where many agents check and improve each other's work. It says the agents wrote about 1.8 million lines of Lean code to formally check a famous 1974 proof (the Weil conjectures) and rewrote a 170,000-line video decoder from C++ to Rust that now runs 20–30% faster. Google is accepting applications from 10,000 academic researchers for six months of free access at its highest usage level.</p>
+      <p><span class="label">Why it matters</span>Free top-tier access could make agent-based research methods common in universities quickly. It also raises questions about how to check and credit work that is done mostly by agents.</p>
+      <p class="caveat">Note: these are Google's own claims, without independent review yet. Part of the work reproduced existing results instead of solving open problems.</p>
+      <p class="source">Source: <a href="https://interestingengineering.com/ai-robotics/google-antigravity-multi-agent-research" target="_blank" rel="noopener">Interesting Engineering</a> · 13 Nov 2026</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-building"/></svg></span><span class="num">05</span><span class="pill ai">Artificial intelligence · companies</span></div>
+      <h3>OpenAI ends its separate robotics team because its general models can now control robots</h3>
+      <p><span class="label">What happened</span>Fortune reported on 13 November that OpenAI has moved its robotics researchers into its main research group, and its robot hardware staff into its product organisation. The reason, according to the company, is that its general models (the reports name GPT-6 Astra) can now control robots directly. In a simulated test by Nvidia, such an agent succeeded in 74.8% of tasks, compared with 51.0% for the best specialised robot models.</p>
+      <p><span class="label">Why it matters</span>It supports the idea that one general model can serve many fields, instead of a special system for each one. That affects how we teach system design and choose AI tools.</p>
+      <p class="caveat">Note: the test was in simulation, not with real robots. Experts quoted by Fortune say data from real-world use still matters.</p>
+      <p class="source">Source: <a href="https://fortune.com/2026/11/13/openai-disbands-robotics-team-as-its-general-models-start-running-robots/" target="_blank" rel="noopener">Fortune</a> · 13 Nov 2026</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">06</span><span class="pill is">Information systems · data governance</span></div>
+      <h3>Databricks lets companies ask ChatGPT about their data, with the same access rules as before</h3>
+      <p><span class="label">What happened</span>Databricks and OpenAI explained on 13 November how companies can use ChatGPT, Codex and GPT models on data stored in Databricks. Users see only the data they already have permission to see, and each answer links to its sources. A shared list of approved definitions of business figures is meant to make answers match the company's own reports. A central gateway logs every request and lets managers set budgets per team.</p>
+      <p><span class="label">Why it matters</span>It shows a practical answer to a classic data governance question: how to give AI tools access to company data without losing control of permissions, definitions and costs.</p>
+      <p class="caveat">Note: this is a vendor announcement. It does not say which features are generally available or in which regions.</p>
+      <p class="source">Source: <a href="https://www.databricks.com/blog/openai-and-databricks-enterprise-ai-your-governed-data" target="_blank" rel="noopener">Databricks blog</a> · 13 Nov 2026</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-spark"/></svg></span><span class="num">07</span><span class="pill ai">Artificial intelligence · open tools</span></div>
+      <h3>llama.cpp reaches version 1.0, a stable base for running AI models on your own computer</h3>
+      <p><span class="label">What happened</span>llama.cpp, the open-source engine behind many tools that run language models on laptops and servers, and the ggml library beneath it, both reached version 1.0 on 13 November. From now on, a change in the main version number will signal changes that break existing programs. The release removes old functions and adds new model support and a speech endpoint.</p>
+      <p><span class="label">Why it matters</span>Local models let universities and organisations use AI without sending data to a cloud provider. A stable version makes it safer to build teaching and research tools on top of it.</p>
+      <p class="source">Source: <a href="https://tbreak.com/llama-cpp-1-0-stable-release/" target="_blank" rel="noopener">tbreak</a> and <a href="https://ai-tldr.dev/releases/llama-cpp-v1-0-0/" target="_blank" rel="noopener">AI TLDR</a> · 13 Nov 2026</p>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2>Worth watching</h2>
+  <ul class="watch">
+    <li><strong>EU AI Act deadline on 2 December</strong>Providers of AI systems that were on the market before 2 August 2026 must mark AI-generated content in a way machines can detect by 2 December 2026. <a href="https://www.technology.org/2026/10/13/eu-ai-act-deadlines-after-the-digital-omnibus-what-applies-from-december-2026-to-august-2028/" target="_blank" rel="noopener">Technology.org</a> · 13 Oct 2026</li>
+    <li><strong>Rights for people who train AI</strong>EU countries must put the Platform Work Directive into national law by 2 December 2026. Five GDPR complaints by noyb about tracking of AI trainers on Scale AI's Outlier platform are still waiting for decisions. <a href="https://www.gblock.app/articles/noyb-scale-ai-outlier-worker-surveillance-complaints-2026" target="_blank" rel="noopener">gBlock</a> · 29 Oct 2026</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Top 3 videos</h2>
+  <p class="note">All three are from Anthropic's official Claude channel. View counts come from vidIQ statistics on 14 November 2026, because YouTube blocked direct access.</p>
+  <ol class="cards">
+    <li class="card video">
+      <div class="card-top"><span class="num">V1</span><span class="pill video">Proactive agent</span></div>
+      <h3>Introducing Claude Duet</h3>
+      <div class="facts"><span><b>Channel:</b> Claude (Anthropic)</span><span><b>Published:</b> 21 Oct 2026</span><span><b>Views:</b> about 1.2 million</span></div>
+      <p><span class="label">What it is about</span>Anthropic presents Claude Duet, an agent that sends a morning brief from your connected apps, watches them during the day, and contacts you only when something needs attention. It works in the background on its own virtual computer and asks for approval before it sends, pays, signs or deletes anything.</p>
+      <p><span class="label">Why it is worth watching</span>It shows where Claude agents are going: from answering questions to working on their own, with clear human approval steps.</p>
+      <button type="button" class="yt" data-id="Fb-68zqcSVs" aria-label="Play video"><img src="https://i.ytimg.com/vi/Fb-68zqcSVs/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=Fb-68zqcSVs" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V2</span><span class="pill video">Desktop app update</span></div>
+      <h3>What's new in Claude: September recap</h3>
+      <div class="facts"><span><b>Channel:</b> Claude (Anthropic)</span><span><b>Published:</b> 7 Oct 2026</span><span><b>Views:</b> about 370,000</span></div>
+      <p><span class="label">What it is about</span>A short overview of the September changes: chat and Cowork are now one experience, and you can create documents, slides and designs in any conversation. Tasks keep running in the cloud after you close your laptop, and the new Opus 5.5 and Sonnet 5.5 models power these features.</p>
+      <p><span class="label">Why it is worth watching</span>It is the quickest official way to understand how the desktop app works today, after the biggest change of the autumn.</p>
+      <button type="button" class="yt" data-id="ICGS7LlRfpI" aria-label="Play video"><img src="https://i.ytimg.com/vi/ICGS7LlRfpI/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=ICGS7LlRfpI" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V3</span><span class="pill video">Building agents</span></div>
+      <h3>Building secure agents for knowledge work</h3>
+      <div class="facts"><span><b>Channel:</b> Claude (Anthropic)</span><span><b>Published:</b> 6 Oct 2026</span><span><b>Views:</b> about 88,000</span></div>
+      <p><span class="label">What it is about</span>Katelyn Lesse from Anthropic talks with Dan Shipper and Willie William from the company Every about the AI coworker they built with Claude. The conversation is about building agents for everyday office work in a secure way.</p>
+      <p><span class="label">Why it is worth watching</span>It is a real case from practitioners, and security is the topic most tutorials skip.</p>
+      <button type="button" class="yt" data-id="z7cNbsr3b5s" aria-label="Play video"><img src="https://i.ytimg.com/vi/z7cNbsr3b5s/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=z7cNbsr3b5s" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </li>
+  </ol>
+</section>
+
+<footer>Collected by web search on 15 November 2026. Summaries are written in the agent's own words; follow the links for the full reports.</footer>
+</div>
+
+<!-- ===================== FARSI ===================== -->
+<div class="lang" lang="fa" dir="rtl" id="content-fa">
+
+<header class="masthead">
+  <p class="hello">سلام کیوان،</p>
+  <h1>خلاصهٔ اخبار</h1>
+  <div class="date">یکشنبه ۱۵ نوامبر ۲۰۲۶</div>
+  <a class="archive" href="../index.html#archive">همهٔ خلاصه‌ها</a>
+</header>
+
+<section>
+  <figure class="quote">
+    <span class="q-label">اندیشهٔ روز</span>
+    <p>علم چندان که بیشتر خوانی / چون عمل در تو نیست نادانی</p>
+    <cite>سعدی، گلستان</cite>
+  </figure>
+</section>
+
+<section>
+  <h2>نگاه کلی</h2>
+  <p class="overview">آخر هفتهٔ آرامی است و بیشتر خبرهای امروز مربوط به روز جمعه‌اند. ویرایشگر کد Cursor توضیح داد که چطور یک کلید لورفتهٔ یک شریک تجاری به نصب افزونه‌ای آلوده با درِ پشتی روی رایانهٔ برنامه‌نویسان منجر شد، و رهبران اتحادیهٔ اروپا نخستین نشست خود را دربارهٔ هوش مصنوعی برگزار کردند. OpenAI تیم رباتیک خود را در گروه‌های اصلی پژوهشش ادغام کرد، Google نتایج کار تیم‌هایی از عامل‌های هوش مصنوعی را در پژوهش نشان داد، و جزئیات اصلی ورود Anthropic به بورس اکنون تأیید شده است.</p>
+  <p class="note">همهٔ خبرها به‌جز یکی مربوط به ۱۳ نوامبر هستند. آخر هفته تقریباً خبر تازه‌ای نداشت، پس این‌ها مهم‌ترین خبرهایی هستند که هنوز پوشش داده نشده بودند. در ۲۴ ساعت گذشته خبر مهم تازه‌ای دربارهٔ حریم خصوصی یا بازار کار پیدا نکردیم.</p>
+</section>
+
+<section>
+  <h2>اخبار</h2>
+  <ol class="cards">
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">۰۱</span><span class="pill is">سیستم‌های اطلاعاتی · امنیت</span></div>
+      <h3>Cursor توضیح داد چطور کلید لورفتهٔ یک شریک به افزونه‌ای آلوده با درِ پشتی انجامید</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>شرکت Cursor در ۱۳ نوامبر یافته‌های خود را دربارهٔ نفوذی در ماه اکتبر منتشر کرد. یک کلید دسترسی به فضای ذخیره‌سازی که به تأمین‌کنندهٔ هوش مصنوعی‌اش، Fireworks AI، داده شده بود، گزارش‌های قدیمی عامل‌ها را در معرض دید قرار داد که هنوز رمزها و توکن‌هایی در خود داشتند. مهاجم با همین اطلاعات، نسخه‌های جعلی افزونهٔ Claude Code را در ۲۹ اکتبر حدود ۱۱ ساعت در فروشگاه افزونه‌های Cursor قرار داد. تا ۵٬۰۰۰ کاربر ممکن است آن‌ها را دریافت کرده باشند. این نسخه‌های جعلی یک ورود مخفی SSH به رایانه اضافه می‌کردند و تلاش می‌کردند اتصالی از راه دور باز کنند.</p>
+      <p><span class="label">چرا مهم است</span>این نمونه‌ای روشن از خطر زنجیرهٔ تأمین است: کلید یک تأمین‌کننده و گزارش‌هایی که هرگز پاک‌سازی نشده بودند، به بدافزار روی رایانهٔ برنامه‌نویسان رسید. گزارش‌های عامل‌های هوش مصنوعی اکنون دادهٔ حساس به شمار می‌آیند و به همان حاکمیت داده‌ای نیاز دارند که بقیهٔ داده‌های سازمان دارند.</p>
+      <p class="caveat">توجه: عدد ۵٬۰۰۰ تعداد کاربرانی است که ممکن بود فایل‌ها را دریافت کرده باشند، نه آلودگی‌های تأییدشده. Anthropic می‌گوید سیستم‌ها و کانال‌های رسمی خودش آسیبی ندیده‌اند.</p>
+      <p class="source">منبع: <a href="https://cybersecuritynews.com/cursor-data-breach/" target="_blank" rel="noopener">Cyber Security News</a> · ۱۴ نوامبر ۲۰۲۶، و <a href="https://www.stepsecurity.io/blog/claude-code-extension-trojanized" target="_blank" rel="noopener">تحلیل StepSecurity</a> · ۳۰ اکتبر ۲۰۲۶</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">۰۲</span><span class="pill field">کل حوزه · مقررات</span></div>
+      <h3>رهبران اتحادیهٔ اروپا نخستین نشست خود را دربارهٔ هوش مصنوعی برگزار کردند، اما هنوز به توافق مشخصی نرسیدند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>سران ۲۷ کشور اتحادیهٔ اروپا در ۱۳ نوامبر در دوبلین برای نخستین بار دربارهٔ هوش مصنوعی گفت‌وگو کردند. آن‌ها دربارهٔ رقابت با آمریکا و چین، کاهش وابستگی به تأمین‌کنندگان غیراروپایی و محافظت از مردم در برابر خطرها صحبت کردند. Geoffrey Hinton و Arthur Mensch، مدیرعامل Mistral، سخنران‌های مدعو بودند. استونی و فنلاند در نامه‌ای خواستار سازوکاری در سطح اتحادیهٔ اروپا برای واکنش به حوادث جدی هوش مصنوعی شدند. اختلاف بر سر یک فرستادهٔ ویژه برای اوکراین بخش زیادی از توجه‌ها را به خود جلب کرد.</p>
+      <p><span class="label">چرا مهم است</span>این نشست نشان می‌دهد هوش مصنوعی اکنون موضوعی برای سران دولت‌هاست، نه فقط برای وزیران و نهادهای نظارتی. ایدهٔ واکنش به حوادث ممکن است بعدها در کنار قانون EU AI Act بخشی از حاکمیت هوش مصنوعی شود.</p>
+      <p class="caveat">توجه: این نشست غیررسمی بود و تصمیمی گرفته نشد. رهبران قصد دارند در سال ۲۰۲۷ دوباره به موضوع هوش مصنوعی بپردازند.</p>
+      <p class="source">منبع: <a href="https://www.euronews.com/2026/11/13/eu-leaders-discuss-how-to-boost-europes-ai-industry-while-tackling-risks-at-dublin-summit" target="_blank" rel="noopener">Euronews</a> و <a href="https://www.euronews.com/2026/11/13/ukraine-envoy-row-hijacks-eu-leaders-first-ai-summit" target="_blank" rel="noopener">Euronews</a> · ۱۳ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-chart"/></svg></span><span class="num">۰۳</span><span class="pill field">کل حوزه · تصمیم‌های شرکت‌های بزرگ</span></div>
+      <h3>ورود Anthropic به بورس تأیید شد: تعیین قیمت در ۱۸ نوامبر و آغاز معامله از ۱۹ نوامبر</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>خلاصهٔ دیروز این خبر را «تأییدنشده» آورده بود. Fortune و CNBC گزارش می‌دهند که Anthropic ‏۸۲۵ میلیون سهم را به قیمت هر سهم ۷۰ تا ۷۸ دلار با نماد «ANT» در Nasdaq عرضه می‌کند. در بالاترین قیمت، این عرضه تا ۶۴٫۴ میلیارد دلار سرمایه جذب می‌کند و ارزش شرکت را تا ۱٫۴ تریلیون دلار می‌رساند. هفت شریک، از جمله Google و Nvidia، ‏۲۶ میلیارد دلار سهام دیگر هم می‌خرند. به گزارش Bloomberg، سفارش سرمایه‌گذاران چند برابر سهام عرضه‌شده است.</p>
+      <p><span class="label">چرا مهم است</span>یک شرکت سازندهٔ مدل‌های هوش مصنوعی با گزارش‌دهی عمومی و فشار سرمایه‌گذاران وارد بورس می‌شود. این می‌تواند بر شیوهٔ صحبت آن دربارهٔ ایمنی، قیمت‌ها و دسترسی دانشگاه‌ها و پژوهشگران اثر بگذارد.</p>
+      <p class="caveat">توجه: قیمت و تاریخ هنوز ممکن است تغییر کنند. این گزارش‌ها مربوط به ۱۰ و ۱۱ نوامبر هستند.</p>
+      <p class="source">منبع: <a href="https://fortune.com/2026/11/10/anthropic-ipo-price-range-ai-stock-sell-off/" target="_blank" rel="noopener">Fortune</a> · ۱۰ نوامبر ۲۰۲۶، و <a href="https://stockanalysis.com/news/anthropic-ipo-multiple-times-oversubscribed/" target="_blank" rel="noopener">StockAnalysis به نقل از Bloomberg</a> · ۱۱ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-book"/></svg></span><span class="num">۰۴</span><span class="pill ai">هوش مصنوعی · پژوهش</span></div>
+      <h3>Google تیم‌هایی از عامل‌های هوش مصنوعی را در کار پژوهشی نشان داد و به ۱۰٬۰۰۰ پژوهشگر دانشگاهی دسترسی رایگان می‌دهد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Google نتایج قابلیت «Teamwork» در ابزار Antigravity را شرح داد؛ قابلیتی که در آن چندین عامل کار یکدیگر را بررسی و بهتر می‌کنند. به گفتهٔ Google، این عامل‌ها حدود ۱٫۸ میلیون خط کد Lean نوشتند تا یک اثبات مشهور سال ۱۹۷۴ (حدس‌های Weil) را به‌صورت صوری بررسی کنند، و یک رمزگشای ویدیویی ۱۷۰ هزار خطی را از C++ به Rust بازنویسی کردند که اکنون ۲۰ تا ۳۰ درصد سریع‌تر است. Google درخواست ۱۰٬۰۰۰ پژوهشگر دانشگاهی را برای شش ماه دسترسی رایگان در بالاترین سطح استفاده می‌پذیرد.</p>
+      <p><span class="label">چرا مهم است</span>دسترسی رایگان در بالاترین سطح می‌تواند روش‌های پژوهشی مبتنی بر عامل را به‌سرعت در دانشگاه‌ها رایج کند. همچنین این پرسش را پیش می‌کشد که کاری را که بیشترش را عامل‌ها انجام داده‌اند، چطور باید بررسی کرد و به چه کسی نسبت داد.</p>
+      <p class="caveat">توجه: این‌ها ادعاهای خود Google است و هنوز بررسی مستقلی نشده‌اند. بخشی از کار، نتایج موجود را بازتولید کرده و مسئلهٔ حل‌نشده‌ای را حل نکرده است.</p>
+      <p class="source">منبع: <a href="https://interestingengineering.com/ai-robotics/google-antigravity-multi-agent-research" target="_blank" rel="noopener">Interesting Engineering</a> · ۱۳ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-building"/></svg></span><span class="num">۰۵</span><span class="pill ai">هوش مصنوعی · شرکت‌ها</span></div>
+      <h3>OpenAI تیم مستقل رباتیک خود را منحل کرد، چون مدل‌های عمومی‌اش اکنون می‌توانند ربات‌ها را کنترل کنند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Fortune در ۱۳ نوامبر گزارش داد که OpenAI پژوهشگران رباتیک خود را به گروه اصلی پژوهش و کارکنان سخت‌افزار ربات را به بخش محصولات منتقل کرده است. به گفتهٔ شرکت، دلیل این است که مدل‌های عمومی آن (گزارش‌ها از GPT-6 Astra نام می‌برند) اکنون می‌توانند مستقیماً ربات‌ها را کنترل کنند. در یک آزمون شبیه‌سازی‌شده از Nvidia، چنین عاملی در ۷۴٫۸ درصد کارها موفق بود، در حالی که بهترین مدل‌های تخصصی رباتیک به ۵۱ درصد رسیدند.</p>
+      <p><span class="label">چرا مهم است</span>این خبر از این ایده پشتیبانی می‌کند که یک مدل عمومی می‌تواند در حوزه‌های زیادی به کار رود و نیازی به سیستمی ویژه برای هر حوزه نیست. این بر شیوهٔ آموزش طراحی سیستم و انتخاب ابزارهای هوش مصنوعی اثر می‌گذارد.</p>
+      <p class="caveat">توجه: این آزمون در شبیه‌سازی انجام شد، نه با ربات‌های واقعی. کارشناسانی که Fortune از آن‌ها نقل قول کرده، می‌گویند داده‌های استفادهٔ واقعی همچنان مهم است.</p>
+      <p class="source">منبع: <a href="https://fortune.com/2026/11/13/openai-disbands-robotics-team-as-its-general-models-start-running-robots/" target="_blank" rel="noopener">Fortune</a> · ۱۳ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">۰۶</span><span class="pill is">سیستم‌های اطلاعاتی · حاکمیت داده</span></div>
+      <h3>Databricks به شرکت‌ها اجازه می‌دهد از ChatGPT دربارهٔ داده‌هایشان بپرسند، با همان قواعد دسترسی قبلی</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Databricks و OpenAI در ۱۳ نوامبر توضیح دادند که شرکت‌ها چطور می‌توانند ChatGPT، Codex و مدل‌های GPT را روی داده‌های ذخیره‌شده در Databricks به کار ببرند. کاربران فقط داده‌هایی را می‌بینند که از قبل اجازهٔ دیدنشان را دارند و هر پاسخ به منابع خود پیوند می‌دهد. فهرستی مشترک از تعریف‌های تأییدشدهٔ شاخص‌های کسب‌وکار قرار است پاسخ‌ها را با گزارش‌های خود شرکت هماهنگ کند. یک دروازهٔ مرکزی همهٔ درخواست‌ها را ثبت می‌کند و به مدیران اجازه می‌دهد برای هر تیم بودجه تعیین کنند.</p>
+      <p><span class="label">چرا مهم است</span>این یک پاسخ عملی به پرسشی کلاسیک در حاکمیت داده است: چطور به ابزارهای هوش مصنوعی به داده‌های سازمان دسترسی بدهیم، بی‌آنکه کنترل مجوزها، تعریف‌ها و هزینه‌ها از دست برود.</p>
+      <p class="caveat">توجه: این اطلاعیهٔ یک فروشنده است. مشخص نمی‌کند کدام قابلیت‌ها به‌طور عمومی در دسترس‌اند یا در کدام مناطق.</p>
+      <p class="source">منبع: <a href="https://www.databricks.com/blog/openai-and-databricks-enterprise-ai-your-governed-data" target="_blank" rel="noopener">وبلاگ Databricks</a> · ۱۳ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-spark"/></svg></span><span class="num">۰۷</span><span class="pill ai">هوش مصنوعی · ابزارهای متن‌باز</span></div>
+      <h3>llama.cpp به نسخهٔ ۱.۰ رسید؛ پایه‌ای پایدار برای اجرای مدل‌های هوش مصنوعی روی رایانهٔ خودتان</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>llama.cpp، موتور متن‌بازی که پشت بسیاری از ابزارهای اجرای مدل‌های زبانی روی لپ‌تاپ و سرور قرار دارد، و کتابخانهٔ ggml که زیربنای آن است، هر دو در ۱۳ نوامبر به نسخهٔ ۱.۰ رسیدند. از این پس، تغییر شمارهٔ اصلی نسخه نشان می‌دهد که تغییری برنامه‌های موجود را از کار می‌اندازد. این نسخه تابع‌های قدیمی را حذف کرده و پشتیبانی از مدل‌های تازه و یک سرویس تبدیل متن به گفتار را افزوده است.</p>
+      <p><span class="label">چرا مهم است</span>مدل‌های محلی به دانشگاه‌ها و سازمان‌ها اجازه می‌دهند بدون فرستادن داده به یک ارائه‌دهندهٔ ابری از هوش مصنوعی استفاده کنند. نسخهٔ پایدار، ساختن ابزارهای آموزشی و پژوهشی روی آن را مطمئن‌تر می‌کند.</p>
+      <p class="source">منبع: <a href="https://tbreak.com/llama-cpp-1-0-stable-release/" target="_blank" rel="noopener">tbreak</a> و <a href="https://ai-tldr.dev/releases/llama-cpp-v1-0-0/" target="_blank" rel="noopener">AI TLDR</a> · ۱۳ نوامبر ۲۰۲۶</p>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2>ارزش دنبال کردن</h2>
+  <ul class="watch">
+    <li><strong>مهلت ۲ دسامبر در قانون EU AI Act</strong>ارائه‌دهندگان سیستم‌های هوش مصنوعی که پیش از ۲ اوت ۲۰۲۶ به بازار آمده‌اند، باید تا ۲ دسامبر ۲۰۲۶ محتوای ساخته‌شده با هوش مصنوعی را طوری علامت‌گذاری کنند که ماشین بتواند آن را تشخیص دهد. <a href="https://www.technology.org/2026/10/13/eu-ai-act-deadlines-after-the-digital-omnibus-what-applies-from-december-2026-to-august-2028/" target="_blank" rel="noopener">Technology.org</a> · ۱۳ اکتبر ۲۰۲۶</li>
+    <li><strong>حقوق کسانی که هوش مصنوعی را آموزش می‌دهند</strong>کشورهای اتحادیهٔ اروپا باید تا ۲ دسامبر ۲۰۲۶ دستورالعمل Platform Work Directive را به قانون ملی تبدیل کنند. پنج شکایت GDPR از سوی noyb دربارهٔ ردیابی آموزش‌دهندگان هوش مصنوعی در پلتفرم Outlier متعلق به Scale AI هنوز منتظر تصمیم است. <a href="https://www.gblock.app/articles/noyb-scale-ai-outlier-worker-surveillance-complaints-2026" target="_blank" rel="noopener">gBlock</a> · ۲۹ اکتبر ۲۰۲۶</li>
+  </ul>
+</section>
+
+<section>
+  <h2>سه ویدیوی برتر</h2>
+  <p class="note">هر سه ویدیو از کانال رسمی Claude متعلق به Anthropic هستند. تعداد بازدیدها از آمار vidIQ در ۱۴ نوامبر ۲۰۲۶ گرفته شده، چون YouTube دسترسی مستقیم را مسدود کرد.</p>
+  <ol class="cards">
+    <li class="card video">
+      <div class="card-top"><span class="num">V1</span><span class="pill video">عامل پیش‌دستانه</span></div>
+      <h3 dir="ltr" style="text-align:right">Introducing Claude Duet</h3>
+      <div class="facts"><span><b>کانال:</b> Claude (Anthropic)</span><span><b>تاریخ انتشار:</b> ۲۱ اکتبر ۲۰۲۶</span><span><b>بازدید:</b> حدود ۱٫۲ میلیون</span></div>
+      <p><span class="label">دربارهٔ چیست</span>Anthropic در این ویدیو Claude Duet را معرفی می‌کند؛ عاملی که هر صبح خلاصه‌ای از برنامه‌های متصل شما می‌فرستد، در طول روز آن‌ها را زیر نظر دارد و فقط وقتی چیزی به توجه شما نیاز دارد با شما تماس می‌گیرد. این عامل در پس‌زمینه روی رایانهٔ مجازی خودش کار می‌کند و پیش از ارسال، پرداخت، امضا یا حذف هر چیزی از شما تأیید می‌گیرد.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>نشان می‌دهد عامل‌های Claude به کدام سمت می‌روند: از پاسخ دادن به پرسش‌ها به کار مستقل، با مراحل روشن تأیید انسانی.</p>
+      <button type="button" class="yt" data-id="Fb-68zqcSVs" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/Fb-68zqcSVs/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=Fb-68zqcSVs" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V2</span><span class="pill video">به‌روزرسانی اپلیکیشن دسکتاپ</span></div>
+      <h3 dir="ltr" style="text-align:right">What's new in Claude: September recap</h3>
+      <div class="facts"><span><b>کانال:</b> Claude (Anthropic)</span><span><b>تاریخ انتشار:</b> ۷ اکتبر ۲۰۲۶</span><span><b>بازدید:</b> حدود ۳۷۰ هزار</span></div>
+      <p><span class="label">دربارهٔ چیست</span>مروری کوتاه بر تغییرات ماه سپتامبر: گفت‌وگو و Cowork اکنون یک تجربهٔ واحدند و می‌توانید در هر گفت‌وگو سند، اسلاید و طراحی بسازید. کارها پس از بستن لپ‌تاپ در فضای ابری ادامه پیدا می‌کنند و مدل‌های تازهٔ Opus 5.5 و Sonnet 5.5 این قابلیت‌ها را پشتیبانی می‌کنند.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>سریع‌ترین راه رسمی برای فهمیدن اینکه اپلیکیشن دسکتاپ پس از بزرگ‌ترین تغییر پاییز امروز چطور کار می‌کند.</p>
+      <button type="button" class="yt" data-id="ICGS7LlRfpI" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/ICGS7LlRfpI/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=ICGS7LlRfpI" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V3</span><span class="pill video">ساخت عامل</span></div>
+      <h3 dir="ltr" style="text-align:right">Building secure agents for knowledge work</h3>
+      <div class="facts"><span><b>کانال:</b> Claude (Anthropic)</span><span><b>تاریخ انتشار:</b> ۶ اکتبر ۲۰۲۶</span><span><b>بازدید:</b> حدود ۸۸ هزار</span></div>
+      <p><span class="label">دربارهٔ چیست</span>Katelyn Lesse از Anthropic با Dan Shipper و Willie William از شرکت Every دربارهٔ همکار هوش مصنوعی‌ای که با Claude ساخته‌اند گفت‌وگو می‌کند. موضوع گفت‌وگو ساختن عامل‌هایی امن برای کارهای روزمرهٔ اداری است.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>یک تجربهٔ واقعی از زبان کسانی است که این کار را انجام داده‌اند، و امنیت موضوعی است که بیشتر آموزش‌ها از آن می‌گذرند.</p>
+      <button type="button" class="yt" data-id="z7cNbsr3b5s" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/z7cNbsr3b5s/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=z7cNbsr3b5s" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+    </li>
+  </ol>
+</section>
+
+<footer>گردآوری‌شده با جست‌وجوی وب در ۱۵ نوامبر ۲۰۲۶. خلاصه‌ها با کلمات خود عامل نوشته شده‌اند؛ برای گزارش کامل روی پیوندها کلیک کنید.</footer>
+</div>
+
+</div>
+<script>
+(function () {
+  var en = document.getElementById("content-en");
+  var fa = document.getElementById("content-fa");
+  var bEn = document.getElementById("btn-en");
+  var bFa = document.getElementById("btn-fa");
+  function show(lang) {
+    var isFa = lang === "fa";
+    en.hidden = isFa;
+    fa.hidden = !isFa;
+    bEn.setAttribute("aria-pressed", String(!isFa));
+    bFa.setAttribute("aria-pressed", String(isFa));
+    document.documentElement.lang = isFa ? "fa" : "en";
+    try { localStorage.setItem("digest-lang", lang); } catch (e) {}
+  }
+  bEn.addEventListener("click", function () { show("en"); });
+  bFa.addEventListener("click", function () { show("fa"); });
+  var saved = null;
+  try { saved = localStorage.getItem("digest-lang"); } catch (e) {}
+  show(saved === "en" ? "en" : "fa");
+})();
+
+(function () {
+  document.querySelectorAll("button.yt").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var f = document.createElement("iframe");
+      f.className = "yt-frame";
+      f.src = "https://www.youtube-nocookie.com/embed/" + b.dataset.id + "?autoplay=1&rel=0";
+      f.title = b.getAttribute("aria-label");
+      f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      f.allowFullscreen = true;
+      b.replaceWith(f);
+    });
+  });
+})();
+
+(function () {
+  var hues = [215, 160, 280, 25, 340, 195, 95];
+  var d = document.body.getAttribute("data-date") || "";
+  var t = Date.parse(d + "T00:00:00Z");
+  var day = isNaN(t) ? 0 : Math.floor(t / 86400000);
+  document.documentElement.style.setProperty("--h", hues[day % hues.length]);
+  var seed = day * 2654435761 >>> 0;
+  function rnd() { seed = (seed + 0x6D2B79F5) >>> 0; var x = seed; x = Math.imul(x ^ (x >>> 15), x | 1); x ^= x + Math.imul(x ^ (x >>> 7), x | 61); return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }
+  var c = document.getElementById("hero-art");
+  if (!c || !c.getContext) return;
+  function draw() {
+    var s0 = day * 2654435761 >>> 0; seed = s0;
+    var r = window.devicePixelRatio || 1, w = c.clientWidth, h = c.clientHeight;
+    c.width = w * r; c.height = h * r;
+    var g = c.getContext("2d"); g.scale(r, r); g.clearRect(0, 0, w, h);
+    for (var i = 0; i < 16; i++) {
+      g.beginPath(); g.arc(rnd() * w, rnd() * h, 10 + rnd() * 70, 0, Math.PI * 2);
+      g.fillStyle = "rgba(255,255,255," + (0.04 + rnd() * 0.12) + ")"; g.fill();
+    }
+    for (var k = 0; k < 7; k++) {
+      var amp = 8 + rnd() * 28, freq = 0.004 + rnd() * 0.012, ph = rnd() * 6.3, y0 = h * (0.15 + rnd() * 0.7);
+      g.beginPath();
+      for (var x = 0; x <= w; x += 4) { var y = y0 + Math.sin(x * freq + ph) * amp + Math.sin(x * freq * 2.3 + ph) * amp * 0.3; if (x === 0) g.moveTo(x, y); else g.lineTo(x, y); }
+      g.strokeStyle = "rgba(255,255,255," + (0.18 + rnd() * 0.3) + ")"; g.lineWidth = 1 + rnd() * 2; g.stroke();
+    }
+  }
+  draw();
+  var to; window.addEventListener("resize", function () { clearTimeout(to); to = setTimeout(draw, 150); });
+})();
+</script>
+</body>
+</html>
