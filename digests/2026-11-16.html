@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>News digest 16 Nov 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one reading column, dated masthead with a language switch, stacked cards with a coloured category stripe. */
+:root {
+  --bg: #f3f5f8; --surface: #ffffff; --ink: #17212c; --muted: #586473; --line: #dbe1e8; --accent: #1d5bb8;
+  --cat-ai: #4a3fc4; --cat-ai-bg: #ecebfb; --cat-is: #0d7468; --cat-is-bg: #e2f3f0;
+  --cat-field: #9a5a00; --cat-field-bg: #fbf0dc; --cat-video: #b02a4c; --cat-video-bg: #fbe6ec;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-fa: "Vazirmatn", Tahoma, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f141a; --surface: #182029; --ink: #e7ecf2; --muted: #9ba8b6; --line: #2b3643; --accent: #86b4ff;
+    --cat-ai: #b3adff; --cat-ai-bg: #272452; --cat-is: #6fd3c5; --cat-is-bg: #123a36;
+    --cat-field: #f0b660; --cat-field-bg: #3d2c10; --cat-video: #ff9db5; --cat-video-bg: #47182a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f141a; --surface: #182029; --ink: #e7ecf2; --muted: #9ba8b6; --line: #2b3643; --accent: #86b4ff;
+  --cat-ai: #b3adff; --cat-ai-bg: #272452; --cat-is: #6fd3c5; --cat-is-bg: #123a36;
+  --cat-field: #f0b660; --cat-field-bg: #3d2c10; --cat-video: #ff9db5; --cat-video-bg: #47182a;
+  color-scheme: dark;
+}
+
+/* Daily colour: --h (hue) is set by the script from the digest date. */
+:root { --h: 215; --bg: hsl(var(--h) 30% 96%); --accent: hsl(var(--h) 65% 38%); --hero-a: hsl(var(--h) 70% 42%); --hero-b: hsl(calc(var(--h) + 45) 70% 55%); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: hsl(var(--h) 25% 8%); --accent: hsl(var(--h) 85% 74%); --hero-a: hsl(var(--h) 55% 28%); --hero-b: hsl(calc(var(--h) + 45) 55% 36%); } }
+:root[data-theme="dark"] { --bg: hsl(var(--h) 25% 8%); --accent: hsl(var(--h) 85% 74%); --hero-a: hsl(var(--h) 55% 28%); --hero-b: hsl(calc(var(--h) + 45) 55% 36%); }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+.page { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; display: flex; flex-direction: column; gap: 24px; }
+.switch { display: flex; gap: 8px; justify-content: flex-end; }
+.switch button {
+  font: 600 0.9rem var(--font-body); padding: 6px 16px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+}
+.switch button[lang="fa"] { font-family: var(--font-fa); }
+.switch button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.lang { display: flex; flex-direction: column; gap: 40px; }
+.lang[hidden] { display: none; }
+.lang[lang="fa"] { font-family: var(--font-fa); line-height: 1.9; }
+.lang[lang="fa"] h1, .lang[lang="fa"] h2, .lang[lang="fa"] h3 { font-family: var(--font-fa); font-weight: 700; letter-spacing: 0; }
+.lang[lang="fa"] .label { text-transform: none; letter-spacing: 0; }
+header.masthead { border-bottom: 3px solid var(--ink); padding-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
+.masthead h1 { font-family: var(--font-display); font-size: clamp(2rem, 6vw, 2.9rem); line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
+.masthead .hello { margin: 0; font-size: 1.15rem; color: var(--accent); font-weight: 600; }
+.masthead .date { color: var(--muted); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+.masthead .archive { font-size: 0.9rem; }
+.overview { font-size: 1.1rem; margin: 0; }
+.note { margin: 0; color: var(--muted); font-size: 0.9rem; border-inline-start: 3px solid var(--line); padding-inline-start: 12px; }
+section { display: flex; flex-direction: column; gap: 16px; }
+section > h2 { font-family: var(--font-display); font-size: 1.45rem; margin: 0; text-wrap: balance; }
+.cards { display: flex; flex-direction: column; gap: 16px; list-style: none; margin: 0; padding: 0; }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-inline-start: 5px solid var(--stripe, var(--line));
+  border-radius: 8px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;
+}
+.card.ai { --stripe: var(--cat-ai); } .card.is { --stripe: var(--cat-is); }
+.card.field { --stripe: var(--cat-field); } .card.video { --stripe: var(--cat-video); }
+.card-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.num { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 0.85rem; font-weight: 600; }
+.pill { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em; padding: 3px 10px; border-radius: 999px; }
+.lang[lang="fa"] .pill { letter-spacing: 0; font-size: 0.8rem; }
+.pill.ai { color: var(--cat-ai); background: var(--cat-ai-bg); } .pill.is { color: var(--cat-is); background: var(--cat-is-bg); }
+.pill.field { color: var(--cat-field); background: var(--cat-field-bg); } .pill.video { color: var(--cat-video); background: var(--cat-video-bg); }
+.card h3 { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.35; margin: 0; text-wrap: balance; }
+.card p { margin: 0; }
+.label { font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); display: block; margin-bottom: 2px; }
+.caveat { color: var(--muted); font-size: 0.92rem; }
+.source { border-top: 1px solid var(--line); padding-top: 10px; font-size: 0.88rem; color: var(--muted); }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.facts { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 0.9rem; color: var(--muted); }
+.facts b { color: var(--ink); font-weight: 600; }
+.watch { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.watch li { background: var(--surface); border: 1px dashed var(--line); border-radius: 8px; padding: 14px 18px; }
+.watch strong { display: block; margin-bottom: 2px; }
+.archive-list { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--line); padding-top: 24px; }
+.archive-list h2 { font-size: 1.1rem; margin: 0; }
+.archive-list h2 .fa, .archive-list .fa { font-family: var(--font-fa); }
+.archive-list ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.archive-list a { display: inline-block; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; text-decoration: none; font-variant-numeric: tabular-nums; }
+.yt { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; padding: 0; border-radius: 8px; overflow: hidden; background: #000; cursor: pointer; }
+.yt img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.9; transition: opacity .2s; }
+.yt:hover img, .yt:focus-visible img { opacity: 1; }
+.yt:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.yt .play { position: absolute; inset: 0; margin: auto; width: 68px; height: 48px; border-radius: 12px; background: rgba(204,0,0,.92); display: grid; place-items: center; }
+.yt .play::after { content: ""; border-style: solid; border-width: 10px 0 10px 18px; border-color: transparent transparent transparent #fff; margin-left: 4px; }
+.yt-frame { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 8px; display: block; }
+.hero { position: relative; height: 170px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, var(--hero-a), var(--hero-b)); }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.quote { margin: 0; padding: 16px 20px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); border-inline-start: 5px solid var(--accent); display: flex; flex-direction: column; gap: 6px; }
+.quote .q-label { font-size: 0.8rem; font-weight: 600; color: var(--accent); }
+.quote p { margin: 0; font-size: 1.15rem; line-height: 1.7; }
+.quote cite { font-style: normal; color: var(--muted); font-size: 0.88rem; }
+.icon-tile { width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; flex: none; }
+.icon-tile svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.card.ai .icon-tile { background: var(--cat-ai-bg); color: var(--cat-ai); }
+.card.is .icon-tile { background: var(--cat-is-bg); color: var(--cat-is); }
+.card.field .icon-tile { background: var(--cat-field-bg); color: var(--cat-field); }
+footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 16px; }
+@media (max-width: 480px) { .page { padding: 24px 16px 48px; } .card { padding: 16px; } }
+</style>
+</head>
+<body data-date="2026-11-16">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.2 4.5 4.5 0 0 0 7 18z"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M15.5 14.5h2.5"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M11 3l1.8 5.2L18 10l-5.2 1.8L11 17l-1.8-5.2L4 10l5.2-1.8z"/><path d="M19 15l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16M7 20h10M5 7h14M5 7l-3 6h6zM19 7l-3 6h6z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16M7 16v-5M12 16V7M17 16v-8"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/></symbol>
+</svg>
+
+<div class="page">
+
+<div class="switch" role="group" aria-label="Language">
+  <button type="button" id="btn-en" lang="en" aria-pressed="false">English</button>
+  <button type="button" id="btn-fa" lang="fa" aria-pressed="true">فارسی</button>
+</div>
+
+<div class="hero" aria-hidden="true"><canvas id="hero-art"></canvas></div>
+
+<!-- ===================== ENGLISH ===================== -->
+<div class="lang" lang="en" dir="ltr" id="content-en" hidden>
+
+<header class="masthead">
+  <p class="hello">Hello Kayvan,</p>
+  <h1>News digest</h1>
+  <div class="date">Monday 16 November 2026</div>
+  <a class="archive" href="../index.html#archive">All digests</a>
+</header>
+
+<section>
+  <figure class="quote">
+    <span class="q-label">Thought of the day</span>
+    <p>If the tree of your life bears the fruit of knowledge, you can bring the blue sky down beneath your feet.</p>
+    <cite>Naser Khosrow, Divan (11th century) · our own translation</cite>
+  </figure>
+</section>
+
+<section>
+  <h2>Overview</h2>
+  <p class="overview">Privacy leads today: Italy's data protection authority fined Meta €805 million because the Facebook app on Android read people's photo galleries without clear consent. Two infrastructure failures show how fragile shared systems are: one new router stopped all US flights for hours on Friday, and an AWS region had a three-hour outage on Sunday. On the AI side, Cloudflare made its browser for AI agents open source, OpenAI started a blog about AI in science, and a Stanford memory method for language models is getting attention.</p>
+  <p class="note">It was a weekend, so several items are from Friday 13 and Saturday 14 November. We found no important new story about the job market in the last 24 hours. The Anthropic stock market listing (covered yesterday) has no confirmed new facts yet; the price is expected on 18 November.</p>
+</section>
+
+<section>
+  <h2>News</h2>
+  <ol class="cards">
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">01</span><span class="pill is">Information systems · privacy</span></div>
+      <h3>Italy fines Meta €805 million because Facebook read Android photo galleries without clear consent</h3>
+      <p><span class="label">What happened</span>Italy's data protection authority (the Garante) announced the fine on 14 November. It found that a "gallery suggestions" feature in the Facebook app for Android was switched on by default and read the photos, videos and metadata of about 20 million Italian users. One general permission covered several different purposes, and users were not clearly told. Meta must ask for separate, specific consent within 60 days and keep the feature off by default.</p>
+      <p><span class="label">Why it matters</span>It is a strong reminder that one broad app permission is not the same as informed consent for each purpose. The case is based on the ePrivacy rules for access to data on a device, which apply even when no harm is shown.</p>
+      <p class="caveat">Note: Meta calls the fine disproportionate and says it will appeal. Some reports give the amount as $887 million, which is the same fine converted to US dollars.</p>
+      <p class="source">Source: <a href="https://thehackernews.com/2026/11/italy-fines-meta-805-million-over.html" target="_blank" rel="noopener">The Hacker News</a> · 15 Nov 2026, and <a href="https://www.washingtonpost.com/technology/2026/11/15/meta-fined-887m-by-italy-accessing-android-users-photos/" target="_blank" rel="noopener">The Washington Post (AP)</a> · 15 Nov 2026</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">02</span><span class="pill field">Field-wide · infrastructure</span></div>
+      <h3>One new router during a network upgrade stopped all US flights for hours</h3>
+      <p><span class="label">What happened</span>On Friday 13 November, the US aviation authority FAA stopped all departures nationwide for about three and a half hours after its communication and radar data links failed. On 14 November, the transport secretary said a newly installed router in southern Arkansas, part of a copper-to-fiber upgrade by the contractor L3Harris, flooded the network with connection attempts. Nearly 8,000 flights were cancelled on Friday and more than 2,500 on Saturday. Officials say there is no sign of a cyberattack.</p>
+      <p><span class="label">Why it matters</span>It is a textbook case for information systems courses: a small change in critical infrastructure, without enough isolation and testing, can stop a whole national system. Change management and network segmentation are not only technical details.</p>
+      <p class="caveat">Note: the FAA administrator says the router does not fully explain the root cause, and the investigation continues. The exact length of the stop differs between reports.</p>
+      <p class="source">Source: <a href="https://www.reuters.com/business/aerospace-defense/us-aviation-shutdown-blamed-l3-harris-installed-router-2026-11-14/" target="_blank" rel="noopener">Reuters</a> · 14 Nov 2026, and <a href="https://www.cbsnews.com/news/faa-ground-stop-canceled-flights-travelers-what-we-know/" target="_blank" rel="noopener">CBS News</a> · 14 Nov 2026</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">03</span><span class="pill is">Information systems · cloud</span></div>
+      <h3>AWS region US-EAST-1 has a three-hour outage that hits login and networking services</h3>
+      <p><span class="label">What happened</span>On Sunday 15 November, from about 3:05 to 6:10 a.m. Pacific time, 11 AWS services in the Northern Virginia region had problems, including IAM Identity Center, CloudWatch, Elastic Load Balancing, NAT Gateway and Step Functions. Users saw login failures, sign-up errors and lost connections. AWS fixed the login problem first, then a remaining load balancer problem in one availability zone.</p>
+      <p><span class="label">Why it matters</span>US-EAST-1 is the region that many global services depend on, so even a short outage spreads widely. It supports the advice to spread systems across several zones or regions.</p>
+      <p class="caveat">Note: AWS has not yet published a root cause. It did not link the outage to an attack.</p>
+      <p class="source">Source: <a href="https://cyberpress.org/aws-resolves-us-east-1-outage" target="_blank" rel="noopener">Cyber Press</a> · 15 Nov 2026</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-layout"/></svg></span><span class="num">04</span><span class="pill ai">Artificial intelligence · open tools</span></div>
+      <h3>Cloudflare makes Kitesurf, its web browser for AI agents, open source</h3>
+      <p><span class="label">What happened</span>Cloudflare has published the source code of Kitesurf under the Apache 2.0 licence. Kitesurf loads web pages and runs their JavaScript for AI agents without starting a full desktop browser, and it works with common automation tools through the Chrome DevTools Protocol. Anyone can now run it locally, or deploy it on their own Cloudflare Workers account (a paid plan is required).</p>
+      <p><span class="label">Why it matters</span>More and more web traffic comes from agents, not people. An open, lightweight agent browser makes it easier to study and teach how agents read the web, and it raises new questions for website owners about access and scraping.</p>
+      <p class="caveat">Note: Cloudflare says it uses less CPU and memory than Chromium; we found no independent test yet.</p>
+      <p class="source">Source: <a href="https://www.helpnetsecurity.com/2026/11/16/cloudflare-kitesurf-open-source/" target="_blank" rel="noopener">Help Net Security</a> · 16 Nov 2026</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-book"/></svg></span><span class="num">05</span><span class="pill is">Information science · information retrieval</span></div>
+      <h3>Stanford's Memorilla squeezes a whole document collection into 16 "memory tokens" for a language model</h3>
+      <p><span class="label">What happened</span>Stanford researchers have released code and model weights for Memorilla, a small trainable module that reads stored document embeddings and hands a language model just 16 learned memory tokens for each question. With the Qwen3-8B model, they report better accuracy than putting the full documents into the prompt on several benchmarks, for example 84.3% against 80.4% on FactKG, with over 100 times fewer document tokens. It was covered widely on 14 November.</p>
+      <p><span class="label">Why it matters</span>It is a new alternative to classic retrieval-augmented generation (RAG): instead of retrieving text passages, the model gets a compressed summary of the whole collection. This is directly relevant to information retrieval research and teaching.</p>
+      <p class="caveat">Note: the paper first appeared in October. It works less well on some tasks (PubMedQA), can lose exact names, and must be trained again for each model. No independent reproduction yet.</p>
+      <p class="source">Source: <a href="https://arxiv.org/abs/2610.21375" target="_blank" rel="noopener">arXiv paper</a> · Oct–Nov 2026, and <a href="https://github.com/snap-stanford/memorilla" target="_blank" rel="noopener">code on GitHub</a></p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-book"/></svg></span><span class="num">06</span><span class="pill ai">Artificial intelligence · research</span></div>
+      <h3>OpenAI starts a blog about using AI in science</h3>
+      <p><span class="label">What happened</span>On 15 November, OpenAI launched a science blog with research findings, practical guidance and views from researchers, including outside scientists. Planned topics include data analysis, literature exploration and experiment planning, and how to check AI results. The first guest article, by UC Santa Barbara physicist Nathaniel Craig, describes work with GPT-6 Astra on a problem in particle physics.</p>
+      <p><span class="label">Why it matters</span>AI companies now compete for researchers, not only for consumers. Guidance on literature search and checking AI results touches core topics of information science, such as research methods and scholarly communication.</p>
+      <p class="caveat">Note: the physics result was published as a preprint in October; the author calls it a candidate that still needs expert review, and one critic called the advance modest.</p>
+      <p class="source">Source: <a href="https://openai.com/index/our-new-blog-for-science/" target="_blank" rel="noopener">OpenAI</a> · 15 Nov 2026, and <a href="https://casrai.org/news/openai-science-blog-launch-2026" target="_blank" rel="noopener">CASRAI</a> · 16 Nov 2026</p>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2>Worth watching</h2>
+  <ul class="watch">
+    <li><strong>Nvidia's guarantees for AI data centers</strong>Reports say interim CEO Colette Kress cut a proposed financial guarantee for an OpenAI data center from $250 billion to about $105 billion. This is not yet confirmed by Nvidia or by a filing we could check. <a href="https://404kresearch.substack.com/p/456x-morning-brief-november-15-2026-b1c" target="_blank" rel="noopener">456X Morning Brief</a> · 15 Nov 2026</li>
+    <li><strong>New York's "RAISE Act 2.0"</strong>A new bill would raise fines for frontier AI developers to up to $3 million per day for repeated violations and require yearly outside audits of safety plans. The original RAISE Act takes effect on 1 January 2027. <a href="https://www.pymnts.com/news/artificial-intelligence/2026/new-york-proposes-3-million-daily-fines-for-ai-safety-violations/" target="_blank" rel="noopener">PYMNTS</a> · 11 Nov 2026</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Top 3 videos</h2>
+  <p class="note">No videos today. Our web search tool kept failing during this run, so we could not find and check new videos (publication date, view count, channel). We prefer an empty section to guessing. All earlier picks are still in the previous digests.</p>
+</section>
+
+<footer>Collected by web search on 16 November 2026. Summaries are written in the agent's own words; follow the links for the full reports.</footer>
+</div>
+
+<!-- ===================== FARSI ===================== -->
+<div class="lang" lang="fa" dir="rtl" id="content-fa">
+
+<header class="masthead">
+  <p class="hello">سلام کیوان،</p>
+  <h1>خلاصهٔ اخبار</h1>
+  <div class="date">دوشنبه ۱۶ نوامبر ۲۰۲۶</div>
+  <a class="archive" href="../index.html#archive">همهٔ خلاصه‌ها</a>
+</header>
+
+<section>
+  <figure class="quote">
+    <span class="q-label">اندیشهٔ روز</span>
+    <p>درخت تو گر بار دانش بگیرد / به زیر آوری چرخ نیلوفری را</p>
+    <cite>ناصرخسرو، دیوان</cite>
+  </figure>
+</section>
+
+<section>
+  <h2>نگاه کلی</h2>
+  <p class="overview">امروز حریم خصوصی در صدر است: نهاد حفاظت از داده‌های ایتالیا شرکت Meta را ۸۰۵ میلیون یورو جریمه کرد، چون اپلیکیشن Facebook روی Android بدون رضایت روشن کاربران، گالری عکس‌هایشان را می‌خواند. دو خرابی زیرساختی نشان می‌دهند سیستم‌های مشترک چقدر شکننده‌اند: یک روتر تازه‌نصب روز جمعه همهٔ پروازهای آمریکا را برای چند ساعت متوقف کرد، و یک منطقهٔ AWS روز یکشنبه سه ساعت دچار قطعی شد. در حوزهٔ هوش مصنوعی، Cloudflare مرورگر مخصوص عامل‌های هوش مصنوعی خود را متن‌باز کرد، OpenAI وبلاگی دربارهٔ هوش مصنوعی در علم راه انداخت، و روشی از Stanford برای حافظهٔ مدل‌های زبانی مورد توجه قرار گرفته است.</p>
+  <p class="note">آخر هفته بود، پس چند خبر مربوط به جمعه ۱۳ و شنبه ۱۴ نوامبر است. در ۲۴ ساعت گذشته خبر مهم تازه‌ای دربارهٔ بازار کار پیدا نکردیم. دربارهٔ ورود Anthropic به بورس (که دیروز پوشش داده شد) هنوز واقعیت تازهٔ تأییدشده‌ای نیست؛ انتظار می‌رود قیمت در ۱۸ نوامبر تعیین شود.</p>
+</section>
+
+<section>
+  <h2>اخبار</h2>
+  <ol class="cards">
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">۰۱</span><span class="pill is">سیستم‌های اطلاعاتی · حریم خصوصی</span></div>
+      <h3>ایتالیا Meta را ۸۰۵ میلیون یورو جریمه کرد، چون Facebook بدون رضایت روشن گالری عکس‌های Android را می‌خواند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>نهاد حفاظت از داده‌های ایتالیا (Garante) این جریمه را در ۱۴ نوامبر اعلام کرد. این نهاد دریافت که قابلیت «پیشنهاد از گالری» در اپلیکیشن Facebook برای Android به‌طور پیش‌فرض روشن بوده و عکس‌ها، ویدیوها و فراداده‌های حدود ۲۰ میلیون کاربر ایتالیایی را می‌خوانده است. یک مجوز کلی چند هدف متفاوت را پوشش می‌داد و به کاربران به‌روشنی اطلاع داده نشده بود. Meta باید ظرف ۶۰ روز برای این کار رضایت جداگانه و مشخص بگیرد و قابلیت را به‌طور پیش‌فرض خاموش نگه دارد.</p>
+      <p><span class="label">چرا مهم است</span>این یادآوری محکمی است که یک مجوز کلی اپلیکیشن با رضایت آگاهانه برای هر هدف یکی نیست. این پرونده بر قواعد ePrivacy دربارهٔ دسترسی به داده‌های روی دستگاه تکیه دارد که حتی بدون اثبات آسیب هم اجرا می‌شوند.</p>
+      <p class="caveat">توجه: Meta این جریمه را نامتناسب می‌داند و می‌گوید درخواست تجدیدنظر می‌دهد. برخی گزارش‌ها مبلغ را ۸۸۷ میلیون دلار آورده‌اند که همان جریمه به دلار آمریکاست.</p>
+      <p class="source">منبع: <a href="https://thehackernews.com/2026/11/italy-fines-meta-805-million-over.html" target="_blank" rel="noopener">The Hacker News</a> · ۱۵ نوامبر ۲۰۲۶، و <a href="https://www.washingtonpost.com/technology/2026/11/15/meta-fined-887m-by-italy-accessing-android-users-photos/" target="_blank" rel="noopener">The Washington Post (به نقل از AP)</a> · ۱۵ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">۰۲</span><span class="pill field">کل حوزه · زیرساخت</span></div>
+      <h3>یک روتر تازه در جریان ارتقای شبکه، همهٔ پروازهای آمریکا را برای چند ساعت متوقف کرد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>روز جمعه ۱۳ نوامبر، سازمان هوانوردی آمریکا (FAA) پس از قطع شدن ارتباطات و داده‌های رادار، همهٔ پروازهای خروجی کشور را حدود سه ساعت و نیم متوقف کرد. وزیر حمل‌ونقل در ۱۴ نوامبر گفت یک روتر تازه‌نصب در جنوب ایالت Arkansas، که بخشی از پروژهٔ تبدیل کابل مسی به فیبر نوری توسط پیمانکار L3Harris بود، شبکه را با درخواست‌های اتصال پر کرده است. نزدیک به ۸٬۰۰۰ پرواز در روز جمعه و بیش از ۲٬۵۰۰ پرواز در روز شنبه لغو شد. مقام‌ها می‌گویند نشانه‌ای از حملهٔ سایبری وجود ندارد.</p>
+      <p><span class="label">چرا مهم است</span>این یک نمونهٔ درسی برای کلاس‌های سیستم‌های اطلاعاتی است: یک تغییر کوچک در زیرساخت حیاتی، بدون جداسازی و آزمون کافی، می‌تواند یک سیستم ملی را از کار بیندازد. مدیریت تغییر و بخش‌بندی شبکه فقط جزئیات فنی نیستند.</p>
+      <p class="caveat">توجه: رئیس FAA می‌گوید روتر علت اصلی را به‌طور کامل توضیح نمی‌دهد و بررسی ادامه دارد. مدت دقیق توقف در گزارش‌های مختلف فرق می‌کند.</p>
+      <p class="source">منبع: <a href="https://www.reuters.com/business/aerospace-defense/us-aviation-shutdown-blamed-l3-harris-installed-router-2026-11-14/" target="_blank" rel="noopener">Reuters</a> · ۱۴ نوامبر ۲۰۲۶، و <a href="https://www.cbsnews.com/news/faa-ground-stop-canceled-flights-travelers-what-we-know/" target="_blank" rel="noopener">CBS News</a> · ۱۴ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">۰۳</span><span class="pill is">سیستم‌های اطلاعاتی · رایانش ابری</span></div>
+      <h3>منطقهٔ US-EAST-1 در AWS سه ساعت دچار قطعی شد و سرویس‌های ورود و شبکه آسیب دیدند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>روز یکشنبه ۱۵ نوامبر، از حدود ساعت ۳:۰۵ تا ۶:۱۰ صبح به وقت اقیانوس آرام، ۱۱ سرویس AWS در منطقهٔ Northern Virginia دچار مشکل شدند، از جمله IAM Identity Center، CloudWatch، Elastic Load Balancing، NAT Gateway و Step Functions. کاربران با خطای ورود، خطای ثبت‌نام و قطع اتصال روبه‌رو شدند. AWS ابتدا مشکل ورود و سپس مشکل باقی‌ماندهٔ توزیع‌کنندهٔ بار در یک Availability Zone را برطرف کرد.</p>
+      <p><span class="label">چرا مهم است</span>US-EAST-1 منطقه‌ای است که بسیاری از سرویس‌های جهانی به آن وابسته‌اند، پس حتی یک قطعی کوتاه هم گسترده پخش می‌شود. این خبر توصیه به پخش کردن سیستم‌ها در چند zone یا region را تقویت می‌کند.</p>
+      <p class="caveat">توجه: AWS هنوز علت اصلی را منتشر نکرده است. این قطعی را به حمله‌ای نسبت نداده است.</p>
+      <p class="source">منبع: <a href="https://cyberpress.org/aws-resolves-us-east-1-outage" target="_blank" rel="noopener">Cyber Press</a> · ۱۵ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-layout"/></svg></span><span class="num">۰۴</span><span class="pill ai">هوش مصنوعی · ابزارهای متن‌باز</span></div>
+      <h3>Cloudflare مرورگر Kitesurf را که برای عامل‌های هوش مصنوعی ساخته شده، متن‌باز کرد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Cloudflare کد منبع Kitesurf را با مجوز Apache 2.0 منتشر کرده است. Kitesurf صفحه‌های وب را بارگذاری می‌کند و JavaScript آن‌ها را برای عامل‌های هوش مصنوعی اجرا می‌کند، بدون اینکه یک مرورگر کامل دسکتاپ راه بیندازد، و از طریق Chrome DevTools Protocol با ابزارهای رایج خودکارسازی کار می‌کند. اکنون هر کسی می‌تواند آن را روی رایانهٔ خود اجرا کند یا روی حساب Cloudflare Workers خودش مستقر کند (به طرح پولی نیاز است).</p>
+      <p><span class="label">چرا مهم است</span>بخش روزافزونی از ترافیک وب از عامل‌ها می‌آید، نه از انسان‌ها. یک مرورگر سبک و باز برای عامل‌ها، مطالعه و آموزش شیوهٔ خواندن وب توسط عامل‌ها را آسان‌تر می‌کند و برای صاحبان وب‌سایت‌ها پرسش‌های تازه‌ای دربارهٔ دسترسی و جمع‌آوری خودکار داده پیش می‌کشد.</p>
+      <p class="caveat">توجه: Cloudflare می‌گوید این مرورگر از Chromium پردازنده و حافظهٔ کمتری مصرف می‌کند؛ هنوز آزمون مستقلی پیدا نکردیم.</p>
+      <p class="source">منبع: <a href="https://www.helpnetsecurity.com/2026/11/16/cloudflare-kitesurf-open-source/" target="_blank" rel="noopener">Help Net Security</a> · ۱۶ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-book"/></svg></span><span class="num">۰۵</span><span class="pill is">علم اطلاعات · بازیابی اطلاعات</span></div>
+      <h3>روش Memorilla از Stanford یک مجموعهٔ کامل اسناد را در ۱۶ «توکن حافظه» برای مدل زبانی فشرده می‌کند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>پژوهشگران Stanford کد و وزن‌های Memorilla را منتشر کرده‌اند؛ ماژولی کوچک و قابل آموزش که embeddingهای ذخیره‌شدهٔ اسناد را می‌خواند و برای هر پرسش فقط ۱۶ توکن حافظهٔ آموخته‌شده به مدل زبانی می‌دهد. آن‌ها با مدل Qwen3-8B در چند معیار دقتی بهتر از قرار دادن کل اسناد در پرامپت گزارش می‌کنند، برای نمونه ۸۴٫۳ درصد در برابر ۸۰٫۴ درصد در FactKG، با بیش از ۱۰۰ برابر توکن کمتر. این خبر در ۱۴ نوامبر به‌طور گسترده پوشش داده شد.</p>
+      <p><span class="label">چرا مهم است</span>این جایگزین تازه‌ای برای روش کلاسیک RAG است: به‌جای بازیابی بخش‌هایی از متن، مدل خلاصه‌ای فشرده از کل مجموعه دریافت می‌کند. این مستقیماً به پژوهش و آموزش بازیابی اطلاعات مربوط است.</p>
+      <p class="caveat">توجه: مقاله نخستین بار در اکتبر منتشر شد. در برخی کارها (PubMedQA) ضعیف‌تر عمل می‌کند، ممکن است نام‌های دقیق را از دست بدهد و برای هر مدل باید دوباره آموزش داده شود. هنوز بازتولید مستقلی انجام نشده است.</p>
+      <p class="source">منبع: <a href="https://arxiv.org/abs/2610.21375" target="_blank" rel="noopener">مقاله در arXiv</a> · اکتبر تا نوامبر ۲۰۲۶، و <a href="https://github.com/snap-stanford/memorilla" target="_blank" rel="noopener">کد در GitHub</a></p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-book"/></svg></span><span class="num">۰۶</span><span class="pill ai">هوش مصنوعی · پژوهش</span></div>
+      <h3>OpenAI وبلاگی دربارهٔ کاربرد هوش مصنوعی در علم راه انداخت</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>OpenAI در ۱۵ نوامبر یک وبلاگ علمی راه انداخت که شامل یافته‌های پژوهشی، راهنمایی‌های عملی و دیدگاه پژوهشگران، از جمله دانشمندان بیرون از شرکت، است. موضوع‌های برنامه‌ریزی‌شده شامل تحلیل داده، جست‌وجوی منابع علمی، طراحی آزمایش و شیوهٔ بررسی نتایج هوش مصنوعی است. نخستین مقالهٔ مهمان، نوشتهٔ Nathaniel Craig فیزیک‌دان دانشگاه UC Santa Barbara، همکاری با GPT-6 Astra روی مسئله‌ای در فیزیک ذرات را شرح می‌دهد.</p>
+      <p><span class="label">چرا مهم است</span>شرکت‌های هوش مصنوعی اکنون برای جذب پژوهشگران رقابت می‌کنند، نه فقط مصرف‌کنندگان. راهنمایی دربارهٔ جست‌وجوی منابع و بررسی نتایج هوش مصنوعی به موضوع‌های اصلی علم اطلاعات، مانند روش پژوهش و ارتباطات علمی، مربوط است.</p>
+      <p class="caveat">توجه: نتیجهٔ فیزیکی در اکتبر به‌صورت پیش‌انتشار منتشر شده بود؛ نویسنده آن را «پیشنهادی» می‌داند که هنوز به بررسی متخصصان نیاز دارد، و یک منتقد این پیشرفت را کوچک دانسته است.</p>
+      <p class="source">منبع: <a href="https://openai.com/index/our-new-blog-for-science/" target="_blank" rel="noopener">OpenAI</a> · ۱۵ نوامبر ۲۰۲۶، و <a href="https://casrai.org/news/openai-science-blog-launch-2026" target="_blank" rel="noopener">CASRAI</a> · ۱۶ نوامبر ۲۰۲۶</p>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2>ارزش دنبال کردن</h2>
+  <ul class="watch">
+    <li><strong>ضمانت‌های Nvidia برای مراکز دادهٔ هوش مصنوعی</strong>گزارش‌ها می‌گویند Colette Kress، مدیرعامل موقت، ضمانت مالی پیشنهادی برای یک مرکز دادهٔ OpenAI را از ۲۵۰ میلیارد دلار به حدود ۱۰۵ میلیارد دلار کاهش داده است. این خبر هنوز از سوی Nvidia یا در سندی که بتوانیم بررسی کنیم تأیید نشده است. <a href="https://404kresearch.substack.com/p/456x-morning-brief-november-15-2026-b1c" target="_blank" rel="noopener">456X Morning Brief</a> · ۱۵ نوامبر ۲۰۲۶</li>
+    <li><strong>«RAISE Act 2.0» در نیویورک</strong>یک لایحهٔ تازه جریمهٔ توسعه‌دهندگان مدل‌های پیشرفتهٔ هوش مصنوعی را برای تخلف تکراری تا ۳ میلیون دلار در روز بالا می‌برد و بازرسی سالانهٔ بیرونی از برنامه‌های ایمنی را الزامی می‌کند. قانون اصلی RAISE Act از ۱ ژانویهٔ ۲۰۲۷ اجرا می‌شود. <a href="https://www.pymnts.com/news/artificial-intelligence/2026/new-york-proposes-3-million-daily-fines-for-ai-safety-violations/" target="_blank" rel="noopener">PYMNTS</a> · ۱۱ نوامبر ۲۰۲۶</li>
+  </ul>
+</section>
+
+<section>
+  <h2>سه ویدیوی برتر</h2>
+  <p class="note">امروز ویدیویی نداریم. ابزار جست‌وجوی وب در این اجرا بارها از کار افتاد، پس نتوانستیم ویدیوهای تازه را پیدا و بررسی کنیم (تاریخ انتشار، تعداد بازدید، کانال). یک بخش خالی را به حدس زدن ترجیح می‌دهیم. همهٔ انتخاب‌های قبلی همچنان در خلاصه‌های پیشین هست.</p>
+</section>
+
+<footer>گردآوری‌شده با جست‌وجوی وب در ۱۶ نوامبر ۲۰۲۶. خلاصه‌ها با کلمات خود عامل نوشته شده‌اند؛ برای گزارش کامل روی پیوندها کلیک کنید.</footer>
+</div>
+
+</div>
+<script>
+(function () {
+  var en = document.getElementById("content-en");
+  var fa = document.getElementById("content-fa");
+  var bEn = document.getElementById("btn-en");
+  var bFa = document.getElementById("btn-fa");
+  function show(lang) {
+    var isFa = lang === "fa";
+    en.hidden = isFa;
+    fa.hidden = !isFa;
+    bEn.setAttribute("aria-pressed", String(!isFa));
+    bFa.setAttribute("aria-pressed", String(isFa));
+    document.documentElement.lang = isFa ? "fa" : "en";
+    try { localStorage.setItem("digest-lang", lang); } catch (e) {}
+  }
+  bEn.addEventListener("click", function () { show("en"); });
+  bFa.addEventListener("click", function () { show("fa"); });
+  var saved = null;
+  try { saved = localStorage.getItem("digest-lang"); } catch (e) {}
+  show(saved === "en" ? "en" : "fa");
+})();
+
+(function () {
+  document.querySelectorAll("button.yt").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var f = document.createElement("iframe");
+      f.className = "yt-frame";
+      f.src = "https://www.youtube-nocookie.com/embed/" + b.dataset.id + "?autoplay=1&rel=0";
+      f.title = b.getAttribute("aria-label");
+      f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      f.allowFullscreen = true;
+      b.replaceWith(f);
+    });
+  });
+})();
+
+(function () {
+  var hues = [215, 160, 280, 25, 340, 195, 95];
+  var d = document.body.getAttribute("data-date") || "";
+  var t = Date.parse(d + "T00:00:00Z");
+  var day = isNaN(t) ? 0 : Math.floor(t / 86400000);
+  document.documentElement.style.setProperty("--h", hues[day % hues.length]);
+  var seed = day * 2654435761 >>> 0;
+  function rnd() { seed = (seed + 0x6D2B79F5) >>> 0; var x = seed; x = Math.imul(x ^ (x >>> 15), x | 1); x ^= x + Math.imul(x ^ (x >>> 7), x | 61); return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }
+  var c = document.getElementById("hero-art");
+  if (!c || !c.getContext) return;
+  function draw() {
+    var s0 = day * 2654435761 >>> 0; seed = s0;
+    var r = window.devicePixelRatio || 1, w = c.clientWidth, h = c.clientHeight;
+    c.width = w * r; c.height = h * r;
+    var g = c.getContext("2d"); g.scale(r, r); g.clearRect(0, 0, w, h);
+    for (var i = 0; i < 16; i++) {
+      g.beginPath(); g.arc(rnd() * w, rnd() * h, 10 + rnd() * 70, 0, Math.PI * 2);
+      g.fillStyle = "rgba(255,255,255," + (0.04 + rnd() * 0.12) + ")"; g.fill();
+    }
+    for (var k = 0; k < 7; k++) {
+      var amp = 8 + rnd() * 28, freq = 0.004 + rnd() * 0.012, ph = rnd() * 6.3, y0 = h * (0.15 + rnd() * 0.7);
+      g.beginPath();
+      for (var x = 0; x <= w; x += 4) { var y = y0 + Math.sin(x * freq + ph) * amp + Math.sin(x * freq * 2.3 + ph) * amp * 0.3; if (x === 0) g.moveTo(x, y); else g.lineTo(x, y); }
+      g.strokeStyle = "rgba(255,255,255," + (0.18 + rnd() * 0.3) + ")"; g.lineWidth = 1 + rnd() * 2; g.stroke();
+    }
+  }
+  draw();
+  var to; window.addEventListener("resize", function () { clearTimeout(to); to = setTimeout(draw, 150); });
+})();
+</script>
+</body>
+</html>
