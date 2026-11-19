@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>News digest 19 Nov 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one reading column, dated masthead with a language switch, stacked cards with a coloured category stripe. */
+:root {
+  --bg: #f3f5f8; --surface: #ffffff; --ink: #17212c; --muted: #586473; --line: #dbe1e8; --accent: #1d5bb8;
+  --cat-ai: #4a3fc4; --cat-ai-bg: #ecebfb; --cat-is: #0d7468; --cat-is-bg: #e2f3f0;
+  --cat-field: #9a5a00; --cat-field-bg: #fbf0dc; --cat-video: #b02a4c; --cat-video-bg: #fbe6ec;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-fa: "Vazirmatn", Tahoma, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f141a; --surface: #182029; --ink: #e7ecf2; --muted: #9ba8b6; --line: #2b3643; --accent: #86b4ff;
+    --cat-ai: #b3adff; --cat-ai-bg: #272452; --cat-is: #6fd3c5; --cat-is-bg: #123a36;
+    --cat-field: #f0b660; --cat-field-bg: #3d2c10; --cat-video: #ff9db5; --cat-video-bg: #47182a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f141a; --surface: #182029; --ink: #e7ecf2; --muted: #9ba8b6; --line: #2b3643; --accent: #86b4ff;
+  --cat-ai: #b3adff; --cat-ai-bg: #272452; --cat-is: #6fd3c5; --cat-is-bg: #123a36;
+  --cat-field: #f0b660; --cat-field-bg: #3d2c10; --cat-video: #ff9db5; --cat-video-bg: #47182a;
+  color-scheme: dark;
+}
+
+/* Daily colour: --h (hue) is set by the script from the digest date. */
+:root { --h: 215; --bg: hsl(var(--h) 30% 96%); --accent: hsl(var(--h) 65% 38%); --hero-a: hsl(var(--h) 70% 42%); --hero-b: hsl(calc(var(--h) + 45) 70% 55%); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: hsl(var(--h) 25% 8%); --accent: hsl(var(--h) 85% 74%); --hero-a: hsl(var(--h) 55% 28%); --hero-b: hsl(calc(var(--h) + 45) 55% 36%); } }
+:root[data-theme="dark"] { --bg: hsl(var(--h) 25% 8%); --accent: hsl(var(--h) 85% 74%); --hero-a: hsl(var(--h) 55% 28%); --hero-b: hsl(calc(var(--h) + 45) 55% 36%); }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+.page { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; display: flex; flex-direction: column; gap: 24px; }
+.switch { display: flex; gap: 8px; justify-content: flex-end; }
+.switch button {
+  font: 600 0.9rem var(--font-body); padding: 6px 16px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+}
+.switch button[lang="fa"] { font-family: var(--font-fa); }
+.switch button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.lang { display: flex; flex-direction: column; gap: 40px; }
+.lang[hidden] { display: none; }
+.lang[lang="fa"] { font-family: var(--font-fa); line-height: 1.9; }
+.lang[lang="fa"] h1, .lang[lang="fa"] h2, .lang[lang="fa"] h3 { font-family: var(--font-fa); font-weight: 700; letter-spacing: 0; }
+.lang[lang="fa"] .label { text-transform: none; letter-spacing: 0; }
+header.masthead { border-bottom: 3px solid var(--ink); padding-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
+.masthead h1 { font-family: var(--font-display); font-size: clamp(2rem, 6vw, 2.9rem); line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
+.masthead .hello { margin: 0; font-size: 1.15rem; color: var(--accent); font-weight: 600; }
+.masthead .date { color: var(--muted); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+.masthead .archive { font-size: 0.9rem; }
+.overview { font-size: 1.1rem; margin: 0; }
+.note { margin: 0; color: var(--muted); font-size: 0.9rem; border-inline-start: 3px solid var(--line); padding-inline-start: 12px; }
+section { display: flex; flex-direction: column; gap: 16px; }
+section > h2 { font-family: var(--font-display); font-size: 1.45rem; margin: 0; text-wrap: balance; }
+.cards { display: flex; flex-direction: column; gap: 16px; list-style: none; margin: 0; padding: 0; }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-inline-start: 5px solid var(--stripe, var(--line));
+  border-radius: 8px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;
+}
+.card.ai { --stripe: var(--cat-ai); } .card.is { --stripe: var(--cat-is); }
+.card.field { --stripe: var(--cat-field); } .card.video { --stripe: var(--cat-video); }
+.card-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.num { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 0.85rem; font-weight: 600; }
+.pill { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em; padding: 3px 10px; border-radius: 999px; }
+.lang[lang="fa"] .pill { letter-spacing: 0; font-size: 0.8rem; }
+.pill.ai { color: var(--cat-ai); background: var(--cat-ai-bg); } .pill.is { color: var(--cat-is); background: var(--cat-is-bg); }
+.pill.field { color: var(--cat-field); background: var(--cat-field-bg); } .pill.video { color: var(--cat-video); background: var(--cat-video-bg); }
+.card h3 { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.35; margin: 0; text-wrap: balance; }
+.card p { margin: 0; }
+.label { font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); display: block; margin-bottom: 2px; }
+.caveat { color: var(--muted); font-size: 0.92rem; }
+.source { border-top: 1px solid var(--line); padding-top: 10px; font-size: 0.88rem; color: var(--muted); }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.facts { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 0.9rem; color: var(--muted); }
+.facts b { color: var(--ink); font-weight: 600; }
+.watch { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.watch li { background: var(--surface); border: 1px dashed var(--line); border-radius: 8px; padding: 14px 18px; }
+.watch strong { display: block; margin-bottom: 2px; }
+.archive-list { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--line); padding-top: 24px; }
+.archive-list h2 { font-size: 1.1rem; margin: 0; }
+.archive-list h2 .fa, .archive-list .fa { font-family: var(--font-fa); }
+.archive-list ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.archive-list a { display: inline-block; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; text-decoration: none; font-variant-numeric: tabular-nums; }
+.yt { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; padding: 0; border-radius: 8px; overflow: hidden; background: #000; cursor: pointer; }
+.yt img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.9; transition: opacity .2s; }
+.yt:hover img, .yt:focus-visible img { opacity: 1; }
+.yt:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.yt .play { position: absolute; inset: 0; margin: auto; width: 68px; height: 48px; border-radius: 12px; background: rgba(204,0,0,.92); display: grid; place-items: center; }
+.yt .play::after { content: ""; border-style: solid; border-width: 10px 0 10px 18px; border-color: transparent transparent transparent #fff; margin-left: 4px; }
+.yt-frame { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 8px; display: block; }
+.hero { position: relative; height: 170px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, var(--hero-a), var(--hero-b)); }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.quote { margin: 0; padding: 16px 20px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); border-inline-start: 5px solid var(--accent); display: flex; flex-direction: column; gap: 6px; }
+.quote .q-label { font-size: 0.8rem; font-weight: 600; color: var(--accent); }
+.quote p { margin: 0; font-size: 1.15rem; line-height: 1.7; }
+.quote cite { font-style: normal; color: var(--muted); font-size: 0.88rem; }
+.icon-tile { width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; flex: none; }
+.icon-tile svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.card.ai .icon-tile { background: var(--cat-ai-bg); color: var(--cat-ai); }
+.card.is .icon-tile { background: var(--cat-is-bg); color: var(--cat-is); }
+.card.field .icon-tile { background: var(--cat-field-bg); color: var(--cat-field); }
+footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 16px; }
+@media (max-width: 480px) { .page { padding: 24px 16px 48px; } .card { padding: 16px; } }
+</style>
+</head>
+<body data-date="2026-11-19">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.2 4.5 4.5 0 0 0 7 18z"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M15.5 14.5h2.5"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M11 3l1.8 5.2L18 10l-5.2 1.8L11 17l-1.8-5.2L4 10l5.2-1.8z"/><path d="M19 15l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16M7 20h10M5 7h14M5 7l-3 6h6zM19 7l-3 6h6z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16M7 16v-5M12 16V7M17 16v-8"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/></symbol>
+</svg>
+
+<div class="page">
+
+<div class="switch" role="group" aria-label="Language">
+  <button type="button" id="btn-en" lang="en" aria-pressed="false">English</button>
+  <button type="button" id="btn-fa" lang="fa" aria-pressed="true">فارسی</button>
+</div>
+
+<div class="hero" aria-hidden="true"><canvas id="hero-art"></canvas></div>
+
+
+<!-- ===================== ENGLISH ===================== -->
+<div class="lang" lang="en" dir="ltr" id="content-en" hidden>
+
+<header class="masthead">
+  <p class="hello">Hello Kayvan,</p>
+  <h1>News digest</h1>
+  <div class="date">Thursday 19 November 2026</div>
+  <a class="archive" href="../index.html#archive">All digests</a>
+</header>
+
+<section>
+  <figure class="quote">
+    <span class="q-label">Thought of the day</span>
+    <p>Whoever is not taught good ways in childhood will see success slip away when grown.</p>
+    <cite>Saadi, Golestan, Chapter 7 "On the effects of education" (1258) · our own translation</cite>
+  </figure>
+</section>
+
+<section>
+  <h2>Overview</h2>
+  <p class="overview">Anthropic set its share price at $83 and raised about $81 billion, the largest stock market listing on record, with trading due to start today. OpenAI and Google both released new frontier models, while a US government report and a new criminal investigation in Arizona show that AI safety and AI agents are now firmly a matter for watchdogs and prosecutors. For information science, the day's key stories are about search and privacy: big US school districts may drop Google Search over its AI features, Google changed how long it keeps Gemini chats, and a public DNS service is leaving France rather than block websites.</p>
+  <p class="note">We found no important new story in the last 24 hours on the EU AI Act or GDPR. The OpenAI model launch and the Java security flaw were announced on 17 November (US time), after yesterday's digest was collected.</p>
+</section>
+
+<section>
+  <h2>News</h2>
+  <ol class="cards">
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-chart"/></svg></span><span class="num">01</span><span class="pill field">Field-wide · market</span></div>
+      <h3>Anthropic prices its IPO at $83 a share and raises $81.3 billion, a new world record</h3>
+      <p><span class="label">What happened</span>On 18 November, Anthropic priced its stock market listing at $83 per share, above the planned range of $70–78. It sold about 980 million shares, more than the 825 million first planned, raising about $81.3 billion and valuing the company at about $1.5 trillion. The shares are due to start trading today on Nasdaq under the ticker "ANT"; the previous record was SpaceX's listing of about $75 billion in June.</p>
+      <p><span class="label">Why it matters</span>Investors are betting very large sums on AI model companies, and a public Anthropic will have to report much more about its revenue, risks and governance, which gives researchers new public data about the AI industry.</p>
+      <p class="caveat">Note: the first reports relied on unnamed sources; the final figures should be checked against the official filing once the offering closes on Friday.</p>
+      <p class="source">Source: <a href="https://finance.yahoo.com/markets/stocks/articles/anthropic-prices-ipo-83-share-014000480.html" target="_blank" rel="noopener">Yahoo Finance</a> · 18 Nov 2026, and <a href="https://fortune.com/2026/11/18/anthropic-prices-ipo-83-per-share-1-5-trillion/" target="_blank" rel="noopener">Fortune</a> · 18 Nov 2026</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-spark"/></svg></span><span class="num">02</span><span class="pill ai">Artificial intelligence · new models</span></div>
+      <h3>OpenAI releases GPT-6.2 Astra and Sol, and rates Astra "High" for AI self-improvement</h3>
+      <p><span class="label">What happened</span>OpenAI launched GPT-6.2 Astra, its model for the hardest professional work, and GPT-6.2 Sol, a cheaper everyday model, in ChatGPT, Codex and the API. Astra's API price falls by 20% to $8 per million input tokens and $40 per million output tokens. In its own safety ratings, OpenAI says both models reach its "Critical" level for cybersecurity, and Astra is the first public OpenAI model rated "High" for speeding up AI research.</p>
+      <p><span class="label">Why it matters</span>Cheaper frontier models make agent-based information systems more affordable, but the safety ratings show that cybersecurity and model oversight are now central issues for anyone who deploys them.</p>
+      <p class="caveat">Note: most performance claims come from OpenAI. On the independent Artificial Analysis index, Astra scores 62, behind Anthropic's Claude Fable 5.2 at 65. OpenAI also says the models sometimes failed to mention missing files or tools that blocked their work.</p>
+      <p class="source">Source: <a href="https://openai.com/index/introducing-gpt-6-2-astra-sol" target="_blank" rel="noopener">OpenAI</a> · 17 Nov 2026, and <a href="https://decrypt.co/383488/openai-gpt-6-2-astra-challenges-anthropic-price-but-not-every-benchmark" target="_blank" rel="noopener">Decrypt</a> · 17 Nov 2026</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-spark"/></svg></span><span class="num">03</span><span class="pill ai">Artificial intelligence · new models</span></div>
+      <h3>Google launches Gemini 4 Neon, a fast model for coding and long agent tasks</h3>
+      <p><span class="label">What happened</span>Google DeepMind released Gemini 4 Neon on 18 November. It sits between the top model, Carbon, and the fast Hydrogen model, has a one-million-token context window, and is built for long, tool-heavy agent work, coding and analysis. It costs $3 per million input tokens and $15 per million output tokens, and is available in the Gemini API, Google Antigravity and the Gemini app for paid subscribers.</p>
+      <p><span class="label">Why it matters</span>Strong mid-priced models lower the cost of using AI for document analysis, search and data work in universities and organisations.</p>
+      <p class="caveat">Note: the benchmark rankings (for example #1 on a coding-agent index) are reported by Google and have not yet been widely checked by others.</p>
+      <p class="source">Source: <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/" target="_blank" rel="noopener">Google blog</a> · 18 Nov 2026, and <a href="https://9to5google.com/2026/11/18/gemini-4-neon-announcement/" target="_blank" rel="noopener">9to5Google</a> · 18 Nov 2026</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">04</span><span class="pill ai">Artificial intelligence · safety</span></div>
+      <h3>US government watchdog got four leading chatbots to help plan attacks within 12 hours</h3>
+      <p><span class="label">What happened</span>The Government Accountability Office (GAO), Congress's watchdog, released a report on 18 November about tests of Claude, ChatGPT, Gemini and Grok. Using known tricks to get around safeguards, investigators obtained workable plans for attacks on cities and on the power grid from all four within 12 hours, and a bomb squad expert confirmed the plans were realistic. Senator Maggie Hassan, who asked for the study, plans hearings and legislation next year.</p>
+      <p><span class="label">Why it matters</span>It is official evidence that current safeguards can be bypassed, and it will likely shape US rules on how AI systems must be tested before release.</p>
+      <p class="caveat">Note: the tests took place last spring, each platform was tested only once, results were not linked to specific models, and the companies say their safeguards have improved since then.</p>
+      <p class="source">Source: <a href="https://abcnews.com/Technology/ai-models-plan-viable-attack-plots-test-despite/story?id=138229892" target="_blank" rel="noopener">ABC News</a> · 18 Nov 2026</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">05</span><span class="pill ai">Artificial intelligence · law &amp; agents</span></div>
+      <h3>Arizona opens a criminal investigation into AI agents in banks, as banks make customers liable for their agents</h3>
+      <p><span class="label">What happened</span>Arizona's Attorney General Kris Mayes said on 18 November that her office has opened a criminal investigation into OpenAI and other, unnamed AI companies over the "apparent infiltration of banks by rogue AI agents". On the same day, TechCrunch reported that Citi and PNC changed their terms this week so that customers are responsible for anything a third-party AI agent does in their account, even if it is hacked, following similar moves by JPMorgan and Bank of America in October.</p>
+      <p><span class="label">Why it matters</span>Who is responsible when an AI agent acts for a person is becoming a real legal and design question for information systems, from access control to audit logs.</p>
+      <p class="caveat">Note: Arizona gave no details of evidence and named no banks; an investigation does not mean charges will follow. OpenAI did not comment right away. This follows California's lawsuit, covered yesterday.</p>
+      <p class="source">Source: <a href="https://ca.finance.yahoo.com/news/arizona-says-investigating-openai-other-013631766.html" target="_blank" rel="noopener">Reuters via Yahoo Finance</a> · 18 Nov 2026, and <a href="https://techcrunch.com/2026/11/18/more-banks-says-customers-using-ai-agents-are-on-their-own-even-if-they-get-hacked/" target="_blank" rel="noopener">TechCrunch</a> · 18 Nov 2026</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-book"/></svg></span><span class="num">06</span><span class="pill is">Information retrieval · education</span></div>
+      <h3>America's largest school districts consider leaving Google Search because it will not offer a version without AI</h3>
+      <p><span class="label">What happened</span>Google has told schools it will not offer Google Search without AI chatbot features, saying the technology is too deeply built into the product. On 18 November, Los Angeles Unified turned off AI Overviews for students and said it could switch its default search engine "overnight"; New York City and Chicago are also looking at options such as DuckDuckGo and Bing, which let users turn AI answers off. Google says AI products like the Gemini app will be off by default for schools from next year.</p>
+      <p><span class="label">Why it matters</span>It is a rare large-scale test of whether institutions can choose how search results are presented, a core question for information retrieval and information literacy teaching.</p>
+      <p class="source">Source: <a href="https://www.nytimes.com/2026/11/18/technology/google-gemini-ai-search-schools-nyc-la-chicago.html" target="_blank" rel="noopener">The New York Times</a> · 18 Nov 2026, and <a href="https://kfiam640.iheart.com/content/2026-11-18-lausd-disables-google-ai-overviews-reviews-google-search/" target="_blank" rel="noopener">KFI AM 640 (City News Service)</a> · 18–19 Nov 2026</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">07</span><span class="pill is">Privacy · AI services</span></div>
+      <h3>Google separates Gemini history from AI training, but keeps "history off" chats for two months</h3>
+      <p><span class="label">What happened</span>Google now lets Gemini users keep their chat history while opting out of having their chats used to train AI models. At the same time, chats made with history turned off will be kept for about two months instead of 72 hours, for safety and service reasons. On 18 November Google also added "temporary threads" to AI Mode in Search, which do not appear in search history or affect personalisation.</p>
+      <p><span class="label">Why it matters</span>These settings show the trade-offs between personalisation, training data and data retention that are central to privacy and data governance teaching.</p>
+      <p class="caveat">Note: Google announced the Gemini change on 16 November and says it rolls out globally "in the coming weeks"; it was reported widely on 17–18 November.</p>
+      <p class="source">Source: <a href="https://blog.google/innovation-and-ai/products/gemini-app/updated-controls/" target="_blank" rel="noopener">Google blog</a> · 16 Nov 2026, and <a href="https://techcrunch.com/2026/11/18/googles-ai-feature-in-search-gets-its-own-incognito-mode/" target="_blank" rel="noopener">TechCrunch</a> · 18 Nov 2026</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">08</span><span class="pill is">Internet infrastructure · law</span></div>
+      <h3>Public DNS service Quad9 leaves France rather than block websites for copyright holders</h3>
+      <p><span class="label">What happened</span>A French court ordered daily fines against Quad9, a small Swiss non-profit DNS resolver, for not blocking domains linked to alleged piracy. Quad9 says blocking would harm privacy and security, so it will stop serving France, with reports giving 24 November as the date. In a blog post on 17 November, Cloudflare warned that schools, hospitals and public bodies using Quad9 may see systems stop working without warning, and noted that a Belgian court has ordered Cloudflare, Google and Cisco to start DNS blocking by January 2027.</p>
+      <p><span class="label">Why it matters</span>It shows how copyright enforcement is reaching the basic layers of the internet, with effects on access to information and on user privacy.</p>
+      <p class="caveat">Note: Cloudflare is an interested party that is fighting similar orders; Quad9 announced the exit in October.</p>
+      <p class="source">Source: <a href="https://blog.cloudflare.com/quad9-withdrawal-from-france/" target="_blank" rel="noopener">Cloudflare blog</a> · 17 Nov 2026, and <a href="https://www.it-connect.tech/quad9-to-exit-france-9-9-9-9-dns-will-be-cut-off-on-november-24-2026/" target="_blank" rel="noopener">IT-Connect</a> · Nov 2026</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">09</span><span class="pill field">Field-wide · security</span></div>
+      <h3>"Java4Shell": a serious flaw in Java 17 and newer needs patching on servers</h3>
+      <p><span class="label">What happened</span>Security firm Calif found a memory bug in Java's Base64 decoder (CVE-2026-114938) that can allow remote code execution, in some cases without login. It affects Java 17, 21, 25 and 27 on x86-64 machines with certain newer processors; Java 8 and 11 are not affected. Oracle released fixes on 17 November, Amazon Corretto has fixed builds, and other vendors are following.</p>
+      <p><span class="label">Why it matters</span>Java runs many university and enterprise systems, such as library, learning and records platforms, so IT teams should check and patch quickly.</p>
+      <p class="caveat">Note: Calif rates it 9.2 (critical), while Oracle rates it 8.1. No attacks had been seen as of 18 November. The New York Times reports that Calif used AI to find the flaw; we could not confirm this in the technical advisory.</p>
+      <p class="source">Source: <a href="https://www.aikido.dev/blog/java-17-rce-vulnerability-cve-2026-114938" target="_blank" rel="noopener">Aikido Security</a> · 17–18 Nov 2026</p>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2>Worth watching</h2>
+  <ul class="watch">
+    <li><strong>Supply-chain attack on an AI agent library</strong>Two fake releases (1.26.1 and 1.26.2) of Microsoft's agent-framework package on PyPI stole cloud and CI credentials for about an hour on 17 November. Anyone who installed them should rotate secrets. <a href="https://www.wiz.io/blog/malicious-version-of-microsofts-agent-framework-published-to-pypi" target="_blank" rel="noopener">Wiz</a> · 17 Nov 2026</li>
+    <li><strong>Jensen Huang before Congress on 1 December</strong>The former Nvidia CEO has agreed to appear before House committees investigating Nvidia's chip sales to China and possible security failures. <a href="https://axios.com/2026/11/17/nvidia-jensen-huang-congress-testify-dates" target="_blank" rel="noopener">Axios</a> · 17 Nov 2026</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Top 3 videos</h2>
+  <p class="note">YouTube blocked our checks for two of the three videos, so their view counts are not confirmed. The dates come from the video pages.</p>
+  <ol class="cards">
+    <li class="card video">
+      <div class="card-top"><span class="num">V1</span><span class="pill video">Official · new features</span></div>
+      <h3>Meet Claude Slides, Claude Design and Claude Docs</h3>
+      <div class="facts"><span><b>Channel:</b> Claude (official)</span><span><b>Published:</b> 16 Sep 2026</span><span><b>Views:</b> about 388,000</span></div>
+      <p><span class="label">What it is about</span>A short official video that shows one launch brief turned into a slide deck, social media images and a one-page document, all inside the Claude conversation. It also shows how you can comment on any part of the result and send the comments back to Claude for changes.</p>
+      <p><span class="label">Why it is worth watching</span>In under two minutes it shows the new document tools that Claude Desktop users now work with every day.</p>
+      <button type="button" class="yt" data-id="To5nrYqvR44" aria-label="Play video"><img src="https://i.ytimg.com/vi/To5nrYqvR44/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=To5nrYqvR44" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V2</span><span class="pill video">Tutorial · data work</span></div>
+      <h3>How to Use Claude Whiteboards, Sheets and Data (Full Tutorial)</h3>
+      <div class="facts"><span><b>Channel:</b> Devanshu Goyal</span><span><b>Published:</b> 11 Nov 2026</span><span><b>Views:</b> not confirmed</span></div>
+      <p><span class="label">What it is about</span>A step-by-step tutorial on Claude's new Whiteboards and Sheets (both in beta) and Data, used for brainstorming, spreadsheets with formulas and charts, and dashboards that show their underlying queries. It also lists current limits, such as no pivot tables and a 100,000-cell cap in Sheets.</p>
+      <p><span class="label">Why it is worth watching</span>It is a practical, honest look at using Claude for data tasks, including what does not work yet.</p>
+      <button type="button" class="yt" data-id="ALBJUg5rmBQ" aria-label="Play video"><img src="https://i.ytimg.com/vi/ALBJUg5rmBQ/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=ALBJUg5rmBQ" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V3</span><span class="pill video">Official · new model</span></div>
+      <h3>Introducing Claude Fable 5.2</h3>
+      <div class="facts"><span><b>Channel:</b> Claude (official)</span><span><b>Published:</b> 9 Nov 2026</span><span><b>Views:</b> not confirmed</span></div>
+      <p><span class="label">What it is about</span>Anthropic's official introduction of Claude Fable 5.2, a model for very ambitious technical work with better coding, reasoning and vision. It explains when to choose Fable 5.2 and when Opus 5.5 is the better choice, and says it is available now on the Pro, Max, Team and Enterprise plans.</p>
+      <p><span class="label">Why it is worth watching</span>It helps you understand which Claude model to pick for long agent tasks, from the company itself.</p>
+      <button type="button" class="yt" data-id="6a1QSJlsYpU" aria-label="Play video"><img src="https://i.ytimg.com/vi/6a1QSJlsYpU/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=6a1QSJlsYpU" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </li>
+  </ol>
+</section>
+
+<footer>Collected by web search on 19 November 2026. Summaries are written in the agent's own words; follow the links for the full reports.</footer>
+</div>
+
+<!-- ===================== FARSI ===================== -->
+<div class="lang" lang="fa" dir="rtl" id="content-fa">
+
+<header class="masthead">
+  <p class="hello">سلام کیوان،</p>
+  <h1>خلاصهٔ اخبار</h1>
+  <div class="date">پنجشنبه ۱۹ نوامبر ۲۰۲۶</div>
+  <a class="archive" href="../index.html#archive">همهٔ خلاصه‌ها</a>
+</header>
+
+<section>
+  <figure class="quote">
+    <span class="q-label">اندیشهٔ روز</span>
+    <p>هر که در خردیش ادب نکنند / در بزرگی فلاح از او برخاست</p>
+    <cite>سعدی، گلستان، باب هفتم «در تأثیر تربیت»</cite>
+  </figure>
+</section>
+
+<section>
+  <h2>نگاه کلی</h2>
+  <p class="overview">شرکت Anthropic قیمت هر سهم خود را ۸۳ دلار تعیین کرد و حدود ۸۱ میلیارد دلار سرمایه جذب کرد؛ بزرگ‌ترین عرضهٔ اولیهٔ سهام در تاریخ، که معاملهٔ آن از امروز آغاز می‌شود. OpenAI و Google هر دو مدل‌های پیشرفتهٔ تازه‌ای عرضه کردند، و در همین حال گزارشی از دولت آمریکا و یک تحقیق جنایی تازه در ایالت Arizona نشان می‌دهد ایمنی هوش مصنوعی و عامل‌های هوش مصنوعی اکنون به‌طور جدی موضوع کار نهادهای نظارتی و دادستان‌هاست. برای علم اطلاعات، مهم‌ترین خبرهای امروز دربارهٔ جست‌وجو و حریم خصوصی است: مدارس بزرگ آمریکا ممکن است به‌خاطر قابلیت‌های هوش مصنوعی Google Search را کنار بگذارند، Google مدت نگهداری گفت‌وگوهای Gemini را تغییر داد، و یک سرویس عمومی DNS به جای مسدود کردن وب‌سایت‌ها، فرانسه را ترک می‌کند.</p>
+  <p class="note">در ۲۴ ساعت گذشته خبر مهم تازه‌ای دربارهٔ قانون EU AI Act یا GDPR پیدا نکردیم. عرضهٔ مدل OpenAI و نقص امنیتی Java در ۱۷ نوامبر (به وقت آمریکا) اعلام شدند؛ یعنی پس از گردآوری خلاصهٔ دیروز.</p>
+</section>
+
+<section>
+  <h2>اخبار</h2>
+  <ol class="cards">
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-chart"/></svg></span><span class="num">۰۱</span><span class="pill field">کل حوزه · بازار</span></div>
+      <h3>Anthropic سهام خود را ۸۳ دلار قیمت‌گذاری کرد و ۸۱٫۳ میلیارد دلار جذب کرد؛ رکوردی تازه در جهان</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>شرکت Anthropic در ۱۸ نوامبر قیمت هر سهم در عرضهٔ اولیه را ۸۳ دلار تعیین کرد؛ بالاتر از بازهٔ پیش‌بینی‌شدهٔ ۷۰ تا ۷۸ دلار. این شرکت حدود ۹۸۰ میلیون سهم فروخت، بیشتر از ۸۲۵ میلیون سهمی که در ابتدا برنامه داشت، و حدود ۸۱٫۳ میلیارد دلار جذب کرد؛ ارزش شرکت با این قیمت حدود ۱٫۵ تریلیون دلار است. قرار است معاملهٔ سهام از امروز در Nasdaq با نماد «ANT» آغاز شود؛ رکورد قبلی متعلق به عرضهٔ حدود ۷۵ میلیارد دلاری SpaceX در ژوئن بود.</p>
+      <p><span class="label">چرا مهم است</span>سرمایه‌گذاران مبالغ بسیار بزرگی روی شرکت‌های سازندهٔ مدل‌های هوش مصنوعی شرط می‌بندند، و Anthropic به‌عنوان شرکتی سهامی عام باید دربارهٔ درآمد، ریسک‌ها و حاکمیت خود گزارش‌های بسیار بیشتری منتشر کند؛ این یعنی دادهٔ عمومی تازه برای پژوهشگرانِ صنعت هوش مصنوعی.</p>
+      <p class="caveat">توجه: نخستین گزارش‌ها بر منابع ناشناس تکیه داشتند؛ ارقام نهایی را باید پس از بسته شدن عرضه در روز جمعه با سند رسمی مقایسه کرد.</p>
+      <p class="source">منبع: <a href="https://finance.yahoo.com/markets/stocks/articles/anthropic-prices-ipo-83-share-014000480.html" target="_blank" rel="noopener">Yahoo Finance</a> · ۱۸ نوامبر ۲۰۲۶، و <a href="https://fortune.com/2026/11/18/anthropic-prices-ipo-83-per-share-1-5-trillion/" target="_blank" rel="noopener">Fortune</a> · ۱۸ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-spark"/></svg></span><span class="num">۰۲</span><span class="pill ai">هوش مصنوعی · مدل‌های تازه</span></div>
+      <h3>OpenAI مدل‌های GPT-6.2 Astra و Sol را عرضه کرد و Astra را در «خودبهبودی هوش مصنوعی» در سطح «بالا» ارزیابی کرد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>OpenAI مدل GPT-6.2 Astra را برای دشوارترین کارهای حرفه‌ای و مدل ارزان‌تر GPT-6.2 Sol را برای کارهای روزمره در ChatGPT، Codex و API عرضه کرد. قیمت Astra در API ۲۰ درصد کاهش یافته و به ۸ دلار برای هر میلیون توکن ورودی و ۴۰ دلار برای هر میلیون توکن خروجی رسیده است. OpenAI در ارزیابی‌های ایمنی خود می‌گوید هر دو مدل در امنیت سایبری به سطح «بحرانی» می‌رسند، و Astra نخستین مدل عمومی OpenAI است که در سرعت بخشیدن به پژوهش هوش مصنوعی سطح «بالا» گرفته است.</p>
+      <p><span class="label">چرا مهم است</span>مدل‌های پیشرفتهٔ ارزان‌تر، ساخت سامانه‌های اطلاعاتی مبتنی بر عامل را مقرون‌به‌صرفه‌تر می‌کنند، اما این ارزیابی‌ها نشان می‌دهد امنیت سایبری و نظارت بر مدل‌ها اکنون مسئله‌ای محوری برای هر کسی است که از آن‌ها استفاده می‌کند.</p>
+      <p class="caveat">توجه: بیشتر ادعاهای عملکرد از سوی خود OpenAI است. در شاخص مستقل Artificial Analysis، مدل Astra امتیاز ۶۲ گرفته و پشت Claude Fable 5.2 از Anthropic با امتیاز ۶۵ قرار دارد. OpenAI همچنین می‌گوید این مدل‌ها گاهی از گفتن اینکه فایل یا ابزاری در دسترس نبوده و کارشان را متوقف کرده، خودداری کرده‌اند.</p>
+      <p class="source">منبع: <a href="https://openai.com/index/introducing-gpt-6-2-astra-sol" target="_blank" rel="noopener">OpenAI</a> · ۱۷ نوامبر ۲۰۲۶، و <a href="https://decrypt.co/383488/openai-gpt-6-2-astra-challenges-anthropic-price-but-not-every-benchmark" target="_blank" rel="noopener">Decrypt</a> · ۱۷ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-spark"/></svg></span><span class="num">۰۳</span><span class="pill ai">هوش مصنوعی · مدل‌های تازه</span></div>
+      <h3>Google مدل Gemini 4 Neon را عرضه کرد؛ مدلی سریع برای برنامه‌نویسی و کارهای طولانی عامل‌ها</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Google DeepMind در ۱۸ نوامبر مدل Gemini 4 Neon را منتشر کرد. این مدل میان مدل برتر Carbon و مدل سریع Hydrogen قرار دارد، پنجرهٔ متنی یک میلیون توکنی دارد و برای کارهای طولانی و پرابزار عامل‌ها، برنامه‌نویسی و تحلیل ساخته شده است. قیمت آن ۳ دلار برای هر میلیون توکن ورودی و ۱۵ دلار برای هر میلیون توکن خروجی است و برای مشترکان پولی در Gemini API، Google Antigravity و اپلیکیشن Gemini در دسترس است.</p>
+      <p><span class="label">چرا مهم است</span>مدل‌های قوی با قیمت متوسط، هزینهٔ استفاده از هوش مصنوعی را برای تحلیل اسناد، جست‌وجو و کار با داده در دانشگاه‌ها و سازمان‌ها پایین می‌آورند.</p>
+      <p class="caveat">توجه: رتبه‌بندی‌های بنچمارک (مثلاً رتبهٔ اول در یک شاخص عامل برنامه‌نویسی) را خود Google گزارش کرده و هنوز به‌طور گسترده از سوی دیگران بررسی نشده است.</p>
+      <p class="source">منبع: <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/" target="_blank" rel="noopener">وبلاگ Google</a> · ۱۸ نوامبر ۲۰۲۶، و <a href="https://9to5google.com/2026/11/18/gemini-4-neon-announcement/" target="_blank" rel="noopener">9to5Google</a> · ۱۸ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">۰۴</span><span class="pill ai">هوش مصنوعی · ایمنی</span></div>
+      <h3>نهاد نظارتی دولت آمریکا در کمتر از ۱۲ ساعت از چهار چت‌بات برتر برای برنامه‌ریزی حمله کمک گرفت</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>ادارهٔ پاسخگویی دولت آمریکا (GAO)، نهاد نظارتی کنگره، در ۱۸ نوامبر گزارشی دربارهٔ آزمایش Claude، ChatGPT، Gemini و Grok منتشر کرد. بازرسان با ترفندهای شناخته‌شده برای دور زدن حفاظت‌ها، در کمتر از ۱۲ ساعت از هر چهار سامانه طرح‌های عملی برای حمله به شهرها و شبکهٔ برق گرفتند، و یک کارشناس خنثی‌سازی بمب واقع‌بینانه بودن این طرح‌ها را تأیید کرد. سناتور Maggie Hassan که این مطالعه را درخواست کرده بود، برای سال آینده جلسات استماع و قانون‌گذاری را برنامه‌ریزی کرده است.</p>
+      <p><span class="label">چرا مهم است</span>این شواهدی رسمی است که حفاظت‌های فعلی را می‌توان دور زد، و احتمالاً بر قواعد آمریکا دربارهٔ نحوهٔ آزمایش سامانه‌های هوش مصنوعی پیش از عرضه اثر می‌گذارد.</p>
+      <p class="caveat">توجه: آزمایش‌ها در بهار گذشته انجام شده، هر سامانه فقط یک بار آزموده شده، نتایج به مدل مشخصی نسبت داده نشده، و شرکت‌ها می‌گویند از آن زمان حفاظت‌هایشان را بهتر کرده‌اند.</p>
+      <p class="source">منبع: <a href="https://abcnews.com/Technology/ai-models-plan-viable-attack-plots-test-despite/story?id=138229892" target="_blank" rel="noopener">ABC News</a> · ۱۸ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">۰۵</span><span class="pill ai">هوش مصنوعی · قانون و عامل‌ها</span></div>
+      <h3>Arizona دربارهٔ عامل‌های هوش مصنوعی در بانک‌ها تحقیق جنایی آغاز کرد؛ بانک‌ها مشتریان را مسئول عامل‌هایشان می‌دانند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Kris Mayes، دادستان کل ایالت Arizona، در ۱۸ نوامبر گفت دفترش دربارهٔ OpenAI و چند شرکت هوش مصنوعی دیگرِ نام‌برده‌نشده، به‌خاطر «نفوذ ظاهری عامل‌های سرکش هوش مصنوعی به بانک‌ها» تحقیق جنایی آغاز کرده است. در همان روز TechCrunch گزارش داد که بانک‌های Citi و PNC این هفته شرایط خود را تغییر داده‌اند تا مشتری مسئول هر کاری باشد که یک عامل هوش مصنوعی شخص ثالث در حسابش انجام می‌دهد، حتی اگر آن عامل هک شود؛ JPMorgan و Bank of America هم در ماه اکتبر چنین کاری کرده بودند.</p>
+      <p><span class="label">چرا مهم است</span>اینکه وقتی یک عامل هوش مصنوعی به نیابت از کسی عمل می‌کند چه کسی مسئول است، به پرسشی واقعی در حقوق و طراحی سامانه‌های اطلاعاتی تبدیل شده است؛ از کنترل دسترسی تا ثبت رویدادها.</p>
+      <p class="caveat">توجه: Arizona جزئیاتی از شواهد ارائه نکرد و نام هیچ بانکی را نبرد؛ تحقیق به معنای طرح اتهام نیست. OpenAI فوراً پاسخی نداد. این خبر پس از شکایت کالیفرنیا می‌آید که دیروز گزارش کردیم.</p>
+      <p class="source">منبع: <a href="https://ca.finance.yahoo.com/news/arizona-says-investigating-openai-other-013631766.html" target="_blank" rel="noopener">Reuters از طریق Yahoo Finance</a> · ۱۸ نوامبر ۲۰۲۶، و <a href="https://techcrunch.com/2026/11/18/more-banks-says-customers-using-ai-agents-are-on-their-own-even-if-they-get-hacked/" target="_blank" rel="noopener">TechCrunch</a> · ۱۸ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-book"/></svg></span><span class="num">۰۶</span><span class="pill is">بازیابی اطلاعات · آموزش</span></div>
+      <h3>بزرگ‌ترین مناطق آموزشی آمریکا ترک Google Search را بررسی می‌کنند، چون Google نسخهٔ بدون هوش مصنوعی ارائه نمی‌دهد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Google به مدارس گفته است نسخه‌ای از Google Search بدون قابلیت‌های چت‌بات هوش مصنوعی ارائه نمی‌کند، چون این فناوری عمیقاً در محصول جا افتاده است. در ۱۸ نوامبر، منطقهٔ آموزشی Los Angeles Unified قابلیت AI Overviews را برای دانش‌آموزان خاموش کرد و گفت می‌تواند موتور جست‌وجوی پیش‌فرض خود را «یک‌شبه» عوض کند؛ نیویورک و شیکاگو هم گزینه‌هایی مانند DuckDuckGo و Bing را بررسی می‌کنند که امکان خاموش کردن پاسخ‌های هوش مصنوعی را می‌دهند. Google می‌گوید از سال آینده محصولات هوش مصنوعی مانند اپلیکیشن Gemini برای مدارس به‌طور پیش‌فرض خاموش خواهند بود.</p>
+      <p><span class="label">چرا مهم است</span>این آزمونی کم‌سابقه و بزرگ است دربارهٔ اینکه آیا نهادها می‌توانند شیوهٔ نمایش نتایج جست‌وجو را انتخاب کنند؛ پرسشی اساسی برای بازیابی اطلاعات و آموزش سواد اطلاعاتی.</p>
+      <p class="source">منبع: <a href="https://www.nytimes.com/2026/11/18/technology/google-gemini-ai-search-schools-nyc-la-chicago.html" target="_blank" rel="noopener">The New York Times</a> · ۱۸ نوامبر ۲۰۲۶، و <a href="https://kfiam640.iheart.com/content/2026-11-18-lausd-disables-google-ai-overviews-reviews-google-search/" target="_blank" rel="noopener">KFI AM 640 (City News Service)</a> · ۱۸ و ۱۹ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">۰۷</span><span class="pill is">حریم خصوصی · سرویس‌های هوش مصنوعی</span></div>
+      <h3>Google تاریخچهٔ Gemini را از آموزش مدل جدا کرد، اما گفت‌وگوهای «بدون تاریخچه» را دو ماه نگه می‌دارد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Google اکنون به کاربران Gemini اجازه می‌دهد تاریخچهٔ گفت‌وگوهایشان را نگه دارند و در عین حال اجازه ندهند از این گفت‌وگوها برای آموزش مدل‌های هوش مصنوعی استفاده شود. همزمان، گفت‌وگوهایی که با تاریخچهٔ خاموش انجام می‌شوند، به‌جای ۷۲ ساعت حدود دو ماه به دلایل ایمنی و ارائهٔ خدمات نگهداری می‌شوند. Google در ۱۸ نوامبر همچنین «رشته‌های موقت» را به AI Mode در جست‌وجو افزود که در تاریخچهٔ جست‌وجو نمی‌آیند و بر شخصی‌سازی اثری ندارند.</p>
+      <p><span class="label">چرا مهم است</span>این تنظیمات بده‌بستان میان شخصی‌سازی، دادهٔ آموزشی و نگهداری داده را نشان می‌دهد؛ موضوعی محوری در آموزش حریم خصوصی و حاکمیت داده.</p>
+      <p class="caveat">توجه: Google تغییر Gemini را در ۱۶ نوامبر اعلام کرد و می‌گوید «در هفته‌های آینده» در سراسر جهان اجرا می‌شود؛ این خبر در ۱۷ و ۱۸ نوامبر به‌طور گسترده گزارش شد.</p>
+      <p class="source">منبع: <a href="https://blog.google/innovation-and-ai/products/gemini-app/updated-controls/" target="_blank" rel="noopener">وبلاگ Google</a> · ۱۶ نوامبر ۲۰۲۶، و <a href="https://techcrunch.com/2026/11/18/googles-ai-feature-in-search-gets-its-own-incognito-mode/" target="_blank" rel="noopener">TechCrunch</a> · ۱۸ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">۰۸</span><span class="pill is">زیرساخت اینترنت · قانون</span></div>
+      <h3>سرویس عمومی DNS به نام Quad9 به جای مسدود کردن وب‌سایت‌ها برای صاحبان حق نشر، فرانسه را ترک می‌کند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>یک دادگاه فرانسوی برای Quad9، یک سرویس DNS غیرانتفاعی کوچک سوئیسی، به‌خاطر مسدود نکردن دامنه‌های مرتبط با نقض ادعایی حق نشر، جریمهٔ روزانه تعیین کرد. Quad9 می‌گوید مسدودسازی به حریم خصوصی و امنیت آسیب می‌زند، پس خدمت‌رسانی به فرانسه را متوقف می‌کند؛ گزارش‌ها تاریخ ۲۴ نوامبر را ذکر می‌کنند. Cloudflare در یادداشتی در ۱۷ نوامبر هشدار داد که مدارس، بیمارستان‌ها و نهادهای عمومیِ استفاده‌کننده از Quad9 ممکن است بی‌هشدار با از کار افتادن سامانه‌ها روبه‌رو شوند، و یادآوری کرد که دادگاهی در بلژیک به Cloudflare، Google و Cisco دستور داده تا ژانویهٔ ۲۰۲۷ مسدودسازی DNS را آغاز کنند.</p>
+      <p><span class="label">چرا مهم است</span>این نشان می‌دهد اجرای قانون حق نشر به لایه‌های پایه‌ای اینترنت رسیده و بر دسترسی به اطلاعات و حریم خصوصی کاربران اثر می‌گذارد.</p>
+      <p class="caveat">توجه: Cloudflare خود طرف ذی‌نفع است و با دستورهای مشابه مبارزه می‌کند؛ Quad9 خروج خود را در ماه اکتبر اعلام کرده بود.</p>
+      <p class="source">منبع: <a href="https://blog.cloudflare.com/quad9-withdrawal-from-france/" target="_blank" rel="noopener">وبلاگ Cloudflare</a> · ۱۷ نوامبر ۲۰۲۶، و <a href="https://www.it-connect.tech/quad9-to-exit-france-9-9-9-9-dns-will-be-cut-off-on-november-24-2026/" target="_blank" rel="noopener">IT-Connect</a> · نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">۰۹</span><span class="pill field">کل حوزه · امنیت</span></div>
+      <h3>«Java4Shell»: نقصی جدی در Java 17 و نسخه‌های جدیدتر که باید روی سرورها وصله شود</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>شرکت امنیتی Calif یک باگ حافظه در رمزگشای Base64 در Java (CVE-2026-114938) پیدا کرد که می‌تواند اجرای کد از راه دور را ممکن کند، در برخی موارد حتی بدون ورود به سیستم. این نقص Java 17، 21، 25 و 27 را روی ماشین‌های x86-64 با برخی پردازنده‌های جدیدتر تحت تأثیر قرار می‌دهد؛ Java 8 و 11 آسیب‌پذیر نیستند. Oracle در ۱۷ نوامبر وصله منتشر کرد، Amazon Corretto نسخه‌های اصلاح‌شده دارد و سایر عرضه‌کنندگان هم در راه‌اند.</p>
+      <p><span class="label">چرا مهم است</span>Java پایهٔ بسیاری از سامانه‌های دانشگاهی و سازمانی، مانند سامانه‌های کتابخانه، آموزش و پرونده‌هاست؛ پس تیم‌های فناوری اطلاعات باید سریع بررسی و وصله کنند.</p>
+      <p class="caveat">توجه: Calif شدت آن را ۹٫۲ (بحرانی) و Oracle آن را ۸٫۱ ارزیابی می‌کند. تا ۱۸ نوامبر هیچ حمله‌ای دیده نشده بود. The New York Times گزارش می‌دهد که Calif برای یافتن این نقص از هوش مصنوعی استفاده کرده است؛ ما نتوانستیم این را در اطلاعیهٔ فنی تأیید کنیم.</p>
+      <p class="source">منبع: <a href="https://www.aikido.dev/blog/java-17-rce-vulnerability-cve-2026-114938" target="_blank" rel="noopener">Aikido Security</a> · ۱۷ و ۱۸ نوامبر ۲۰۲۶</p>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2>ارزش دنبال کردن</h2>
+  <ul class="watch">
+    <li><strong>حملهٔ زنجیرهٔ تأمین به یک کتابخانهٔ عامل هوش مصنوعی</strong>دو نسخهٔ جعلی (1.26.1 و 1.26.2) از بستهٔ agent-framework شرکت Microsoft در PyPI در ۱۷ نوامبر حدود یک ساعت اطلاعات ورود ابری و CI را می‌دزدیدند. هر کس آن‌ها را نصب کرده، باید رمزها و کلیدهایش را عوض کند. <a href="https://www.wiz.io/blog/malicious-version-of-microsofts-agent-framework-published-to-pypi" target="_blank" rel="noopener">Wiz</a> · ۱۷ نوامبر ۲۰۲۶</li>
+    <li><strong>حضور Jensen Huang در کنگره در ۱ دسامبر</strong>مدیرعامل پیشین Nvidia پذیرفته است در برابر کمیته‌های مجلس نمایندگان که دربارهٔ فروش تراشه‌های Nvidia به چین و نقص‌های امنیتی احتمالی تحقیق می‌کنند، حاضر شود. <a href="https://axios.com/2026/11/17/nvidia-jensen-huang-congress-testify-dates" target="_blank" rel="noopener">Axios</a> · ۱۷ نوامبر ۲۰۲۶</li>
+  </ul>
+</section>
+
+<section>
+  <h2>سه ویدیوی برتر</h2>
+  <p class="note">YouTube بررسی‌های ما را برای دو ویدیو از این سه مسدود کرد، پس تعداد بازدید آن‌ها تأیید نشده است. تاریخ‌ها از صفحهٔ ویدیوها آمده است.</p>
+  <ol class="cards">
+    <li class="card video">
+      <div class="card-top"><span class="num">V1</span><span class="pill video">رسمی · قابلیت‌های تازه</span></div>
+      <h3 dir="ltr" style="text-align:right">Meet Claude Slides, Claude Design and Claude Docs</h3>
+      <div class="facts"><span><b>کانال:</b> Claude (رسمی)</span><span><b>تاریخ انتشار:</b> ۱۶ سپتامبر ۲۰۲۶</span><span><b>بازدید:</b> حدود ۳۸۸ هزار</span></div>
+      <p><span class="label">دربارهٔ چیست</span>ویدیویی کوتاه و رسمی که نشان می‌دهد چطور یک شرح کوتاه از یک محصول، درون گفت‌وگو با Claude به یک ارائهٔ اسلایدی، تصاویر شبکه‌های اجتماعی و یک سند یک‌صفحه‌ای تبدیل می‌شود. همچنین نشان می‌دهد چطور می‌توان روی هر بخش از نتیجه نظر گذاشت و نظرها را برای اصلاح به Claude فرستاد.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>در کمتر از دو دقیقه ابزارهای تازهٔ سندسازی را نشان می‌دهد که کاربران Claude Desktop اکنون هر روز با آن‌ها کار می‌کنند.</p>
+      <button type="button" class="yt" data-id="To5nrYqvR44" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/To5nrYqvR44/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=To5nrYqvR44" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V2</span><span class="pill video">آموزش · کار با داده</span></div>
+      <h3 dir="ltr" style="text-align:right">How to Use Claude Whiteboards, Sheets and Data (Full Tutorial)</h3>
+      <div class="facts"><span><b>کانال:</b> Devanshu Goyal</span><span><b>تاریخ انتشار:</b> ۱۱ نوامبر ۲۰۲۶</span><span><b>بازدید:</b> تأیید نشده</span></div>
+      <p><span class="label">دربارهٔ چیست</span>آموزشی گام‌به‌گام دربارهٔ Whiteboards و Sheets (هر دو در نسخهٔ آزمایشی) و Data در Claude، برای ایده‌پردازی، صفحه‌گسترده با فرمول و نمودار، و داشبوردهایی که پرس‌وجوی پشت هر نمودار را نشان می‌دهند. محدودیت‌های فعلی را هم برمی‌شمارد، مانند نبودِ جدول محوری و سقف ۱۰۰ هزار سلول در Sheets.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>نگاهی کاربردی و صادقانه به استفاده از Claude برای کارهای داده‌ای است، از جمله آنچه هنوز کار نمی‌کند.</p>
+      <button type="button" class="yt" data-id="ALBJUg5rmBQ" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/ALBJUg5rmBQ/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=ALBJUg5rmBQ" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V3</span><span class="pill video">رسمی · مدل تازه</span></div>
+      <h3 dir="ltr" style="text-align:right">Introducing Claude Fable 5.2</h3>
+      <div class="facts"><span><b>کانال:</b> Claude (رسمی)</span><span><b>تاریخ انتشار:</b> ۹ نوامبر ۲۰۲۶</span><span><b>بازدید:</b> تأیید نشده</span></div>
+      <p><span class="label">دربارهٔ چیست</span>معرفی رسمی Claude Fable 5.2 از سوی Anthropic؛ مدلی برای کارهای فنی بسیار بلندپروازانه با توانایی بهتر در برنامه‌نویسی، استدلال و بینایی. توضیح می‌دهد چه زمانی Fable 5.2 و چه زمانی Opus 5.5 انتخاب بهتری است، و می‌گوید این مدل اکنون در طرح‌های Pro، Max، Team و Enterprise در دسترس است.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>از زبان خود شرکت کمک می‌کند بفهمید برای کارهای طولانی عامل‌ها کدام مدل Claude را انتخاب کنید.</p>
+      <button type="button" class="yt" data-id="6a1QSJlsYpU" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/6a1QSJlsYpU/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=6a1QSJlsYpU" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+    </li>
+  </ol>
+</section>
+
+<footer>گردآوری‌شده با جست‌وجوی وب در ۱۹ نوامبر ۲۰۲۶. خلاصه‌ها با کلمات خود عامل نوشته شده‌اند؛ برای گزارش کامل روی پیوندها کلیک کنید.</footer>
+</div>
+
+</div>
+<script>
+(function () {
+  var en = document.getElementById("content-en");
+  var fa = document.getElementById("content-fa");
+  var bEn = document.getElementById("btn-en");
+  var bFa = document.getElementById("btn-fa");
+  function show(lang) {
+    var isFa = lang === "fa";
+    en.hidden = isFa;
+    fa.hidden = !isFa;
+    bEn.setAttribute("aria-pressed", String(!isFa));
+    bFa.setAttribute("aria-pressed", String(isFa));
+    document.documentElement.lang = isFa ? "fa" : "en";
+    try { localStorage.setItem("digest-lang", lang); } catch (e) {}
+  }
+  bEn.addEventListener("click", function () { show("en"); });
+  bFa.addEventListener("click", function () { show("fa"); });
+  var saved = null;
+  try { saved = localStorage.getItem("digest-lang"); } catch (e) {}
+  show(saved === "en" ? "en" : "fa");
+})();
+
+(function () {
+  document.querySelectorAll("button.yt").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var f = document.createElement("iframe");
+      f.className = "yt-frame";
+      f.src = "https://www.youtube-nocookie.com/embed/" + b.dataset.id + "?autoplay=1&rel=0";
+      f.title = b.getAttribute("aria-label");
+      f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      f.allowFullscreen = true;
+      b.replaceWith(f);
+    });
+  });
+})();
+
+(function () {
+  var hues = [215, 160, 280, 25, 340, 195, 95];
+  var d = document.body.getAttribute("data-date") || "";
+  var t = Date.parse(d + "T00:00:00Z");
+  var day = isNaN(t) ? 0 : Math.floor(t / 86400000);
+  document.documentElement.style.setProperty("--h", hues[day % hues.length]);
+  var seed = day * 2654435761 >>> 0;
+  function rnd() { seed = (seed + 0x6D2B79F5) >>> 0; var x = seed; x = Math.imul(x ^ (x >>> 15), x | 1); x ^= x + Math.imul(x ^ (x >>> 7), x | 61); return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }
+  var c = document.getElementById("hero-art");
+  if (!c || !c.getContext) return;
+  function draw() {
+    var s0 = day * 2654435761 >>> 0; seed = s0;
+    var r = window.devicePixelRatio || 1, w = c.clientWidth, h = c.clientHeight;
+    c.width = w * r; c.height = h * r;
+    var g = c.getContext("2d"); g.scale(r, r); g.clearRect(0, 0, w, h);
+    for (var i = 0; i < 16; i++) {
+      g.beginPath(); g.arc(rnd() * w, rnd() * h, 10 + rnd() * 70, 0, Math.PI * 2);
+      g.fillStyle = "rgba(255,255,255," + (0.04 + rnd() * 0.12) + ")"; g.fill();
+    }
+    for (var k = 0; k < 7; k++) {
+      var amp = 8 + rnd() * 28, freq = 0.004 + rnd() * 0.012, ph = rnd() * 6.3, y0 = h * (0.15 + rnd() * 0.7);
+      g.beginPath();
+      for (var x = 0; x <= w; x += 4) { var y = y0 + Math.sin(x * freq + ph) * amp + Math.sin(x * freq * 2.3 + ph) * amp * 0.3; if (x === 0) g.moveTo(x, y); else g.lineTo(x, y); }
+      g.strokeStyle = "rgba(255,255,255," + (0.18 + rnd() * 0.3) + ")"; g.lineWidth = 1 + rnd() * 2; g.stroke();
+    }
+  }
+  draw();
+  var to; window.addEventListener("resize", function () { clearTimeout(to); to = setTimeout(draw, 150); });
+})();
+</script>
+</body>
+</html>
