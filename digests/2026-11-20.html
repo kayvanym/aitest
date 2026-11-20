@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>News digest 20 Nov 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one reading column, dated masthead with a language switch, stacked cards with a coloured category stripe. */
+:root {
+  --bg: #f3f5f8; --surface: #ffffff; --ink: #17212c; --muted: #586473; --line: #dbe1e8; --accent: #1d5bb8;
+  --cat-ai: #4a3fc4; --cat-ai-bg: #ecebfb; --cat-is: #0d7468; --cat-is-bg: #e2f3f0;
+  --cat-field: #9a5a00; --cat-field-bg: #fbf0dc; --cat-video: #b02a4c; --cat-video-bg: #fbe6ec;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-fa: "Vazirmatn", Tahoma, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f141a; --surface: #182029; --ink: #e7ecf2; --muted: #9ba8b6; --line: #2b3643; --accent: #86b4ff;
+    --cat-ai: #b3adff; --cat-ai-bg: #272452; --cat-is: #6fd3c5; --cat-is-bg: #123a36;
+    --cat-field: #f0b660; --cat-field-bg: #3d2c10; --cat-video: #ff9db5; --cat-video-bg: #47182a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f141a; --surface: #182029; --ink: #e7ecf2; --muted: #9ba8b6; --line: #2b3643; --accent: #86b4ff;
+  --cat-ai: #b3adff; --cat-ai-bg: #272452; --cat-is: #6fd3c5; --cat-is-bg: #123a36;
+  --cat-field: #f0b660; --cat-field-bg: #3d2c10; --cat-video: #ff9db5; --cat-video-bg: #47182a;
+  color-scheme: dark;
+}
+
+/* Daily colour: --h (hue) is set by the script from the digest date. */
+:root { --h: 215; --bg: hsl(var(--h) 30% 96%); --accent: hsl(var(--h) 65% 38%); --hero-a: hsl(var(--h) 70% 42%); --hero-b: hsl(calc(var(--h) + 45) 70% 55%); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: hsl(var(--h) 25% 8%); --accent: hsl(var(--h) 85% 74%); --hero-a: hsl(var(--h) 55% 28%); --hero-b: hsl(calc(var(--h) + 45) 55% 36%); } }
+:root[data-theme="dark"] { --bg: hsl(var(--h) 25% 8%); --accent: hsl(var(--h) 85% 74%); --hero-a: hsl(var(--h) 55% 28%); --hero-b: hsl(calc(var(--h) + 45) 55% 36%); }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+.page { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; display: flex; flex-direction: column; gap: 24px; }
+.switch { display: flex; gap: 8px; justify-content: flex-end; }
+.switch button {
+  font: 600 0.9rem var(--font-body); padding: 6px 16px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+}
+.switch button[lang="fa"] { font-family: var(--font-fa); }
+.switch button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.lang { display: flex; flex-direction: column; gap: 40px; }
+.lang[hidden] { display: none; }
+.lang[lang="fa"] { font-family: var(--font-fa); line-height: 1.9; }
+.lang[lang="fa"] h1, .lang[lang="fa"] h2, .lang[lang="fa"] h3 { font-family: var(--font-fa); font-weight: 700; letter-spacing: 0; }
+.lang[lang="fa"] .label { text-transform: none; letter-spacing: 0; }
+header.masthead { border-bottom: 3px solid var(--ink); padding-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
+.masthead h1 { font-family: var(--font-display); font-size: clamp(2rem, 6vw, 2.9rem); line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
+.masthead .hello { margin: 0; font-size: 1.15rem; color: var(--accent); font-weight: 600; }
+.masthead .date { color: var(--muted); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+.masthead .archive { font-size: 0.9rem; }
+.overview { font-size: 1.1rem; margin: 0; }
+.note { margin: 0; color: var(--muted); font-size: 0.9rem; border-inline-start: 3px solid var(--line); padding-inline-start: 12px; }
+section { display: flex; flex-direction: column; gap: 16px; }
+section > h2 { font-family: var(--font-display); font-size: 1.45rem; margin: 0; text-wrap: balance; }
+.cards { display: flex; flex-direction: column; gap: 16px; list-style: none; margin: 0; padding: 0; }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-inline-start: 5px solid var(--stripe, var(--line));
+  border-radius: 8px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;
+}
+.card.ai { --stripe: var(--cat-ai); } .card.is { --stripe: var(--cat-is); }
+.card.field { --stripe: var(--cat-field); } .card.video { --stripe: var(--cat-video); }
+.card-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.num { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 0.85rem; font-weight: 600; }
+.pill { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em; padding: 3px 10px; border-radius: 999px; }
+.lang[lang="fa"] .pill { letter-spacing: 0; font-size: 0.8rem; }
+.pill.ai { color: var(--cat-ai); background: var(--cat-ai-bg); } .pill.is { color: var(--cat-is); background: var(--cat-is-bg); }
+.pill.field { color: var(--cat-field); background: var(--cat-field-bg); } .pill.video { color: var(--cat-video); background: var(--cat-video-bg); }
+.card h3 { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.35; margin: 0; text-wrap: balance; }
+.card p { margin: 0; }
+.label { font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); display: block; margin-bottom: 2px; }
+.caveat { color: var(--muted); font-size: 0.92rem; }
+.source { border-top: 1px solid var(--line); padding-top: 10px; font-size: 0.88rem; color: var(--muted); }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.facts { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 0.9rem; color: var(--muted); }
+.facts b { color: var(--ink); font-weight: 600; }
+.watch { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.watch li { background: var(--surface); border: 1px dashed var(--line); border-radius: 8px; padding: 14px 18px; }
+.watch strong { display: block; margin-bottom: 2px; }
+.archive-list { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--line); padding-top: 24px; }
+.archive-list h2 { font-size: 1.1rem; margin: 0; }
+.archive-list h2 .fa, .archive-list .fa { font-family: var(--font-fa); }
+.archive-list ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.archive-list a { display: inline-block; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; text-decoration: none; font-variant-numeric: tabular-nums; }
+.yt { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; padding: 0; border-radius: 8px; overflow: hidden; background: #000; cursor: pointer; }
+.yt img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.9; transition: opacity .2s; }
+.yt:hover img, .yt:focus-visible img { opacity: 1; }
+.yt:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.yt .play { position: absolute; inset: 0; margin: auto; width: 68px; height: 48px; border-radius: 12px; background: rgba(204,0,0,.92); display: grid; place-items: center; }
+.yt .play::after { content: ""; border-style: solid; border-width: 10px 0 10px 18px; border-color: transparent transparent transparent #fff; margin-left: 4px; }
+.yt-frame { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 8px; display: block; }
+.hero { position: relative; height: 170px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, var(--hero-a), var(--hero-b)); }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.quote { margin: 0; padding: 16px 20px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); border-inline-start: 5px solid var(--accent); display: flex; flex-direction: column; gap: 6px; }
+.quote .q-label { font-size: 0.8rem; font-weight: 600; color: var(--accent); }
+.quote p { margin: 0; font-size: 1.15rem; line-height: 1.7; }
+.quote cite { font-style: normal; color: var(--muted); font-size: 0.88rem; }
+.icon-tile { width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; flex: none; }
+.icon-tile svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.card.ai .icon-tile { background: var(--cat-ai-bg); color: var(--cat-ai); }
+.card.is .icon-tile { background: var(--cat-is-bg); color: var(--cat-is); }
+.card.field .icon-tile { background: var(--cat-field-bg); color: var(--cat-field); }
+footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 16px; }
+@media (max-width: 480px) { .page { padding: 24px 16px 48px; } .card { padding: 16px; } }
+</style>
+</head>
+<body data-date="2026-11-20">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.2 4.5 4.5 0 0 0 7 18z"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M15.5 14.5h2.5"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M11 3l1.8 5.2L18 10l-5.2 1.8L11 17l-1.8-5.2L4 10l5.2-1.8z"/><path d="M19 15l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16M7 20h10M5 7h14M5 7l-3 6h6zM19 7l-3 6h6z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16M7 16v-5M12 16V7M17 16v-8"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/></symbol>
+</svg>
+
+<div class="page">
+
+<div class="switch" role="group" aria-label="Language">
+  <button type="button" id="btn-en" lang="en" aria-pressed="false">English</button>
+  <button type="button" id="btn-fa" lang="fa" aria-pressed="true">فارسی</button>
+</div>
+
+<div class="hero" aria-hidden="true"><canvas id="hero-art"></canvas></div>
+
+
+
+<!-- ===================== ENGLISH ===================== -->
+<div class="lang" lang="en" dir="ltr" id="content-en" hidden>
+
+<header class="masthead">
+  <p class="hello">Hello Kayvan,</p>
+  <h1>News digest</h1>
+  <div class="date">Friday 20 November 2026</div>
+  <a class="archive" href="../index.html#archive">All digests</a>
+</header>
+
+<section>
+  <figure class="quote">
+    <span class="q-label">Thought of the day</span>
+    <p>People learn while they teach.</p>
+    <cite>Seneca, Letters to Lucilius, Letter 7 (around 65 CE): "Homines dum docent, discunt" · our own translation</cite>
+  </figure>
+</section>
+
+<section>
+  <h2>Overview</h2>
+  <p class="overview">Anthropic's shares started trading with a 34% jump before falling back during the day, and four US senators answered the AI investment boom with a bill that would make listed companies disclose their AI financing and risks. The European Commission confirmed that attackers used an AI hacking tool against its staff systems, and a Reuters report says Meta's Muse agent showed users other people's private data. Google gave Gemini control of the Mac, European tech leaders asked the EU for an AI budget, and the IEA warned that data centre emissions could rise by 70% by 2030.</p>
+  <p class="note">We found no important new story in the last 24 hours on digital libraries, information retrieval research or GDPR enforcement. Several sites blocked our checks today, so some items rely on one or two reports; we say so in the notes.</p>
+</section>
+
+<section>
+  <h2>News</h2>
+  <ol class="cards">
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-chart"/></svg></span><span class="num">01</span><span class="pill field">Field-wide · market</span></div>
+      <h3>Anthropic's first trading day: shares open 34% above the IPO price, then give back much of the gain</h3>
+      <p><span class="label">What happened</span>Anthropic's shares began trading on Nasdaq under the ticker ANT on 19 November. The first trade was at $111.50, about 34% above the $83 IPO price, but the price fell below $100 within minutes and was around $96 by early afternoon New York time, on a day when the wider market fell about 1.5%. Including a separate $26 billion private placement, Anthropic raised about $107 billion in total.</p>
+      <p><span class="label">Why it matters</span>How the market values the first big AI model company to list will shape funding, prices and competition for the AI tools that universities and organisations depend on.</p>
+      <p class="caveat">Note: we could not confirm the closing price. Reports also disagree on the company's value, from about $1.3 trillion to $2 trillion, depending on the share price and how shares are counted.</p>
+      <p class="source">Source: <a href="https://www.aljazeera.com/economy/2026/11/19/anthropic-starts-trading-in-the-us-after-blockbuster-ipo" target="_blank" rel="noopener">Reuters via Al Jazeera</a> · 19 Nov 2026, and <a href="https://www.foxnews.com/live-news/anthropic-claude-ai-ipo-nasdaq-11-19-26" target="_blank" rel="noopener">Fox News live updates</a> · 19 Nov 2026</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">02</span><span class="pill field">Field-wide · law</span></div>
+      <h3>US senators propose the AUDIT AI Act: listed companies would have to report their AI deals, oversight and risks</h3>
+      <p><span class="label">What happened</span>Senators Mark Warner and Angela Alsobrooks (Democrats) and John Kennedy and Mike Rounds (Republicans) introduced a bill that would ask the US securities regulator (SEC) to write new disclosure rules. Public companies would have to report AI infrastructure financing such as leases and guarantees, say whether their board oversees AI, and add a standard AI risk section covering, for example, dependence on outside models, reliance on a few computing providers and data-rights liabilities. Warner's main concern is "circular" deals, where companies fund firms that are also their customers.</p>
+      <p><span class="label">Why it matters</span>If passed, it would create a new, standardised public data source on how organisations depend on AI, useful for research on information systems governance.</p>
+      <p class="caveat">Note: this is a proposal only. We could not read the bill text; the details come from news reports based on Politico.</p>
+      <p class="source">Source: <a href="https://www.socialnews.xyz/2026/11/19/us-senators-seek-greater-disclosure-of-ai-financing-risks/" target="_blank" rel="noopener">IANS via SocialNews.XYZ</a> · 19 Nov 2026, and <a href="https://www.mlex.com/mlex/artificial-intelligence/articles/2552512" target="_blank" rel="noopener">MLex</a> · Nov 2026</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">03</span><span class="pill field">Field-wide · security</span></div>
+      <h3>European Commission confirms an "AI-generated" cyberattack that took staff systems offline</h3>
+      <p><span class="label">What happened</span>On 19 November the Commission confirmed that it was hit by what its spokesperson called an "AI-generated cyber campaign", first detected on 22 October. Several services were taken offline as a precaution, affected people were told, and CERT-EU and the European Data Protection Supervisor are involved. POLITICO reports that the attackers used ARTEX, an open-source AI hacking tool, and that payroll, leave and medical reimbursement systems were disrupted for more than ten days.</p>
+      <p><span class="label">Why it matters</span>It shows that AI tools now let attackers find and exploit weak points in large public organisations quickly, which raises the bar for security in universities and public information systems.</p>
+      <p class="caveat">Note: the Commission did not name the tool or the attackers and says it has no evidence of a wide data breach; the ARTEX detail is reported, not confirmed. The FBI warned last week that ARTEX is used by criminals and state-backed groups.</p>
+      <p class="source">Source: <a href="https://therecord.media/european-commission-confirms-cyberattack-using-ai" target="_blank" rel="noopener">The Record</a> · 19 Nov 2026, and <a href="https://www.newsweek.com/european-union-hit-by-ai-generated-cyber-attack-12740975" target="_blank" rel="noopener">Newsweek</a> · 19 Nov 2026</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">04</span><span class="pill is">Privacy · AI agents</span></div>
+      <h3>Meta's Muse agent reportedly mixed up users' conversations and showed private data to the wrong people</h3>
+      <p><span class="label">What happened</span>Reuters reviewed internal posts in which Meta employees said the Muse AI agent mixed up conversations between accounts. Examples included childcare requests and product orders the user never made, and a bank balance that was not theirs added to a chat about the weather. Another employee got a reminder to answer a family member's Signal message although they say they had not given Muse access to other apps. Muse launched in September and has more than 10 million downloads.</p>
+      <p><span class="label">Why it matters</span>Personal AI agents that read across apps are a new kind of information system, and this case shows why data separation, permissions and audit are central design issues.</p>
+      <p class="caveat">Note: the claims come from employee posts reported by Reuters and have not been independently confirmed; Meta did not immediately comment.</p>
+      <p class="source">Source: <a href="https://techcrunch.com/2026/11/19/metas-ai-agent-muse-is-mixing-up-conversations-and-exposing-private-data-report-says/" target="_blank" rel="noopener">TechCrunch</a> · 19 Nov 2026, and <a href="https://9to5mac.com/2026/11/19/major-privacy-breaches-reported-in-muse-ai-including-bank-balances/" target="_blank" rel="noopener">9to5Mac</a> · 19 Nov 2026</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-layout"/></svg></span><span class="num">05</span><span class="pill ai">Artificial intelligence · agents</span></div>
+      <h3>Google's Gemini app can now use your Mac for you</h3>
+      <p><span class="label">What happened</span>Google added "computer use" to the Gemini desktop app for macOS. The agent works in native Mac apps and websites in the background, for example to fill in forms, sort files into folders or build slides from files, while the user watches a live preview and can pause, stop or approve actions. It is available first in English in the US for Google AI Plus, Pro and Ultra subscribers.</p>
+      <p><span class="label">Why it matters</span>All major AI companies now offer agents that act directly on a person's computer, which changes how people use desktop software and raises new questions about control and trust.</p>
+      <p class="caveat">Note: Google has given few details on how data from the screen and files is handled, and no date for other countries.</p>
+      <p class="source">Source: <a href="https://techcrunch.com/2026/11/19/google-gives-gemini-the-ability-to-use-your-mac-for-you/" target="_blank" rel="noopener">TechCrunch</a> · 19 Nov 2026</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">06</span><span class="pill ai">Artificial intelligence · EU policy</span></div>
+      <h3>59 European tech leaders warn that Europe "cannot sleep through the AI revolution" and ask for an AI budget</h3>
+      <p><span class="label">What happened</span>An open letter signed by 59 leaders, including economist Philippe Aghion, Yann LeCun and the heads of DeepL, OVHcloud, ElevenLabs and Lovable, asks the EU to make its Digital Omnibus simplification binding and go further, create a single "28th regime" for companies, open up data access and set aside money for AI in the 2028–2034 budget now being negotiated. The European Commission replied that its tech sovereignty plans need at least €500 billion and that the first part of its vision will come in about two weeks.</p>
+      <p><span class="label">Why it matters</span>The EU budget and further changes to the AI Act's rules will decide research funding and compliance work for European universities for years.</p>
+      <p class="source">Source: <a href="https://www.euronews.com/2026/11/18/europe-cannot-sleep-through-the-ai-revolution-tech-leaders-urge-eu-to-take-action" target="_blank" rel="noopener">Euronews</a> · 18 Nov 2026, updated 19 Nov 2026</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">07</span><span class="pill field">Field-wide · data centres</span></div>
+      <h3>IEA: data centre emissions could rise by 70% by 2030 as AI grows</h3>
+      <p><span class="label">What happened</span>The International Energy Agency's latest World Energy Outlook says data centre electricity use could double to about 1,000 TWh by the end of the decade, and emissions could rise by around 70%, because more gas and coal are used. Coal and gas already supply about 60% of the electricity that data centres use; in the US gas may supply about 60% by 2030, while in the EU renewables could reach about two-thirds.</p>
+      <p><span class="label">Why it matters</span>The environmental cost of AI and cloud services is becoming a measurable factor in IT procurement and in teaching about sustainable information systems.</p>
+      <p class="caveat">Note: figures are as reported by the trade press; we did not check them in the IEA report itself.</p>
+      <p class="source">Source: <a href="https://datacentrereview.com/2026/11/data-centre-emissions-on-course-to-rise-70-by-2030-iea-warns/" target="_blank" rel="noopener">Data Centre Review</a> · 19 Nov 2026, and <a href="https://www.bernama.com/en/world/news.php?id=2636821" target="_blank" rel="noopener">Bernama</a> · Nov 2026</p>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2>Worth watching</h2>
+  <ul class="watch">
+    <li><strong>The EU's AI and tech sovereignty plan</strong>The Commission says the first part of its vision, with health, transport, agri-food, manufacturing and defence as focus areas, is due in about two weeks. <a href="https://www.euronews.com/2026/11/18/europe-cannot-sleep-through-the-ai-revolution-tech-leaders-urge-eu-to-take-action" target="_blank" rel="noopener">Euronews</a> · 19 Nov 2026</li>
+    <li><strong>ARTEX and AI-automated hacking</strong>The FBI says some intrusions with this open-source AI tool went from first contact to admin access in under three hours. More victims may come forward. <a href="https://therecord.media/european-commission-confirms-cyberattack-using-ai" target="_blank" rel="noopener">The Record</a> · 19 Nov 2026</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Top 3 videos</h2>
+  <p class="note">YouTube blocked our checks today, so view counts are not confirmed. Dates come from video listing pages.</p>
+  <ol class="cards">
+    <li class="card video">
+      <div class="card-top"><span class="num">V1</span><span class="pill video">Tutorial · whiteboards</span></div>
+      <h3>Claude's New WHITEBOARDS Are Amazing (Master it in 16 minutes)</h3>
+      <div class="facts"><span><b>Channel:</b> Bart Slodyczka</span><span><b>Published:</b> 12 Nov 2026</span><span><b>Views:</b> not confirmed</span></div>
+      <p><span class="label">What it is about</span>Shows where Claude's new Whiteboards live in the app and how a rough list of ideas becomes a board you can edit by hand and share. It ends with a full example of planning a project with Claude and a whiteboard together.</p>
+      <p><span class="label">Why it is worth watching</span>A clear, practical guide to when a visual board works better than a chat, useful for planning courses or research.</p>
+      <button type="button" class="yt" data-id="zCoCeieEY1o" aria-label="Play video"><img src="https://i.ytimg.com/vi/zCoCeieEY1o/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=zCoCeieEY1o" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V2</span><span class="pill video">Review · data tools</span></div>
+      <h3>Claude's New Whiteboards, Sheets &amp; Data: What You Can Do Now</h3>
+      <div class="facts"><span><b>Channel:</b> The AI Advantage</span><span><b>Published:</b> 13 Nov 2026</span><span><b>Views:</b> not confirmed</span></div>
+      <p><span class="label">What it is about</span>A walkthrough of Claude's Whiteboards, Sheets and Data features, with their current limits and whether they can replace Google Sheets. It also compares them with similar new features in ChatGPT.</p>
+      <p><span class="label">Why it is worth watching</span>A well-known AI education channel gives a balanced view of what works today and what does not.</p>
+      <button type="button" class="yt" data-id="SDipcfxxa8s" aria-label="Play video"><img src="https://i.ytimg.com/vi/SDipcfxxa8s/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=SDipcfxxa8s" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V3</span><span class="pill video">Use case · Google Workspace</span></div>
+      <h3>Claude FINALLY Works Inside Google Slides, Sheet + Docs (Full Project Management Guide)</h3>
+      <div class="facts"><span><b>Channel:</b> Blazing Zebra</span><span><b>Published:</b> 11 Oct 2026</span><span><b>Views:</b> not confirmed</span></div>
+      <p><span class="label">What it is about</span>Shows how to connect Claude to Google Slides, Docs and Sheets. It then builds a workflow that pulls data from Sheets and Docs to make branded presentations automatically.</p>
+      <p><span class="label">Why it is worth watching</span>A concrete example of Claude working as an agent across the office tools many universities already use.</p>
+      <button type="button" class="yt" data-id="nD80FrWLMBk" aria-label="Play video"><img src="https://i.ytimg.com/vi/nD80FrWLMBk/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=nD80FrWLMBk" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </li>
+  </ol>
+</section>
+
+<footer>Collected by web search on 20 November 2026. Summaries are written in the agent's own words; follow the links for the full reports.</footer>
+</div>
+
+
+<!-- ===================== FARSI ===================== -->
+<div class="lang" lang="fa" dir="rtl" id="content-fa">
+
+<header class="masthead">
+  <p class="hello">سلام کیوان،</p>
+  <h1>خلاصهٔ اخبار</h1>
+  <div class="date">جمعه ۲۰ نوامبر ۲۰۲۶</div>
+  <a class="archive" href="../index.html#archive">همهٔ خلاصه‌ها</a>
+</header>
+
+<section>
+  <figure class="quote">
+    <span class="q-label">اندیشهٔ روز</span>
+    <p>آدمیان در حالِ آموختن به دیگران، خود می‌آموزند.</p>
+    <cite>سنکا، نامه‌هایی به لوکیلیوس، نامهٔ هفتم (حدود سال ۶۵ میلادی): «Homines dum docent, discunt» · ترجمهٔ خودمان</cite>
+  </figure>
+</section>
+
+<section>
+  <h2>نگاه کلی</h2>
+  <p class="overview">سهام Anthropic در نخستین روز معامله با جهشی ۳۴ درصدی آغاز شد و سپس در طول روز بخشی از این رشد را از دست داد؛ همزمان چهار سناتور آمریکایی در واکنش به رونق سرمایه‌گذاری در هوش مصنوعی، لایحه‌ای ارائه کردند که شرکت‌های بورسی را به افشای تأمین مالی و ریسک‌های هوش مصنوعی خود ملزم می‌کند. کمیسیون اروپا تأیید کرد که مهاجمان با یک ابزار هک مبتنی بر هوش مصنوعی به سامانه‌های کارکنانش حمله کرده‌اند، و گزارشی از Reuters می‌گوید عامل هوش مصنوعی Muse از شرکت Meta اطلاعات خصوصی دیگران را به کاربران نشان داده است. Google کنترل Mac را به Gemini سپرد، رهبران فناوری اروپا از EU بودجهٔ ویژهٔ هوش مصنوعی خواستند، و IEA هشدار داد که انتشار کربن مراکز داده تا ۲۰۳۰ ممکن است ۷۰ درصد افزایش یابد.</p>
+  <p class="note">در ۲۴ ساعت گذشته خبر مهم تازه‌ای دربارهٔ کتابخانه‌های دیجیتال، پژوهش در بازیابی اطلاعات یا اجرای GDPR پیدا نکردیم. امروز چند سایت بررسی‌های ما را مسدود کردند، پس برخی خبرها فقط بر یک یا دو گزارش تکیه دارند؛ این را در یادداشت‌ها گفته‌ایم.</p>
+</section>
+
+<section>
+  <h2>اخبار</h2>
+  <ol class="cards">
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-chart"/></svg></span><span class="num">۰۱</span><span class="pill field">کل حوزه · بازار</span></div>
+      <h3>نخستین روز معاملهٔ Anthropic: سهام ۳۴ درصد بالاتر از قیمت عرضه باز شد و سپس بخش زیادی از رشد را پس داد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>معاملهٔ سهام Anthropic در ۱۹ نوامبر با نماد ANT در Nasdaq آغاز شد. نخستین معامله با قیمت ۱۱۱٫۵۰ دلار انجام شد، یعنی حدود ۳۴ درصد بالاتر از قیمت عرضهٔ ۸۳ دلاری، اما قیمت در چند دقیقه به زیر ۱۰۰ دلار رسید و تا اوایل بعدازظهر به وقت نیویورک حدود ۹۶ دلار بود؛ در روزی که کل بازار حدود ۱٫۵ درصد افت کرد. با احتساب یک فروش خصوصی جداگانهٔ ۲۶ میلیارد دلاری، Anthropic در مجموع حدود ۱۰۷ میلیارد دلار جذب کرد.</p>
+      <p><span class="label">چرا مهم است</span>ارزشی که بازار برای نخستین شرکت بزرگ سازندهٔ مدل‌های هوش مصنوعیِ واردشده به بورس قائل می‌شود، بر تأمین مالی، قیمت‌ها و رقابت میان ابزارهای هوش مصنوعی‌ای اثر می‌گذارد که دانشگاه‌ها و سازمان‌ها به آن‌ها وابسته‌اند.</p>
+      <p class="caveat">توجه: نتوانستیم قیمت پایانی را تأیید کنیم. گزارش‌ها دربارهٔ ارزش شرکت هم اختلاف دارند، از حدود ۱٫۳ تا ۲ تریلیون دلار، بسته به قیمت سهم و شیوهٔ شمارش سهام.</p>
+      <p class="source">منبع: <a href="https://www.aljazeera.com/economy/2026/11/19/anthropic-starts-trading-in-the-us-after-blockbuster-ipo" target="_blank" rel="noopener">Reuters از طریق Al Jazeera</a> · ۱۹ نوامبر ۲۰۲۶، و <a href="https://www.foxnews.com/live-news/anthropic-claude-ai-ipo-nasdaq-11-19-26" target="_blank" rel="noopener">گزارش زندهٔ Fox News</a> · ۱۹ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">۰۲</span><span class="pill field">کل حوزه · قانون</span></div>
+      <h3>سناتورهای آمریکا لایحهٔ AUDIT AI Act را پیشنهاد کردند: شرکت‌های بورسی باید قراردادها، نظارت و ریسک‌های هوش مصنوعی خود را گزارش کنند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>سناتورها Mark Warner و Angela Alsobrooks (دموکرات) و John Kennedy و Mike Rounds (جمهوری‌خواه) لایحه‌ای ارائه کردند که از نهاد ناظر بورس آمریکا (SEC) می‌خواهد قواعد تازه‌ای برای افشای اطلاعات بنویسد. شرکت‌های سهامی عام باید تأمین مالی زیرساخت هوش مصنوعی مانند اجاره‌ها و ضمانت‌ها را گزارش کنند، بگویند آیا هیئت‌مدیره بر هوش مصنوعی نظارت دارد، و بخشی استاندارد دربارهٔ ریسک‌های هوش مصنوعی بیفزایند؛ مثلاً وابستگی به مدل‌های بیرونی، اتکا به چند ارائه‌دهندهٔ محدود رایانش و تعهدات مربوط به حقوق داده. نگرانی اصلی Warner قراردادهای «چرخشی» است؛ یعنی شرکت‌هایی که به شرکت‌هایی سرمایه می‌دهند که خودشان مشتری آن‌ها هستند.</p>
+      <p><span class="label">چرا مهم است</span>اگر تصویب شود، منبع دادهٔ عمومی و استانداردی دربارهٔ وابستگی سازمان‌ها به هوش مصنوعی پدید می‌آید که برای پژوهش در حاکمیت سامانه‌های اطلاعاتی سودمند است.</p>
+      <p class="caveat">توجه: این فقط یک پیشنهاد است. ما نتوانستیم متن لایحه را بخوانیم؛ جزئیات از گزارش‌های خبری مبتنی بر Politico آمده است.</p>
+      <p class="source">منبع: <a href="https://www.socialnews.xyz/2026/11/19/us-senators-seek-greater-disclosure-of-ai-financing-risks/" target="_blank" rel="noopener">IANS از طریق SocialNews.XYZ</a> · ۱۹ نوامبر ۲۰۲۶، و <a href="https://www.mlex.com/mlex/artificial-intelligence/articles/2552512" target="_blank" rel="noopener">MLex</a> · نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">۰۳</span><span class="pill field">کل حوزه · امنیت</span></div>
+      <h3>کمیسیون اروپا یک حملهٔ سایبری «تولیدشده با هوش مصنوعی» را تأیید کرد که سامانه‌های کارکنان را از کار انداخت</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>کمیسیون اروپا در ۱۹ نوامبر تأیید کرد که هدف چیزی قرار گرفته که سخنگویش آن را «کارزار سایبری تولیدشده با هوش مصنوعی» نامید؛ نخستین نشانه‌های آن در ۲۲ اکتبر دیده شد. چند سرویس از روی احتیاط از دسترس خارج شدند، به افراد آسیب‌دیده اطلاع داده شد، و CERT-EU و ناظر اروپایی حفاظت از داده (EDPS) درگیر بررسی‌اند. POLITICO گزارش می‌دهد که مهاجمان از ARTEX، یک ابزار متن‌باز هک مبتنی بر هوش مصنوعی، استفاده کرده‌اند و سامانه‌های حقوق، مرخصی و بازپرداخت هزینه‌های درمانی بیش از ده روز مختل بوده‌اند.</p>
+      <p><span class="label">چرا مهم است</span>این نشان می‌دهد ابزارهای هوش مصنوعی اکنون به مهاجمان امکان می‌دهند نقاط ضعف سازمان‌های بزرگ دولتی را سریع پیدا و سوءاستفاده کنند؛ و این سطح انتظار از امنیت را در دانشگاه‌ها و سامانه‌های اطلاعاتی عمومی بالا می‌برد.</p>
+      <p class="caveat">توجه: کمیسیون نام ابزار یا مهاجمان را اعلام نکرد و می‌گوید شواهدی از نشت گستردهٔ داده ندارد؛ جزئیات مربوط به ARTEX گزارش شده اما تأیید نشده است. FBI هفتهٔ گذشته هشدار داد که گروه‌های تبهکار و گروه‌های وابسته به دولت‌ها از ARTEX استفاده می‌کنند.</p>
+      <p class="source">منبع: <a href="https://therecord.media/european-commission-confirms-cyberattack-using-ai" target="_blank" rel="noopener">The Record</a> · ۱۹ نوامبر ۲۰۲۶، و <a href="https://www.newsweek.com/european-union-hit-by-ai-generated-cyber-attack-12740975" target="_blank" rel="noopener">Newsweek</a> · ۱۹ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">۰۴</span><span class="pill is">حریم خصوصی · عامل‌های هوش مصنوعی</span></div>
+      <h3>گزارش‌ها: عامل Muse از Meta گفت‌وگوهای کاربران را قاطی کرده و اطلاعات خصوصی را به افراد اشتباه نشان داده است</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Reuters پیام‌های داخلی‌ای را بررسی کرده که در آن‌ها کارکنان Meta می‌گویند عامل هوش مصنوعی Muse گفت‌وگوهای حساب‌های مختلف را با هم قاطی می‌کند. نمونه‌ها شامل درخواست‌های نگهداری از کودک و سفارش‌های خریدی بود که کاربر هرگز نداده بود، و موجودی بانکیِ شخص دیگری که به یک گفت‌وگو دربارهٔ هوا اضافه شده بود. کارمند دیگری یادآوری‌ای برای پاسخ به پیام Signal یکی از اعضای خانواده‌اش دریافت کرد، در حالی که می‌گوید به Muse اجازهٔ دسترسی به برنامه‌های دیگر نداده بود. Muse در ماه سپتامبر عرضه شد و بیش از ۱۰ میلیون بار دانلود شده است.</p>
+      <p><span class="label">چرا مهم است</span>عامل‌های شخصی هوش مصنوعی که میان برنامه‌ها اطلاعات می‌خوانند، نوع تازه‌ای از سامانهٔ اطلاعاتی‌اند، و این ماجرا نشان می‌دهد چرا جداسازی داده، مجوزها و حسابرسی مسائل محوری طراحی هستند.</p>
+      <p class="caveat">توجه: این ادعاها از پیام‌های کارکنان است که Reuters گزارش کرده و به‌طور مستقل تأیید نشده‌اند؛ Meta فوراً پاسخی نداد.</p>
+      <p class="source">منبع: <a href="https://techcrunch.com/2026/11/19/metas-ai-agent-muse-is-mixing-up-conversations-and-exposing-private-data-report-says/" target="_blank" rel="noopener">TechCrunch</a> · ۱۹ نوامبر ۲۰۲۶، و <a href="https://9to5mac.com/2026/11/19/major-privacy-breaches-reported-in-muse-ai-including-bank-balances/" target="_blank" rel="noopener">9to5Mac</a> · ۱۹ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-layout"/></svg></span><span class="num">۰۵</span><span class="pill ai">هوش مصنوعی · عامل‌ها</span></div>
+      <h3>اپلیکیشن Gemini از Google اکنون می‌تواند به جای شما با Mac کار کند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Google قابلیت «استفاده از رایانه» را به اپلیکیشن دسکتاپ Gemini برای macOS افزود. این عامل در پس‌زمینه با برنامه‌های Mac و وب‌سایت‌ها کار می‌کند، مثلاً فرم پر می‌کند، فایل‌ها را در پوشه‌ها مرتب می‌کند یا از فایل‌ها اسلاید می‌سازد، و کاربر کار آن را در پیش‌نمایش زنده می‌بیند و می‌تواند متوقف کند یا کارها را پیش از انجام تأیید کند. این قابلیت ابتدا به زبان انگلیسی و در آمریکا برای مشترکان Google AI Plus، Pro و Ultra در دسترس است.</p>
+      <p><span class="label">چرا مهم است</span>اکنون همهٔ شرکت‌های بزرگ هوش مصنوعی عامل‌هایی ارائه می‌کنند که مستقیماً روی رایانهٔ افراد کار می‌کنند؛ این شیوهٔ استفاده از نرم‌افزارهای دسکتاپ را تغییر می‌دهد و پرسش‌های تازه‌ای دربارهٔ کنترل و اعتماد پیش می‌کشد.</p>
+      <p class="caveat">توجه: Google جزئیات کمی دربارهٔ نحوهٔ مدیریت داده‌های صفحه و فایل‌ها داده و تاریخی برای کشورهای دیگر اعلام نکرده است.</p>
+      <p class="source">منبع: <a href="https://techcrunch.com/2026/11/19/google-gives-gemini-the-ability-to-use-your-mac-for-you/" target="_blank" rel="noopener">TechCrunch</a> · ۱۹ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">۰۶</span><span class="pill ai">هوش مصنوعی · سیاست اتحادیهٔ اروپا</span></div>
+      <h3>۵۹ رهبر فناوری اروپا هشدار دادند که اروپا «نباید انقلاب هوش مصنوعی را در خواب بگذراند» و خواستار بودجهٔ هوش مصنوعی شدند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>نامه‌ای سرگشاده با امضای ۵۹ چهره، از جمله اقتصاددان Philippe Aghion، Yann LeCun و مدیران DeepL، OVHcloud، ElevenLabs و Lovable، از EU می‌خواهد ساده‌سازی Digital Omnibus را الزام‌آور کند و فراتر برود، یک «رژیم بیست‌وهشتم» واحد برای شرکت‌ها بسازد، دسترسی به داده را باز کند و در بودجهٔ ۲۰۲۸ تا ۲۰۳۴ که اکنون در حال مذاکره است، سهمی ویژه برای هوش مصنوعی کنار بگذارد. کمیسیون اروپا پاسخ داد که برنامه‌های حاکمیت فناوری دست‌کم ۵۰۰ میلیارد یورو لازم دارند و بخش نخست چشم‌انداز آن حدود دو هفتهٔ دیگر منتشر می‌شود.</p>
+      <p><span class="label">چرا مهم است</span>بودجهٔ EU و تغییرات بیشتر در قواعد EU AI Act، بودجهٔ پژوهشی و کار انطباق با قانون را برای دانشگاه‌های اروپایی تا سال‌ها تعیین می‌کند.</p>
+      <p class="source">منبع: <a href="https://www.euronews.com/2026/11/18/europe-cannot-sleep-through-the-ai-revolution-tech-leaders-urge-eu-to-take-action" target="_blank" rel="noopener">Euronews</a> · ۱۸ نوامبر ۲۰۲۶، به‌روزشده در ۱۹ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">۰۷</span><span class="pill field">کل حوزه · مراکز داده</span></div>
+      <h3>IEA: با رشد هوش مصنوعی، انتشار کربن مراکز داده ممکن است تا ۲۰۳۰ هفتاد درصد افزایش یابد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>تازه‌ترین گزارش چشم‌انداز جهانی انرژی (World Energy Outlook) آژانس بین‌المللی انرژی می‌گوید مصرف برق مراکز داده تا پایان این دهه ممکن است دو برابر شود و به حدود ۱۰۰۰ تراوات‌ساعت برسد، و انتشار کربن آن‌ها به دلیل استفادهٔ بیشتر از گاز و زغال‌سنگ حدود ۷۰ درصد افزایش یابد. زغال‌سنگ و گاز هم‌اکنون حدود ۶۰ درصد برق مراکز داده را تأمین می‌کنند؛ در آمریکا سهم گاز تا ۲۰۳۰ ممکن است به حدود ۶۰ درصد برسد، در حالی که در EU سهم انرژی‌های تجدیدپذیر ممکن است به حدود دو سوم برسد.</p>
+      <p><span class="label">چرا مهم است</span>هزینهٔ زیست‌محیطی هوش مصنوعی و سرویس‌های ابری به عاملی قابل اندازه‌گیری در خرید فناوری اطلاعات و در آموزش سامانه‌های اطلاعاتی پایدار تبدیل می‌شود.</p>
+      <p class="caveat">توجه: ارقام از گزارش رسانه‌های تخصصی است؛ ما آن‌ها را در خود گزارش IEA بررسی نکردیم.</p>
+      <p class="source">منبع: <a href="https://datacentrereview.com/2026/11/data-centre-emissions-on-course-to-rise-70-by-2030-iea-warns/" target="_blank" rel="noopener">Data Centre Review</a> · ۱۹ نوامبر ۲۰۲۶، و <a href="https://www.bernama.com/en/world/news.php?id=2636821" target="_blank" rel="noopener">Bernama</a> · نوامبر ۲۰۲۶</p>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2>ارزش دنبال کردن</h2>
+  <ul class="watch">
+    <li><strong>برنامهٔ EU برای هوش مصنوعی و حاکمیت فناوری</strong>کمیسیون می‌گوید بخش نخست چشم‌انداز خود را، با تمرکز بر سلامت، حمل‌ونقل، کشاورزی و غذا، تولید پیشرفته و دفاع، حدود دو هفتهٔ دیگر منتشر می‌کند. <a href="https://www.euronews.com/2026/11/18/europe-cannot-sleep-through-the-ai-revolution-tech-leaders-urge-eu-to-take-action" target="_blank" rel="noopener">Euronews</a> · ۱۹ نوامبر ۲۰۲۶</li>
+    <li><strong>ARTEX و هک خودکار با هوش مصنوعی</strong>به گفتهٔ FBI، برخی نفوذها با این ابزار متن‌باز هوش مصنوعی در کمتر از سه ساعت از نخستین تماس به دسترسی مدیریتی رسیده‌اند. ممکن است قربانیان بیشتری اعلام شوند. <a href="https://therecord.media/european-commission-confirms-cyberattack-using-ai" target="_blank" rel="noopener">The Record</a> · ۱۹ نوامبر ۲۰۲۶</li>
+  </ul>
+</section>
+
+<section>
+  <h2>سه ویدیوی برتر</h2>
+  <p class="note">امروز YouTube بررسی‌های ما را مسدود کرد، پس تعداد بازدیدها تأیید نشده است. تاریخ‌ها از صفحه‌های فهرست ویدیوها آمده است.</p>
+  <ol class="cards">
+    <li class="card video">
+      <div class="card-top"><span class="num">V1</span><span class="pill video">آموزش · وایت‌بورد</span></div>
+      <h3 dir="ltr" style="text-align:right">Claude's New WHITEBOARDS Are Amazing (Master it in 16 minutes)</h3>
+      <div class="facts"><span><b>کانال:</b> Bart Slodyczka</span><span><b>تاریخ انتشار:</b> ۱۲ نوامبر ۲۰۲۶</span><span><b>بازدید:</b> تأیید نشده</span></div>
+      <p><span class="label">دربارهٔ چیست</span>نشان می‌دهد Whiteboards تازهٔ Claude کجای برنامه است و چطور یک فهرست نامرتب از ایده‌ها به تخته‌ای تبدیل می‌شود که می‌توان آن را با دست ویرایش و با دیگران به اشتراک گذاشت. در پایان، نمونه‌ای کامل از برنامه‌ریزی یک پروژه با Claude و یک وایت‌بورد نشان داده می‌شود.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>راهنمایی روشن و کاربردی است دربارهٔ اینکه چه زمانی یک تختهٔ تصویری از گفت‌وگو بهتر است؛ مفید برای برنامه‌ریزی درس یا پژوهش.</p>
+      <button type="button" class="yt" data-id="zCoCeieEY1o" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/zCoCeieEY1o/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=zCoCeieEY1o" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V2</span><span class="pill video">بررسی · ابزارهای داده</span></div>
+      <h3 dir="ltr" style="text-align:right">Claude's New Whiteboards, Sheets &amp; Data: What You Can Do Now</h3>
+      <div class="facts"><span><b>کانال:</b> The AI Advantage</span><span><b>تاریخ انتشار:</b> ۱۳ نوامبر ۲۰۲۶</span><span><b>بازدید:</b> تأیید نشده</span></div>
+      <p><span class="label">دربارهٔ چیست</span>مروری بر قابلیت‌های Whiteboards، Sheets و Data در Claude، با محدودیت‌های فعلی و اینکه آیا می‌توانند جای Google Sheets را بگیرند. همچنین آن‌ها را با قابلیت‌های مشابه تازه در ChatGPT مقایسه می‌کند.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>یک کانال شناخته‌شدهٔ آموزش هوش مصنوعی تصویری متعادل از آنچه امروز کار می‌کند و آنچه کار نمی‌کند ارائه می‌دهد.</p>
+      <button type="button" class="yt" data-id="SDipcfxxa8s" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/SDipcfxxa8s/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=SDipcfxxa8s" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V3</span><span class="pill video">کاربرد · Google Workspace</span></div>
+      <h3 dir="ltr" style="text-align:right">Claude FINALLY Works Inside Google Slides, Sheet + Docs (Full Project Management Guide)</h3>
+      <div class="facts"><span><b>کانال:</b> Blazing Zebra</span><span><b>تاریخ انتشار:</b> ۱۱ اکتبر ۲۰۲۶</span><span><b>بازدید:</b> تأیید نشده</span></div>
+      <p><span class="label">دربارهٔ چیست</span>نشان می‌دهد چطور Claude را به Google Slides، Docs و Sheets وصل کنیم. سپس گردش‌کاری می‌سازد که داده‌ها را از Sheets و Docs برمی‌دارد و به‌طور خودکار ارائه‌هایی با هویت بصری برند تولید می‌کند.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>نمونه‌ای عینی از کار Claude به‌عنوان یک عامل در میان ابزارهای اداری‌ای که بسیاری از دانشگاه‌ها از آن‌ها استفاده می‌کنند.</p>
+      <button type="button" class="yt" data-id="nD80FrWLMBk" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/nD80FrWLMBk/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=nD80FrWLMBk" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+    </li>
+  </ol>
+</section>
+
+<footer>گردآوری‌شده با جست‌وجوی وب در ۲۰ نوامبر ۲۰۲۶. خلاصه‌ها با کلمات خود عامل نوشته شده‌اند؛ برای گزارش کامل روی پیوندها کلیک کنید.</footer>
+</div>
+
+
+</div>
+<script>
+(function () {
+  var en = document.getElementById("content-en");
+  var fa = document.getElementById("content-fa");
+  var bEn = document.getElementById("btn-en");
+  var bFa = document.getElementById("btn-fa");
+  function show(lang) {
+    var isFa = lang === "fa";
+    en.hidden = isFa;
+    fa.hidden = !isFa;
+    bEn.setAttribute("aria-pressed", String(!isFa));
+    bFa.setAttribute("aria-pressed", String(isFa));
+    document.documentElement.lang = isFa ? "fa" : "en";
+    try { localStorage.setItem("digest-lang", lang); } catch (e) {}
+  }
+  bEn.addEventListener("click", function () { show("en"); });
+  bFa.addEventListener("click", function () { show("fa"); });
+  var saved = null;
+  try { saved = localStorage.getItem("digest-lang"); } catch (e) {}
+  show(saved === "en" ? "en" : "fa");
+})();
+
+(function () {
+  document.querySelectorAll("button.yt").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var f = document.createElement("iframe");
+      f.className = "yt-frame";
+      f.src = "https://www.youtube-nocookie.com/embed/" + b.dataset.id + "?autoplay=1&rel=0";
+      f.title = b.getAttribute("aria-label");
+      f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      f.allowFullscreen = true;
+      b.replaceWith(f);
+    });
+  });
+})();
+
+(function () {
+  var hues = [215, 160, 280, 25, 340, 195, 95];
+  var d = document.body.getAttribute("data-date") || "";
+  var t = Date.parse(d + "T00:00:00Z");
+  var day = isNaN(t) ? 0 : Math.floor(t / 86400000);
+  document.documentElement.style.setProperty("--h", hues[day % hues.length]);
+  var seed = day * 2654435761 >>> 0;
+  function rnd() { seed = (seed + 0x6D2B79F5) >>> 0; var x = seed; x = Math.imul(x ^ (x >>> 15), x | 1); x ^= x + Math.imul(x ^ (x >>> 7), x | 61); return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }
+  var c = document.getElementById("hero-art");
+  if (!c || !c.getContext) return;
+  function draw() {
+    var s0 = day * 2654435761 >>> 0; seed = s0;
+    var r = window.devicePixelRatio || 1, w = c.clientWidth, h = c.clientHeight;
+    c.width = w * r; c.height = h * r;
+    var g = c.getContext("2d"); g.scale(r, r); g.clearRect(0, 0, w, h);
+    for (var i = 0; i < 16; i++) {
+      g.beginPath(); g.arc(rnd() * w, rnd() * h, 10 + rnd() * 70, 0, Math.PI * 2);
+      g.fillStyle = "rgba(255,255,255," + (0.04 + rnd() * 0.12) + ")"; g.fill();
+    }
+    for (var k = 0; k < 7; k++) {
+      var amp = 8 + rnd() * 28, freq = 0.004 + rnd() * 0.012, ph = rnd() * 6.3, y0 = h * (0.15 + rnd() * 0.7);
+      g.beginPath();
+      for (var x = 0; x <= w; x += 4) { var y = y0 + Math.sin(x * freq + ph) * amp + Math.sin(x * freq * 2.3 + ph) * amp * 0.3; if (x === 0) g.moveTo(x, y); else g.lineTo(x, y); }
+      g.strokeStyle = "rgba(255,255,255," + (0.18 + rnd() * 0.3) + ")"; g.lineWidth = 1 + rnd() * 2; g.stroke();
+    }
+  }
+  draw();
+  var to; window.addEventListener("resize", function () { clearTimeout(to); to = setTimeout(draw, 150); });
+})();
+</script>
+</body>
+</html>
