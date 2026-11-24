@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>News digest 23 Nov 2026</title>
+<title>News digest 24 Nov 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
@@ -115,7 +115,7 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
 @media (max-width: 480px) { .page { padding: 24px 16px 48px; } .card { padding: 16px; } }
 </style>
 </head>
-<body data-date="2026-11-23">
+<body data-date="2026-11-24">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"/></symbol>
   <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.2 4.5 4.5 0 0 0 7 18z"/></symbol>
@@ -148,90 +148,73 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
 <header class="masthead">
   <p class="hello">Hello Kayvan,</p>
   <h1>News digest</h1>
-  <div class="date">Monday 23 November 2026</div>
+  <div class="date">Tuesday 24 November 2026</div>
   <a class="archive" href="#archive">All digests</a>
 </header>
 
 <section>
   <figure class="quote">
     <span class="q-label">Thought of the day</span>
-    <p>My knowledge reached the point where I came to know that I do not know.</p>
-    <cite>Abu Shakur Balkhi (10th century; the line is sometimes credited to Avicenna) · our own translation</cite>
+    <p>Do not rest from learning for a single moment, and do not let your heart doubt the worth of knowledge.</p>
+    <cite>Ferdowsi, Shahnameh (around year 1000) · our own translation</cite>
   </figure>
 </section>
 
 <section>
   <h2>Overview</h2>
-  <p class="overview">The weekend's biggest story was in education: South Korea's education minister resigned after weeks of controversy over AI-assisted cheating around the national university entrance exam. The AI prompt-leak story moved forward: OpenRouter removed three inference providers after the Dragos findings, and Together AI disclosed its own prompt leak caused by a credential that a coding agent had exposed. In the US, governors asked for federal rules on the most powerful AI systems that still leave room for state laws, and big banks are blocking third-party AI agents from customer accounts. On the research side, a new test shows coding agents failing most tasks in a simulated workplace.</p>
-  <p class="note">We found no important new story in the last 24 hours on the EU AI Act, GDPR enforcement or the job market. Several original pages (Bloomberg, Wired, The Guardian and others) could not be opened from our side today, so some items rely on short summaries of them; we say so in the notes.</p>
+  <p class="overview">A quieter Monday. Anthropic launched Claude Ship, a set of AI agents that review, repair and even approve routine code changes, and Amazon confirmed it is buying the technology and team behind Decart's chip-optimisation software, a deal we listed as unconfirmed yesterday. In Canada, Google and Apple warned senators that a "lawful access" bill would force them to keep metadata and could weaken encryption, and Queens Public Library in New York brought most of its digital services back after a ransomware attack.</p>
+  <p class="note">We found no important new story in the last 24 hours on the EU AI Act, GDPR enforcement or the job market. Several pages (Ars Technica, OpenAI's blog and others) could not be opened from our side today, so some smaller stories were left out or moved to "Worth watching".</p>
 </section>
 
 <section>
   <h2>News</h2>
   <ol class="cards">
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-spark"/></svg></span><span class="num">01</span><span class="pill ai">Artificial intelligence · tools</span></div>
+      <h3>Anthropic launches Claude Ship: AI agents that review, fix and approve code changes</h3>
+      <p><span class="label">What happened</span>Anthropic released Claude Ship, a group of agents for the last steps of software work. Code Review is now generally available, while two agents are in beta: PR Steward, which deals with failing tests, merge conflicts and reviewer comments, and Claude Approvals, which approves routine changes according to a policy the team writes in plain language as a file in its repository. Anthropic advises starting Approvals in an "observe only" mode; the tools are for Team and Enterprise plans on GitHub.</p>
+      <p><span class="label">Why it matters</span>Letting an AI approve code moves accountability from people to written policies, a core question for IS governance, audit and the design of human control in organisations.</p>
+      <p class="source">Source: <a href="https://claude.com/resources/articles/introducing-claude-ship" target="_blank" rel="noopener">Anthropic announcement</a>, and <a href="https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/" target="_blank" rel="noopener">TechCrunch</a> · 23 Nov 2026</p>
+    </li>
     <li class="card field">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-book"/></svg></span><span class="num">01</span><span class="pill field">Field-wide · education</span></div>
-      <h3>South Korea's education minister resigns over AI cheating fears around the university entrance exam</h3>
-      <p><span class="label">What happened</span>Education Minister Choi Kyo-jin resigned on Sunday 22 November, and President Lee Jae Myung accepted the resignation shortly after. The pressure built after Choi told parliament on 16 November that it would be hard to catch all AI-assisted cheating, and he refused to postpone the national entrance exam (Suneung), which about 550,000 students sat on 19 November under phone bans and camera checks. An opposition politician had also filed a police complaint against him for dereliction of duty.</p>
-      <p><span class="label">Why it matters</span>A minister losing his post over AI and exam integrity shows how urgently universities need assessment methods that still work when every student has an AI assistant.</p>
-      <p class="caveat">Note: we could not open The Guardian article itself; the summary combines its short description with Korean reports. The police complaint is an allegation, not a finding.</p>
-      <p class="source">Source: <a href="https://www.theguardian.com/world/2026/nov/22/south-korea-education-minister-resigns-after-ai-cheating-scandal-engulfs-university-exams" target="_blank" rel="noopener">The Guardian</a> · 22 Nov 2026, and <a href="https://www.koreaherald.com/article/10939647" target="_blank" rel="noopener">The Korea Herald (Yonhap)</a> · 17 Nov 2026</p>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-building"/></svg></span><span class="num">02</span><span class="pill field">Field-wide · big company decisions</span></div>
+      <h3>Amazon confirms it will buy Decart's chip-optimisation technology and hire its founders</h3>
+      <p><span class="label">What happened</span>Amazon announced an agreement to buy the technology behind the Decart Optimization Stack and to bring Decart's three co-founders and its AI researchers into the company, to make AI workloads run better on its own Trainium chips. Amazon gave no price; Calcalist and Bloomberg report about $7.5 billion. The deal still needs approval from regulators.</p>
+      <p><span class="label">Why it matters</span>Big cloud providers are buying the software layer that makes their own AI chips competitive, which shapes the price and choice of AI computing that universities and companies can buy.</p>
+      <p class="caveat">Note: yesterday we listed this as a report only; the agreement is now confirmed by Amazon, but the price is not. We could not open Amazon's own statement.</p>
+      <p class="source">Source: <a href="https://ppc.land/amazon-agrees-to-buy-decarts-ai-chip-software-in-a-deal-reported-at-7-5bn/" target="_blank" rel="noopener">PPC Land</a> · 23 Nov 2026</p>
     </li>
     <li class="card is">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">02</span><span class="pill is">Privacy · data governance</span></div>
-      <h3>Prompt-leak follow-up: OpenRouter drops three AI providers, and Together AI reports its own leak</h3>
-      <p><span class="label">What happened</span>After the Dragos "canary" study we reported yesterday, the AI routing service OpenRouter removed three inference providers and 125 endpoints from its "zero data retention" list and told affected customers. Separately, Together AI disclosed that an outsider downloaded stored samples of some customer prompts from its serverless inference service, using a credential that an AI coding agent had exposed.</p>
-      <p><span class="label">Why it matters</span>This turns a research claim into concrete action by platforms: "zero data retention" labels are now being checked and withdrawn, and AI coding agents appear as a new source of leaked credentials, two lessons for anyone who governs data in AI systems.</p>
-      <p class="caveat">Note: we read these reports through short summaries and could not check the original OpenRouter and Together AI statements. The names of the three providers were not confirmed.</p>
-      <p class="source">Source: <a href="https://thehackernews.com/2026/11/openrouter-drops-3-providers-after.html" target="_blank" rel="noopener">The Hacker News</a> · 22 Nov 2026, and <a href="https://www.unite.ai/together-ai-discloses-prompt-leak-after-coding-agent-exposed-credential/" target="_blank" rel="noopener">Unite.AI</a> · 21 Nov 2026</p>
-    </li>
-    <li class="card field">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">03</span><span class="pill field">Field-wide · regulation</span></div>
-      <h3>US governors ask for federal rules on the most powerful AI, but without blocking state laws</h3>
-      <p><span class="label">What happened</span>A bipartisan group of US governors asked Washington to set national rules for the most powerful AI systems. At the same time, they want states to keep the power to protect consumers, workers and children with their own laws, instead of being overruled by a federal ban on state AI rules.</p>
-      <p><span class="label">Why it matters</span>Whether the US ends up with one federal AI law or a patchwork of state laws decides which rules on transparency, data use and accountability information systems will have to follow.</p>
-      <p class="caveat">Note: the Bloomberg article is paywalled; we could only read its short summary, so details of the governors' proposal are not confirmed.</p>
-      <p class="source">Source: <a href="https://www.bloomberg.com/news/articles/2026-11-22/governors-call-for-federal-ai-rules-without-sidelining-states" target="_blank" rel="noopener">Bloomberg</a> · 22 Nov 2026</p>
-    </li>
-    <li class="card ai">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-book"/></svg></span><span class="num">04</span><span class="pill ai">Artificial intelligence · research</span></div>
-      <h3>Coding agents pass isolated tests but finish fewer than one in ten tasks in a simulated workplace</h3>
-      <p><span class="label">What happened</span>A new benchmark puts AI coding agents into a simulated developer job, with colleagues, ticket boards and handoffs between people. Even the best current models closed fewer than one in ten tickets, although they do very well on the usual isolated coding tests.</p>
-      <p><span class="label">Why it matters</span>It shows the gap between benchmark scores and real organisational work, where communication, context and coordination matter; this is exactly the area that information systems research studies.</p>
-      <p class="caveat">Note: we could not open the underlying paper, so the benchmark's name and exact numbers come from The Decoder's report.</p>
-      <p class="source">Source: <a href="https://the-decoder.com/ai-coding-agents-ace-isolated-tests-but-complete-fewer-than-one-in-ten-tasks-in-a-simulated-workplace/" target="_blank" rel="noopener">The Decoder</a> · 22 Nov 2026</p>
-    </li>
-    <li class="card field">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">05</span><span class="pill field">Field-wide · big company decisions</span></div>
-      <h3>Large US banks block third-party AI agents from logging into customer accounts</h3>
-      <p><span class="label">What happened</span>Major US banks are stopping outside AI bots from logging into customers' online banking. They also say that if a customer lets an AI agent act for them, costly mistakes by that agent are the customer's responsibility.</p>
-      <p><span class="label">Why it matters</span>As AI agents start to act on people's behalf, questions of identity, authorisation and liability move to the centre of system design; banks are among the first to draw hard lines.</p>
-      <p class="caveat">Note: we could only read a short summary of the Wired report; which banks are involved was not confirmed. An earlier digest (19 Nov) covered a related Arizona investigation.</p>
-      <p class="source">Source: <a href="https://www.wired.com/story/banks-are-cracking-down-on-ai-agents/" target="_blank" rel="noopener">Wired</a> · 22 Nov 2026</p>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">03</span><span class="pill is">Privacy · data governance</span></div>
+      <h3>Google and Apple warn Canada's Senate that a "lawful access" bill puts metadata and encryption at risk</h3>
+      <p><span class="label">What happened</span>At a Senate committee on 23 November, Google Canada said the bill would make companies keep users' metadata for up to six months (cut from one year in an earlier draft), creating stores of data that attackers would find attractive; a Google security expert pointed to the Salt Typhoon break-in at telecom wiretap systems. Apple said the bill could force companies to drop or weaken end-to-end encryption. The public safety minister says the bill does not weaken privacy protections.</p>
+      <p><span class="label">Why it matters</span>Mandatory metadata retention and encryption backdoors are classic data-governance trade-offs between security and privacy; the Canadian debate is a live case study for teaching.</p>
+      <p class="caveat">Note: the minister's position and the companies' warnings disagree; we could not check the bill text ourselves.</p>
+      <p class="source">Source: <a href="https://kelownadailycourier.ca/news/national_news/article_64647494-280e-588f-9cfe-ceef1c297028.html" target="_blank" rel="noopener">The Canadian Press (via Kelowna Daily Courier)</a> · 23 Nov 2026</p>
     </li>
     <li class="card is">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-book"/></svg></span><span class="num">06</span><span class="pill is">Information retrieval · NLP</span></div>
-      <h3>spaCy's makers show coding agents and open models building named-entity training data cheaply</h3>
-      <p><span class="label">What happened</span>Explosion, the company behind the spaCy library, described a workflow in which a coding agent (such as Claude Code) and several open-weight models together label text for named-entity recognition, using agreement between the models as a quality check. The company says the resulting data costs less and is of higher quality than labels from one large commercial model.</p>
-      <p><span class="label">Why it matters</span>Entity extraction is a core step in search, digital libraries and metadata work; cheap, checkable training data could make custom extractors practical for small projects and teaching.</p>
-      <p class="caveat">Note: the quality claims are the company's own and have not been independently tested.</p>
-      <p class="source">Source: <a href="https://explosion.ai/blog/agent-consensus-ner" target="_blank" rel="noopener">Explosion blog</a> · 22 Nov 2026</p>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">04</span><span class="pill is">Digital libraries · security</span></div>
+      <h3>Queens Public Library brings back most digital services three weeks after a ransomware attack</h3>
+      <p><span class="label">What happened</span>Queens Public Library in New York said on 23 November that public computers, printing, databases, e-books, e-audiobooks, its website and its app work again after a ransomware attack that began around 4 November. Interlibrary loan and the online contact form are still down, and the library does not yet know whether personal data was taken. All 66 branches stayed open using manual processes.</p>
+      <p><span class="label">Why it matters</span>Public libraries hold patron data and run many vendor systems with small IT teams; this case shows why backup plans and manual fallbacks belong in every digital-library strategy.</p>
+      <p class="caveat">Note: an earlier digest (22 Nov) mentioned the attack; the new information is the recovery and the still-open question about data theft.</p>
+      <p class="source">Source: <a href="https://qns.com/2026/11/library-restores-services" target="_blank" rel="noopener">QNS</a> · 23 Nov 2026</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-chart"/></svg></span><span class="num">05</span><span class="pill field">Field-wide · market</span></div>
+      <h3>Customer-service AI company Sierra doubles its value to $30 billion in six months</h3>
+      <p><span class="label">What happened</span>Sierra, the AI customer-service company co-founded by former Salesforce co-CEO Bret Taylor, raised $1.75 billion led by Greenoaks and Lightspeed, valuing it at $30 billion, up from $15 billion in May. The company says almost half of the Fortune 50 use it and that charging per solved case, instead of per user, doubled its yearly revenue rate to $400 million in five months.</p>
+      <p><span class="label">Why it matters</span>"Pay per outcome" pricing for AI agents changes how organisations buy and measure information systems, and customer service is where agents are replacing human work first.</p>
+      <p class="caveat">Note: the customer and revenue figures are Sierra's own claims.</p>
+      <p class="source">Source: <a href="https://techcrunch.com/2026/11/23/sierra-doubles-valuation-to-30b-within-six-months-as-demand-for-ai-in-cx-takes-off/" target="_blank" rel="noopener">TechCrunch</a> · 23 Nov 2026, and <a href="https://sierra.ai/blog/our-customers-ambition-is-accelerating-our-growth" target="_blank" rel="noopener">Sierra blog</a></p>
     </li>
     <li class="card ai">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-spark"/></svg></span><span class="num">07</span><span class="pill ai">Artificial intelligence · new models</span></div>
-      <h3>India's Sarvam AI releases an open-weight 105-billion-parameter model for business agents</h3>
-      <p><span class="label">What happened</span>Sarvam AI released Sarvam-105B as open weights, aimed at customer-support and voice agents. It comes as full-precision weights for further training and as a compressed 4-bit version that the company says runs on a single workstation GPU.</p>
-      <p><span class="label">Why it matters</span>Large open models that run on local hardware let universities and organisations keep sensitive data in-house, which matters for privacy and data sovereignty outside the US.</p>
-      <p class="caveat">Note: performance claims come from the company and were not independently checked.</p>
-      <p class="source">Source: <a href="https://www.unite.ai/sarvam-ai-releases-open-weight-105b-checkpoint-for-enterprise-agents/" target="_blank" rel="noopener">Unite.AI</a> · 22 Nov 2026</p>
-    </li>
-    <li class="card ai">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">08</span><span class="pill ai">Artificial intelligence · tools</span></div>
-      <h3>Google previews "tool retrieval" in the Gemini API, so agents load tools only when needed</h3>
-      <p><span class="label">What happened</span>Google added a preview feature to the Gemini API that lets an agent keep a large library of tools available but load each tool's description only when it is needed, inside a single request. This avoids filling the model's context with hundreds of tool definitions.</p>
-      <p><span class="label">Why it matters</span>Choosing the right tool from a large library is itself a retrieval problem, so classic information retrieval ideas are moving into the design of AI agents.</p>
-      <p class="caveat">Note: we found only a secondary report and no Google announcement; the feature is in preview.</p>
-      <p class="source">Source: <a href="https://www.marktechpost.com/2026/11/22/google-gemini-api-tool-retrieval/" target="_blank" rel="noopener">MarkTechPost</a> · 22 Nov 2026</p>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-chip"/></svg></span><span class="num">06</span><span class="pill ai">Artificial intelligence · research</span></div>
+      <h3>Startup says AI agents designed a whole new CPU, "Frostbite", but only in simulation</h3>
+      <p><span class="label">What happened</span>Architect Labs says its AI agents designed a general-purpose processor with a new instruction set from scratch. In pre-silicon simulation on a 7 nm design, it claims about 4.6 times the performance per watt of a comparable simple CPU on 25 workloads. No chip has been made, and the comparison CPU was not named.</p>
+      <p><span class="label">Why it matters</span>If AI agents can design hardware as well as software, the speed of computing progress could rise; for now it is a striking but unchecked claim, a good example for teaching how to read vendor results.</p>
+      <p class="caveat">Note: the results are the company's own and have not been independently verified; we found the story through The Neuron's 23 November roundup.</p>
+      <p class="source">Source: <a href="https://www.tomshardware.com/tech-industry/semiconductors/ai-agents-design-an-entirely-new-cpu-architecture-from-scratch-startup-claims-frostbite-posts-4-59x-the-performance-per-watt-of-an-in-order-core-in-pre-silicon-tests" target="_blank" rel="noopener">Tom's Hardware</a> · reported 23 Nov 2026</p>
     </li>
   </ol>
 </section>
@@ -239,38 +222,38 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
 <section>
   <h2>Worth watching</h2>
   <ul class="watch">
-    <li><strong>Amazon and the video-AI startup Decart</strong>The Information and the Financial Times report that Amazon is close to buying Decart for about $7.5 billion; no deal has been announced. <a href="https://www.theinformation.com/briefings/amazon-nearing-7-5-billion-purchase-decart" target="_blank" rel="noopener">The Information</a> · 22 Nov 2026</li>
-    <li><strong>Safety testing falls behind</strong>The evaluation group METR warns that top models are improving faster than experts can reliably test whether they are safe. <a href="https://the-decoder.com/ai-is-getting-better-faster-than-experts-can-reliably-test-whether-new-systems-are-safe-metr-warns/" target="_blank" rel="noopener">The Decoder</a> · 22 Nov 2026</li>
-    <li><strong>Apple's AI agent</strong>Digital Trends reports that Apple's agent for using apps on the user's behalf may slip to late 2027; Apple has not confirmed this. <a href="https://www.digitaltrends.com/computing/apple-ai-agent-delayed-2027/" target="_blank" rel="noopener">Digital Trends</a> · 22 Nov 2026</li>
+    <li><strong>"Superintelligence is arriving"</strong>Meta's chief AI officer Alexandr Wang wrote that superintelligence is arriving and called for faster work on safety and alignment, reacting to the Claude-assisted Riemann hypothesis claim, which is still being checked. This is an opinion, not a finding. <a href="https://www.aljazeera.com/economy/2026/11/23/ai-superintelligence-arriving-warns-top-meta-executive" target="_blank" rel="noopener">Al Jazeera</a> · 23 Nov 2026</li>
+    <li><strong>Plain-language rules for AI agents</strong>Google documents "semantic governance policies" (preview) for its Gemini Enterprise agent platform: each tool call an agent makes is checked against rules written in ordinary language. Google's own tests report far fewer successful attacks; this is not yet independently tested. <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/policies/semantic-governance-overview" target="_blank" rel="noopener">Google Cloud documentation</a></li>
+    <li><strong>EU guidance on AI Act and GDPR together</strong>The joint EDPB and European Commission guidance on how the two laws work together is now expected in early 2027, not before the end of this year. <a href="https://egov.eletsonline.com/2026/11/eu-guidance-on-ai-act-and-gdpr-interplay-delayed-to-early-2027/" target="_blank" rel="noopener">Elets eGov</a> · 20 Nov 2026</li>
   </ul>
 </section>
 
 <section>
   <h2>Top 3 videos</h2>
-  <p class="note">YouTube blocked or rate-limited almost all of our checks today, and most Claude desktop videos we found were older than three months. We could confirm only two new videos that were not in earlier digests, so this section has two.</p>
+  <p class="note">YouTube blocked most of our checks again today, and most Claude desktop videos we found were older than three months or already in earlier digests. We could find only two new videos that fit, so this section has two.</p>
   <ol class="cards">
     <li class="card video">
-      <div class="card-top"><span class="num">V1</span><span class="pill video">Hands-on test · Claude Sheets, Whiteboards, Data</span></div>
-      <h3>Claude Office: Sheets, Whiteboards &amp; Data Tested</h3>
-      <div class="facts"><span><b>Channel:</b> Chase AI</span><span><b>Published:</b> about 13 Nov 2026 (date of the companion blog post; video date not confirmed)</span><span><b>Views:</b> not confirmed</span></div>
-      <p><span class="label">What it is about</span>Chase Hannegan tests Anthropic's new Claude Sheets, Whiteboards and Data on his own YouTube channel data, inside regular chat and Claude Code. He reports practical limits, such as a cap of 100,000 cells per sheet.</p>
-      <p><span class="label">Why it is worth watching</span>A real-data test that shows both what the new tools can do and where they stop, useful before using them in teaching.</p>
-      <button type="button" class="yt" data-id="TRxcLhvhclA" aria-label="Play video"><img src="https://i.ytimg.com/vi/TRxcLhvhclA/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
-      <p class="source"><a href="https://www.youtube.com/watch?v=TRxcLhvhclA" target="_blank" rel="noopener">Watch on YouTube</a></p>
+      <div class="card-top"><span class="num">V1</span><span class="pill video">Tutorial · Claude Motion, Dashboards</span></div>
+      <h3>Claude Just Changed How I Make AI Dashboards FOREVER! (Claude Motion)</h3>
+      <div class="facts"><span><b>Channel:</b> AI Impact</span><span><b>Published:</b> 12 Oct 2026</span><span><b>Views:</b> about 47,000</span></div>
+      <p><span class="label">What it is about</span>The presenter builds a live financial dashboard step by step with Claude artifacts, Claude Design and Claude Motion. It shows how data, charts and animation come together inside the Claude app without writing code by hand.</p>
+      <p><span class="label">Why it is worth watching</span>A concrete data-visualisation use case that fits teaching dashboards in information systems; note that the channel also promotes its own products.</p>
+      <button type="button" class="yt" data-id="CwwJQYOYlXQ" aria-label="Play video"><img src="https://i.ytimg.com/vi/CwwJQYOYlXQ/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=CwwJQYOYlXQ" target="_blank" rel="noopener">Watch on YouTube</a></p>
     </li>
     <li class="card video">
-      <div class="card-top"><span class="num">V2</span><span class="pill video">Review · Claude Sheets</span></div>
-      <h3>Claude Sheets Just Took On Excel. I REALLY Tested It</h3>
-      <div class="facts"><span><b>Channel:</b> not confirmed</span><span><b>Published:</b> not confirmed (after the 11 Nov 2026 launch of Claude Sheets)</span><span><b>Views:</b> not confirmed</span></div>
-      <p><span class="label">What it is about</span>A hands-on comparison of the new Claude Sheets with Excel. It puts the spreadsheet tool through practical tasks to see how far it can replace a classic spreadsheet.</p>
-      <p><span class="label">Why it is worth watching</span>Spreadsheets are a core teaching tool in information systems, and this shows what changes when the spreadsheet lives inside the AI chat; we could not check the channel, so watch with that in mind.</p>
-      <button type="button" class="yt" data-id="rTCQKw3NjFI" aria-label="Play video"><img src="https://i.ytimg.com/vi/rTCQKw3NjFI/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
-      <p class="source"><a href="https://www.youtube.com/watch?v=rTCQKw3NjFI" target="_blank" rel="noopener">Watch on YouTube</a></p>
+      <div class="card-top"><span class="num">V2</span><span class="pill video">Beginner walkthrough · Claude app</span></div>
+      <h3>Claude for Beginners: The Complete Walkthrough (November 2026)</h3>
+      <div class="facts"><span><b>Channel:</b> not confirmed</span><span><b>Published:</b> not confirmed (the title says November 2026)</span><span><b>Views:</b> not confirmed</span></div>
+      <p><span class="label">What it is about</span>A full beginner's tour of the current Claude app, judging by its title and search listing. We could not open the video page to check its contents in detail.</p>
+      <p><span class="label">Why it is worth watching</span>It may be a useful up-to-date overview to share with students who are new to Claude; we could not check the channel, so watch with that in mind.</p>
+      <button type="button" class="yt" data-id="CWYV4JX4ROY" aria-label="Play video"><img src="https://i.ytimg.com/vi/CWYV4JX4ROY/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=CWYV4JX4ROY" target="_blank" rel="noopener">Watch on YouTube</a></p>
     </li>
   </ol>
 </section>
 
-<footer>Collected by web search on 23 November 2026. Summaries are written in the agent's own words; follow the links for the full reports.</footer>
+<footer>Collected by web search on 24 November 2026. Summaries are written in the agent's own words; follow the links for the full reports.</footer>
 </div>
 
 
@@ -280,90 +263,73 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
 <header class="masthead">
   <p class="hello">سلام کیوان،</p>
   <h1>خلاصهٔ اخبار</h1>
-  <div class="date">دوشنبه ۲۳ نوامبر ۲۰۲۶</div>
+  <div class="date">سه‌شنبه ۲۴ نوامبر ۲۰۲۶</div>
   <a class="archive" href="#archive">همهٔ خلاصه‌ها</a>
 </header>
 
 <section>
   <figure class="quote">
     <span class="q-label">اندیشهٔ روز</span>
-    <p>تا بدانجا رسید دانش من<br>که بدانم همی که نادانم</p>
-    <cite>ابوشکور بلخی (سدهٔ دهم میلادی؛ گاه به ابن‌سینا نسبت داده می‌شود)</cite>
+    <p>میاسای ز آموختن یک زمان<br>ز دانش میفکن دل اندر گمان</p>
+    <cite>فردوسی، شاهنامه (حدود سال ۱۰۰۰ میلادی)</cite>
   </figure>
 </section>
 
 <section>
   <h2>نگاه کلی</h2>
-  <p class="overview">مهم‌ترین خبر آخر هفته از حوزهٔ آموزش بود: وزیر آموزش کرهٔ جنوبی پس از هفته‌ها جنجال بر سر تقلب با کمک هوش مصنوعی در کنکور سراسری دانشگاه‌ها استعفا داد. ماجرای نشت پرامپت‌ها هم جلوتر رفت: OpenRouter پس از یافته‌های Dragos سه ارائه‌دهندهٔ استنتاج را کنار گذاشت، و Together AI از نشت پرامپت‌ها در سرویس خود خبر داد که علتش یک اعتبارنامهٔ لورفته به دست یک عامل کدنویسی بود. در آمریکا، فرمانداران خواستار قواعد فدرال برای قدرتمندترین سامانه‌های هوش مصنوعی شدند که همچنان جا را برای قوانین ایالتی باز بگذارد، و بانک‌های بزرگ ورود عامل‌های هوش مصنوعی شخص ثالث به حساب مشتریان را مسدود می‌کنند. در پژوهش، یک آزمون تازه نشان می‌دهد عامل‌های کدنویسی در یک محیط کاری شبیه‌سازی‌شده بیشتر کارها را ناتمام می‌گذارند.</p>
-  <p class="note">در ۲۴ ساعت گذشته خبر مهم تازه‌ای دربارهٔ EU AI Act، اجرای GDPR یا بازار کار پیدا نکردیم. امروز چند صفحهٔ اصلی (Bloomberg، Wired، The Guardian و دیگران) از سوی ما باز نشد، بنابراین برخی خبرها بر خلاصه‌های کوتاه آن‌ها تکیه دارند؛ این را در یادداشت‌ها گفته‌ایم.</p>
+  <p class="overview">دوشنبه‌ای آرام‌تر بود. Anthropic ابزار Claude Ship را عرضه کرد، مجموعه‌ای از عامل‌های هوش مصنوعی که تغییرات روزمرهٔ کد را بازبینی، اصلاح و حتی تأیید می‌کنند، و Amazon تأیید کرد که فناوری و تیم نرم‌افزار بهینه‌سازی تراشهٔ Decart را می‌خرد؛ معامله‌ای که دیروز آن را تأییدنشده آورده بودیم. در کانادا، Google و Apple به سناتورها هشدار دادند که لایحهٔ «دسترسی قانونی» آن‌ها را به نگهداری فراداده وادار می‌کند و ممکن است رمزنگاری را تضعیف کند، و کتابخانهٔ عمومی Queens در نیویورک پس از یک حملهٔ باج‌افزاری بیشتر خدمات دیجیتال خود را بازگرداند.</p>
+  <p class="note">در ۲۴ ساعت گذشته خبر مهم تازه‌ای دربارهٔ EU AI Act، اجرای GDPR یا بازار کار پیدا نکردیم. امروز چند صفحه (Ars Technica، وبلاگ OpenAI و دیگران) از سوی ما باز نشد، بنابراین چند خبر کوچک‌تر کنار گذاشته شد یا به بخش «ارزش دنبال کردن» رفت.</p>
 </section>
 
 <section>
   <h2>اخبار</h2>
   <ol class="cards">
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-spark"/></svg></span><span class="num">۰۱</span><span class="pill ai">هوش مصنوعی · ابزارها</span></div>
+      <h3>Anthropic ابزار Claude Ship را عرضه کرد: عامل‌های هوش مصنوعی که تغییرات کد را بازبینی، اصلاح و تأیید می‌کنند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Anthropic مجموعه‌ای از عامل‌ها به نام Claude Ship را برای گام‌های پایانی کار نرم‌افزار منتشر کرد. بخش Code Review اکنون برای همه در دسترس است و دو عامل دیگر در مرحلهٔ آزمایشی‌اند: PR Steward که آزمون‌های ناموفق، تداخل‌های ادغام و نظرهای بازبین‌ها را رسیدگی می‌کند، و Claude Approvals که تغییرات روزمره را بر اساس سیاستی تأیید می‌کند که تیم به زبان ساده در قالب یک فایل در مخزن خود می‌نویسد. Anthropic پیشنهاد می‌کند Approvals ابتدا در حالت «فقط مشاهده» به کار رود؛ این ابزارها برای پلن‌های Team و Enterprise روی GitHub است.</p>
+      <p><span class="label">چرا مهم است</span>سپردن تأیید کد به هوش مصنوعی، پاسخ‌گویی را از افراد به سیاست‌های مکتوب منتقل می‌کند؛ پرسشی اصلی برای حکمرانی سیستم‌های اطلاعاتی، حسابرسی و طراحی نظارت انسانی در سازمان‌ها.</p>
+      <p class="source">منبع: <a href="https://claude.com/resources/articles/introducing-claude-ship" target="_blank" rel="noopener">اطلاعیهٔ Anthropic</a>، و <a href="https://techcrunch.com/2026/11/23/anthropic-launches-claude-ship-letting-ai-agents-review-fix-and-approve-code-changes/" target="_blank" rel="noopener">TechCrunch</a> · ۲۳ نوامبر ۲۰۲۶</p>
+    </li>
     <li class="card field">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-book"/></svg></span><span class="num">۰۱</span><span class="pill field">کل حوزه · آموزش</span></div>
-      <h3>وزیر آموزش کرهٔ جنوبی به دلیل نگرانی از تقلب با هوش مصنوعی در کنکور دانشگاه‌ها استعفا داد</h3>
-      <p><span class="label">چه اتفاقی افتاد</span>Choi Kyo-jin، وزیر آموزش، روز یکشنبه ۲۲ نوامبر استعفا داد و رئیس‌جمهور Lee Jae Myung اندکی بعد آن را پذیرفت. فشار بر او از زمانی بالا گرفت که در ۱۶ نوامبر در مجلس گفت گرفتن همهٔ تقلب‌های انجام‌شده با کمک هوش مصنوعی دشوار است، و با به تعویق انداختن کنکور سراسری (Suneung) مخالفت کرد؛ آزمونی که حدود ۵۵۰ هزار دانش‌آموز در ۱۹ نوامبر با ممنوعیت تلفن همراه و بازرسی با دوربین در آن شرکت کردند. یک سیاستمدار مخالف نیز از او به اتهام کوتاهی در انجام وظیفه به پلیس شکایت کرده بود.</p>
-      <p><span class="label">چرا مهم است</span>کنار رفتن یک وزیر به خاطر هوش مصنوعی و سلامت آزمون‌ها نشان می‌دهد دانشگاه‌ها با چه فوریتی به روش‌های ارزشیابی‌ای نیاز دارند که حتی وقتی هر دانشجو دستیار هوش مصنوعی دارد هم کار کند.</p>
-      <p class="caveat">توجه: نتوانستیم خود مقالهٔ The Guardian را باز کنیم؛ این خلاصه توضیح کوتاه آن را با گزارش‌های کره‌ای ترکیب می‌کند. شکایت به پلیس یک ادعاست، نه حکم.</p>
-      <p class="source">منبع: <a href="https://www.theguardian.com/world/2026/nov/22/south-korea-education-minister-resigns-after-ai-cheating-scandal-engulfs-university-exams" target="_blank" rel="noopener">The Guardian</a> · ۲۲ نوامبر ۲۰۲۶، و <a href="https://www.koreaherald.com/article/10939647" target="_blank" rel="noopener">The Korea Herald (Yonhap)</a> · ۱۷ نوامبر ۲۰۲۶</p>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-building"/></svg></span><span class="num">۰۲</span><span class="pill field">کل حوزه · تصمیم شرکت‌های بزرگ</span></div>
+      <h3>Amazon تأیید کرد که فناوری بهینه‌سازی تراشهٔ Decart را می‌خرد و بنیان‌گذاران آن را استخدام می‌کند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Amazon از توافقی برای خرید فناوری Decart Optimization Stack و پیوستن سه هم‌بنیان‌گذار و پژوهشگران هوش مصنوعی Decart به این شرکت خبر داد، تا بارهای کاری هوش مصنوعی روی تراشه‌های Trainium خود Amazon بهتر اجرا شوند. Amazon قیمتی اعلام نکرد؛ Calcalist و Bloomberg رقم حدود ۷٫۵ میلیارد دلار را گزارش می‌کنند. این معامله هنوز به تأیید نهادهای نظارتی نیاز دارد.</p>
+      <p><span class="label">چرا مهم است</span>ارائه‌دهندگان بزرگ ابر، لایهٔ نرم‌افزاری‌ای را می‌خرند که تراشه‌های هوش مصنوعی خودشان را رقابتی می‌کند؛ این روند بر قیمت و گزینه‌های رایانش هوش مصنوعی که دانشگاه‌ها و شرکت‌ها می‌توانند بخرند اثر می‌گذارد.</p>
+      <p class="caveat">توجه: دیروز این خبر را فقط به‌عنوان یک گزارش آوردیم؛ اکنون Amazon توافق را تأیید کرده، اما قیمت تأیید نشده است. نتوانستیم بیانیهٔ خود Amazon را باز کنیم.</p>
+      <p class="source">منبع: <a href="https://ppc.land/amazon-agrees-to-buy-decarts-ai-chip-software-in-a-deal-reported-at-7-5bn/" target="_blank" rel="noopener">PPC Land</a> · ۲۳ نوامبر ۲۰۲۶</p>
     </li>
     <li class="card is">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">۰۲</span><span class="pill is">حریم خصوصی · حکمرانی داده</span></div>
-      <h3>دنبالهٔ نشت پرامپت‌ها: OpenRouter سه ارائه‌دهنده را کنار گذاشت و Together AI از نشت در سرویس خود خبر داد</h3>
-      <p><span class="label">چه اتفاقی افتاد</span>پس از پژوهش «تله‌ای» شرکت Dragos که دیروز گزارش کردیم، سرویس مسیریابی هوش مصنوعی OpenRouter سه ارائه‌دهندهٔ استنتاج و ۱۲۵ نقطهٔ دسترسی را از فهرست «عدم نگهداری داده» (zero data retention) خود حذف کرد و به مشتریان آسیب‌دیده اطلاع داد. جداگانه، Together AI اعلام کرد که فردی بیرونی نمونه‌های ذخیره‌شدهٔ برخی پرامپت‌های مشتریان را از سرویس استنتاج serverless آن دانلود کرده است؛ با استفاده از اعتبارنامه‌ای که یک عامل کدنویسی هوش مصنوعی لو داده بود.</p>
-      <p><span class="label">چرا مهم است</span>این ماجرا یک ادعای پژوهشی را به اقدام عملی پلتفرم‌ها تبدیل می‌کند: برچسب‌های «عدم نگهداری داده» اکنون بررسی و پس گرفته می‌شوند، و عامل‌های کدنویسی به منبع تازه‌ای برای لو رفتن اعتبارنامه‌ها تبدیل شده‌اند؛ دو درس برای هر کسی که دادهٔ سامانه‌های هوش مصنوعی را مدیریت می‌کند.</p>
-      <p class="caveat">توجه: این گزارش‌ها را از راه خلاصه‌های کوتاه خواندیم و نتوانستیم بیانیه‌های اصلی OpenRouter و Together AI را بررسی کنیم. نام سه ارائه‌دهنده تأیید نشده است.</p>
-      <p class="source">منبع: <a href="https://thehackernews.com/2026/11/openrouter-drops-3-providers-after.html" target="_blank" rel="noopener">The Hacker News</a> · ۲۲ نوامبر ۲۰۲۶، و <a href="https://www.unite.ai/together-ai-discloses-prompt-leak-after-coding-agent-exposed-credential/" target="_blank" rel="noopener">Unite.AI</a> · ۲۱ نوامبر ۲۰۲۶</p>
-    </li>
-    <li class="card field">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">۰۳</span><span class="pill field">کل حوزه · قانون‌گذاری</span></div>
-      <h3>فرمانداران آمریکا قواعد فدرال برای قدرتمندترین هوش مصنوعی می‌خواهند، اما بدون کنار زدن قوانین ایالتی</h3>
-      <p><span class="label">چه اتفاقی افتاد</span>گروهی از فرمانداران هر دو حزب از دولت فدرال خواستند برای قدرتمندترین سامانه‌های هوش مصنوعی قواعد ملی وضع کند. در عین حال، می‌خواهند ایالت‌ها همچنان بتوانند با قوانین خود از مصرف‌کنندگان، کارگران و کودکان حمایت کنند و یک ممنوعیت فدرال بر قوانین ایالتی هوش مصنوعی آن‌ها را بی‌اثر نکند.</p>
-      <p><span class="label">چرا مهم است</span>اینکه آمریکا به یک قانون فدرال واحد برسد یا به مجموعه‌ای از قوانین ایالتی، تعیین می‌کند سامانه‌های اطلاعاتی باید از چه قواعدی دربارهٔ شفافیت، استفاده از داده و پاسخ‌گویی پیروی کنند.</p>
-      <p class="caveat">توجه: مقالهٔ Bloomberg پولی است و تنها خلاصهٔ کوتاه آن را خواندیم، پس جزئیات پیشنهاد فرمانداران تأیید نشده است.</p>
-      <p class="source">منبع: <a href="https://www.bloomberg.com/news/articles/2026-11-22/governors-call-for-federal-ai-rules-without-sidelining-states" target="_blank" rel="noopener">Bloomberg</a> · ۲۲ نوامبر ۲۰۲۶</p>
-    </li>
-    <li class="card ai">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-book"/></svg></span><span class="num">۰۴</span><span class="pill ai">هوش مصنوعی · پژوهش</span></div>
-      <h3>عامل‌های کدنویسی در آزمون‌های جداگانه موفق‌اند، اما در یک محیط کاری شبیه‌سازی‌شده کمتر از یک‌دهم کارها را تمام می‌کنند</h3>
-      <p><span class="label">چه اتفاقی افتاد</span>یک بنچمارک تازه عامل‌های کدنویسی هوش مصنوعی را در یک شغل برنامه‌نویسی شبیه‌سازی‌شده قرار می‌دهد، با همکاران، تابلوهای تیکت و تحویل کار میان افراد. حتی بهترین مدل‌های کنونی کمتر از یک‌دهم تیکت‌ها را بستند، در حالی که در آزمون‌های معمول و جداگانهٔ کدنویسی بسیار خوب عمل می‌کنند.</p>
-      <p><span class="label">چرا مهم است</span>این نتیجه فاصلهٔ میان نمرهٔ بنچمارک‌ها و کار واقعی سازمانی را نشان می‌دهد، جایی که ارتباط، زمینه و هماهنگی اهمیت دارد؛ دقیقاً همان حوزه‌ای که پژوهش سیستم‌های اطلاعاتی بررسی می‌کند.</p>
-      <p class="caveat">توجه: نتوانستیم مقالهٔ اصلی را باز کنیم، پس نام بنچمارک و اعداد دقیق از گزارش The Decoder آمده است.</p>
-      <p class="source">منبع: <a href="https://the-decoder.com/ai-coding-agents-ace-isolated-tests-but-complete-fewer-than-one-in-ten-tasks-in-a-simulated-workplace/" target="_blank" rel="noopener">The Decoder</a> · ۲۲ نوامبر ۲۰۲۶</p>
-    </li>
-    <li class="card field">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">۰۵</span><span class="pill field">کل حوزه · تصمیم شرکت‌های بزرگ</span></div>
-      <h3>بانک‌های بزرگ آمریکا ورود عامل‌های هوش مصنوعی شخص ثالث به حساب مشتریان را مسدود می‌کنند</h3>
-      <p><span class="label">چه اتفاقی افتاد</span>بانک‌های بزرگ آمریکا جلوی ورود ربات‌های هوش مصنوعی بیرونی به بانکداری اینترنتی مشتریان را می‌گیرند. آن‌ها همچنین می‌گویند اگر مشتری به یک عامل هوش مصنوعی اجازه دهد به جای او کار کند، مسئولیت اشتباه‌های پرهزینهٔ آن عامل با خود مشتری است.</p>
-      <p><span class="label">چرا مهم است</span>وقتی عامل‌های هوش مصنوعی به نیابت از افراد کار می‌کنند، پرسش‌های هویت، مجوزدهی و مسئولیت به مرکز طراحی سامانه‌ها می‌آیند؛ بانک‌ها از نخستین نهادهایی هستند که مرزهای سخت می‌کشند.</p>
-      <p class="caveat">توجه: تنها خلاصهٔ کوتاهی از گزارش Wired را خواندیم و نام بانک‌ها تأیید نشده است. یک خلاصهٔ پیشین (۱۹ نوامبر) به تحقیقات مرتبطی در Arizona پرداخته بود.</p>
-      <p class="source">منبع: <a href="https://www.wired.com/story/banks-are-cracking-down-on-ai-agents/" target="_blank" rel="noopener">Wired</a> · ۲۲ نوامبر ۲۰۲۶</p>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">۰۳</span><span class="pill is">حریم خصوصی · حکمرانی داده</span></div>
+      <h3>Google و Apple به سنای کانادا هشدار دادند که لایحهٔ «دسترسی قانونی» فراداده و رمزنگاری را به خطر می‌اندازد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>در جلسهٔ یک کمیتهٔ سنا در ۲۳ نوامبر، Google Canada گفت این لایحه شرکت‌ها را وادار می‌کند فرادادهٔ کاربران را تا شش ماه نگه دارند (در پیش‌نویس قبلی یک سال بود) و این کار انباره‌هایی از داده می‌سازد که برای مهاجمان جذاب است؛ یک کارشناس امنیتی Google به نفوذ Salt Typhoon به سامانه‌های شنود مخابراتی اشاره کرد. Apple گفت این لایحه ممکن است شرکت‌ها را به کنار گذاشتن یا تضعیف رمزنگاری سرتاسری وادار کند. وزیر امنیت عمومی می‌گوید لایحه حمایت از حریم خصوصی را تضعیف نمی‌کند.</p>
+      <p><span class="label">چرا مهم است</span>نگهداری اجباری فراداده و درِ پشتی در رمزنگاری، نمونه‌های کلاسیک بده‌بستان میان امنیت و حریم خصوصی در حکمرانی داده‌اند؛ بحث کانادا یک مطالعهٔ موردی زنده برای تدریس است.</p>
+      <p class="caveat">توجه: موضع وزیر و هشدار شرکت‌ها با هم در تضاد است؛ ما خودمان متن لایحه را بررسی نکردیم.</p>
+      <p class="source">منبع: <a href="https://kelownadailycourier.ca/news/national_news/article_64647494-280e-588f-9cfe-ceef1c297028.html" target="_blank" rel="noopener">The Canadian Press (از طریق Kelowna Daily Courier)</a> · ۲۳ نوامبر ۲۰۲۶</p>
     </li>
     <li class="card is">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-book"/></svg></span><span class="num">۰۶</span><span class="pill is">بازیابی اطلاعات · پردازش زبان</span></div>
-      <h3>سازندگان spaCy نشان می‌دهند عامل‌های کدنویسی و مدل‌های باز می‌توانند دادهٔ آموزشی شناسایی موجودیت‌های نام‌دار را ارزان بسازند</h3>
-      <p><span class="label">چه اتفاقی افتاد</span>شرکت Explosion، سازندهٔ کتابخانهٔ spaCy، روشی را شرح داد که در آن یک عامل کدنویسی (مانند Claude Code) و چند مدل با وزن‌های باز با هم متن را برای شناسایی موجودیت‌های نام‌دار (NER) برچسب می‌زنند و توافق میان مدل‌ها معیار کنترل کیفیت است. این شرکت می‌گوید دادهٔ حاصل هم ارزان‌تر است و هم کیفیتی بالاتر از برچسب‌های یک مدل تجاری بزرگ دارد.</p>
-      <p><span class="label">چرا مهم است</span>استخراج موجودیت‌ها گامی اصلی در جست‌وجو، کتابخانه‌های دیجیتال و کار با فراداده است؛ دادهٔ آموزشی ارزان و قابل‌بررسی می‌تواند ساخت استخراج‌گرهای سفارشی را برای پروژه‌های کوچک و آموزش عملی کند.</p>
-      <p class="caveat">توجه: ادعاهای کیفیت از خود شرکت است و به‌طور مستقل آزموده نشده است.</p>
-      <p class="source">منبع: <a href="https://explosion.ai/blog/agent-consensus-ner" target="_blank" rel="noopener">وبلاگ Explosion</a> · ۲۲ نوامبر ۲۰۲۶</p>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">۰۴</span><span class="pill is">کتابخانه‌های دیجیتال · امنیت</span></div>
+      <h3>کتابخانهٔ عمومی Queens سه هفته پس از حملهٔ باج‌افزاری بیشتر خدمات دیجیتال خود را بازگرداند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>کتابخانهٔ عمومی Queens در نیویورک در ۲۳ نوامبر اعلام کرد که رایانه‌های عمومی، چاپ، پایگاه‌های داده، کتاب‌های الکترونیکی و صوتی، وب‌سایت و اپلیکیشن آن دوباره کار می‌کنند؛ پس از حمله‌ای باج‌افزاری که حدود ۴ نوامبر آغاز شد. امانت بین کتابخانه‌ای و فرم تماس آنلاین هنوز از کار افتاده‌اند و کتابخانه هنوز نمی‌داند داده‌های شخصی دزدیده شده یا نه. هر ۶۶ شعبه با روش‌های دستی باز ماندند.</p>
+      <p><span class="label">چرا مهم است</span>کتابخانه‌های عمومی دادهٔ اعضا را نگه می‌دارند و با تیم‌های کوچک فناوری اطلاعات سامانه‌های بسیاری از فروشندگان مختلف را اداره می‌کنند؛ این ماجرا نشان می‌دهد چرا برنامهٔ پشتیبان و روش‌های دستی جایگزین باید بخشی از هر راهبرد کتابخانهٔ دیجیتال باشد.</p>
+      <p class="caveat">توجه: یک خلاصهٔ پیشین (۲۲ نوامبر) به این حمله اشاره کرده بود؛ اطلاعات تازه، بازیابی خدمات و پرسش هنوز بی‌پاسخ دربارهٔ سرقت داده است.</p>
+      <p class="source">منبع: <a href="https://qns.com/2026/11/library-restores-services" target="_blank" rel="noopener">QNS</a> · ۲۳ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-chart"/></svg></span><span class="num">۰۵</span><span class="pill field">کل حوزه · بازار</span></div>
+      <h3>شرکت هوش مصنوعی خدمات مشتری Sierra در شش ماه ارزش خود را به ۳۰ میلیارد دلار دو برابر کرد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Sierra، شرکت هوش مصنوعی خدمات مشتری که Bret Taylor، مدیرعامل مشترک پیشین Salesforce، از بنیان‌گذاران آن است، با رهبری Greenoaks و Lightspeed مبلغ ۱٫۷۵ میلیارد دلار جذب کرد و ارزشش از ۱۵ میلیارد دلار در ماه مه به ۳۰ میلیارد دلار رسید. این شرکت می‌گوید نزدیک به نیمی از شرکت‌های Fortune 50 از آن استفاده می‌کنند و قیمت‌گذاری بر اساس هر مورد حل‌شده، به جای هر کاربر، نرخ درآمد سالانه‌اش را در پنج ماه به ۴۰۰ میلیون دلار دو برابر کرده است.</p>
+      <p><span class="label">چرا مهم است</span>قیمت‌گذاری «پرداخت بر اساس نتیجه» برای عامل‌های هوش مصنوعی شیوهٔ خرید و سنجش سیستم‌های اطلاعاتی را در سازمان‌ها تغییر می‌دهد، و خدمات مشتری نخستین جایی است که عامل‌ها جای کار انسانی را می‌گیرند.</p>
+      <p class="caveat">توجه: آمار مشتریان و درآمد ادعای خود Sierra است.</p>
+      <p class="source">منبع: <a href="https://techcrunch.com/2026/11/23/sierra-doubles-valuation-to-30b-within-six-months-as-demand-for-ai-in-cx-takes-off/" target="_blank" rel="noopener">TechCrunch</a> · ۲۳ نوامبر ۲۰۲۶، و <a href="https://sierra.ai/blog/our-customers-ambition-is-accelerating-our-growth" target="_blank" rel="noopener">وبلاگ Sierra</a></p>
     </li>
     <li class="card ai">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-spark"/></svg></span><span class="num">۰۷</span><span class="pill ai">هوش مصنوعی · مدل‌های تازه</span></div>
-      <h3>شرکت هندی Sarvam AI یک مدل باز ۱۰۵ میلیارد پارامتری برای عامل‌های کسب‌وکار منتشر کرد</h3>
-      <p><span class="label">چه اتفاقی افتاد</span>Sarvam AI مدل Sarvam-105B را با وزن‌های باز منتشر کرد که برای عامل‌های پشتیبانی مشتری و عامل‌های صوتی طراحی شده است. این مدل هم با وزن‌های کامل برای آموزش بیشتر عرضه شده و هم در نسخهٔ فشردهٔ ۴ بیتی که به گفتهٔ شرکت روی یک GPU ایستگاه کاری اجرا می‌شود.</p>
-      <p><span class="label">چرا مهم است</span>مدل‌های باز بزرگی که روی سخت‌افزار محلی اجرا می‌شوند به دانشگاه‌ها و سازمان‌ها اجازه می‌دهند داده‌های حساس را درون سازمان نگه دارند؛ موضوعی مهم برای حریم خصوصی و حاکمیت داده بیرون از آمریکا.</p>
-      <p class="caveat">توجه: ادعاهای عملکرد از سوی شرکت است و به‌طور مستقل بررسی نشده است.</p>
-      <p class="source">منبع: <a href="https://www.unite.ai/sarvam-ai-releases-open-weight-105b-checkpoint-for-enterprise-agents/" target="_blank" rel="noopener">Unite.AI</a> · ۲۲ نوامبر ۲۰۲۶</p>
-    </li>
-    <li class="card ai">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">۰۸</span><span class="pill ai">هوش مصنوعی · ابزارها</span></div>
-      <h3>Google قابلیت «بازیابی ابزار» را در Gemini API آزمایش می‌کند تا عامل‌ها ابزارها را فقط هنگام نیاز بارگذاری کنند</h3>
-      <p><span class="label">چه اتفاقی افتاد</span>Google قابلیتی آزمایشی به Gemini API افزوده که به یک عامل اجازه می‌دهد کتابخانهٔ بزرگی از ابزارها را در دسترس نگه دارد، اما توضیح هر ابزار را فقط وقتی لازم است، درون یک درخواست، بارگذاری کند. این کار از پر شدن زمینهٔ مدل با صدها تعریف ابزار جلوگیری می‌کند.</p>
-      <p><span class="label">چرا مهم است</span>انتخاب ابزار درست از یک کتابخانهٔ بزرگ خود یک مسئلهٔ بازیابی اطلاعات است، پس ایده‌های کلاسیک بازیابی اطلاعات به طراحی عامل‌های هوش مصنوعی راه پیدا می‌کنند.</p>
-      <p class="caveat">توجه: تنها یک گزارش دست دوم یافتیم و اطلاعیه‌ای از Google ندیدیم؛ این قابلیت در مرحلهٔ پیش‌نمایش است.</p>
-      <p class="source">منبع: <a href="https://www.marktechpost.com/2026/11/22/google-gemini-api-tool-retrieval/" target="_blank" rel="noopener">MarkTechPost</a> · ۲۲ نوامبر ۲۰۲۶</p>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-chip"/></svg></span><span class="num">۰۶</span><span class="pill ai">هوش مصنوعی · پژوهش</span></div>
+      <h3>یک استارتاپ می‌گوید عامل‌های هوش مصنوعی یک CPU کاملاً تازه به نام «Frostbite» طراحی کرده‌اند، اما فقط در شبیه‌سازی</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>شرکت Architect Labs می‌گوید عامل‌های هوش مصنوعی‌اش یک پردازندهٔ همه‌منظوره با مجموعه دستورالعمل تازه را از صفر طراحی کرده‌اند. در شبیه‌سازی پیش از ساخت با طراحی ۷ نانومتری، این شرکت ادعا می‌کند کارایی به ازای هر وات آن روی ۲۵ بار کاری حدود ۴٫۶ برابر یک CPU سادهٔ مشابه است. هیچ تراشه‌ای ساخته نشده و CPU مورد مقایسه نام برده نشده است.</p>
+      <p><span class="label">چرا مهم است</span>اگر عامل‌های هوش مصنوعی بتوانند هم سخت‌افزار و هم نرم‌افزار طراحی کنند، سرعت پیشرفت رایانش ممکن است بالا برود؛ فعلاً این ادعایی چشمگیر اما بررسی‌نشده است و نمونهٔ خوبی برای آموزش شیوهٔ خواندن نتایج اعلام‌شده از سوی فروشندگان.</p>
+      <p class="caveat">توجه: نتایج از خود شرکت است و به‌طور مستقل تأیید نشده؛ این خبر را از راه خلاصهٔ ۲۳ نوامبر The Neuron یافتیم.</p>
+      <p class="source">منبع: <a href="https://www.tomshardware.com/tech-industry/semiconductors/ai-agents-design-an-entirely-new-cpu-architecture-from-scratch-startup-claims-frostbite-posts-4-59x-the-performance-per-watt-of-an-in-order-core-in-pre-silicon-tests" target="_blank" rel="noopener">Tom's Hardware</a> · گزارش‌شده در ۲۳ نوامبر ۲۰۲۶</p>
     </li>
   </ol>
 </section>
@@ -371,38 +337,38 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
 <section>
   <h2>ارزش دنبال کردن</h2>
   <ul class="watch">
-    <li><strong>Amazon و استارتاپ ویدیویی Decart</strong>The Information و Financial Times گزارش می‌دهند که Amazon به خرید Decart با ارزش حدود ۷٫۵ میلیارد دلار نزدیک است؛ هنوز هیچ معامله‌ای اعلام نشده است. <a href="https://www.theinformation.com/briefings/amazon-nearing-7-5-billion-purchase-decart" target="_blank" rel="noopener">The Information</a> · ۲۲ نوامبر ۲۰۲۶</li>
-    <li><strong>عقب ماندن آزمون‌های ایمنی</strong>گروه ارزیابی METR هشدار می‌دهد که مدل‌های برتر سریع‌تر از آن پیشرفت می‌کنند که متخصصان بتوانند ایمنی آن‌ها را با اطمینان بیازمایند. <a href="https://the-decoder.com/ai-is-getting-better-faster-than-experts-can-reliably-test-whether-new-systems-are-safe-metr-warns/" target="_blank" rel="noopener">The Decoder</a> · ۲۲ نوامبر ۲۰۲۶</li>
-    <li><strong>عامل هوش مصنوعی Apple</strong>Digital Trends گزارش می‌دهد که عامل Apple برای کار با برنامه‌ها به جای کاربر ممکن است تا اواخر ۲۰۲۷ عقب بیفتد؛ Apple این را تأیید نکرده است. <a href="https://www.digitaltrends.com/computing/apple-ai-agent-delayed-2027/" target="_blank" rel="noopener">Digital Trends</a> · ۲۲ نوامبر ۲۰۲۶</li>
+    <li><strong>«ابرهوش در راه است»</strong>Alexandr Wang، مدیر ارشد هوش مصنوعی Meta، نوشت که ابرهوش در حال رسیدن است و خواستار کار سریع‌تر روی ایمنی و هم‌راستاسازی شد؛ واکنشی به ادعای اثبات فرضیهٔ ریمان با کمک Claude که هنوز در حال بررسی است. این یک دیدگاه است، نه یافته. <a href="https://www.aljazeera.com/economy/2026/11/23/ai-superintelligence-arriving-warns-top-meta-executive" target="_blank" rel="noopener">Al Jazeera</a> · ۲۳ نوامبر ۲۰۲۶</li>
+    <li><strong>قواعد به زبان ساده برای عامل‌های هوش مصنوعی</strong>Google در مستندات پلتفرم عامل Gemini Enterprise قابلیت آزمایشی «سیاست‌های حکمرانی معنایی» را شرح داده است: هر فراخوانی ابزار توسط عامل با قواعدی به زبان معمولی سنجیده می‌شود. آزمون‌های خود Google حملات موفق بسیار کمتری گزارش می‌کند؛ این هنوز به‌طور مستقل آزموده نشده است. <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/govern/policies/semantic-governance-overview" target="_blank" rel="noopener">مستندات Google Cloud</a></li>
+    <li><strong>راهنمای اتحادیهٔ اروپا دربارهٔ EU AI Act و GDPR در کنار هم</strong>راهنمای مشترک EDPB و کمیسیون اروپا دربارهٔ چگونگی کار این دو قانون در کنار هم، اکنون برای اوایل ۲۰۲۷ انتظار می‌رود، نه پیش از پایان امسال. <a href="https://egov.eletsonline.com/2026/11/eu-guidance-on-ai-act-and-gdpr-interplay-delayed-to-early-2027/" target="_blank" rel="noopener">Elets eGov</a> · ۲۰ نوامبر ۲۰۲۶</li>
   </ul>
 </section>
 
 <section>
   <h2>سه ویدیوی برتر</h2>
-  <p class="note">امروز YouTube تقریباً همهٔ بررسی‌های ما را مسدود یا محدود کرد و بیشتر ویدیوهایی که دربارهٔ برنامهٔ دسکتاپ Claude یافتیم قدیمی‌تر از سه ماه بودند. تنها دو ویدیوی تازه را که در خلاصه‌های پیشین نیامده بودند توانستیم تأیید کنیم، پس این بخش دو ویدیو دارد.</p>
+  <p class="note">امروز هم YouTube بیشتر بررسی‌های ما را مسدود کرد و بیشتر ویدیوهایی که دربارهٔ برنامهٔ دسکتاپ Claude یافتیم قدیمی‌تر از سه ماه بودند یا در خلاصه‌های پیشین آمده بودند. تنها دو ویدیوی تازهٔ مناسب یافتیم، پس این بخش دو ویدیو دارد.</p>
   <ol class="cards">
     <li class="card video">
-      <div class="card-top"><span class="num">V1</span><span class="pill video">آزمون عملی · Claude Sheets، Whiteboards، Data</span></div>
-      <h3 dir="ltr" style="text-align:right">Claude Office: Sheets, Whiteboards &amp; Data Tested</h3>
-      <div class="facts"><span><b>کانال:</b> Chase AI</span><span><b>تاریخ انتشار:</b> حدود ۱۳ نوامبر ۲۰۲۶ (تاریخ نوشتهٔ همراه ویدیو در وبلاگ؛ تاریخ خود ویدیو تأیید نشده)</span><span><b>بازدید:</b> تأیید نشده</span></div>
-      <p><span class="label">دربارهٔ چیست</span>Chase Hannegan ابزارهای تازهٔ Claude Sheets، Whiteboards و Data شرکت Anthropic را با داده‌های کانال YouTube خودش، در چت معمولی و در Claude Code، می‌آزماید. او محدودیت‌های عملی را هم گزارش می‌کند، مانند سقف ۱۰۰ هزار سلول در هر برگه.</p>
-      <p><span class="label">چرا ارزش دیدن دارد</span>آزمونی با دادهٔ واقعی که هم توانایی‌ها و هم مرزهای این ابزارهای تازه را نشان می‌دهد؛ پیش از به‌کارگیری آن‌ها در کلاس مفید است.</p>
-      <button type="button" class="yt" data-id="TRxcLhvhclA" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/TRxcLhvhclA/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
-      <p class="source"><a href="https://www.youtube.com/watch?v=TRxcLhvhclA" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+      <div class="card-top"><span class="num">V1</span><span class="pill video">آموزش · Claude Motion، Dashboards</span></div>
+      <h3 dir="ltr" style="text-align:right">Claude Just Changed How I Make AI Dashboards FOREVER! (Claude Motion)</h3>
+      <div class="facts"><span><b>کانال:</b> AI Impact</span><span><b>تاریخ انتشار:</b> ۱۲ اکتبر ۲۰۲۶</span><span><b>بازدید:</b> حدود ۴۷ هزار</span></div>
+      <p><span class="label">دربارهٔ چیست</span>ارائه‌دهنده گام‌به‌گام یک داشبورد مالی زنده را با artifactهای Claude، ابزار Claude Design و Claude Motion می‌سازد. این ویدیو نشان می‌دهد داده، نمودار و پویانمایی چگونه درون برنامهٔ Claude و بدون نوشتن دستی کد کنار هم قرار می‌گیرند.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>یک نمونهٔ عملی مصورسازی داده که با تدریس داشبورد در سیستم‌های اطلاعاتی جور است؛ توجه کنید که کانال محصولات خودش را هم تبلیغ می‌کند.</p>
+      <button type="button" class="yt" data-id="CwwJQYOYlXQ" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/CwwJQYOYlXQ/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=CwwJQYOYlXQ" target="_blank" rel="noopener">تماشا در YouTube</a></p>
     </li>
     <li class="card video">
-      <div class="card-top"><span class="num">V2</span><span class="pill video">بررسی · Claude Sheets</span></div>
-      <h3 dir="ltr" style="text-align:right">Claude Sheets Just Took On Excel. I REALLY Tested It</h3>
-      <div class="facts"><span><b>کانال:</b> تأیید نشده</span><span><b>تاریخ انتشار:</b> تأیید نشده (پس از عرضهٔ Claude Sheets در ۱۱ نوامبر ۲۰۲۶)</span><span><b>بازدید:</b> تأیید نشده</span></div>
-      <p><span class="label">دربارهٔ چیست</span>مقایسه‌ای عملی میان Claude Sheets تازه و Excel. ابزار صفحه‌گسترده را با کارهای واقعی می‌سنجد تا ببیند تا چه حد می‌تواند جای یک صفحه‌گستردهٔ کلاسیک را بگیرد.</p>
-      <p><span class="label">چرا ارزش دیدن دارد</span>صفحه‌گسترده ابزار اصلی آموزش در سیستم‌های اطلاعاتی است و این ویدیو نشان می‌دهد وقتی صفحه‌گسترده درون چت هوش مصنوعی قرار می‌گیرد چه چیزی تغییر می‌کند؛ نتوانستیم کانال را بررسی کنیم، پس با این آگاهی تماشا کنید.</p>
-      <button type="button" class="yt" data-id="rTCQKw3NjFI" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/rTCQKw3NjFI/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
-      <p class="source"><a href="https://www.youtube.com/watch?v=rTCQKw3NjFI" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+      <div class="card-top"><span class="num">V2</span><span class="pill video">راهنمای مبتدی · برنامهٔ Claude</span></div>
+      <h3 dir="ltr" style="text-align:right">Claude for Beginners: The Complete Walkthrough (November 2026)</h3>
+      <div class="facts"><span><b>کانال:</b> تأیید نشده</span><span><b>تاریخ انتشار:</b> تأیید نشده (عنوان می‌گوید نوامبر ۲۰۲۶)</span><span><b>بازدید:</b> تأیید نشده</span></div>
+      <p><span class="label">دربارهٔ چیست</span>بر پایهٔ عنوان و فهرست جست‌وجو، یک گشت کامل برای مبتدیان در برنامهٔ کنونی Claude است. نتوانستیم صفحهٔ ویدیو را باز کنیم تا محتوای آن را دقیق بررسی کنیم.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>شاید مروری به‌روز و مفید برای دانشجویانی باشد که تازه با Claude آشنا می‌شوند؛ نتوانستیم کانال را بررسی کنیم، پس با این آگاهی تماشا کنید.</p>
+      <button type="button" class="yt" data-id="CWYV4JX4ROY" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/CWYV4JX4ROY/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=CWYV4JX4ROY" target="_blank" rel="noopener">تماشا در YouTube</a></p>
     </li>
   </ol>
 </section>
 
-<footer>گردآوری‌شده با جست‌وجوی وب در ۲۳ نوامبر ۲۰۲۶. خلاصه‌ها با کلمات خود عامل نوشته شده‌اند؛ برای گزارش کامل روی پیوندها کلیک کنید.</footer>
+<footer>گردآوری‌شده با جست‌وجوی وب در ۲۴ نوامبر ۲۰۲۶. خلاصه‌ها با کلمات خود عامل نوشته شده‌اند؛ برای گزارش کامل روی پیوندها کلیک کنید.</footer>
 </div>
 
 
@@ -410,6 +376,7 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
   <h2>All digests · <span class="fa" lang="fa">همهٔ خلاصه‌ها</span></h2>
   <ul>
     <!-- ARCHIVE:START -->
+    <li><a href="digests/2026-11-24.html">2026-11-24</a></li>
     <li><a href="digests/2026-11-23.html">2026-11-23</a></li>
     <li><a href="digests/2026-11-22.html">2026-11-22</a></li>
     <li><a href="digests/2026-11-21.html">2026-11-21</a></li>
