@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>News digest 25 Nov 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one reading column, dated masthead with a language switch, stacked cards with a coloured category stripe. */
+:root {
+  --bg: #f3f5f8; --surface: #ffffff; --ink: #17212c; --muted: #586473; --line: #dbe1e8; --accent: #1d5bb8;
+  --cat-ai: #4a3fc4; --cat-ai-bg: #ecebfb; --cat-is: #0d7468; --cat-is-bg: #e2f3f0;
+  --cat-field: #9a5a00; --cat-field-bg: #fbf0dc; --cat-video: #b02a4c; --cat-video-bg: #fbe6ec;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-fa: "Vazirmatn", Tahoma, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f141a; --surface: #182029; --ink: #e7ecf2; --muted: #9ba8b6; --line: #2b3643; --accent: #86b4ff;
+    --cat-ai: #b3adff; --cat-ai-bg: #272452; --cat-is: #6fd3c5; --cat-is-bg: #123a36;
+    --cat-field: #f0b660; --cat-field-bg: #3d2c10; --cat-video: #ff9db5; --cat-video-bg: #47182a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f141a; --surface: #182029; --ink: #e7ecf2; --muted: #9ba8b6; --line: #2b3643; --accent: #86b4ff;
+  --cat-ai: #b3adff; --cat-ai-bg: #272452; --cat-is: #6fd3c5; --cat-is-bg: #123a36;
+  --cat-field: #f0b660; --cat-field-bg: #3d2c10; --cat-video: #ff9db5; --cat-video-bg: #47182a;
+  color-scheme: dark;
+}
+
+/* Daily colour: --h (hue) is set by the script from the digest date. */
+:root { --h: 215; --bg: hsl(var(--h) 30% 96%); --accent: hsl(var(--h) 65% 38%); --hero-a: hsl(var(--h) 70% 42%); --hero-b: hsl(calc(var(--h) + 45) 70% 55%); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: hsl(var(--h) 25% 8%); --accent: hsl(var(--h) 85% 74%); --hero-a: hsl(var(--h) 55% 28%); --hero-b: hsl(calc(var(--h) + 45) 55% 36%); } }
+:root[data-theme="dark"] { --bg: hsl(var(--h) 25% 8%); --accent: hsl(var(--h) 85% 74%); --hero-a: hsl(var(--h) 55% 28%); --hero-b: hsl(calc(var(--h) + 45) 55% 36%); }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+.page { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; display: flex; flex-direction: column; gap: 24px; }
+.switch { display: flex; gap: 8px; justify-content: flex-end; }
+.switch button {
+  font: 600 0.9rem var(--font-body); padding: 6px 16px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+}
+.switch button[lang="fa"] { font-family: var(--font-fa); }
+.switch button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.lang { display: flex; flex-direction: column; gap: 40px; }
+.lang[hidden] { display: none; }
+.lang[lang="fa"] { font-family: var(--font-fa); line-height: 1.9; }
+.lang[lang="fa"] h1, .lang[lang="fa"] h2, .lang[lang="fa"] h3 { font-family: var(--font-fa); font-weight: 700; letter-spacing: 0; }
+.lang[lang="fa"] .label { text-transform: none; letter-spacing: 0; }
+header.masthead { border-bottom: 3px solid var(--ink); padding-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
+.masthead h1 { font-family: var(--font-display); font-size: clamp(2rem, 6vw, 2.9rem); line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
+.masthead .hello { margin: 0; font-size: 1.15rem; color: var(--accent); font-weight: 600; }
+.masthead .date { color: var(--muted); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+.masthead .archive { font-size: 0.9rem; }
+.overview { font-size: 1.1rem; margin: 0; }
+.note { margin: 0; color: var(--muted); font-size: 0.9rem; border-inline-start: 3px solid var(--line); padding-inline-start: 12px; }
+section { display: flex; flex-direction: column; gap: 16px; }
+section > h2 { font-family: var(--font-display); font-size: 1.45rem; margin: 0; text-wrap: balance; }
+.cards { display: flex; flex-direction: column; gap: 16px; list-style: none; margin: 0; padding: 0; }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-inline-start: 5px solid var(--stripe, var(--line));
+  border-radius: 8px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;
+}
+.card.ai { --stripe: var(--cat-ai); } .card.is { --stripe: var(--cat-is); }
+.card.field { --stripe: var(--cat-field); } .card.video { --stripe: var(--cat-video); }
+.card-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.num { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 0.85rem; font-weight: 600; }
+.pill { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em; padding: 3px 10px; border-radius: 999px; }
+.lang[lang="fa"] .pill { letter-spacing: 0; font-size: 0.8rem; }
+.pill.ai { color: var(--cat-ai); background: var(--cat-ai-bg); } .pill.is { color: var(--cat-is); background: var(--cat-is-bg); }
+.pill.field { color: var(--cat-field); background: var(--cat-field-bg); } .pill.video { color: var(--cat-video); background: var(--cat-video-bg); }
+.card h3 { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.35; margin: 0; text-wrap: balance; }
+.card p { margin: 0; }
+.label { font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); display: block; margin-bottom: 2px; }
+.caveat { color: var(--muted); font-size: 0.92rem; }
+.source { border-top: 1px solid var(--line); padding-top: 10px; font-size: 0.88rem; color: var(--muted); }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.facts { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 0.9rem; color: var(--muted); }
+.facts b { color: var(--ink); font-weight: 600; }
+.watch { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.watch li { background: var(--surface); border: 1px dashed var(--line); border-radius: 8px; padding: 14px 18px; }
+.watch strong { display: block; margin-bottom: 2px; }
+.archive-list { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--line); padding-top: 24px; }
+.archive-list h2 { font-size: 1.1rem; margin: 0; }
+.archive-list h2 .fa, .archive-list .fa { font-family: var(--font-fa); }
+.archive-list ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.archive-list a { display: inline-block; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; text-decoration: none; font-variant-numeric: tabular-nums; }
+.yt { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; padding: 0; border-radius: 8px; overflow: hidden; background: #000; cursor: pointer; }
+.yt img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.9; transition: opacity .2s; }
+.yt:hover img, .yt:focus-visible img { opacity: 1; }
+.yt:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.yt .play { position: absolute; inset: 0; margin: auto; width: 68px; height: 48px; border-radius: 12px; background: rgba(204,0,0,.92); display: grid; place-items: center; }
+.yt .play::after { content: ""; border-style: solid; border-width: 10px 0 10px 18px; border-color: transparent transparent transparent #fff; margin-left: 4px; }
+.yt-frame { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 8px; display: block; }
+.hero { position: relative; height: 170px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, var(--hero-a), var(--hero-b)); }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.quote { margin: 0; padding: 16px 20px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); border-inline-start: 5px solid var(--accent); display: flex; flex-direction: column; gap: 6px; }
+.quote .q-label { font-size: 0.8rem; font-weight: 600; color: var(--accent); }
+.quote p { margin: 0; font-size: 1.15rem; line-height: 1.7; }
+.quote cite { font-style: normal; color: var(--muted); font-size: 0.88rem; }
+.icon-tile { width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; flex: none; }
+.icon-tile svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.card.ai .icon-tile { background: var(--cat-ai-bg); color: var(--cat-ai); }
+.card.is .icon-tile { background: var(--cat-is-bg); color: var(--cat-is); }
+.card.field .icon-tile { background: var(--cat-field-bg); color: var(--cat-field); }
+footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 16px; }
+@media (max-width: 480px) { .page { padding: 24px 16px 48px; } .card { padding: 16px; } }
+</style>
+</head>
+<body data-date="2026-11-25">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.2 4.5 4.5 0 0 0 7 18z"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M15.5 14.5h2.5"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M11 3l1.8 5.2L18 10l-5.2 1.8L11 17l-1.8-5.2L4 10l5.2-1.8z"/><path d="M19 15l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16M7 20h10M5 7h14M5 7l-3 6h6zM19 7l-3 6h6z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16M7 16v-5M12 16V7M17 16v-8"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/></symbol>
+</svg>
+
+<div class="page">
+
+<div class="switch" role="group" aria-label="Language">
+  <button type="button" id="btn-en" lang="en" aria-pressed="false">English</button>
+  <button type="button" id="btn-fa" lang="fa" aria-pressed="true">فارسی</button>
+</div>
+
+<div class="hero" aria-hidden="true"><canvas id="hero-art"></canvas></div>
+
+
+
+<!-- ===================== ENGLISH ===================== -->
+<div class="lang" lang="en" dir="ltr" id="content-en" hidden>
+
+<header class="masthead">
+  <p class="hello">Hello Kayvan,</p>
+  <h1>News digest</h1>
+  <div class="date">Wednesday 25 November 2026</div>
+  <a class="archive" href="../index.html#archive">All digests</a>
+</header>
+
+<section>
+  <figure class="quote">
+    <span class="q-label">Thought of the day</span>
+    <p>Seek knowledge and learn to be great, so that people find each of your days better than the one before.</p>
+    <cite>Nezami Ganjavi, Layla and Majnun (1188) · our own translation</cite>
+  </figure>
+</section>
+
+<section>
+  <h2>Overview</h2>
+  <p class="overview">Today is about AI agents and who controls them. A large new benchmark built from real agent use shows that even the best models fail more than a third of everyday personal tasks, while the UK privacy regulator warned that agents launched without real user controls will face action. Nvidia brought back Jensen Huang as CEO, two US states sued over Grok's sexualised deepfakes, and Meta and Google pushed their assistants deeper into private messages, files and wallets.</p>
+  <p class="note">We found no important new story in the last 24 hours on the EU AI Act, GDPR enforcement decisions or the job market. Two stories from Monday 23 November (Nvidia and the Grok lawsuits) are included because they were not in yesterday's digest. Several original pages could not be opened from our side today; where that happened, the card says so.</p>
+</section>
+
+<section>
+  <h2>News</h2>
+  <ol class="cards">
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-book"/></svg></span><span class="num">01</span><span class="pill ai">Artificial intelligence · research</span></div>
+      <h3>New benchmark from real agent use: even the best AI agents fail more than a third of everyday tasks</h3>
+      <p><span class="label">What happened</span>ShellBench, built by The OpenClaw Foundation with Hugging Face, Red Hat, UC Berkeley and others from more than 10 million anonymised real agent interactions, tests personal-assistant tasks such as family schedules, invoices and bank uploads. Top models from OpenAI, Anthropic and Meta failed over a third of tasks, and 15.7% of all attempts broke at least one safety rule, for example by leaking a bank upload token. The best scorer, OpenAI's GPT-6 Astra, passed all three identical repeat runs in fewer than half of the tasks.</p>
+      <p><span class="label">Why it matters</span>Reliability across repeated runs, not a single good answer, is what an information system needs; this benchmark gives teachers and researchers concrete numbers on how far agents still are from that.</p>
+      <p class="caveat">Note: the agents were not tested inside the companies' own consumer apps, so real products may score differently. Figures are as reported by TechCrunch; we did not open the ShellBench write-up itself.</p>
+      <p class="source">Source: <a href="https://techcrunch.com/2026/11/24/even-the-best-ai-agents-struggle-with-everyday-life/" target="_blank" rel="noopener">TechCrunch</a> · 24 Nov 2026, and <a href="https://openclaw.ai/blog/shellbench" target="_blank" rel="noopener">ShellBench write-up</a></p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">02</span><span class="pill is">Privacy · data governance</span></div>
+      <h3>UK privacy regulator: AI agents launched without real user controls will face action</h3>
+      <p><span class="label">What happened</span>In a blog post on 24 November, the UK Information Commissioner's Office (ICO) told companies that build or integrate consumer AI agents that it expects privacy by design and by default, and that it will act against products launched without meaningful user controls. Together with the competition authority (CMA) it published seven checks for consumers, and formal guidance is planned for spring 2027. There is no new rule or fine yet.</p>
+      <p><span class="label">Why it matters</span>This fits a wider trend: a week ago the Global Privacy Assembly adopted a non-binding resolution on agentic AI, and regulators now expect agent inventories, logs, named owners and an off switch, which are classic data-governance controls.</p>
+      <p class="caveat">Note: we could not open the ICO blog itself; the details come from PPC Land's report.</p>
+      <p class="source">Source: <a href="https://ppc.land/ai-agent-makers-that-skip-user-controls-face-action-uks-ico-warns/" target="_blank" rel="noopener">PPC Land</a> · 25 Nov 2026 (ICO blog dated 24 Nov), and on the resolution: <a href="https://securitybrief.asia/story/regulators-have-turned-gdpr-accountability-into-a-test-for-ai-agents" target="_blank" rel="noopener">SecurityBrief Asia</a> · 24 Nov 2026</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-building"/></svg></span><span class="num">03</span><span class="pill field">Field-wide · big company decisions</span></div>
+      <h3>Nvidia brings back Jensen Huang as CEO; Trump says a pardon is "an option"</h3>
+      <p><span class="label">What happened</span>Nvidia's board unanimously reinstated Jensen Huang as president, CEO and board member on 23 November, 11 days after he left, saying input from senior US government officials convinced it there is no national security risk. The board's own investigation into reports that Huang was the target of a foreign intelligence effort continues, and Nvidia created a national security and export-control committee and is hiring a chief compliance officer. On 24 November, President Trump told the New York Post a pardon for Huang is "an option" but probably not needed; Huang is due to testify before the Senate Banking Committee next week.</p>
+      <p><span class="label">Why it matters</span>The world's main AI-chip supplier is now tied to national-security politics, which affects export rules and the price and availability of AI computing for universities and companies.</p>
+      <p class="caveat">Note: no charge against Huang has been made public; the pardon remark comes from a newspaper interview reported by TechCrunch.</p>
+      <p class="source">Source: <a href="https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000090/nov23pressrelease.htm" target="_blank" rel="noopener">Nvidia press release (SEC filing)</a> · 23 Nov 2026, and <a href="https://techcrunch.com/2026/11/24/trump-reportedly-says-pardoning-jensen-huang-is-an-option-but-that-he-doesnt-think-it-will-be-necessary/" target="_blank" rel="noopener">TechCrunch</a> · 24 Nov 2026</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">04</span><span class="pill ai">Artificial intelligence · law</span></div>
+      <h3>Oregon and Virginia sue the owners of X and Grok over sexualised AI images, including of children</h3>
+      <p><span class="label">What happened</span>Oregon's attorney general sued the operators of X and its Grok assistant in state court, and Virginia filed a similar separate case in Richmond. They allege the companies failed to stop Grok from making sexualised images of real people, including child abuse material, and misled users about safety; the suits ask for penalties and court orders. Oregon cites a CCDH estimate of about 3 million sexualised images posted on X in under two weeks around New Year, about 23,000 of them appearing to show children.</p>
+      <p><span class="label">Why it matters</span>US states are using consumer-protection law to hold AI image tools to account, a test case for liability and content governance in generative systems.</p>
+      <p class="caveat">Note: these are allegations, not court findings. X says such material breaks its rules and that it screens prompts and outputs.</p>
+      <p class="source">Source: <a href="https://www.doj.state.or.us/media-home/news-media-releases/ag-rayfield-takes-legal-action-against-grok-for-failing-to-block-child-exploitation/" target="_blank" rel="noopener">Oregon Department of Justice</a> · 23 Nov 2026, and <a href="https://wcyb.com/news/local/virginia-attorney-general-joins-oregon-in-lawsuit-over-grok-ai-images" target="_blank" rel="noopener">WCYB</a></p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-spark"/></svg></span><span class="num">05</span><span class="pill ai">Artificial intelligence · tools</span></div>
+      <h3>Meta puts its Muse AI agent inside Instagram private messages</h3>
+      <p><span class="label">What happened</span>From 24 November, Instagram users in the US, Canada, Mexico, Japan and Singapore can call Meta's Muse agent inside direct-message threads, share posts with it and ask it to act, for example to plan a trip or find a deal. Muse can also sort saved posts into collections. Meta says nothing is sent or published without the user's approval and that users can ask Muse to forget things; Walmart separately said it will offer Black Friday deals through Muse.</p>
+      <p><span class="label">Why it matters</span>Putting an acting agent inside private conversations raises hard questions of consent and data use, only days after reports (20 Nov digest) that Muse showed private data to the wrong users.</p>
+      <p class="source">Source: <a href="https://techcrunch.com/2026/11/24/meta-brings-its-muse-ai-assistant-directly-into-instagram-dms/" target="_blank" rel="noopener">TechCrunch</a> · 24 Nov 2026, and <a href="https://techcrunch.com/2026/11/24/walmart-teams-up-with-meta-to-bring-black-friday-deals-to-ai-agent-muse/" target="_blank" rel="noopener">TechCrunch (Walmart)</a> · 24 Nov 2026</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-wallet"/></svg></span><span class="num">06</span><span class="pill is">Information retrieval · personal data</span></div>
+      <h3>Google's AI Mode in Search can now read your Google Wallet, with Drive to follow</h3>
+      <p><span class="label">What happened</span>Google started rolling out an opt-in link between Google Wallet and "Personal Intelligence" in AI Mode, so search answers can use a person's own account information; Drive is said to follow in the coming weeks, joining Gmail, Calendar and Photos. Wallet access is read-only, so AI Mode cannot move money, and a new icon shows which personal context was used for an answer.</p>
+      <p><span class="label">Why it matters</span>Web search is turning into search over a person's private data, which changes what "relevance" means and makes transparency about sources a core retrieval design question.</p>
+      <p class="caveat">Note: we could not open Google's post or the TechCrunch article ourselves; the details come from two daily AI roundups (The Neuron and Sam on AI) that agree.</p>
+      <p class="source">Source: <a href="https://techcrunch.com/2026/11/23/google-searchs-ai-mode-can-now-tap-into-drive-and-wallet-for-more-personalized-responses/" target="_blank" rel="noopener">TechCrunch</a> · 23 Nov 2026, and <a href="https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/" target="_blank" rel="noopener">Google blog</a></p>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2>Worth watching</h2>
+  <ul class="watch">
+    <li><strong>"Looped" models that think longer with less memory</strong>Thinking Machines (Inkling 2 Mini) and Z.ai (GLM-5.4, with a one-million-token context) both released models that reuse parts of the network to repeat calculations, aiming for better reasoning from smaller models. Not yet independently tested. <a href="https://z.ai/blog/glm-5.4" target="_blank" rel="noopener">Z.ai blog</a> · 23 Nov 2026</li>
+    <li><strong>AI-written temporary security patches</strong>OpenAI and Cisco open-sourced Shirudo, which applies signed, operator-approved "shields" to a running Linux system until a real patch is ready; in a controlled test a Codex-made shield blocked an exploit without a restart. We could not open the announcement to check it. <a href="https://openai.com/index/introducing-shirudo/" target="_blank" rel="noopener">OpenAI</a> · reported 24 Nov 2026</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Top 3 videos</h2>
+  <p class="note">YouTube blocked our checks again today, so we could not confirm view counts, exact publication dates or two of the titles. We picked three recent walkthroughs of the redesigned Claude desktop app (first written about between 25 October and 5 November 2026, so inside the three-month window) from established AI-education channels; none was in an earlier digest.</p>
+  <ol class="cards">
+    <li class="card video">
+      <div class="card-top"><span class="num">V1</span><span class="pill video">Overview · Claude desktop redesign</span></div>
+      <h3>Claude 2.0 Is Here. EVERYTHING in 15 Minutes</h3>
+      <div class="facts"><span><b>Channel:</b> Futurepedia</span><span><b>Published:</b> not confirmed (early November 2026)</span><span><b>Views:</b> not confirmed</span></div>
+      <p><span class="label">What it is about</span>A 15-minute tour of the redesigned Claude desktop app: the Home and Code layout, artifacts, the session list, parallel and cloud sessions, Remote Control and mods. "Claude 2.0" is the channel's nickname for the redesign, not a new model.</p>
+      <p><span class="label">Why it is worth watching</span>The quickest complete overview of what the desktop app can now do, from a large and well-known AI-tools channel.</p>
+      <button type="button" class="yt" data-id="tM0dwXhOv2o" aria-label="Play video"><img src="https://i.ytimg.com/vi/tM0dwXhOv2o/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=tM0dwXhOv2o" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V2</span><span class="pill video">Walkthrough · projects, side chats, mods</span></div>
+      <h3>Ben AI: seven Claude Code Desktop updates (title not confirmed)</h3>
+      <div class="facts"><span><b>Channel:</b> Ben AI</span><span><b>Published:</b> not confirmed (late October 2026)</span><span><b>Views:</b> not confirmed</span></div>
+      <p><span class="label">What it is about</span>In about 13 minutes, Ben AI walks through seven groups of features in the Claude desktop app: session details, projects, side chats, split view, artifacts, slash commands and mods. He shows how they fit together into a daily workflow with agents.</p>
+      <p><span class="label">Why it is worth watching</span>Practical, workflow-focused demos; note that a reviewer found a few of his claims differ from Anthropic's documentation.</p>
+      <button type="button" class="yt" data-id="J5EbL1UaqG8" aria-label="Play video"><img src="https://i.ytimg.com/vi/J5EbL1UaqG8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=J5EbL1UaqG8" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V3</span><span class="pill video">Ranking · desktop features worth using</span></div>
+      <h3>Duncan Rogoff: seven Claude desktop updates, ranked (title not confirmed)</h3>
+      <div class="facts"><span><b>Channel:</b> Duncan Rogoff</span><span><b>Published:</b> not confirmed (early November 2026)</span><span><b>Views:</b> not confirmed</span></div>
+      <p><span class="label">What it is about</span>Duncan Rogoff ranks seven recent Claude desktop updates from least to most useful. His top four are split view, side chats, nested sessions and a "master session" that checks work across sessions.</p>
+      <p><span class="label">Why it is worth watching</span>It helps separate the features that save time today from those that are still mostly novelty.</p>
+      <button type="button" class="yt" data-id="znWSzW0Zh_Y" aria-label="Play video"><img src="https://i.ytimg.com/vi/znWSzW0Zh_Y/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=znWSzW0Zh_Y" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </li>
+  </ol>
+</section>
+
+<footer>Collected by web search on 25 November 2026. Summaries are written in the agent's own words; follow the links for the full reports.</footer>
+</div>
+
+
+<!-- ===================== FARSI ===================== -->
+<div class="lang" lang="fa" dir="rtl" id="content-fa">
+
+<header class="masthead">
+  <p class="hello">سلام کیوان،</p>
+  <h1>خلاصهٔ اخبار</h1>
+  <div class="date">چهارشنبه ۲۵ نوامبر ۲۰۲۶</div>
+  <a class="archive" href="../index.html#archive">همهٔ خلاصه‌ها</a>
+</header>
+
+<section>
+  <figure class="quote">
+    <span class="q-label">اندیشهٔ روز</span>
+    <p>دانش طلب و بزرگی آموز<br>تا به نگرند روزت از روز</p>
+    <cite>نظامی گنجوی، لیلی و مجنون (۱۱۸۸ میلادی)</cite>
+  </figure>
+</section>
+
+<section>
+  <h2>نگاه کلی</h2>
+  <p class="overview">موضوع امروز عامل‌های هوش مصنوعی و این است که چه کسی آن‌ها را کنترل می‌کند. یک محک بزرگ تازه که از کاربرد واقعی عامل‌ها ساخته شده نشان می‌دهد حتی بهترین مدل‌ها در بیش از یک‌سوم کارهای روزمرهٔ شخصی شکست می‌خورند، و نهاد ناظر حریم خصوصی بریتانیا هشدار داد که با عامل‌هایی که بدون کنترل واقعی کاربر عرضه شوند برخورد خواهد کرد. Nvidia دوباره Jensen Huang را به مدیرعاملی برگرداند، دو ایالت آمریکا به خاطر تصاویر جعلی جنسی Grok شکایت کردند، و Meta و Google دستیارهای خود را بیشتر به پیام‌های خصوصی، فایل‌ها و کیف پول‌های کاربران بردند.</p>
+  <p class="note">در ۲۴ ساعت گذشته خبر مهم تازه‌ای دربارهٔ EU AI Act، تصمیم‌های اجرایی GDPR یا بازار کار پیدا نکردیم. دو خبر از دوشنبه ۲۳ نوامبر (Nvidia و شکایت‌ها علیه Grok) آمده‌اند، چون در خلاصهٔ دیروز نبودند. امروز چند صفحهٔ اصلی از سوی ما باز نشد؛ هر جا چنین بوده، در کارت گفته شده است.</p>
+</section>
+
+<section>
+  <h2>اخبار</h2>
+  <ol class="cards">
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-book"/></svg></span><span class="num">۰۱</span><span class="pill ai">هوش مصنوعی · پژوهش</span></div>
+      <h3>محک تازه بر پایهٔ کاربرد واقعی: حتی بهترین عامل‌های هوش مصنوعی در بیش از یک‌سوم کارهای روزمره شکست می‌خورند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>محک ShellBench را The OpenClaw Foundation همراه با Hugging Face، Red Hat، UC Berkeley و دیگران از بیش از ۱۰ میلیون تعامل واقعی و ناشناس‌شده با عامل‌ها ساخته است و کارهای دستیار شخصی مانند برنامهٔ خانواده، فاکتورها و بارگذاری‌های بانکی را می‌سنجد. مدل‌های برتر OpenAI، Anthropic و Meta در بیش از یک‌سوم کارها شکست خوردند و ۱۵٫۷ درصد همهٔ تلاش‌ها دست‌کم یک قاعدهٔ ایمنی را زیر پا گذاشتند، مثلاً با فاش کردن توکن بارگذاری بانکی. بهترین مدل، GPT-6 Astra از OpenAI، در کمتر از نیمی از کارها هر سه اجرای تکراری یکسان را با موفقیت گذراند.</p>
+      <p><span class="label">چرا مهم است</span>آنچه یک سیستم اطلاعاتی نیاز دارد پایداری در اجراهای تکراری است، نه یک پاسخ خوب؛ این محک به مدرسان و پژوهشگران عددهای مشخصی می‌دهد که عامل‌ها هنوز چقدر با آن فاصله دارند.</p>
+      <p class="caveat">توجه: عامل‌ها درون اپلیکیشن‌های مصرفی خود شرکت‌ها آزموده نشدند، پس محصولات واقعی ممکن است نتیجهٔ دیگری بگیرند. اعداد از گزارش TechCrunch است؛ ما خود گزارش ShellBench را باز نکردیم.</p>
+      <p class="source">منبع: <a href="https://techcrunch.com/2026/11/24/even-the-best-ai-agents-struggle-with-everyday-life/" target="_blank" rel="noopener">TechCrunch</a> · ۲۴ نوامبر ۲۰۲۶، و <a href="https://openclaw.ai/blog/shellbench" target="_blank" rel="noopener">گزارش ShellBench</a></p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">۰۲</span><span class="pill is">حریم خصوصی · حکمرانی داده</span></div>
+      <h3>ناظر حریم خصوصی بریتانیا: با عامل‌های هوش مصنوعی که بدون کنترل واقعی کاربر عرضه شوند برخورد می‌شود</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>دفتر کمیسیونر اطلاعات بریتانیا (ICO) در یادداشتی در ۲۴ نوامبر به شرکت‌هایی که عامل‌های هوش مصنوعی مصرفی می‌سازند یا به کار می‌گیرند گفت که از آن‌ها «حریم خصوصی در طراحی و به‌طور پیش‌فرض» انتظار دارد و با محصولاتی که بدون کنترل معنادار کاربر عرضه شوند برخورد خواهد کرد. این نهاد همراه با مرجع رقابت (CMA) هفت نکتهٔ بررسی برای مصرف‌کنندگان منتشر کرد و راهنمای رسمی برای بهار ۲۰۲۷ برنامه‌ریزی شده است. هنوز قاعده یا جریمهٔ تازه‌ای در کار نیست.</p>
+      <p><span class="label">چرا مهم است</span>این بخشی از یک روند گسترده‌تر است: یک هفته پیش Global Privacy Assembly قطعنامه‌ای غیرالزام‌آور دربارهٔ هوش مصنوعی عاملی تصویب کرد و ناظران اکنون فهرست عامل‌ها، ثبت رویدادها، مالک مشخص و امکان خاموش کردن را انتظار دارند؛ همان کنترل‌های کلاسیک حکمرانی داده.</p>
+      <p class="caveat">توجه: نتوانستیم خود یادداشت ICO را باز کنیم؛ جزئیات از گزارش PPC Land است.</p>
+      <p class="source">منبع: <a href="https://ppc.land/ai-agent-makers-that-skip-user-controls-face-action-uks-ico-warns/" target="_blank" rel="noopener">PPC Land</a> · ۲۵ نوامبر ۲۰۲۶ (یادداشت ICO به تاریخ ۲۴ نوامبر)، و دربارهٔ قطعنامه: <a href="https://securitybrief.asia/story/regulators-have-turned-gdpr-accountability-into-a-test-for-ai-agents" target="_blank" rel="noopener">SecurityBrief Asia</a> · ۲۴ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-building"/></svg></span><span class="num">۰۳</span><span class="pill field">کل حوزه · تصمیم شرکت‌های بزرگ</span></div>
+      <h3>Nvidia دوباره Jensen Huang را مدیرعامل کرد؛ Trump می‌گوید عفو «یک گزینه» است</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>هیئت‌مدیرهٔ Nvidia در ۲۳ نوامبر، ۱۱ روز پس از کناره‌گیری Jensen Huang، به اتفاق آرا او را به سمت‌های رئیس، مدیرعامل و عضو هیئت‌مدیره بازگرداند و گفت نظر مقام‌های ارشد دولت آمریکا آن را قانع کرده که خطری برای امنیت ملی وجود ندارد. تحقیقات خود هیئت‌مدیره دربارهٔ گزارش‌هایی که Huang هدف یک تلاش اطلاعاتی خارجی بوده ادامه دارد، و Nvidia یک کمیتهٔ امنیت ملی و کنترل صادرات تشکیل داده و در پی استخدام مدیر ارشد انطباق است. در ۲۴ نوامبر، Trump به New York Post گفت عفو Huang «یک گزینه» است اما احتمالاً لازم نمی‌شود؛ Huang قرار است هفتهٔ آینده در کمیتهٔ بانکداری سنا شهادت دهد.</p>
+      <p><span class="label">چرا مهم است</span>تأمین‌کنندهٔ اصلی تراشه‌های هوش مصنوعی جهان اکنون با سیاست امنیت ملی گره خورده است؛ این بر قواعد صادرات و قیمت و دسترسی رایانش هوش مصنوعی برای دانشگاه‌ها و شرکت‌ها اثر می‌گذارد.</p>
+      <p class="caveat">توجه: هیچ اتهامی علیه Huang علنی نشده است؛ سخن دربارهٔ عفو از یک مصاحبهٔ روزنامه‌ای است که TechCrunch گزارش کرده.</p>
+      <p class="source">منبع: <a href="https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000090/nov23pressrelease.htm" target="_blank" rel="noopener">اطلاعیهٔ Nvidia (پروندهٔ SEC)</a> · ۲۳ نوامبر ۲۰۲۶، و <a href="https://techcrunch.com/2026/11/24/trump-reportedly-says-pardoning-jensen-huang-is-an-option-but-that-he-doesnt-think-it-will-be-necessary/" target="_blank" rel="noopener">TechCrunch</a> · ۲۴ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">۰۴</span><span class="pill ai">هوش مصنوعی · قانون</span></div>
+      <h3>ایالت‌های Oregon و Virginia از صاحبان X و Grok به خاطر تصاویر جنسی ساخته‌شده با هوش مصنوعی، از جمله از کودکان، شکایت کردند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>دادستان کل Oregon در دادگاه ایالتی از گردانندگان X و دستیار Grok شکایت کرد و Virginia نیز پرونده‌ای مشابه و جداگانه در Richmond ثبت کرد. آن‌ها مدعی‌اند این شرکت‌ها جلوی ساختن تصاویر جنسی از افراد واقعی، از جمله محتوای سوءاستفاده از کودکان، را با Grok نگرفتند و دربارهٔ ایمنی کاربران را گمراه کردند؛ شکایت‌ها خواستار جریمه و دستور دادگاه‌اند. Oregon به برآورد CCDH استناد می‌کند که حدود ۳ میلیون تصویر جنسی در کمتر از دو هفته در حوالی سال نو در X منتشر شد و حدود ۲۳ هزار مورد از آن‌ها ظاهراً کودکان را نشان می‌داد.</p>
+      <p><span class="label">چرا مهم است</span>ایالت‌های آمریکا از قانون حمایت از مصرف‌کننده برای پاسخ‌گو کردن ابزارهای تصویرساز هوش مصنوعی استفاده می‌کنند؛ پرونده‌ای آزمایشی برای مسئولیت و حکمرانی محتوا در سیستم‌های مولد.</p>
+      <p class="caveat">توجه: این‌ها ادعا هستند، نه حکم دادگاه. X می‌گوید چنین محتوایی خلاف قواعد آن است و درخواست‌ها و خروجی‌ها را غربال می‌کند.</p>
+      <p class="source">منبع: <a href="https://www.doj.state.or.us/media-home/news-media-releases/ag-rayfield-takes-legal-action-against-grok-for-failing-to-block-child-exploitation/" target="_blank" rel="noopener">وزارت دادگستری Oregon</a> · ۲۳ نوامبر ۲۰۲۶، و <a href="https://wcyb.com/news/local/virginia-attorney-general-joins-oregon-in-lawsuit-over-grok-ai-images" target="_blank" rel="noopener">WCYB</a></p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-spark"/></svg></span><span class="num">۰۵</span><span class="pill ai">هوش مصنوعی · ابزارها</span></div>
+      <h3>Meta عامل هوش مصنوعی Muse را به پیام‌های خصوصی Instagram آورد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>از ۲۴ نوامبر، کاربران Instagram در آمریکا، کانادا، مکزیک، ژاپن و سنگاپور می‌توانند عامل Muse از Meta را درون گفت‌وگوهای پیام مستقیم فرا بخوانند، پست‌ها را با آن به اشتراک بگذارند و از آن بخواهند کاری انجام دهد، مثلاً سفری را برنامه‌ریزی کند یا تخفیفی پیدا کند. Muse همچنین می‌تواند پست‌های ذخیره‌شده را در مجموعه‌ها مرتب کند. Meta می‌گوید هیچ چیزی بدون تأیید کاربر فرستاده یا منتشر نمی‌شود و کاربر می‌تواند از Muse بخواهد چیزی را فراموش کند؛ Walmart هم جداگانه اعلام کرد تخفیف‌های Black Friday را از طریق Muse عرضه می‌کند.</p>
+      <p><span class="label">چرا مهم است</span>آوردن عاملی که کار انجام می‌دهد به گفت‌وگوهای خصوصی پرسش‌های دشواری دربارهٔ رضایت و کاربرد داده پیش می‌کشد، آن هم چند روز پس از گزارش‌هایی (خلاصهٔ ۲۰ نوامبر) که Muse دادهٔ خصوصی را به کاربران اشتباه نشان داده بود.</p>
+      <p class="source">منبع: <a href="https://techcrunch.com/2026/11/24/meta-brings-its-muse-ai-assistant-directly-into-instagram-dms/" target="_blank" rel="noopener">TechCrunch</a> · ۲۴ نوامبر ۲۰۲۶، و <a href="https://techcrunch.com/2026/11/24/walmart-teams-up-with-meta-to-bring-black-friday-deals-to-ai-agent-muse/" target="_blank" rel="noopener">TechCrunch (Walmart)</a> · ۲۴ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-wallet"/></svg></span><span class="num">۰۶</span><span class="pill is">بازیابی اطلاعات · دادهٔ شخصی</span></div>
+      <h3>AI Mode در جست‌وجوی Google اکنون می‌تواند Google Wallet شما را بخواند و Drive هم در راه است</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Google عرضهٔ اتصالی اختیاری میان Google Wallet و «Personal Intelligence» در AI Mode را آغاز کرد تا پاسخ‌های جست‌وجو بتوانند از اطلاعات حساب خود کاربر استفاده کنند؛ گفته می‌شود Drive هم در هفته‌های آینده به Gmail، Calendar و Photos می‌پیوندد. دسترسی به Wallet فقط خواندنی است، پس AI Mode نمی‌تواند پول جابه‌جا کند، و یک نماد تازه نشان می‌دهد کدام زمینهٔ شخصی برای پاسخ به کار رفته است.</p>
+      <p><span class="label">چرا مهم است</span>جست‌وجوی وب در حال تبدیل شدن به جست‌وجو در دادهٔ خصوصی هر فرد است؛ این معنای «ربط» را تغییر می‌دهد و شفافیت دربارهٔ منابع را به پرسشی اصلی در طراحی بازیابی بدل می‌کند.</p>
+      <p class="caveat">توجه: نتوانستیم یادداشت Google یا مقالهٔ TechCrunch را خودمان باز کنیم؛ جزئیات از دو خلاصهٔ روزانهٔ هوش مصنوعی (The Neuron و Sam on AI) است که با هم هم‌خوانی دارند.</p>
+      <p class="source">منبع: <a href="https://techcrunch.com/2026/11/23/google-searchs-ai-mode-can-now-tap-into-drive-and-wallet-for-more-personalized-responses/" target="_blank" rel="noopener">TechCrunch</a> · ۲۳ نوامبر ۲۰۲۶، و <a href="https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/" target="_blank" rel="noopener">وبلاگ Google</a></p>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2>ارزش دنبال کردن</h2>
+  <ul class="watch">
+    <li><strong>مدل‌های «حلقه‌ای» که با حافظهٔ کمتر بیشتر فکر می‌کنند</strong>Thinking Machines (مدل Inkling 2 Mini) و Z.ai (مدل GLM-5.4 با پنجرهٔ زمینهٔ یک میلیون توکنی) هر دو مدل‌هایی منتشر کردند که بخش‌هایی از شبکه را برای تکرار محاسبات دوباره به کار می‌برند تا مدل‌های کوچک‌تر بهتر استدلال کنند. هنوز به‌طور مستقل آزموده نشده‌اند. <a href="https://z.ai/blog/glm-5.4" target="_blank" rel="noopener">وبلاگ Z.ai</a> · ۲۳ نوامبر ۲۰۲۶</li>
+    <li><strong>وصله‌های امنیتی موقت نوشته‌شده با هوش مصنوعی</strong>OpenAI و Cisco ابزار Shirudo را متن‌باز کردند که «سپر»هایی امضاشده و تأییدشده توسط اپراتور را روی یک سیستم Linux در حال کار اعمال می‌کند تا وصلهٔ واقعی آماده شود؛ در یک آزمون کنترل‌شده، سپری ساخته‌شده با Codex بدون راه‌اندازی دوباره جلوی یک حمله را گرفت. نتوانستیم اطلاعیه را برای بررسی باز کنیم. <a href="https://openai.com/index/introducing-shirudo/" target="_blank" rel="noopener">OpenAI</a> · گزارش‌شده در ۲۴ نوامبر ۲۰۲۶</li>
+  </ul>
+</section>
+
+<section>
+  <h2>سه ویدیوی برتر</h2>
+  <p class="note">امروز هم YouTube بررسی‌های ما را مسدود کرد، پس نتوانستیم تعداد بازدید، تاریخ دقیق انتشار و عنوان دو ویدیو را تأیید کنیم. سه راهنمای تازه دربارهٔ برنامهٔ دسکتاپ بازطراحی‌شدهٔ Claude را از کانال‌های شناخته‌شدهٔ آموزش هوش مصنوعی برگزیدیم (نخستین نوشته‌ها دربارهٔ آن‌ها میان ۲۵ اکتبر و ۵ نوامبر ۲۰۲۶ است، پس در بازهٔ سه‌ماهه‌اند)؛ هیچ‌کدام در خلاصه‌های پیشین نبوده‌اند.</p>
+  <ol class="cards">
+    <li class="card video">
+      <div class="card-top"><span class="num">V1</span><span class="pill video">مرور کلی · بازطراحی دسکتاپ Claude</span></div>
+      <h3 dir="ltr" style="text-align:right">Claude 2.0 Is Here. EVERYTHING in 15 Minutes</h3>
+      <div class="facts"><span><b>کانال:</b> Futurepedia</span><span><b>تاریخ انتشار:</b> تأیید نشده (اوایل نوامبر ۲۰۲۶)</span><span><b>بازدید:</b> تأیید نشده</span></div>
+      <p><span class="label">دربارهٔ چیست</span>گشتی ۱۵ دقیقه‌ای در برنامهٔ دسکتاپ بازطراحی‌شدهٔ Claude: چیدمان Home و Code، artifactها، فهرست جلسه‌ها، جلسه‌های موازی و ابری، Remote Control و modها. «Claude 2.0» نامی است که کانال به این بازطراحی داده، نه یک مدل تازه.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>سریع‌ترین مرور کامل از توانایی‌های امروز برنامهٔ دسکتاپ، از یک کانال بزرگ و شناخته‌شدهٔ ابزارهای هوش مصنوعی.</p>
+      <button type="button" class="yt" data-id="tM0dwXhOv2o" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/tM0dwXhOv2o/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=tM0dwXhOv2o" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V2</span><span class="pill video">راهنمای گام‌به‌گام · پروژه‌ها، گفت‌وگوهای جانبی، modها</span></div>
+      <h3>Ben AI: هفت به‌روزرسانی Claude Code Desktop (عنوان تأیید نشده)</h3>
+      <div class="facts"><span><b>کانال:</b> Ben AI</span><span><b>تاریخ انتشار:</b> تأیید نشده (اواخر اکتبر ۲۰۲۶)</span><span><b>بازدید:</b> تأیید نشده</span></div>
+      <p><span class="label">دربارهٔ چیست</span>Ben AI در حدود ۱۳ دقیقه هفت گروه از قابلیت‌های برنامهٔ دسکتاپ Claude را نشان می‌دهد: جزئیات جلسه، پروژه‌ها، گفت‌وگوهای جانبی، نمای دوتایی، artifactها، فرمان‌های اسلش و modها. او نشان می‌دهد این‌ها چگونه در یک روند کاری روزانه با عامل‌ها کنار هم قرار می‌گیرند.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>نمایش‌هایی عملی و متمرکز بر روند کار؛ توجه کنید که یک بازبین دریافته چند ادعای او با مستندات Anthropic فرق دارد.</p>
+      <button type="button" class="yt" data-id="J5EbL1UaqG8" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/J5EbL1UaqG8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=J5EbL1UaqG8" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V3</span><span class="pill video">رتبه‌بندی · قابلیت‌های ارزشمند دسکتاپ</span></div>
+      <h3>Duncan Rogoff: رتبه‌بندی هفت به‌روزرسانی دسکتاپ Claude (عنوان تأیید نشده)</h3>
+      <div class="facts"><span><b>کانال:</b> Duncan Rogoff</span><span><b>تاریخ انتشار:</b> تأیید نشده (اوایل نوامبر ۲۰۲۶)</span><span><b>بازدید:</b> تأیید نشده</span></div>
+      <p><span class="label">دربارهٔ چیست</span>Duncan Rogoff هفت به‌روزرسانی اخیر دسکتاپ Claude را از کم‌فایده‌ترین تا مفیدترین رتبه‌بندی می‌کند. چهار گزینهٔ برتر او نمای دوتایی، گفت‌وگوهای جانبی، جلسه‌های تودرتو و یک «جلسهٔ اصلی» است که کار را در میان جلسه‌ها بررسی می‌کند.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>کمک می‌کند قابلیت‌هایی را که همین امروز وقت صرفه‌جویی می‌کنند از آن‌هایی که هنوز بیشتر جنبهٔ نوآوری دارند جدا کنید.</p>
+      <button type="button" class="yt" data-id="znWSzW0Zh_Y" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/znWSzW0Zh_Y/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=znWSzW0Zh_Y" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+    </li>
+  </ol>
+</section>
+
+<footer>گردآوری‌شده با جست‌وجوی وب در ۲۵ نوامبر ۲۰۲۶. خلاصه‌ها با کلمات خود عامل نوشته شده‌اند؛ برای گزارش کامل روی پیوندها کلیک کنید.</footer>
+</div>
+
+
+</div>
+<script>
+(function () {
+  var en = document.getElementById("content-en");
+  var fa = document.getElementById("content-fa");
+  var bEn = document.getElementById("btn-en");
+  var bFa = document.getElementById("btn-fa");
+  function show(lang) {
+    var isFa = lang === "fa";
+    en.hidden = isFa;
+    fa.hidden = !isFa;
+    bEn.setAttribute("aria-pressed", String(!isFa));
+    bFa.setAttribute("aria-pressed", String(isFa));
+    document.documentElement.lang = isFa ? "fa" : "en";
+    try { localStorage.setItem("digest-lang", lang); } catch (e) {}
+  }
+  bEn.addEventListener("click", function () { show("en"); });
+  bFa.addEventListener("click", function () { show("fa"); });
+  var saved = null;
+  try { saved = localStorage.getItem("digest-lang"); } catch (e) {}
+  show(saved === "en" ? "en" : "fa");
+})();
+
+(function () {
+  document.querySelectorAll("button.yt").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var f = document.createElement("iframe");
+      f.className = "yt-frame";
+      f.src = "https://www.youtube-nocookie.com/embed/" + b.dataset.id + "?autoplay=1&rel=0";
+      f.title = b.getAttribute("aria-label");
+      f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      f.allowFullscreen = true;
+      b.replaceWith(f);
+    });
+  });
+})();
+
+(function () {
+  var hues = [215, 160, 280, 25, 340, 195, 95];
+  var d = document.body.getAttribute("data-date") || "";
+  var t = Date.parse(d + "T00:00:00Z");
+  var day = isNaN(t) ? 0 : Math.floor(t / 86400000);
+  document.documentElement.style.setProperty("--h", hues[day % hues.length]);
+  var seed = day * 2654435761 >>> 0;
+  function rnd() { seed = (seed + 0x6D2B79F5) >>> 0; var x = seed; x = Math.imul(x ^ (x >>> 15), x | 1); x ^= x + Math.imul(x ^ (x >>> 7), x | 61); return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }
+  var c = document.getElementById("hero-art");
+  if (!c || !c.getContext) return;
+  function draw() {
+    var s0 = day * 2654435761 >>> 0; seed = s0;
+    var r = window.devicePixelRatio || 1, w = c.clientWidth, h = c.clientHeight;
+    c.width = w * r; c.height = h * r;
+    var g = c.getContext("2d"); g.scale(r, r); g.clearRect(0, 0, w, h);
+    for (var i = 0; i < 16; i++) {
+      g.beginPath(); g.arc(rnd() * w, rnd() * h, 10 + rnd() * 70, 0, Math.PI * 2);
+      g.fillStyle = "rgba(255,255,255," + (0.04 + rnd() * 0.12) + ")"; g.fill();
+    }
+    for (var k = 0; k < 7; k++) {
+      var amp = 8 + rnd() * 28, freq = 0.004 + rnd() * 0.012, ph = rnd() * 6.3, y0 = h * (0.15 + rnd() * 0.7);
+      g.beginPath();
+      for (var x = 0; x <= w; x += 4) { var y = y0 + Math.sin(x * freq + ph) * amp + Math.sin(x * freq * 2.3 + ph) * amp * 0.3; if (x === 0) g.moveTo(x, y); else g.lineTo(x, y); }
+      g.strokeStyle = "rgba(255,255,255," + (0.18 + rnd() * 0.3) + ")"; g.lineWidth = 1 + rnd() * 2; g.stroke();
+    }
+  }
+  draw();
+  var to; window.addEventListener("resize", function () { clearTimeout(to); to = setTimeout(draw, 150); });
+})();
+</script>
+</body>
+</html>
