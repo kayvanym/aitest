@@ -36,10 +36,17 @@ over articles that only repeat it.
 
 # YouTube videos
 After the news, add a section "Top 3 videos".
-- Search for YouTube videos about Claude Desktop: what people can do with it,
-  different use cases, and AI agents built with it.
+- Search for YouTube videos about these three subjects:
+  1. Claude Desktop: what people can do with it and different use cases.
+  2. Editing video with Claude: using Claude to plan, cut, edit or
+     automate video work.
+  3. Creating AI agents with Claude: how to build, set up and use agents.
+- Pick one video per subject, so the 3 videos cover all three subjects.
+  If you find nothing good for one subject, take a second video from
+  another subject and say so in the section.
+- Show the subject as the small label on each video card.
 - Only include videos published in the last 3 months.
-- Pick the 3 that are both popular (high view count) and important
+- Pick videos that are both popular (high view count) and important
   (real content from a trustworthy channel: researchers, universities,
   conference talks, known experts, official company channels).
 - Skip clickbait, pure reaction videos, and advertisements.
@@ -58,13 +65,18 @@ instead of guessing.
 # Content of the digest
 At the very top, greet me by name: «سلام کیوان،» in the Farsi
 version and "Hello Kayvan," in the English version.
-Then a "Thought of the day" (اندیشهٔ روز): one short inspiring line about
-knowledge, learning, curiosity or work. Use only old, public-domain sources
-(for example Ferdowsi, Saadi, Hafez, Rumi, Khayyam, or thinkers who died
-before 1929), or write your own line. Never use a modern quote.
-Show the original (Farsi original for Persian poets) in the Farsi version and
-your own English translation in the English version, with the author's name.
-Use a different line every day; do not repeat one from an earlier digest.
+Then "Poems of the day" (شعرهای روز): three short poems or verses about
+knowledge, learning, curiosity, life or work, each from a different poet.
+Use only old, public-domain sources (for example Ferdowsi, Saadi, Hafez,
+Rumi, Khayyam, Attar, Nezami, or thinkers who died before 1929).
+Never use a modern poem or quote.
+- Only use verses you are sure are real and correctly attributed to that poet.
+  If you are not sure, choose another verse.
+- Show the original (Farsi original for Persian poets) in the Farsi version and
+  your own English translation in the English version, with the poet's name.
+- Show each poem in its own small box, side by side on a computer and
+  under each other on a phone.
+- Use different poems every day; do not repeat one from an earlier digest.
 Start with a 2–3 sentence overview of the day.
 Then, for each news item:
 - Headline (your own words)
@@ -79,7 +91,7 @@ Then add "Top 3 videos" last.
 # Output format
 One self-contained HTML page (all CSS inside the file, only inline scripts).
 - Title at the top: "News digest" and the date.
-- Order: greeting, overview, news items, "Worth watching", "Top 3 videos".
+- Order: greeting, poems of the day, overview, news items, "Worth watching", "Top 3 videos".
 - Show each news item and each video as a card with a clear headline.
 - Show the category as a small coloured label.
 - All links must be clickable and open in a new tab.
