@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>News digest 25 Nov 2026</title>
+<title>News digest 26 Nov 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
@@ -111,11 +111,14 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
 .card.ai .icon-tile { background: var(--cat-ai-bg); color: var(--cat-ai); }
 .card.is .icon-tile { background: var(--cat-is-bg); color: var(--cat-is); }
 .card.field .icon-tile { background: var(--cat-field-bg); color: var(--cat-field); }
+.poems { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.poems .quote p { font-size: 1.02rem; }
+@media (max-width: 720px) { .poems { grid-template-columns: 1fr; } }
 footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 16px; }
 @media (max-width: 480px) { .page { padding: 24px 16px 48px; } .card { padding: 16px; } }
 </style>
 </head>
-<body data-date="2026-11-25">
+<body data-date="2026-11-26">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"/></symbol>
   <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.2 4.5 4.5 0 0 0 7 18z"/></symbol>
@@ -148,73 +151,109 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
 <header class="masthead">
   <p class="hello">Hello Kayvan,</p>
   <h1>News digest</h1>
-  <div class="date">Wednesday 25 November 2026</div>
+  <div class="date">Thursday 26 November 2026</div>
   <a class="archive" href="#archive">All digests</a>
 </header>
 
 <section>
-  <figure class="quote">
-    <span class="q-label">Thought of the day</span>
-    <p>Seek knowledge and learn to be great, so that people find each of your days better than the one before.</p>
-    <cite>Nezami Ganjavi, Layla and Majnun (1188) · our own translation</cite>
-  </figure>
+  <h2>Poems of the day</h2>
+  <div class="poems">
+    <figure class="quote">
+      <span class="q-label">Hafez</span>
+      <p>For years my heart asked me for the cup of Jamshid;<br>what it already held, it begged from strangers.</p>
+      <cite>Hafez, Divan (14th century) · our own translation</cite>
+    </figure>
+    <figure class="quote">
+      <span class="q-label">Saadi</span>
+      <p>The children of Adam are limbs of one another,<br>made in creation from one essence.<br>When time brings pain to one limb,<br>the other limbs can find no rest.</p>
+      <cite>Saadi, Golestan, Chapter 1 (1258) · our own translation</cite>
+    </figure>
+    <figure class="quote">
+      <span class="q-label">Rumi</span>
+      <p>Seek less for water; find thirst instead,<br>so that water springs up for you from above and below.</p>
+      <cite>Rumi, Masnavi, Book 3 (13th century) · our own translation</cite>
+    </figure>
+  </div>
 </section>
 
 <section>
   <h2>Overview</h2>
-  <p class="overview">Today is about AI agents and who controls them. A large new benchmark built from real agent use shows that even the best models fail more than a third of everyday personal tasks, while the UK privacy regulator warned that agents launched without real user controls will face action. Nvidia brought back Jensen Huang as CEO, two US states sued over Grok's sexualised deepfakes, and Meta and Google pushed their assistants deeper into private messages, files and wallets.</p>
-  <p class="note">We found no important new story in the last 24 hours on the EU AI Act, GDPR enforcement decisions or the job market. Two stories from Monday 23 November (Nvidia and the Grok lawsuits) are included because they were not in yesterday's digest. Several original pages could not be opened from our side today; where that happened, the card says so.</p>
+  <p class="overview">Today is about who controls personal data and what AI is allowed to touch. Forty-two US state attorneys general are fighting the sale of 21 million Character.AI users' private chats in bankruptcy, Australia passed a broad "duty of care" law that covers AI chatbots, and New York banned AI chatbot toys for five years. On the security side, Microsoft says state hacking groups now use the AI attack agent ARTEX, and 1Password disclosed a break-in through an employee's GitHub account. Nvidia froze AI server shipments to four Southeast Asian countries under new US rules, and Anthropic showed how it used Claude agents to rewrite its main API.</p>
+  <p class="note">It is Thanksgiving in the US, so the news flow was lighter than usual. We found no important new story in the last 24 hours on the EU AI Act, GDPR enforcement or the job market. The New York toy ban was signed on 24 November but was not in yesterday's digest. YouTube blocked most of our checks again, so some video details are marked "not confirmed".</p>
 </section>
 
 <section>
   <h2>News</h2>
   <ol class="cards">
-    <li class="card ai">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-book"/></svg></span><span class="num">01</span><span class="pill ai">Artificial intelligence · research</span></div>
-      <h3>New benchmark from real agent use: even the best AI agents fail more than a third of everyday tasks</h3>
-      <p><span class="label">What happened</span>ShellBench, built by The OpenClaw Foundation with Hugging Face, Red Hat, UC Berkeley and others from more than 10 million anonymised real agent interactions, tests personal-assistant tasks such as family schedules, invoices and bank uploads. Top models from OpenAI, Anthropic and Meta failed over a third of tasks, and 15.7% of all attempts broke at least one safety rule, for example by leaking a bank upload token. The best scorer, OpenAI's GPT-6 Astra, passed all three identical repeat runs in fewer than half of the tasks.</p>
-      <p><span class="label">Why it matters</span>Reliability across repeated runs, not a single good answer, is what an information system needs; this benchmark gives teachers and researchers concrete numbers on how far agents still are from that.</p>
-      <p class="caveat">Note: the agents were not tested inside the companies' own consumer apps, so real products may score differently. Figures are as reported by TechCrunch; we did not open the ShellBench write-up itself.</p>
-      <p class="source">Source: <a href="https://techcrunch.com/2026/11/24/even-the-best-ai-agents-struggle-with-everyday-life/" target="_blank" rel="noopener">TechCrunch</a> · 24 Nov 2026, and <a href="https://openclaw.ai/blog/shellbench" target="_blank" rel="noopener">ShellBench write-up</a></p>
-    </li>
     <li class="card is">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">02</span><span class="pill is">Privacy · data governance</span></div>
-      <h3>UK privacy regulator: AI agents launched without real user controls will face action</h3>
-      <p><span class="label">What happened</span>In a blog post on 24 November, the UK Information Commissioner's Office (ICO) told companies that build or integrate consumer AI agents that it expects privacy by design and by default, and that it will act against products launched without meaningful user controls. Together with the competition authority (CMA) it published seven checks for consumers, and formal guidance is planned for spring 2027. There is no new rule or fine yet.</p>
-      <p><span class="label">Why it matters</span>This fits a wider trend: a week ago the Global Privacy Assembly adopted a non-binding resolution on agentic AI, and regulators now expect agent inventories, logs, named owners and an off switch, which are classic data-governance controls.</p>
-      <p class="caveat">Note: we could not open the ICO blog itself; the details come from PPC Land's report.</p>
-      <p class="source">Source: <a href="https://ppc.land/ai-agent-makers-that-skip-user-controls-face-action-uks-ico-warns/" target="_blank" rel="noopener">PPC Land</a> · 25 Nov 2026 (ICO blog dated 24 Nov), and on the resolution: <a href="https://securitybrief.asia/story/regulators-have-turned-gdpr-accountability-into-a-test-for-ai-agents" target="_blank" rel="noopener">SecurityBrief Asia</a> · 24 Nov 2026</p>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">01</span><span class="pill is">Privacy · data governance</span></div>
+      <h3>42 US states try to stop the auction of 21 million Character.AI users' private chats</h3>
+      <p><span class="label">What happened</span>A coalition of 42 state attorneys general has stepped into Character.AI's Chapter 11 bankruptcy case to block the sale of user data. They say the data covers more than 21 million US accounts, about 2.1 million of them registered to minors, including chat histories and IP addresses; the filing says some chats contain mental and medical health disclosures. The only known bidder is a Delaware company formed on 13 November, and the auction is set for 1 December.</p>
+      <p><span class="label">Why it matters</span>This is a test of whether a privacy promise survives bankruptcy: if user data is treated as an asset that can be sold, a new owner may not be bound by the old privacy policy.</p>
+      <p class="caveat">Note: the states' claims are allegations in a court filing. Character.AI says user information stays protected under its privacy policy. TechCrunch and Gizmodo differ slightly on when the court approved the lead bidder.</p>
+      <p class="source">Source: <a href="https://techcrunch.com/2026/11/25/state-ags-fight-character-ais-plan-to-auction-off-users-private-chats/" target="_blank" rel="noopener">TechCrunch</a> · 25 Nov 2026, and <a href="https://gizmodo.com/character-ai-wants-to-sell-millions-of-user-chats-to-the-highest-bidder-2000845664" target="_blank" rel="noopener">Gizmodo</a> · 25 Nov 2026</p>
     </li>
     <li class="card field">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-building"/></svg></span><span class="num">03</span><span class="pill field">Field-wide · big company decisions</span></div>
-      <h3>Nvidia brings back Jensen Huang as CEO; Trump says a pardon is "an option"</h3>
-      <p><span class="label">What happened</span>Nvidia's board unanimously reinstated Jensen Huang as president, CEO and board member on 23 November, 11 days after he left, saying input from senior US government officials convinced it there is no national security risk. The board's own investigation into reports that Huang was the target of a foreign intelligence effort continues, and Nvidia created a national security and export-control committee and is hiring a chief compliance officer. On 24 November, President Trump told the New York Post a pardon for Huang is "an option" but probably not needed; Huang is due to testify before the Senate Banking Committee next week.</p>
-      <p><span class="label">Why it matters</span>The world's main AI-chip supplier is now tied to national-security politics, which affects export rules and the price and availability of AI computing for universities and companies.</p>
-      <p class="caveat">Note: no charge against Huang has been made public; the pardon remark comes from a newspaper interview reported by TechCrunch.</p>
-      <p class="source">Source: <a href="https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000090/nov23pressrelease.htm" target="_blank" rel="noopener">Nvidia press release (SEC filing)</a> · 23 Nov 2026, and <a href="https://techcrunch.com/2026/11/24/trump-reportedly-says-pardoning-jensen-huang-is-an-option-but-that-he-doesnt-think-it-will-be-necessary/" target="_blank" rel="noopener">TechCrunch</a> · 24 Nov 2026</p>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">02</span><span class="pill field">Field-wide · law</span></div>
+      <h3>Australia passes a "digital duty of care" law that covers apps, games and AI chatbots</h3>
+      <p><span class="label">What happened</span>Australia's Parliament passed the Digital Duty of Care Act, which requires online services, including AI chatbots, to actively reduce the risk of serious harm to users. After a deal with the Greens, the maximum fine was raised from A$109 million to 5% of a company's global revenue; the Senate vote was 36 to 23. The opposition called the law "authoritarian" and promised to repeal it, and the US ambassador said it would push platforms to censor lawful speech.</p>
+      <p><span class="label">Why it matters</span>Like the EU Digital Services Act and the UK Online Safety Act, the law shifts responsibility for harm onto system design, so risk assessment becomes part of building any information service used in Australia.</p>
+      <p class="source">Source: <a href="https://www.fastcompany.com/91648939/digital-duty-care-act-passes-australia-opposition-says-law-authoritarian" target="_blank" rel="noopener">Associated Press via Fast Company</a> · 25 Nov 2026</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">03</span><span class="pill ai">Artificial intelligence · security</span></div>
+      <h3>Microsoft: Chinese and North Korean state hackers now use the AI attack agent ARTEX</h3>
+      <p><span class="label">What happened</span>In a threat report on 25 November, Microsoft said state-backed groups including China's Salt Typhoon and Crystal Typhoon and North Korea's Onyx Sleet and Pearl Sleet have added ARTEX to their tools. ARTEX is an open-source AI agent for penetration testing that chains known tools to scan systems, guess passwords and find exposed secrets much faster than a human. Its original code was removed from GitHub, but copies and a paid version from a Chinese firm are still available, and Microsoft advises spotting it by its unusual speed of activity.</p>
+      <p><span class="label">Why it matters</span>AI agents mainly make old weaknesses (weak passwords, exposed keys, unpatched web apps) easier to exploit at scale, so basic security hygiene in university and company systems matters more than ever.</p>
+      <p class="caveat">Note: we could not open Microsoft's report itself; details come from The Record's report (via Techmeme) and an AI-assisted security news site. Microsoft does not say what each group did with the tool.</p>
+      <p class="source">Source: <a href="https://www.techmeme.com/261126/p3" target="_blank" rel="noopener">The Record via Techmeme</a> · 26 Nov 2026, and <a href="https://i10x.ai/news/artex-state-hackers-microsoft-defender-guide-detect-ai-pentest-agent" target="_blank" rel="noopener">i10x</a> · 25 Nov 2026</p>
     </li>
     <li class="card ai">
       <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">04</span><span class="pill ai">Artificial intelligence · law</span></div>
-      <h3>Oregon and Virginia sue the owners of X and Grok over sexualised AI images, including of children</h3>
-      <p><span class="label">What happened</span>Oregon's attorney general sued the operators of X and its Grok assistant in state court, and Virginia filed a similar separate case in Richmond. They allege the companies failed to stop Grok from making sexualised images of real people, including child abuse material, and misled users about safety; the suits ask for penalties and court orders. Oregon cites a CCDH estimate of about 3 million sexualised images posted on X in under two weeks around New Year, about 23,000 of them appearing to show children.</p>
-      <p><span class="label">Why it matters</span>US states are using consumer-protection law to hold AI image tools to account, a test case for liability and content governance in generative systems.</p>
-      <p class="caveat">Note: these are allegations, not court findings. X says such material breaks its rules and that it screens prompts and outputs.</p>
-      <p class="source">Source: <a href="https://www.doj.state.or.us/media-home/news-media-releases/ag-rayfield-takes-legal-action-against-grok-for-failing-to-block-child-exploitation/" target="_blank" rel="noopener">Oregon Department of Justice</a> · 23 Nov 2026, and <a href="https://wcyb.com/news/local/virginia-attorney-general-joins-oregon-in-lawsuit-over-grok-ai-images" target="_blank" rel="noopener">WCYB</a></p>
+      <h3>New York bans toys with built-in AI chatbots for five years</h3>
+      <p><span class="label">What happened</span>Governor Kathy Hochul signed a law that stops the making, distribution and sale of toys with embedded AI chatbots in New York for five years. It takes effect 90 days after signing, so not during this holiday season, and the attorney general can seek fines of up to $15,000 per violation per day. The state cites tests in which some chatbot toys for children aged 3 to 12 discussed sexual topics and could record voices or scan faces.</p>
+      <p><span class="label">Why it matters</span>After California's four-year ban in September, US states are now regulating AI by product type and audience, which matters for anyone designing conversational systems that children might use.</p>
+      <p class="caveat">Note: this is the state's own press release; the testing organisation is not named in it.</p>
+      <p class="source">Source: <a href="https://www.governor.ny.gov/news/consumers-begin-their-holiday-shopping-season-governor-hochul-signs-five-year-ban-ai-chatbot" target="_blank" rel="noopener">Office of the Governor of New York</a> · 24 Nov 2026</p>
     </li>
-    <li class="card ai">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-spark"/></svg></span><span class="num">05</span><span class="pill ai">Artificial intelligence · tools</span></div>
-      <h3>Meta puts its Muse AI agent inside Instagram private messages</h3>
-      <p><span class="label">What happened</span>From 24 November, Instagram users in the US, Canada, Mexico, Japan and Singapore can call Meta's Muse agent inside direct-message threads, share posts with it and ask it to act, for example to plan a trip or find a deal. Muse can also sort saved posts into collections. Meta says nothing is sent or published without the user's approval and that users can ask Muse to forget things; Walmart separately said it will offer Black Friday deals through Muse.</p>
-      <p><span class="label">Why it matters</span>Putting an acting agent inside private conversations raises hard questions of consent and data use, only days after reports (20 Nov digest) that Muse showed private data to the wrong users.</p>
-      <p class="source">Source: <a href="https://techcrunch.com/2026/11/24/meta-brings-its-muse-ai-assistant-directly-into-instagram-dms/" target="_blank" rel="noopener">TechCrunch</a> · 24 Nov 2026, and <a href="https://techcrunch.com/2026/11/24/walmart-teams-up-with-meta-to-bring-black-friday-deals-to-ai-agent-muse/" target="_blank" rel="noopener">TechCrunch (Walmart)</a> · 24 Nov 2026</p>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-chip"/></svg></span><span class="num">05</span><span class="pill field">Field-wide · AI hardware</span></div>
+      <h3>Nvidia reportedly freezes AI server shipments to four Southeast Asian countries</h3>
+      <p><span class="label">What happened</span>According to the Financial Times, Nvidia told server makers such as Dell and Supermicro to stop shipping AI servers to Malaysia, Singapore, Thailand and Indonesia. The trigger is new US Commerce Department rules that give regional cloud providers 90 days to get an export licence by proving that restricted Chinese companies are not among their customers. Lenders have also paused financing for data centres linked to Chinese cloud firms.</p>
+      <p><span class="label">Why it matters</span>Southeast Asia is a major hub for rented AI computing; export rules now decide where AI capacity can be built and who can use it, which affects cost and access for researchers worldwide.</p>
+      <p class="caveat">Note: this is based on unnamed sources; Nvidia declined to comment, and it is unclear whether the freeze is temporary.</p>
+      <p class="source">Source: <a href="https://www.malaymail.com/news/money/2026/11/26/ft-nvidia-stops-ai-shipments-to-malaysia-singapore-thailand-indonesia-as-us-tightens-china-curbs/244856" target="_blank" rel="noopener">Malay Mail, reporting the Financial Times</a> · 26 Nov 2026</p>
     </li>
     <li class="card is">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-wallet"/></svg></span><span class="num">06</span><span class="pill is">Information retrieval · personal data</span></div>
-      <h3>Google's AI Mode in Search can now read your Google Wallet, with Drive to follow</h3>
-      <p><span class="label">What happened</span>Google started rolling out an opt-in link between Google Wallet and "Personal Intelligence" in AI Mode, so search answers can use a person's own account information; Drive is said to follow in the coming weeks, joining Gmail, Calendar and Photos. Wallet access is read-only, so AI Mode cannot move money, and a new icon shows which personal context was used for an answer.</p>
-      <p><span class="label">Why it matters</span>Web search is turning into search over a person's private data, which changes what "relevance" means and makes transparency about sources a core retrieval design question.</p>
-      <p class="caveat">Note: we could not open Google's post or the TechCrunch article ourselves; the details come from two daily AI roundups (The Neuron and Sam on AI) that agree.</p>
-      <p class="source">Source: <a href="https://techcrunch.com/2026/11/23/google-searchs-ai-mode-can-now-tap-into-drive-and-wallet-for-more-personalized-responses/" target="_blank" rel="noopener">TechCrunch</a> · 23 Nov 2026, and <a href="https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/" target="_blank" rel="noopener">Google blog</a></p>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">06</span><span class="pill is">Security · data protection</span></div>
+      <h3>1Password says hackers got into its internal systems through an employee's GitHub account</h3>
+      <p><span class="label">What happened</span>The password manager 1Password said that on 19 November it detected an attacker who had taken over an employee's corporate GitHub account and used it to push malicious code to internal servers. The attacker downloaded customer names, sign-in email addresses and account creation and last-login dates. The company says customer vaults were never accessed and that it does not hold master passwords or secret keys.</p>
+      <p><span class="label">Why it matters</span>A developer account became the way into a security company's back end; software supply chains and code-hosting accounts are now a core part of data governance.</p>
+      <p class="caveat">Note: it is not yet known how the employee account was compromised or how many customers are affected.</p>
+      <p class="source">Source: <a href="https://techcrunch.com/2026/11/25/1password-said-hackers-broke-into-its-internal-systems-but-customer-passwords-are-safe/" target="_blank" rel="noopener">TechCrunch</a> · 25 Nov 2026</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">07</span><span class="pill field">Field-wide · infrastructure</span></div>
+      <h3>US regulator lets SpaceX launch up to one million satellites as data centres in space</h3>
+      <p><span class="label">What happened</span>The Federal Communications Commission (FCC) authorised SpaceX's "Starmind" network of up to one million satellites for data processing in orbit, which its chairman called the first US approval of data centres in space. The first satellite must work by 2033 and the full network by 2040, with conditions including a debris plan. The FCC rejected objections from Amazon, Viasat and the American Astronomical Society.</p>
+      <p><span class="label">Why it matters</span>This is a permit, not a working system, but it shows how the hunger for AI computing is pushing infrastructure, and questions of governance, into new places.</p>
+      <p class="caveat">Note: scientists question the cooling, cost, space debris and harm to astronomy; no Starmind satellite is in orbit yet.</p>
+      <p class="source">Source: <a href="https://www.geekwire.com/2026/fcc-clears-spacex-million-satellites-starmind-data-center/" target="_blank" rel="noopener">GeekWire</a> · 25 Nov 2026</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">08</span><span class="pill ai">Artificial intelligence · software engineering</span></div>
+      <h3>Anthropic used Claude agents to rewrite its main API in Rust, checked against live traffic</h3>
+      <p><span class="label">What happened</span>Anthropic described moving its Messages API, the main way customers reach Claude, from Python to Rust, reporting about 70% less CPU per request and about 20% faster time to first token. Claude wrote a first version in about a week, but the rewritten code passed 98% of the old tests while matching Python on only about a quarter of real inputs. The team then compared both versions on live traffic, logging only the shape of each difference for privacy, with agents fixing mismatches under human review until 99.6% matched.</p>
+      <p><span class="label">Why it matters</span>A clear case study for teaching: passing tests is not the same as correct behaviour, and checking AI-written code against real use, with human review, is what made the migration safe.</p>
+      <p class="caveat">Note: the performance numbers are the company's own.</p>
+      <p class="source">Source: <a href="https://www.anthropic.com/research/migrating-api-to-rust" target="_blank" rel="noopener">Anthropic Engineering</a> · 25 Nov 2026</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-layout"/></svg></span><span class="num">09</span><span class="pill ai">Artificial intelligence · tools</span></div>
+      <h3>Claude can now install artifacts as desktop apps on Mac and Windows</h3>
+      <p><span class="label">What happened</span>Anthropic launched an "Install as app" beta that turns a Claude artifact into an app with its own window and Dock or taskbar icon. Users choose one of three permission levels, from browser-level access up to full computer access, which is allowed only for apps the user or their organisation built; permissions must be granted again after every update. Apps use the person's Claude account and usage limits, and Anthropic does not review apps before they are installed.</p>
+      <p><span class="label">Why it matters</span>Small, AI-built personal tools are becoming installable software, which raises new questions about permissions, trust and who maintains these apps inside organisations.</p>
+      <p class="source">Source: <a href="https://claude.com/resources/articles/install-as-app" target="_blank" rel="noopener">Anthropic help article</a> · 24 Nov 2026, and <a href="https://www.macrumors.com/2026/11/25/claude-install-artifacts-desktop-apps/" target="_blank" rel="noopener">MacRumors</a> · 25 Nov 2026</p>
     </li>
   </ol>
 </section>
@@ -222,46 +261,47 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
 <section>
   <h2>Worth watching</h2>
   <ul class="watch">
-    <li><strong>"Looped" models that think longer with less memory</strong>Thinking Machines (Inkling 2 Mini) and Z.ai (GLM-5.4, with a one-million-token context) both released models that reuse parts of the network to repeat calculations, aiming for better reasoning from smaller models. Not yet independently tested. <a href="https://z.ai/blog/glm-5.4" target="_blank" rel="noopener">Z.ai blog</a> · 23 Nov 2026</li>
-    <li><strong>AI-written temporary security patches</strong>OpenAI and Cisco open-sourced Shirudo, which applies signed, operator-approved "shields" to a running Linux system until a real patch is ready; in a controlled test a Codex-made shield blocked an exploit without a restart. We could not open the announcement to check it. <a href="https://openai.com/index/introducing-shirudo/" target="_blank" rel="noopener">OpenAI</a> · reported 24 Nov 2026</li>
+    <li><strong>OpenAI claims a breakthrough on the speed limit of matrix multiplication</strong>An OpenAI preprint claims to prove that the matrix multiplication exponent is 9/4, a long-standing question in computer science. It has not been checked by outside mathematicians yet. <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-25-2026/" target="_blank" rel="noopener">The Neuron</a> · 25 Nov 2026</li>
+    <li><strong>AI labels in photo metadata worry newsrooms</strong>The New York Times told freelance photographers not to update to Photoshop 2027 because new AI features may write metadata that marks their photos as AI-generated. Adobe has not responded. <a href="https://samonai.substack.com/p/ai-brief-november-25-2026" target="_blank" rel="noopener">Sam on AI, citing The Verge</a> · 25 Nov 2026</li>
+    <li><strong>Amazon and Meta discuss ending the block on Meta's shopping agent</strong>The two companies are reportedly negotiating a deal that would let Meta's Muse agent shop on Amazon; advertising revenue and control of results are still open. No deal has been announced. <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-26-2026/" target="_blank" rel="noopener">The Neuron</a> · 26 Nov 2026</li>
   </ul>
 </section>
 
 <section>
   <h2>Top 3 videos</h2>
-  <p class="note">YouTube blocked our checks again today, so we could not confirm view counts, exact publication dates or two of the titles. We picked three recent walkthroughs of the redesigned Claude desktop app (first written about between 25 October and 5 November 2026, so inside the three-month window) from established AI-education channels; none was in an earlier digest.</p>
+  <p class="note">We could not find a Claude Desktop video from the last three months that we could confirm today (YouTube blocked most checks, and the recent ones we found were already in earlier digests), so we took a second video on video editing. View counts could not be confirmed; dates come from the video pages.</p>
   <ol class="cards">
     <li class="card video">
-      <div class="card-top"><span class="num">V1</span><span class="pill video">Overview · Claude desktop redesign</span></div>
-      <h3>Claude 2.0 Is Here. EVERYTHING in 15 Minutes</h3>
-      <div class="facts"><span><b>Channel:</b> Futurepedia</span><span><b>Published:</b> not confirmed (early November 2026)</span><span><b>Views:</b> not confirmed</span></div>
-      <p><span class="label">What it is about</span>A 15-minute tour of the redesigned Claude desktop app: the Home and Code layout, artifacts, the session list, parallel and cloud sessions, Remote Control and mods. "Claude 2.0" is the channel's nickname for the redesign, not a new model.</p>
-      <p><span class="label">Why it is worth watching</span>The quickest complete overview of what the desktop app can now do, from a large and well-known AI-tools channel.</p>
-      <button type="button" class="yt" data-id="tM0dwXhOv2o" aria-label="Play video"><img src="https://i.ytimg.com/vi/tM0dwXhOv2o/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
-      <p class="source"><a href="https://www.youtube.com/watch?v=tM0dwXhOv2o" target="_blank" rel="noopener">Watch on YouTube</a></p>
+      <div class="card-top"><span class="num">V1</span><span class="pill video">Editing video with Claude</span></div>
+      <h3>Learn 90% of Claude Video Editing in under 20 Minutes</h3>
+      <div class="facts"><span><b>Channel:</b> Grow with Alex</span><span><b>Published:</b> 22 Oct 2026</span><span><b>Views:</b> not confirmed</span></div>
+      <p><span class="label">What it is about</span>The video shows how to have Claude turn raw talking-head footage into a finished short reel with cuts, captions, colour, zooms and a hook. It also shows how to check the edit with a beat table and contact sheet and how to save the process as a reusable Claude skill.</p>
+      <p><span class="label">Why it is worth watching</span>It is a complete, practical workflow in about 20 minutes, from first prompt to a repeatable process.</p>
+      <button type="button" class="yt" data-id="03BNd8ygnq8" aria-label="Play video"><img src="https://i.ytimg.com/vi/03BNd8ygnq8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=03BNd8ygnq8" target="_blank" rel="noopener">Watch on YouTube</a></p>
     </li>
     <li class="card video">
-      <div class="card-top"><span class="num">V2</span><span class="pill video">Walkthrough · projects, side chats, mods</span></div>
-      <h3>Ben AI: seven Claude Code Desktop updates (title not confirmed)</h3>
-      <div class="facts"><span><b>Channel:</b> Ben AI</span><span><b>Published:</b> not confirmed (late October 2026)</span><span><b>Views:</b> not confirmed</span></div>
-      <p><span class="label">What it is about</span>In about 13 minutes, Ben AI walks through seven groups of features in the Claude desktop app: session details, projects, side chats, split view, artifacts, slash commands and mods. He shows how they fit together into a daily workflow with agents.</p>
-      <p><span class="label">Why it is worth watching</span>Practical, workflow-focused demos; note that a reviewer found a few of his claims differ from Anthropic's documentation.</p>
-      <button type="button" class="yt" data-id="J5EbL1UaqG8" aria-label="Play video"><img src="https://i.ytimg.com/vi/J5EbL1UaqG8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
-      <p class="source"><a href="https://www.youtube.com/watch?v=J5EbL1UaqG8" target="_blank" rel="noopener">Watch on YouTube</a></p>
+      <div class="card-top"><span class="num">V2</span><span class="pill video">Creating AI agents with Claude</span></div>
+      <h3>Claude Agent SDK Tutorial – Build AI Agents with Claude Code</h3>
+      <div class="facts"><span><b>Channel:</b> ExamPro</span><span><b>Published:</b> 14 Sep 2026</span><span><b>Views:</b> not confirmed</span></div>
+      <p><span class="label">What it is about</span>A hands-on lesson that sets up the Anthropic SDK and the Claude Agent SDK and takes the first steps toward building an agent. It is part of ExamPro's course for the Claude Certified Architect Foundations exam.</p>
+      <p><span class="label">Why it is worth watching</span>ExamPro is a well-known certification-training channel, and this is a clean, structured starting point for students who want to build agents themselves.</p>
+      <button type="button" class="yt" data-id="SM-Fy8e3nFk" aria-label="Play video"><img src="https://i.ytimg.com/vi/SM-Fy8e3nFk/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=SM-Fy8e3nFk" target="_blank" rel="noopener">Watch on YouTube</a></p>
     </li>
     <li class="card video">
-      <div class="card-top"><span class="num">V3</span><span class="pill video">Ranking · desktop features worth using</span></div>
-      <h3>Duncan Rogoff: seven Claude desktop updates, ranked (title not confirmed)</h3>
-      <div class="facts"><span><b>Channel:</b> Duncan Rogoff</span><span><b>Published:</b> not confirmed (early November 2026)</span><span><b>Views:</b> not confirmed</span></div>
-      <p><span class="label">What it is about</span>Duncan Rogoff ranks seven recent Claude desktop updates from least to most useful. His top four are split view, side chats, nested sessions and a "master session" that checks work across sessions.</p>
-      <p><span class="label">Why it is worth watching</span>It helps separate the features that save time today from those that are still mostly novelty.</p>
-      <button type="button" class="yt" data-id="znWSzW0Zh_Y" aria-label="Play video"><img src="https://i.ytimg.com/vi/znWSzW0Zh_Y/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
-      <p class="source"><a href="https://www.youtube.com/watch?v=znWSzW0Zh_Y" target="_blank" rel="noopener">Watch on YouTube</a></p>
+      <div class="card-top"><span class="num">V3</span><span class="pill video">Editing video with Claude (second pick)</span></div>
+      <h3>Claude Edited This Video (And I'll Teach You How)</h3>
+      <div class="facts"><span><b>Channel:</b> 100x Engineers</span><span><b>Published:</b> 20 Oct 2026</span><span><b>Views:</b> not confirmed</span></div>
+      <p><span class="label">What it is about</span>A six-step workflow for using Claude to plan and produce AI-generated video, from style tests and storyboards to the final edit. It also shows how to turn the result into editable After Effects projects and connect Claude with Premiere Pro.</p>
+      <p><span class="label">Why it is worth watching</span>It goes beyond simple cuts and shows how Claude can fit into professional editing tools.</p>
+      <button type="button" class="yt" data-id="Ct5_C2xC-oo" aria-label="Play video"><img src="https://i.ytimg.com/vi/Ct5_C2xC-oo/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=Ct5_C2xC-oo" target="_blank" rel="noopener">Watch on YouTube</a></p>
     </li>
   </ol>
 </section>
 
-<footer>Collected by web search on 25 November 2026. Summaries are written in the agent's own words; follow the links for the full reports.</footer>
+<footer>Collected by web search on 26 November 2026. Summaries are written in the agent's own words; follow the links for the full reports.</footer>
 </div>
 
 
@@ -271,73 +311,109 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
 <header class="masthead">
   <p class="hello">سلام کیوان،</p>
   <h1>خلاصهٔ اخبار</h1>
-  <div class="date">چهارشنبه ۲۵ نوامبر ۲۰۲۶</div>
+  <div class="date">پنجشنبه ۲۶ نوامبر ۲۰۲۶</div>
   <a class="archive" href="#archive">همهٔ خلاصه‌ها</a>
 </header>
 
 <section>
-  <figure class="quote">
-    <span class="q-label">اندیشهٔ روز</span>
-    <p>دانش طلب و بزرگی آموز<br>تا به نگرند روزت از روز</p>
-    <cite>نظامی گنجوی، لیلی و مجنون (۱۱۸۸ میلادی)</cite>
-  </figure>
+  <h2>شعرهای روز</h2>
+  <div class="poems">
+    <figure class="quote">
+      <span class="q-label">حافظ</span>
+      <p>سال‌ها دل طلب جام جم از ما می‌کرد<br>وان چه خود داشت ز بیگانه تمنا می‌کرد</p>
+      <cite>حافظ، دیوان (سدهٔ چهاردهم میلادی)</cite>
+    </figure>
+    <figure class="quote">
+      <span class="q-label">سعدی</span>
+      <p>بنی‌آدم اعضای یکدیگرند<br>که در آفرینش ز یک گوهرند<br>چو عضوی به درد آورد روزگار<br>دگر عضوها را نماند قرار</p>
+      <cite>سعدی، گلستان، باب اول (۱۲۵۸ میلادی)</cite>
+    </figure>
+    <figure class="quote">
+      <span class="q-label">مولوی</span>
+      <p>آب کم جو تشنگی آور به دست<br>تا بجوشد آبت از بالا و پست</p>
+      <cite>مولوی، مثنوی معنوی، دفتر سوم (سدهٔ سیزدهم میلادی)</cite>
+    </figure>
+  </div>
 </section>
 
 <section>
   <h2>نگاه کلی</h2>
-  <p class="overview">موضوع امروز عامل‌های هوش مصنوعی و این است که چه کسی آن‌ها را کنترل می‌کند. یک محک بزرگ تازه که از کاربرد واقعی عامل‌ها ساخته شده نشان می‌دهد حتی بهترین مدل‌ها در بیش از یک‌سوم کارهای روزمرهٔ شخصی شکست می‌خورند، و نهاد ناظر حریم خصوصی بریتانیا هشدار داد که با عامل‌هایی که بدون کنترل واقعی کاربر عرضه شوند برخورد خواهد کرد. Nvidia دوباره Jensen Huang را به مدیرعاملی برگرداند، دو ایالت آمریکا به خاطر تصاویر جعلی جنسی Grok شکایت کردند، و Meta و Google دستیارهای خود را بیشتر به پیام‌های خصوصی، فایل‌ها و کیف پول‌های کاربران بردند.</p>
-  <p class="note">در ۲۴ ساعت گذشته خبر مهم تازه‌ای دربارهٔ EU AI Act، تصمیم‌های اجرایی GDPR یا بازار کار پیدا نکردیم. دو خبر از دوشنبه ۲۳ نوامبر (Nvidia و شکایت‌ها علیه Grok) آمده‌اند، چون در خلاصهٔ دیروز نبودند. امروز چند صفحهٔ اصلی از سوی ما باز نشد؛ هر جا چنین بوده، در کارت گفته شده است.</p>
+  <p class="overview">موضوع امروز این است که چه کسی دادهٔ شخصی را در اختیار دارد و هوش مصنوعی به چه چیزهایی اجازهٔ دسترسی دارد. ۴۲ دادستان کل ایالتی در آمریکا با فروش گفت‌وگوهای خصوصی ۲۱ میلیون کاربر Character.AI در روند ورشکستگی مخالفت می‌کنند، استرالیا قانون گسترده‌ای دربارهٔ «وظیفهٔ مراقبت» تصویب کرد که چت‌بات‌ها را هم در بر می‌گیرد، و نیویورک اسباب‌بازی‌های دارای چت‌بات هوش مصنوعی را برای پنج سال ممنوع کرد. در حوزهٔ امنیت، Microsoft می‌گوید گروه‌های هکری دولتی اکنون از عامل حملهٔ هوش مصنوعی ARTEX استفاده می‌کنند و 1Password از نفوذ از راه حساب GitHub یک کارمند خبر داد. Nvidia ارسال سرورهای هوش مصنوعی به چهار کشور جنوب شرق آسیا را به دلیل قواعد تازهٔ آمریکا متوقف کرد و Anthropic نشان داد چگونه با عامل‌های Claude رابط برنامه‌نویسی اصلی خود را بازنویسی کرده است.</p>
+  <p class="note">امروز در آمریکا روز شکرگزاری است، پس جریان خبر کمتر از معمول بود. در ۲۴ ساعت گذشته خبر مهم تازه‌ای دربارهٔ EU AI Act، اجرای GDPR یا بازار کار پیدا نکردیم. قانون اسباب‌بازی‌های نیویورک در ۲۴ نوامبر امضا شد اما در خلاصهٔ دیروز نبود. YouTube باز هم بیشتر بررسی‌های ما را مسدود کرد، پس برخی جزئیات ویدیوها «تأیید نشده» آمده‌اند.</p>
 </section>
 
 <section>
   <h2>اخبار</h2>
   <ol class="cards">
-    <li class="card ai">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-book"/></svg></span><span class="num">۰۱</span><span class="pill ai">هوش مصنوعی · پژوهش</span></div>
-      <h3>محک تازه بر پایهٔ کاربرد واقعی: حتی بهترین عامل‌های هوش مصنوعی در بیش از یک‌سوم کارهای روزمره شکست می‌خورند</h3>
-      <p><span class="label">چه اتفاقی افتاد</span>محک ShellBench را The OpenClaw Foundation همراه با Hugging Face، Red Hat، UC Berkeley و دیگران از بیش از ۱۰ میلیون تعامل واقعی و ناشناس‌شده با عامل‌ها ساخته است و کارهای دستیار شخصی مانند برنامهٔ خانواده، فاکتورها و بارگذاری‌های بانکی را می‌سنجد. مدل‌های برتر OpenAI، Anthropic و Meta در بیش از یک‌سوم کارها شکست خوردند و ۱۵٫۷ درصد همهٔ تلاش‌ها دست‌کم یک قاعدهٔ ایمنی را زیر پا گذاشتند، مثلاً با فاش کردن توکن بارگذاری بانکی. بهترین مدل، GPT-6 Astra از OpenAI، در کمتر از نیمی از کارها هر سه اجرای تکراری یکسان را با موفقیت گذراند.</p>
-      <p><span class="label">چرا مهم است</span>آنچه یک سیستم اطلاعاتی نیاز دارد پایداری در اجراهای تکراری است، نه یک پاسخ خوب؛ این محک به مدرسان و پژوهشگران عددهای مشخصی می‌دهد که عامل‌ها هنوز چقدر با آن فاصله دارند.</p>
-      <p class="caveat">توجه: عامل‌ها درون اپلیکیشن‌های مصرفی خود شرکت‌ها آزموده نشدند، پس محصولات واقعی ممکن است نتیجهٔ دیگری بگیرند. اعداد از گزارش TechCrunch است؛ ما خود گزارش ShellBench را باز نکردیم.</p>
-      <p class="source">منبع: <a href="https://techcrunch.com/2026/11/24/even-the-best-ai-agents-struggle-with-everyday-life/" target="_blank" rel="noopener">TechCrunch</a> · ۲۴ نوامبر ۲۰۲۶، و <a href="https://openclaw.ai/blog/shellbench" target="_blank" rel="noopener">گزارش ShellBench</a></p>
-    </li>
     <li class="card is">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">۰۲</span><span class="pill is">حریم خصوصی · حکمرانی داده</span></div>
-      <h3>ناظر حریم خصوصی بریتانیا: با عامل‌های هوش مصنوعی که بدون کنترل واقعی کاربر عرضه شوند برخورد می‌شود</h3>
-      <p><span class="label">چه اتفاقی افتاد</span>دفتر کمیسیونر اطلاعات بریتانیا (ICO) در یادداشتی در ۲۴ نوامبر به شرکت‌هایی که عامل‌های هوش مصنوعی مصرفی می‌سازند یا به کار می‌گیرند گفت که از آن‌ها «حریم خصوصی در طراحی و به‌طور پیش‌فرض» انتظار دارد و با محصولاتی که بدون کنترل معنادار کاربر عرضه شوند برخورد خواهد کرد. این نهاد همراه با مرجع رقابت (CMA) هفت نکتهٔ بررسی برای مصرف‌کنندگان منتشر کرد و راهنمای رسمی برای بهار ۲۰۲۷ برنامه‌ریزی شده است. هنوز قاعده یا جریمهٔ تازه‌ای در کار نیست.</p>
-      <p><span class="label">چرا مهم است</span>این بخشی از یک روند گسترده‌تر است: یک هفته پیش Global Privacy Assembly قطعنامه‌ای غیرالزام‌آور دربارهٔ هوش مصنوعی عاملی تصویب کرد و ناظران اکنون فهرست عامل‌ها، ثبت رویدادها، مالک مشخص و امکان خاموش کردن را انتظار دارند؛ همان کنترل‌های کلاسیک حکمرانی داده.</p>
-      <p class="caveat">توجه: نتوانستیم خود یادداشت ICO را باز کنیم؛ جزئیات از گزارش PPC Land است.</p>
-      <p class="source">منبع: <a href="https://ppc.land/ai-agent-makers-that-skip-user-controls-face-action-uks-ico-warns/" target="_blank" rel="noopener">PPC Land</a> · ۲۵ نوامبر ۲۰۲۶ (یادداشت ICO به تاریخ ۲۴ نوامبر)، و دربارهٔ قطعنامه: <a href="https://securitybrief.asia/story/regulators-have-turned-gdpr-accountability-into-a-test-for-ai-agents" target="_blank" rel="noopener">SecurityBrief Asia</a> · ۲۴ نوامبر ۲۰۲۶</p>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">۰۱</span><span class="pill is">حریم خصوصی · حکمرانی داده</span></div>
+      <h3>۴۲ ایالت آمریکا می‌کوشند جلوی حراج گفت‌وگوهای خصوصی ۲۱ میلیون کاربر Character.AI را بگیرند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>ائتلافی از ۴۲ دادستان کل ایالتی وارد پروندهٔ ورشکستگی (فصل ۱۱) شرکت Character.AI شده تا جلوی فروش دادهٔ کاربران را بگیرد. به گفتهٔ آن‌ها این داده بیش از ۲۱ میلیون حساب در آمریکا را در بر می‌گیرد که حدود ۲٫۱ میلیون از آن‌ها به نام افراد زیر سن قانونی ثبت شده‌اند، همراه با تاریخچهٔ گفت‌وگوها و نشانی‌های IP؛ طبق این پرونده، برخی گفت‌وگوها شامل اطلاعات سلامت روان و پزشکی است. تنها خریدار شناخته‌شده شرکتی در Delaware است که ۱۳ نوامبر تأسیس شده و حراج برای ۱ دسامبر برنامه‌ریزی شده است.</p>
+      <p><span class="label">چرا مهم است</span>این آزمونی است برای اینکه آیا وعدهٔ حریم خصوصی پس از ورشکستگی پابرجا می‌ماند یا نه: اگر دادهٔ کاربران دارایی قابل فروش به شمار آید، ممکن است مالک تازه به سیاست حریم خصوصی قبلی پایبند نباشد.</p>
+      <p class="caveat">توجه: ادعاهای ایالت‌ها در یک پروندهٔ دادگاهی مطرح شده و هنوز حکم نیست. Character.AI می‌گوید اطلاعات کاربران طبق سیاست حریم خصوصی‌اش محافظت می‌شود. TechCrunch و Gizmodo دربارهٔ زمان تأیید خریدار اصلی از سوی دادگاه کمی اختلاف دارند.</p>
+      <p class="source">منبع: <a href="https://techcrunch.com/2026/11/25/state-ags-fight-character-ais-plan-to-auction-off-users-private-chats/" target="_blank" rel="noopener">TechCrunch</a> · ۲۵ نوامبر ۲۰۲۶، و <a href="https://gizmodo.com/character-ai-wants-to-sell-millions-of-user-chats-to-the-highest-bidder-2000845664" target="_blank" rel="noopener">Gizmodo</a> · ۲۵ نوامبر ۲۰۲۶</p>
     </li>
     <li class="card field">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-building"/></svg></span><span class="num">۰۳</span><span class="pill field">کل حوزه · تصمیم شرکت‌های بزرگ</span></div>
-      <h3>Nvidia دوباره Jensen Huang را مدیرعامل کرد؛ Trump می‌گوید عفو «یک گزینه» است</h3>
-      <p><span class="label">چه اتفاقی افتاد</span>هیئت‌مدیرهٔ Nvidia در ۲۳ نوامبر، ۱۱ روز پس از کناره‌گیری Jensen Huang، به اتفاق آرا او را به سمت‌های رئیس، مدیرعامل و عضو هیئت‌مدیره بازگرداند و گفت نظر مقام‌های ارشد دولت آمریکا آن را قانع کرده که خطری برای امنیت ملی وجود ندارد. تحقیقات خود هیئت‌مدیره دربارهٔ گزارش‌هایی که Huang هدف یک تلاش اطلاعاتی خارجی بوده ادامه دارد، و Nvidia یک کمیتهٔ امنیت ملی و کنترل صادرات تشکیل داده و در پی استخدام مدیر ارشد انطباق است. در ۲۴ نوامبر، Trump به New York Post گفت عفو Huang «یک گزینه» است اما احتمالاً لازم نمی‌شود؛ Huang قرار است هفتهٔ آینده در کمیتهٔ بانکداری سنا شهادت دهد.</p>
-      <p><span class="label">چرا مهم است</span>تأمین‌کنندهٔ اصلی تراشه‌های هوش مصنوعی جهان اکنون با سیاست امنیت ملی گره خورده است؛ این بر قواعد صادرات و قیمت و دسترسی رایانش هوش مصنوعی برای دانشگاه‌ها و شرکت‌ها اثر می‌گذارد.</p>
-      <p class="caveat">توجه: هیچ اتهامی علیه Huang علنی نشده است؛ سخن دربارهٔ عفو از یک مصاحبهٔ روزنامه‌ای است که TechCrunch گزارش کرده.</p>
-      <p class="source">منبع: <a href="https://www.sec.gov/Archives/edgar/data/0001045810/000104581026000090/nov23pressrelease.htm" target="_blank" rel="noopener">اطلاعیهٔ Nvidia (پروندهٔ SEC)</a> · ۲۳ نوامبر ۲۰۲۶، و <a href="https://techcrunch.com/2026/11/24/trump-reportedly-says-pardoning-jensen-huang-is-an-option-but-that-he-doesnt-think-it-will-be-necessary/" target="_blank" rel="noopener">TechCrunch</a> · ۲۴ نوامبر ۲۰۲۶</p>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">۰۲</span><span class="pill field">کل حوزه · قانون</span></div>
+      <h3>استرالیا قانون «وظیفهٔ مراقبت دیجیتال» را تصویب کرد که اپلیکیشن‌ها، بازی‌ها و چت‌بات‌ها را در بر می‌گیرد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>پارلمان استرالیا قانون Digital Duty of Care Act را تصویب کرد که سرویس‌های آنلاین، از جمله چت‌بات‌های هوش مصنوعی، را موظف می‌کند خطر آسیب جدی به کاربران را فعالانه کاهش دهند. پس از توافق با حزب سبز، سقف جریمه از ۱۰۹ میلیون دلار استرالیا به ۵ درصد درآمد جهانی شرکت افزایش یافت؛ رأی سنا ۳۶ در برابر ۲۳ بود. اپوزیسیون این قانون را «اقتدارگرا» خواند و وعدهٔ لغو آن را داد، و سفیر آمریکا گفت این قانون پلتفرم‌ها را به سانسور سخن قانونی وادار می‌کند.</p>
+      <p><span class="label">چرا مهم است</span>این قانون، مانند Digital Services Act اتحادیهٔ اروپا و Online Safety Act بریتانیا، مسئولیت آسیب را به طراحی سیستم منتقل می‌کند؛ پس ارزیابی خطر بخشی از ساخت هر سرویس اطلاعاتی می‌شود که در استرالیا به کار می‌رود.</p>
+      <p class="source">منبع: <a href="https://www.fastcompany.com/91648939/digital-duty-care-act-passes-australia-opposition-says-law-authoritarian" target="_blank" rel="noopener">Associated Press از طریق Fast Company</a> · ۲۵ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">۰۳</span><span class="pill ai">هوش مصنوعی · امنیت</span></div>
+      <h3>Microsoft: هکرهای دولتی چین و کرهٔ شمالی اکنون از عامل حملهٔ هوش مصنوعی ARTEX استفاده می‌کنند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Microsoft در گزارشی تهدیدشناسانه در ۲۵ نوامبر گفت گروه‌های وابسته به دولت، از جمله Salt Typhoon و Crystal Typhoon از چین و Onyx Sleet و Pearl Sleet از کرهٔ شمالی، ARTEX را به ابزارهای خود افزوده‌اند. ARTEX یک عامل هوش مصنوعی متن‌باز برای آزمون نفوذ است که ابزارهای شناخته‌شده را به هم زنجیر می‌کند تا سیستم‌ها را پویش کند، گذرواژه‌ها را حدس بزند و کلیدهای افشاشده را پیدا کند، بسیار سریع‌تر از یک انسان. کد اصلی آن از GitHub حذف شده، اما نسخه‌هایی از آن و یک نسخهٔ پولی از یک شرکت چینی همچنان در دسترس است، و Microsoft توصیه می‌کند آن را از روی سرعت غیرعادی فعالیتش شناسایی کنند.</p>
+      <p><span class="label">چرا مهم است</span>عامل‌های هوش مصنوعی بیشتر بهره‌برداری از ضعف‌های قدیمی (گذرواژهٔ ضعیف، کلیدهای افشاشده، اپلیکیشن‌های وصله‌نشده) را در مقیاس بزرگ آسان می‌کنند؛ پس بهداشت امنیتی پایه در سیستم‌های دانشگاه‌ها و شرکت‌ها از همیشه مهم‌تر است.</p>
+      <p class="caveat">توجه: نتوانستیم خود گزارش Microsoft را باز کنیم؛ جزئیات از گزارش The Record (از طریق Techmeme) و یک سایت خبری امنیتی با کمک هوش مصنوعی است. Microsoft نمی‌گوید هر گروه با این ابزار چه کرده است.</p>
+      <p class="source">منبع: <a href="https://www.techmeme.com/261126/p3" target="_blank" rel="noopener">The Record از طریق Techmeme</a> · ۲۶ نوامبر ۲۰۲۶، و <a href="https://i10x.ai/news/artex-state-hackers-microsoft-defender-guide-detect-ai-pentest-agent" target="_blank" rel="noopener">i10x</a> · ۲۵ نوامبر ۲۰۲۶</p>
     </li>
     <li class="card ai">
       <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">۰۴</span><span class="pill ai">هوش مصنوعی · قانون</span></div>
-      <h3>ایالت‌های Oregon و Virginia از صاحبان X و Grok به خاطر تصاویر جنسی ساخته‌شده با هوش مصنوعی، از جمله از کودکان، شکایت کردند</h3>
-      <p><span class="label">چه اتفاقی افتاد</span>دادستان کل Oregon در دادگاه ایالتی از گردانندگان X و دستیار Grok شکایت کرد و Virginia نیز پرونده‌ای مشابه و جداگانه در Richmond ثبت کرد. آن‌ها مدعی‌اند این شرکت‌ها جلوی ساختن تصاویر جنسی از افراد واقعی، از جمله محتوای سوءاستفاده از کودکان، را با Grok نگرفتند و دربارهٔ ایمنی کاربران را گمراه کردند؛ شکایت‌ها خواستار جریمه و دستور دادگاه‌اند. Oregon به برآورد CCDH استناد می‌کند که حدود ۳ میلیون تصویر جنسی در کمتر از دو هفته در حوالی سال نو در X منتشر شد و حدود ۲۳ هزار مورد از آن‌ها ظاهراً کودکان را نشان می‌داد.</p>
-      <p><span class="label">چرا مهم است</span>ایالت‌های آمریکا از قانون حمایت از مصرف‌کننده برای پاسخ‌گو کردن ابزارهای تصویرساز هوش مصنوعی استفاده می‌کنند؛ پرونده‌ای آزمایشی برای مسئولیت و حکمرانی محتوا در سیستم‌های مولد.</p>
-      <p class="caveat">توجه: این‌ها ادعا هستند، نه حکم دادگاه. X می‌گوید چنین محتوایی خلاف قواعد آن است و درخواست‌ها و خروجی‌ها را غربال می‌کند.</p>
-      <p class="source">منبع: <a href="https://www.doj.state.or.us/media-home/news-media-releases/ag-rayfield-takes-legal-action-against-grok-for-failing-to-block-child-exploitation/" target="_blank" rel="noopener">وزارت دادگستری Oregon</a> · ۲۳ نوامبر ۲۰۲۶، و <a href="https://wcyb.com/news/local/virginia-attorney-general-joins-oregon-in-lawsuit-over-grok-ai-images" target="_blank" rel="noopener">WCYB</a></p>
+      <h3>نیویورک اسباب‌بازی‌های دارای چت‌بات هوش مصنوعی را برای پنج سال ممنوع کرد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Kathy Hochul، فرماندار نیویورک، قانونی را امضا کرد که ساخت، توزیع و فروش اسباب‌بازی‌های دارای چت‌بات هوش مصنوعی را در این ایالت برای پنج سال متوقف می‌کند. این قانون ۹۰ روز پس از امضا اجرا می‌شود، پس در این فصل تعطیلات اجرایی نیست، و دادستان کل می‌تواند برای هر تخلف روزانه تا ۱۵ هزار دلار جریمه بخواهد. ایالت به آزمون‌هایی استناد می‌کند که در آن‌ها برخی اسباب‌بازی‌های چت‌بات‌دار برای کودکان ۳ تا ۱۲ سال دربارهٔ موضوعات جنسی سخن گفتند و می‌توانستند صدا ضبط کنند یا چهره را اسکن کنند.</p>
+      <p><span class="label">چرا مهم است</span>پس از ممنوعیت چهارسالهٔ کالیفرنیا در سپتامبر، ایالت‌های آمریکا اکنون هوش مصنوعی را بر پایهٔ نوع محصول و مخاطب تنظیم می‌کنند؛ این برای هر کسی که سیستم‌های گفت‌وگومحور طراحی می‌کند که کودکان ممکن است از آن استفاده کنند مهم است.</p>
+      <p class="caveat">توجه: این اطلاعیهٔ خود ایالت است و نام سازمان انجام‌دهندهٔ آزمون در آن نیامده است.</p>
+      <p class="source">منبع: <a href="https://www.governor.ny.gov/news/consumers-begin-their-holiday-shopping-season-governor-hochul-signs-five-year-ban-ai-chatbot" target="_blank" rel="noopener">دفتر فرماندار نیویورک</a> · ۲۴ نوامبر ۲۰۲۶</p>
     </li>
-    <li class="card ai">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-spark"/></svg></span><span class="num">۰۵</span><span class="pill ai">هوش مصنوعی · ابزارها</span></div>
-      <h3>Meta عامل هوش مصنوعی Muse را به پیام‌های خصوصی Instagram آورد</h3>
-      <p><span class="label">چه اتفاقی افتاد</span>از ۲۴ نوامبر، کاربران Instagram در آمریکا، کانادا، مکزیک، ژاپن و سنگاپور می‌توانند عامل Muse از Meta را درون گفت‌وگوهای پیام مستقیم فرا بخوانند، پست‌ها را با آن به اشتراک بگذارند و از آن بخواهند کاری انجام دهد، مثلاً سفری را برنامه‌ریزی کند یا تخفیفی پیدا کند. Muse همچنین می‌تواند پست‌های ذخیره‌شده را در مجموعه‌ها مرتب کند. Meta می‌گوید هیچ چیزی بدون تأیید کاربر فرستاده یا منتشر نمی‌شود و کاربر می‌تواند از Muse بخواهد چیزی را فراموش کند؛ Walmart هم جداگانه اعلام کرد تخفیف‌های Black Friday را از طریق Muse عرضه می‌کند.</p>
-      <p><span class="label">چرا مهم است</span>آوردن عاملی که کار انجام می‌دهد به گفت‌وگوهای خصوصی پرسش‌های دشواری دربارهٔ رضایت و کاربرد داده پیش می‌کشد، آن هم چند روز پس از گزارش‌هایی (خلاصهٔ ۲۰ نوامبر) که Muse دادهٔ خصوصی را به کاربران اشتباه نشان داده بود.</p>
-      <p class="source">منبع: <a href="https://techcrunch.com/2026/11/24/meta-brings-its-muse-ai-assistant-directly-into-instagram-dms/" target="_blank" rel="noopener">TechCrunch</a> · ۲۴ نوامبر ۲۰۲۶، و <a href="https://techcrunch.com/2026/11/24/walmart-teams-up-with-meta-to-bring-black-friday-deals-to-ai-agent-muse/" target="_blank" rel="noopener">TechCrunch (Walmart)</a> · ۲۴ نوامبر ۲۰۲۶</p>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-chip"/></svg></span><span class="num">۰۵</span><span class="pill field">کل حوزه · سخت‌افزار هوش مصنوعی</span></div>
+      <h3>گزارش: Nvidia ارسال سرورهای هوش مصنوعی به چهار کشور جنوب شرق آسیا را متوقف کرد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>به گزارش Financial Times، شرکت Nvidia به سازندگان سرور مانند Dell و Supermicro گفته است ارسال سرورهای هوش مصنوعی به مالزی، سنگاپور، تایلند و اندونزی را متوقف کنند. عامل آن قواعد تازهٔ وزارت بازرگانی آمریکاست که به ارائه‌دهندگان ابری منطقه ۹۰ روز فرصت می‌دهد با اثبات اینکه شرکت‌های چینی محدودشده در میان مشتریانشان نیستند مجوز صادرات بگیرند. وام‌دهندگان هم تأمین مالی مراکز دادهٔ مرتبط با شرکت‌های ابری چینی را متوقف کرده‌اند.</p>
+      <p><span class="label">چرا مهم است</span>جنوب شرق آسیا مرکز مهمی برای اجارهٔ توان محاسباتی هوش مصنوعی است؛ اکنون قواعد صادرات تعیین می‌کند ظرفیت هوش مصنوعی کجا ساخته شود و چه کسی از آن استفاده کند، و این بر هزینه و دسترسی پژوهشگران در سراسر جهان اثر می‌گذارد.</p>
+      <p class="caveat">توجه: این گزارش بر منابع بی‌نام تکیه دارد؛ Nvidia از اظهار نظر خودداری کرد و روشن نیست این توقف موقت است یا نه.</p>
+      <p class="source">منبع: <a href="https://www.malaymail.com/news/money/2026/11/26/ft-nvidia-stops-ai-shipments-to-malaysia-singapore-thailand-indonesia-as-us-tightens-china-curbs/244856" target="_blank" rel="noopener">Malay Mail به نقل از Financial Times</a> · ۲۶ نوامبر ۲۰۲۶</p>
     </li>
     <li class="card is">
-      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-wallet"/></svg></span><span class="num">۰۶</span><span class="pill is">بازیابی اطلاعات · دادهٔ شخصی</span></div>
-      <h3>AI Mode در جست‌وجوی Google اکنون می‌تواند Google Wallet شما را بخواند و Drive هم در راه است</h3>
-      <p><span class="label">چه اتفاقی افتاد</span>Google عرضهٔ اتصالی اختیاری میان Google Wallet و «Personal Intelligence» در AI Mode را آغاز کرد تا پاسخ‌های جست‌وجو بتوانند از اطلاعات حساب خود کاربر استفاده کنند؛ گفته می‌شود Drive هم در هفته‌های آینده به Gmail، Calendar و Photos می‌پیوندد. دسترسی به Wallet فقط خواندنی است، پس AI Mode نمی‌تواند پول جابه‌جا کند، و یک نماد تازه نشان می‌دهد کدام زمینهٔ شخصی برای پاسخ به کار رفته است.</p>
-      <p><span class="label">چرا مهم است</span>جست‌وجوی وب در حال تبدیل شدن به جست‌وجو در دادهٔ خصوصی هر فرد است؛ این معنای «ربط» را تغییر می‌دهد و شفافیت دربارهٔ منابع را به پرسشی اصلی در طراحی بازیابی بدل می‌کند.</p>
-      <p class="caveat">توجه: نتوانستیم یادداشت Google یا مقالهٔ TechCrunch را خودمان باز کنیم؛ جزئیات از دو خلاصهٔ روزانهٔ هوش مصنوعی (The Neuron و Sam on AI) است که با هم هم‌خوانی دارند.</p>
-      <p class="source">منبع: <a href="https://techcrunch.com/2026/11/23/google-searchs-ai-mode-can-now-tap-into-drive-and-wallet-for-more-personalized-responses/" target="_blank" rel="noopener">TechCrunch</a> · ۲۳ نوامبر ۲۰۲۶، و <a href="https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/" target="_blank" rel="noopener">وبلاگ Google</a></p>
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">۰۶</span><span class="pill is">امنیت · حفاظت از داده</span></div>
+      <h3>1Password می‌گوید هکرها از راه حساب GitHub یک کارمند به سیستم‌های داخلی‌اش نفوذ کردند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>شرکت مدیریت گذرواژهٔ 1Password گفت در ۱۹ نوامبر مهاجمی را شناسایی کرد که حساب GitHub سازمانی یک کارمند را در دست گرفته و با آن کد مخرب به سرورهای داخلی فرستاده بود. مهاجم نام مشتریان، نشانی‌های ایمیل ورود و تاریخ ساخت حساب و آخرین ورود را دانلود کرد. شرکت می‌گوید هرگز به گاوصندوق‌های مشتریان دسترسی پیدا نشد و گذرواژهٔ اصلی یا کلیدهای مخفی را نگه نمی‌دارد.</p>
+      <p><span class="label">چرا مهم است</span>یک حساب توسعه‌دهنده راه ورود به زیرساخت یک شرکت امنیتی شد؛ زنجیرهٔ تأمین نرم‌افزار و حساب‌های میزبانی کد اکنون بخش اصلی حکمرانی داده‌اند.</p>
+      <p class="caveat">توجه: هنوز روشن نیست حساب کارمند چگونه به خطر افتاد و چند مشتری آسیب دیده‌اند.</p>
+      <p class="source">منبع: <a href="https://techcrunch.com/2026/11/25/1password-said-hackers-broke-into-its-internal-systems-but-customer-passwords-are-safe/" target="_blank" rel="noopener">TechCrunch</a> · ۲۵ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">۰۷</span><span class="pill field">کل حوزه · زیرساخت</span></div>
+      <h3>نهاد ناظر آمریکا به SpaceX اجازه داد تا یک میلیون ماهواره را به‌عنوان مرکز داده به فضا بفرستد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>کمیسیون ارتباطات فدرال آمریکا (FCC) شبکهٔ «Starmind» شرکت SpaceX را با حداکثر یک میلیون ماهواره برای پردازش داده در مدار مجاز کرد؛ رئیس این نهاد آن را نخستین مجوز آمریکا برای مراکز داده در فضا خواند. نخستین ماهواره باید تا ۲۰۳۳ و کل شبکه تا ۲۰۴۰ فعال شود و شرایطی مانند برنامهٔ کاهش زبالهٔ فضایی دارد. FCC اعتراض‌های Amazon، Viasat و انجمن نجوم آمریکا را رد کرد.</p>
+      <p><span class="label">چرا مهم است</span>این یک مجوز است، نه سیستمی در حال کار، اما نشان می‌دهد عطش توان محاسباتی هوش مصنوعی زیرساخت و پرسش‌های حکمرانی آن را به جاهای تازه می‌برد.</p>
+      <p class="caveat">توجه: دانشمندان دربارهٔ خنک‌سازی، هزینه، زبالهٔ فضایی و آسیب به رصد نجومی تردید دارند؛ هنوز هیچ ماهوارهٔ Starmind در مدار نیست.</p>
+      <p class="source">منبع: <a href="https://www.geekwire.com/2026/fcc-clears-spacex-million-satellites-starmind-data-center/" target="_blank" rel="noopener">GeekWire</a> · ۲۵ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">۰۸</span><span class="pill ai">هوش مصنوعی · مهندسی نرم‌افزار</span></div>
+      <h3>Anthropic با عامل‌های Claude رابط برنامه‌نویسی اصلی خود را به Rust بازنویسی کرد و آن را با ترافیک واقعی سنجید</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Anthropic شرح داد که چگونه Messages API، راه اصلی دسترسی مشتریان به Claude، را از Python به Rust منتقل کرده و حدود ۷۰ درصد مصرف CPU کمتر در هر درخواست و حدود ۲۰ درصد زمان کوتاه‌تر تا نخستین توکن گزارش می‌کند. Claude نسخهٔ اول را در حدود یک هفته نوشت، اما کد بازنویسی‌شده با اینکه ۹۸ درصد آزمون‌های قدیمی را گذراند، تنها در حدود یک‌چهارم ورودی‌های واقعی با Python یکسان بود. سپس تیم دو نسخه را روی ترافیک واقعی مقایسه کرد و برای حفظ حریم خصوصی فقط شکل هر تفاوت را ثبت کرد، و عامل‌ها زیر بازبینی انسانی ناهمخوانی‌ها را رفع کردند تا ۹۹٫۶ درصد یکسان شد.</p>
+      <p><span class="label">چرا مهم است</span>یک نمونهٔ روشن برای تدریس: گذراندن آزمون‌ها با رفتار درست یکی نیست، و سنجش کد نوشته‌شده با هوش مصنوعی در برابر کاربرد واقعی، همراه با بازبینی انسانی، این انتقال را امن کرد.</p>
+      <p class="caveat">توجه: اعداد عملکرد از خود شرکت است.</p>
+      <p class="source">منبع: <a href="https://www.anthropic.com/research/migrating-api-to-rust" target="_blank" rel="noopener">Anthropic Engineering</a> · ۲۵ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-layout"/></svg></span><span class="num">۰۹</span><span class="pill ai">هوش مصنوعی · ابزارها</span></div>
+      <h3>Claude اکنون می‌تواند artifactها را به‌صورت اپلیکیشن دسکتاپ روی Mac و Windows نصب کند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Anthropic نسخهٔ آزمایشی قابلیت «Install as app» را عرضه کرد که یک artifact در Claude را به اپلیکیشنی با پنجره و نماد جداگانه در Dock یا نوار وظیفه تبدیل می‌کند. کاربر یکی از سه سطح دسترسی را برمی‌گزیند، از دسترسی در حد مرورگر تا دسترسی کامل به رایانه که فقط برای اپلیکیشن‌های ساختهٔ خود کاربر یا سازمانش مجاز است؛ پس از هر به‌روزرسانی باید دوباره اجازه داد. این اپلیکیشن‌ها از حساب و سهمیهٔ مصرف Claude کاربر استفاده می‌کنند و Anthropic پیش از نصب آن‌ها را بررسی نمی‌کند.</p>
+      <p><span class="label">چرا مهم است</span>ابزارهای کوچک و شخصی ساخته‌شده با هوش مصنوعی در حال تبدیل شدن به نرم‌افزار قابل نصب‌اند؛ این پرسش‌های تازه‌ای دربارهٔ مجوزها، اعتماد و نگهداری این اپلیکیشن‌ها در سازمان‌ها پیش می‌کشد.</p>
+      <p class="source">منبع: <a href="https://claude.com/resources/articles/install-as-app" target="_blank" rel="noopener">مقالهٔ راهنمای Anthropic</a> · ۲۴ نوامبر ۲۰۲۶، و <a href="https://www.macrumors.com/2026/11/25/claude-install-artifacts-desktop-apps/" target="_blank" rel="noopener">MacRumors</a> · ۲۵ نوامبر ۲۰۲۶</p>
     </li>
   </ol>
 </section>
@@ -345,52 +421,54 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
 <section>
   <h2>ارزش دنبال کردن</h2>
   <ul class="watch">
-    <li><strong>مدل‌های «حلقه‌ای» که با حافظهٔ کمتر بیشتر فکر می‌کنند</strong>Thinking Machines (مدل Inkling 2 Mini) و Z.ai (مدل GLM-5.4 با پنجرهٔ زمینهٔ یک میلیون توکنی) هر دو مدل‌هایی منتشر کردند که بخش‌هایی از شبکه را برای تکرار محاسبات دوباره به کار می‌برند تا مدل‌های کوچک‌تر بهتر استدلال کنند. هنوز به‌طور مستقل آزموده نشده‌اند. <a href="https://z.ai/blog/glm-5.4" target="_blank" rel="noopener">وبلاگ Z.ai</a> · ۲۳ نوامبر ۲۰۲۶</li>
-    <li><strong>وصله‌های امنیتی موقت نوشته‌شده با هوش مصنوعی</strong>OpenAI و Cisco ابزار Shirudo را متن‌باز کردند که «سپر»هایی امضاشده و تأییدشده توسط اپراتور را روی یک سیستم Linux در حال کار اعمال می‌کند تا وصلهٔ واقعی آماده شود؛ در یک آزمون کنترل‌شده، سپری ساخته‌شده با Codex بدون راه‌اندازی دوباره جلوی یک حمله را گرفت. نتوانستیم اطلاعیه را برای بررسی باز کنیم. <a href="https://openai.com/index/introducing-shirudo/" target="_blank" rel="noopener">OpenAI</a> · گزارش‌شده در ۲۴ نوامبر ۲۰۲۶</li>
+    <li><strong>ادعای OpenAI دربارهٔ پیشرفتی در حد سرعت ضرب ماتریس‌ها</strong>یک پیش‌انتشار از OpenAI ادعا می‌کند ثابت کرده که توان ضرب ماتریس برابر ۹/۴ است؛ پرسشی قدیمی در علوم رایانه. هنوز ریاضیدانان مستقل آن را بررسی نکرده‌اند. <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-25-2026/" target="_blank" rel="noopener">The Neuron</a> · ۲۵ نوامبر ۲۰۲۶</li>
+    <li><strong>برچسب‌های هوش مصنوعی در فراداده‌های عکس، نگرانی اتاق‌های خبر</strong>روزنامهٔ New York Times به عکاسان آزادکار گفته Photoshop 2027 را نصب نکنند، چون قابلیت‌های تازهٔ هوش مصنوعی آن ممکن است در فراداده عکس‌ها را ساختهٔ هوش مصنوعی علامت بزند. Adobe هنوز پاسخی نداده است. <a href="https://samonai.substack.com/p/ai-brief-november-25-2026" target="_blank" rel="noopener">Sam on AI به نقل از The Verge</a> · ۲۵ نوامبر ۲۰۲۶</li>
+    <li><strong>گفت‌وگوی Amazon و Meta برای پایان مسدودسازی عامل خرید Meta</strong>گزارش شده این دو شرکت دربارهٔ توافقی گفت‌وگو می‌کنند که به عامل Muse از Meta اجازهٔ خرید در Amazon بدهد؛ درآمد تبلیغات و کنترل نتایج هنوز حل نشده است. هنوز توافقی اعلام نشده. <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-26-2026/" target="_blank" rel="noopener">The Neuron</a> · ۲۶ نوامبر ۲۰۲۶</li>
   </ul>
 </section>
 
 <section>
   <h2>سه ویدیوی برتر</h2>
-  <p class="note">امروز هم YouTube بررسی‌های ما را مسدود کرد، پس نتوانستیم تعداد بازدید، تاریخ دقیق انتشار و عنوان دو ویدیو را تأیید کنیم. سه راهنمای تازه دربارهٔ برنامهٔ دسکتاپ بازطراحی‌شدهٔ Claude را از کانال‌های شناخته‌شدهٔ آموزش هوش مصنوعی برگزیدیم (نخستین نوشته‌ها دربارهٔ آن‌ها میان ۲۵ اکتبر و ۵ نوامبر ۲۰۲۶ است، پس در بازهٔ سه‌ماهه‌اند)؛ هیچ‌کدام در خلاصه‌های پیشین نبوده‌اند.</p>
+  <p class="note">نتوانستیم ویدیویی دربارهٔ Claude Desktop از سه ماه گذشته پیدا کنیم که امروز قابل تأیید باشد (YouTube بیشتر بررسی‌ها را مسدود کرد و ویدیوهای تازه‌ای که یافتیم پیش‌تر در خلاصه‌ها آمده بودند)، پس ویدیوی دومی دربارهٔ ویرایش ویدیو برگزیدیم. تعداد بازدیدها تأیید نشد؛ تاریخ‌ها از صفحهٔ ویدیوهاست.</p>
   <ol class="cards">
     <li class="card video">
-      <div class="card-top"><span class="num">V1</span><span class="pill video">مرور کلی · بازطراحی دسکتاپ Claude</span></div>
-      <h3 dir="ltr" style="text-align:right">Claude 2.0 Is Here. EVERYTHING in 15 Minutes</h3>
-      <div class="facts"><span><b>کانال:</b> Futurepedia</span><span><b>تاریخ انتشار:</b> تأیید نشده (اوایل نوامبر ۲۰۲۶)</span><span><b>بازدید:</b> تأیید نشده</span></div>
-      <p><span class="label">دربارهٔ چیست</span>گشتی ۱۵ دقیقه‌ای در برنامهٔ دسکتاپ بازطراحی‌شدهٔ Claude: چیدمان Home و Code، artifactها، فهرست جلسه‌ها، جلسه‌های موازی و ابری، Remote Control و modها. «Claude 2.0» نامی است که کانال به این بازطراحی داده، نه یک مدل تازه.</p>
-      <p><span class="label">چرا ارزش دیدن دارد</span>سریع‌ترین مرور کامل از توانایی‌های امروز برنامهٔ دسکتاپ، از یک کانال بزرگ و شناخته‌شدهٔ ابزارهای هوش مصنوعی.</p>
-      <button type="button" class="yt" data-id="tM0dwXhOv2o" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/tM0dwXhOv2o/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
-      <p class="source"><a href="https://www.youtube.com/watch?v=tM0dwXhOv2o" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+      <div class="card-top"><span class="num">V1</span><span class="pill video">ویرایش ویدیو با Claude</span></div>
+      <h3 dir="ltr" style="text-align:right">Learn 90% of Claude Video Editing in under 20 Minutes</h3>
+      <div class="facts"><span><b>کانال:</b> Grow with Alex</span><span><b>تاریخ انتشار:</b> ۲۲ اکتبر ۲۰۲۶</span><span><b>بازدید:</b> تأیید نشده</span></div>
+      <p><span class="label">دربارهٔ چیست</span>این ویدیو نشان می‌دهد چگونه Claude فیلم خام یک گوینده را به یک ویدیوی کوتاه کامل با برش، زیرنویس، رنگ، زوم و قلاب آغازین تبدیل می‌کند. همچنین نشان می‌دهد چگونه با جدول ضرب‌آهنگ و برگهٔ تماس، ویرایش را بررسی کنیم و روند کار را به یک skill قابل استفادهٔ دوباره در Claude تبدیل کنیم.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>یک روند کاری کامل و عملی در حدود ۲۰ دقیقه، از نخستین پرامپت تا فرایندی تکرارپذیر.</p>
+      <button type="button" class="yt" data-id="03BNd8ygnq8" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/03BNd8ygnq8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=03BNd8ygnq8" target="_blank" rel="noopener">تماشا در YouTube</a></p>
     </li>
     <li class="card video">
-      <div class="card-top"><span class="num">V2</span><span class="pill video">راهنمای گام‌به‌گام · پروژه‌ها، گفت‌وگوهای جانبی، modها</span></div>
-      <h3>Ben AI: هفت به‌روزرسانی Claude Code Desktop (عنوان تأیید نشده)</h3>
-      <div class="facts"><span><b>کانال:</b> Ben AI</span><span><b>تاریخ انتشار:</b> تأیید نشده (اواخر اکتبر ۲۰۲۶)</span><span><b>بازدید:</b> تأیید نشده</span></div>
-      <p><span class="label">دربارهٔ چیست</span>Ben AI در حدود ۱۳ دقیقه هفت گروه از قابلیت‌های برنامهٔ دسکتاپ Claude را نشان می‌دهد: جزئیات جلسه، پروژه‌ها، گفت‌وگوهای جانبی، نمای دوتایی، artifactها، فرمان‌های اسلش و modها. او نشان می‌دهد این‌ها چگونه در یک روند کاری روزانه با عامل‌ها کنار هم قرار می‌گیرند.</p>
-      <p><span class="label">چرا ارزش دیدن دارد</span>نمایش‌هایی عملی و متمرکز بر روند کار؛ توجه کنید که یک بازبین دریافته چند ادعای او با مستندات Anthropic فرق دارد.</p>
-      <button type="button" class="yt" data-id="J5EbL1UaqG8" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/J5EbL1UaqG8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
-      <p class="source"><a href="https://www.youtube.com/watch?v=J5EbL1UaqG8" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+      <div class="card-top"><span class="num">V2</span><span class="pill video">ساخت عامل‌های هوش مصنوعی با Claude</span></div>
+      <h3 dir="ltr" style="text-align:right">Claude Agent SDK Tutorial – Build AI Agents with Claude Code</h3>
+      <div class="facts"><span><b>کانال:</b> ExamPro</span><span><b>تاریخ انتشار:</b> ۱۴ سپتامبر ۲۰۲۶</span><span><b>بازدید:</b> تأیید نشده</span></div>
+      <p><span class="label">دربارهٔ چیست</span>درسی عملی که Anthropic SDK و Claude Agent SDK را راه‌اندازی می‌کند و نخستین گام‌های ساخت یک عامل را برمی‌دارد. این ویدیو بخشی از دورهٔ ExamPro برای آزمون Claude Certified Architect Foundations است.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>ExamPro کانالی شناخته‌شده در آموزش گواهی‌نامه‌هاست و این نقطهٔ شروعی تمیز و ساختارمند برای دانشجویانی است که می‌خواهند خودشان عامل بسازند.</p>
+      <button type="button" class="yt" data-id="SM-Fy8e3nFk" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/SM-Fy8e3nFk/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=SM-Fy8e3nFk" target="_blank" rel="noopener">تماشا در YouTube</a></p>
     </li>
     <li class="card video">
-      <div class="card-top"><span class="num">V3</span><span class="pill video">رتبه‌بندی · قابلیت‌های ارزشمند دسکتاپ</span></div>
-      <h3>Duncan Rogoff: رتبه‌بندی هفت به‌روزرسانی دسکتاپ Claude (عنوان تأیید نشده)</h3>
-      <div class="facts"><span><b>کانال:</b> Duncan Rogoff</span><span><b>تاریخ انتشار:</b> تأیید نشده (اوایل نوامبر ۲۰۲۶)</span><span><b>بازدید:</b> تأیید نشده</span></div>
-      <p><span class="label">دربارهٔ چیست</span>Duncan Rogoff هفت به‌روزرسانی اخیر دسکتاپ Claude را از کم‌فایده‌ترین تا مفیدترین رتبه‌بندی می‌کند. چهار گزینهٔ برتر او نمای دوتایی، گفت‌وگوهای جانبی، جلسه‌های تودرتو و یک «جلسهٔ اصلی» است که کار را در میان جلسه‌ها بررسی می‌کند.</p>
-      <p><span class="label">چرا ارزش دیدن دارد</span>کمک می‌کند قابلیت‌هایی را که همین امروز وقت صرفه‌جویی می‌کنند از آن‌هایی که هنوز بیشتر جنبهٔ نوآوری دارند جدا کنید.</p>
-      <button type="button" class="yt" data-id="znWSzW0Zh_Y" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/znWSzW0Zh_Y/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
-      <p class="source"><a href="https://www.youtube.com/watch?v=znWSzW0Zh_Y" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+      <div class="card-top"><span class="num">V3</span><span class="pill video">ویرایش ویدیو با Claude (انتخاب دوم)</span></div>
+      <h3 dir="ltr" style="text-align:right">Claude Edited This Video (And I'll Teach You How)</h3>
+      <div class="facts"><span><b>کانال:</b> 100x Engineers</span><span><b>تاریخ انتشار:</b> ۲۰ اکتبر ۲۰۲۶</span><span><b>بازدید:</b> تأیید نشده</span></div>
+      <p><span class="label">دربارهٔ چیست</span>روندی شش‌مرحله‌ای برای برنامه‌ریزی و تولید ویدیوی ساخته‌شده با هوش مصنوعی به کمک Claude، از آزمون سبک و استوری‌بورد تا ویرایش نهایی. همچنین نشان می‌دهد چگونه نتیجه را به پروژه‌های قابل ویرایش After Effects تبدیل کنیم و Claude را به Premiere Pro وصل کنیم.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>از برش‌های ساده فراتر می‌رود و نشان می‌دهد Claude چگونه در ابزارهای حرفه‌ای ویرایش جا می‌گیرد.</p>
+      <button type="button" class="yt" data-id="Ct5_C2xC-oo" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/Ct5_C2xC-oo/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=Ct5_C2xC-oo" target="_blank" rel="noopener">تماشا در YouTube</a></p>
     </li>
   </ol>
 </section>
 
-<footer>گردآوری‌شده با جست‌وجوی وب در ۲۵ نوامبر ۲۰۲۶. خلاصه‌ها با کلمات خود عامل نوشته شده‌اند؛ برای گزارش کامل روی پیوندها کلیک کنید.</footer>
+<footer>گردآوری‌شده با جست‌وجوی وب در ۲۶ نوامبر ۲۰۲۶. خلاصه‌ها با کلمات خود عامل نوشته شده‌اند؛ برای گزارش کامل روی پیوندها کلیک کنید.</footer>
 </div>
 
 <nav class="archive-list" id="archive" aria-label="All digests">
   <h2>All digests · <span class="fa" lang="fa">همهٔ خلاصه‌ها</span></h2>
   <ul>
     <!-- ARCHIVE:START -->
+    <li><a href="digests/2026-11-26.html">2026-11-26</a></li>
     <li><a href="digests/2026-11-25.html">2026-11-25</a></li>
     <li><a href="digests/2026-11-24.html">2026-11-24</a></li>
     <li><a href="digests/2026-11-23.html">2026-11-23</a></li>
@@ -406,6 +484,7 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--li
     <!-- ARCHIVE:END -->
   </ul>
 </nav>
+
 
 
 </div>

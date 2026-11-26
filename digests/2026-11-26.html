@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>News digest 26 Nov 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one reading column, dated masthead with a language switch, stacked cards with a coloured category stripe. */
+:root {
+  --bg: #f3f5f8; --surface: #ffffff; --ink: #17212c; --muted: #586473; --line: #dbe1e8; --accent: #1d5bb8;
+  --cat-ai: #4a3fc4; --cat-ai-bg: #ecebfb; --cat-is: #0d7468; --cat-is-bg: #e2f3f0;
+  --cat-field: #9a5a00; --cat-field-bg: #fbf0dc; --cat-video: #b02a4c; --cat-video-bg: #fbe6ec;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-fa: "Vazirmatn", Tahoma, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f141a; --surface: #182029; --ink: #e7ecf2; --muted: #9ba8b6; --line: #2b3643; --accent: #86b4ff;
+    --cat-ai: #b3adff; --cat-ai-bg: #272452; --cat-is: #6fd3c5; --cat-is-bg: #123a36;
+    --cat-field: #f0b660; --cat-field-bg: #3d2c10; --cat-video: #ff9db5; --cat-video-bg: #47182a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f141a; --surface: #182029; --ink: #e7ecf2; --muted: #9ba8b6; --line: #2b3643; --accent: #86b4ff;
+  --cat-ai: #b3adff; --cat-ai-bg: #272452; --cat-is: #6fd3c5; --cat-is-bg: #123a36;
+  --cat-field: #f0b660; --cat-field-bg: #3d2c10; --cat-video: #ff9db5; --cat-video-bg: #47182a;
+  color-scheme: dark;
+}
+
+/* Daily colour: --h (hue) is set by the script from the digest date. */
+:root { --h: 215; --bg: hsl(var(--h) 30% 96%); --accent: hsl(var(--h) 65% 38%); --hero-a: hsl(var(--h) 70% 42%); --hero-b: hsl(calc(var(--h) + 45) 70% 55%); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: hsl(var(--h) 25% 8%); --accent: hsl(var(--h) 85% 74%); --hero-a: hsl(var(--h) 55% 28%); --hero-b: hsl(calc(var(--h) + 45) 55% 36%); } }
+:root[data-theme="dark"] { --bg: hsl(var(--h) 25% 8%); --accent: hsl(var(--h) 85% 74%); --hero-a: hsl(var(--h) 55% 28%); --hero-b: hsl(calc(var(--h) + 45) 55% 36%); }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+.page { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; display: flex; flex-direction: column; gap: 24px; }
+.switch { display: flex; gap: 8px; justify-content: flex-end; }
+.switch button {
+  font: 600 0.9rem var(--font-body); padding: 6px 16px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+}
+.switch button[lang="fa"] { font-family: var(--font-fa); }
+.switch button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.lang { display: flex; flex-direction: column; gap: 40px; }
+.lang[hidden] { display: none; }
+.lang[lang="fa"] { font-family: var(--font-fa); line-height: 1.9; }
+.lang[lang="fa"] h1, .lang[lang="fa"] h2, .lang[lang="fa"] h3 { font-family: var(--font-fa); font-weight: 700; letter-spacing: 0; }
+.lang[lang="fa"] .label { text-transform: none; letter-spacing: 0; }
+header.masthead { border-bottom: 3px solid var(--ink); padding-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
+.masthead h1 { font-family: var(--font-display); font-size: clamp(2rem, 6vw, 2.9rem); line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
+.masthead .hello { margin: 0; font-size: 1.15rem; color: var(--accent); font-weight: 600; }
+.masthead .date { color: var(--muted); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+.masthead .archive { font-size: 0.9rem; }
+.overview { font-size: 1.1rem; margin: 0; }
+.note { margin: 0; color: var(--muted); font-size: 0.9rem; border-inline-start: 3px solid var(--line); padding-inline-start: 12px; }
+section { display: flex; flex-direction: column; gap: 16px; }
+section > h2 { font-family: var(--font-display); font-size: 1.45rem; margin: 0; text-wrap: balance; }
+.cards { display: flex; flex-direction: column; gap: 16px; list-style: none; margin: 0; padding: 0; }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-inline-start: 5px solid var(--stripe, var(--line));
+  border-radius: 8px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;
+}
+.card.ai { --stripe: var(--cat-ai); } .card.is { --stripe: var(--cat-is); }
+.card.field { --stripe: var(--cat-field); } .card.video { --stripe: var(--cat-video); }
+.card-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.num { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 0.85rem; font-weight: 600; }
+.pill { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em; padding: 3px 10px; border-radius: 999px; }
+.lang[lang="fa"] .pill { letter-spacing: 0; font-size: 0.8rem; }
+.pill.ai { color: var(--cat-ai); background: var(--cat-ai-bg); } .pill.is { color: var(--cat-is); background: var(--cat-is-bg); }
+.pill.field { color: var(--cat-field); background: var(--cat-field-bg); } .pill.video { color: var(--cat-video); background: var(--cat-video-bg); }
+.card h3 { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.35; margin: 0; text-wrap: balance; }
+.card p { margin: 0; }
+.label { font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); display: block; margin-bottom: 2px; }
+.caveat { color: var(--muted); font-size: 0.92rem; }
+.source { border-top: 1px solid var(--line); padding-top: 10px; font-size: 0.88rem; color: var(--muted); }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.facts { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 0.9rem; color: var(--muted); }
+.facts b { color: var(--ink); font-weight: 600; }
+.watch { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.watch li { background: var(--surface); border: 1px dashed var(--line); border-radius: 8px; padding: 14px 18px; }
+.watch strong { display: block; margin-bottom: 2px; }
+.archive-list { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--line); padding-top: 24px; }
+.archive-list h2 { font-size: 1.1rem; margin: 0; }
+.archive-list h2 .fa, .archive-list .fa { font-family: var(--font-fa); }
+.archive-list ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.archive-list a { display: inline-block; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; text-decoration: none; font-variant-numeric: tabular-nums; }
+.yt { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; padding: 0; border-radius: 8px; overflow: hidden; background: #000; cursor: pointer; }
+.yt img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.9; transition: opacity .2s; }
+.yt:hover img, .yt:focus-visible img { opacity: 1; }
+.yt:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.yt .play { position: absolute; inset: 0; margin: auto; width: 68px; height: 48px; border-radius: 12px; background: rgba(204,0,0,.92); display: grid; place-items: center; }
+.yt .play::after { content: ""; border-style: solid; border-width: 10px 0 10px 18px; border-color: transparent transparent transparent #fff; margin-left: 4px; }
+.yt-frame { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 8px; display: block; }
+.hero { position: relative; height: 170px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, var(--hero-a), var(--hero-b)); }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.quote { margin: 0; padding: 16px 20px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); border-inline-start: 5px solid var(--accent); display: flex; flex-direction: column; gap: 6px; }
+.quote .q-label { font-size: 0.8rem; font-weight: 600; color: var(--accent); }
+.quote p { margin: 0; font-size: 1.15rem; line-height: 1.7; }
+.quote cite { font-style: normal; color: var(--muted); font-size: 0.88rem; }
+.icon-tile { width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; flex: none; }
+.icon-tile svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.card.ai .icon-tile { background: var(--cat-ai-bg); color: var(--cat-ai); }
+.card.is .icon-tile { background: var(--cat-is-bg); color: var(--cat-is); }
+.card.field .icon-tile { background: var(--cat-field-bg); color: var(--cat-field); }
+.poems { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.poems .quote p { font-size: 1.02rem; }
+@media (max-width: 720px) { .poems { grid-template-columns: 1fr; } }
+footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 16px; }
+@media (max-width: 480px) { .page { padding: 24px 16px 48px; } .card { padding: 16px; } }
+</style>
+</head>
+<body data-date="2026-11-26">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.2 4.5 4.5 0 0 0 7 18z"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M15.5 14.5h2.5"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M11 3l1.8 5.2L18 10l-5.2 1.8L11 17l-1.8-5.2L4 10l5.2-1.8z"/><path d="M19 15l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16M7 20h10M5 7h14M5 7l-3 6h6zM19 7l-3 6h6z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16M7 16v-5M12 16V7M17 16v-8"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/></symbol>
+</svg>
+
+<div class="page">
+
+<div class="switch" role="group" aria-label="Language">
+  <button type="button" id="btn-en" lang="en" aria-pressed="false">English</button>
+  <button type="button" id="btn-fa" lang="fa" aria-pressed="true">فارسی</button>
+</div>
+
+<div class="hero" aria-hidden="true"><canvas id="hero-art"></canvas></div>
+
+
+
+<!-- ===================== ENGLISH ===================== -->
+<div class="lang" lang="en" dir="ltr" id="content-en" hidden>
+
+<header class="masthead">
+  <p class="hello">Hello Kayvan,</p>
+  <h1>News digest</h1>
+  <div class="date">Thursday 26 November 2026</div>
+  <a class="archive" href="../index.html#archive">All digests</a>
+</header>
+
+<section>
+  <h2>Poems of the day</h2>
+  <div class="poems">
+    <figure class="quote">
+      <span class="q-label">Hafez</span>
+      <p>For years my heart asked me for the cup of Jamshid;<br>what it already held, it begged from strangers.</p>
+      <cite>Hafez, Divan (14th century) · our own translation</cite>
+    </figure>
+    <figure class="quote">
+      <span class="q-label">Saadi</span>
+      <p>The children of Adam are limbs of one another,<br>made in creation from one essence.<br>When time brings pain to one limb,<br>the other limbs can find no rest.</p>
+      <cite>Saadi, Golestan, Chapter 1 (1258) · our own translation</cite>
+    </figure>
+    <figure class="quote">
+      <span class="q-label">Rumi</span>
+      <p>Seek less for water; find thirst instead,<br>so that water springs up for you from above and below.</p>
+      <cite>Rumi, Masnavi, Book 3 (13th century) · our own translation</cite>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <h2>Overview</h2>
+  <p class="overview">Today is about who controls personal data and what AI is allowed to touch. Forty-two US state attorneys general are fighting the sale of 21 million Character.AI users' private chats in bankruptcy, Australia passed a broad "duty of care" law that covers AI chatbots, and New York banned AI chatbot toys for five years. On the security side, Microsoft says state hacking groups now use the AI attack agent ARTEX, and 1Password disclosed a break-in through an employee's GitHub account. Nvidia froze AI server shipments to four Southeast Asian countries under new US rules, and Anthropic showed how it used Claude agents to rewrite its main API.</p>
+  <p class="note">It is Thanksgiving in the US, so the news flow was lighter than usual. We found no important new story in the last 24 hours on the EU AI Act, GDPR enforcement or the job market. The New York toy ban was signed on 24 November but was not in yesterday's digest. YouTube blocked most of our checks again, so some video details are marked "not confirmed".</p>
+</section>
+
+<section>
+  <h2>News</h2>
+  <ol class="cards">
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">01</span><span class="pill is">Privacy · data governance</span></div>
+      <h3>42 US states try to stop the auction of 21 million Character.AI users' private chats</h3>
+      <p><span class="label">What happened</span>A coalition of 42 state attorneys general has stepped into Character.AI's Chapter 11 bankruptcy case to block the sale of user data. They say the data covers more than 21 million US accounts, about 2.1 million of them registered to minors, including chat histories and IP addresses; the filing says some chats contain mental and medical health disclosures. The only known bidder is a Delaware company formed on 13 November, and the auction is set for 1 December.</p>
+      <p><span class="label">Why it matters</span>This is a test of whether a privacy promise survives bankruptcy: if user data is treated as an asset that can be sold, a new owner may not be bound by the old privacy policy.</p>
+      <p class="caveat">Note: the states' claims are allegations in a court filing. Character.AI says user information stays protected under its privacy policy. TechCrunch and Gizmodo differ slightly on when the court approved the lead bidder.</p>
+      <p class="source">Source: <a href="https://techcrunch.com/2026/11/25/state-ags-fight-character-ais-plan-to-auction-off-users-private-chats/" target="_blank" rel="noopener">TechCrunch</a> · 25 Nov 2026, and <a href="https://gizmodo.com/character-ai-wants-to-sell-millions-of-user-chats-to-the-highest-bidder-2000845664" target="_blank" rel="noopener">Gizmodo</a> · 25 Nov 2026</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">02</span><span class="pill field">Field-wide · law</span></div>
+      <h3>Australia passes a "digital duty of care" law that covers apps, games and AI chatbots</h3>
+      <p><span class="label">What happened</span>Australia's Parliament passed the Digital Duty of Care Act, which requires online services, including AI chatbots, to actively reduce the risk of serious harm to users. After a deal with the Greens, the maximum fine was raised from A$109 million to 5% of a company's global revenue; the Senate vote was 36 to 23. The opposition called the law "authoritarian" and promised to repeal it, and the US ambassador said it would push platforms to censor lawful speech.</p>
+      <p><span class="label">Why it matters</span>Like the EU Digital Services Act and the UK Online Safety Act, the law shifts responsibility for harm onto system design, so risk assessment becomes part of building any information service used in Australia.</p>
+      <p class="source">Source: <a href="https://www.fastcompany.com/91648939/digital-duty-care-act-passes-australia-opposition-says-law-authoritarian" target="_blank" rel="noopener">Associated Press via Fast Company</a> · 25 Nov 2026</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">03</span><span class="pill ai">Artificial intelligence · security</span></div>
+      <h3>Microsoft: Chinese and North Korean state hackers now use the AI attack agent ARTEX</h3>
+      <p><span class="label">What happened</span>In a threat report on 25 November, Microsoft said state-backed groups including China's Salt Typhoon and Crystal Typhoon and North Korea's Onyx Sleet and Pearl Sleet have added ARTEX to their tools. ARTEX is an open-source AI agent for penetration testing that chains known tools to scan systems, guess passwords and find exposed secrets much faster than a human. Its original code was removed from GitHub, but copies and a paid version from a Chinese firm are still available, and Microsoft advises spotting it by its unusual speed of activity.</p>
+      <p><span class="label">Why it matters</span>AI agents mainly make old weaknesses (weak passwords, exposed keys, unpatched web apps) easier to exploit at scale, so basic security hygiene in university and company systems matters more than ever.</p>
+      <p class="caveat">Note: we could not open Microsoft's report itself; details come from The Record's report (via Techmeme) and an AI-assisted security news site. Microsoft does not say what each group did with the tool.</p>
+      <p class="source">Source: <a href="https://www.techmeme.com/261126/p3" target="_blank" rel="noopener">The Record via Techmeme</a> · 26 Nov 2026, and <a href="https://i10x.ai/news/artex-state-hackers-microsoft-defender-guide-detect-ai-pentest-agent" target="_blank" rel="noopener">i10x</a> · 25 Nov 2026</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">04</span><span class="pill ai">Artificial intelligence · law</span></div>
+      <h3>New York bans toys with built-in AI chatbots for five years</h3>
+      <p><span class="label">What happened</span>Governor Kathy Hochul signed a law that stops the making, distribution and sale of toys with embedded AI chatbots in New York for five years. It takes effect 90 days after signing, so not during this holiday season, and the attorney general can seek fines of up to $15,000 per violation per day. The state cites tests in which some chatbot toys for children aged 3 to 12 discussed sexual topics and could record voices or scan faces.</p>
+      <p><span class="label">Why it matters</span>After California's four-year ban in September, US states are now regulating AI by product type and audience, which matters for anyone designing conversational systems that children might use.</p>
+      <p class="caveat">Note: this is the state's own press release; the testing organisation is not named in it.</p>
+      <p class="source">Source: <a href="https://www.governor.ny.gov/news/consumers-begin-their-holiday-shopping-season-governor-hochul-signs-five-year-ban-ai-chatbot" target="_blank" rel="noopener">Office of the Governor of New York</a> · 24 Nov 2026</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-chip"/></svg></span><span class="num">05</span><span class="pill field">Field-wide · AI hardware</span></div>
+      <h3>Nvidia reportedly freezes AI server shipments to four Southeast Asian countries</h3>
+      <p><span class="label">What happened</span>According to the Financial Times, Nvidia told server makers such as Dell and Supermicro to stop shipping AI servers to Malaysia, Singapore, Thailand and Indonesia. The trigger is new US Commerce Department rules that give regional cloud providers 90 days to get an export licence by proving that restricted Chinese companies are not among their customers. Lenders have also paused financing for data centres linked to Chinese cloud firms.</p>
+      <p><span class="label">Why it matters</span>Southeast Asia is a major hub for rented AI computing; export rules now decide where AI capacity can be built and who can use it, which affects cost and access for researchers worldwide.</p>
+      <p class="caveat">Note: this is based on unnamed sources; Nvidia declined to comment, and it is unclear whether the freeze is temporary.</p>
+      <p class="source">Source: <a href="https://www.malaymail.com/news/money/2026/11/26/ft-nvidia-stops-ai-shipments-to-malaysia-singapore-thailand-indonesia-as-us-tightens-china-curbs/244856" target="_blank" rel="noopener">Malay Mail, reporting the Financial Times</a> · 26 Nov 2026</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">06</span><span class="pill is">Security · data protection</span></div>
+      <h3>1Password says hackers got into its internal systems through an employee's GitHub account</h3>
+      <p><span class="label">What happened</span>The password manager 1Password said that on 19 November it detected an attacker who had taken over an employee's corporate GitHub account and used it to push malicious code to internal servers. The attacker downloaded customer names, sign-in email addresses and account creation and last-login dates. The company says customer vaults were never accessed and that it does not hold master passwords or secret keys.</p>
+      <p><span class="label">Why it matters</span>A developer account became the way into a security company's back end; software supply chains and code-hosting accounts are now a core part of data governance.</p>
+      <p class="caveat">Note: it is not yet known how the employee account was compromised or how many customers are affected.</p>
+      <p class="source">Source: <a href="https://techcrunch.com/2026/11/25/1password-said-hackers-broke-into-its-internal-systems-but-customer-passwords-are-safe/" target="_blank" rel="noopener">TechCrunch</a> · 25 Nov 2026</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">07</span><span class="pill field">Field-wide · infrastructure</span></div>
+      <h3>US regulator lets SpaceX launch up to one million satellites as data centres in space</h3>
+      <p><span class="label">What happened</span>The Federal Communications Commission (FCC) authorised SpaceX's "Starmind" network of up to one million satellites for data processing in orbit, which its chairman called the first US approval of data centres in space. The first satellite must work by 2033 and the full network by 2040, with conditions including a debris plan. The FCC rejected objections from Amazon, Viasat and the American Astronomical Society.</p>
+      <p><span class="label">Why it matters</span>This is a permit, not a working system, but it shows how the hunger for AI computing is pushing infrastructure, and questions of governance, into new places.</p>
+      <p class="caveat">Note: scientists question the cooling, cost, space debris and harm to astronomy; no Starmind satellite is in orbit yet.</p>
+      <p class="source">Source: <a href="https://www.geekwire.com/2026/fcc-clears-spacex-million-satellites-starmind-data-center/" target="_blank" rel="noopener">GeekWire</a> · 25 Nov 2026</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">08</span><span class="pill ai">Artificial intelligence · software engineering</span></div>
+      <h3>Anthropic used Claude agents to rewrite its main API in Rust, checked against live traffic</h3>
+      <p><span class="label">What happened</span>Anthropic described moving its Messages API, the main way customers reach Claude, from Python to Rust, reporting about 70% less CPU per request and about 20% faster time to first token. Claude wrote a first version in about a week, but the rewritten code passed 98% of the old tests while matching Python on only about a quarter of real inputs. The team then compared both versions on live traffic, logging only the shape of each difference for privacy, with agents fixing mismatches under human review until 99.6% matched.</p>
+      <p><span class="label">Why it matters</span>A clear case study for teaching: passing tests is not the same as correct behaviour, and checking AI-written code against real use, with human review, is what made the migration safe.</p>
+      <p class="caveat">Note: the performance numbers are the company's own.</p>
+      <p class="source">Source: <a href="https://www.anthropic.com/research/migrating-api-to-rust" target="_blank" rel="noopener">Anthropic Engineering</a> · 25 Nov 2026</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-layout"/></svg></span><span class="num">09</span><span class="pill ai">Artificial intelligence · tools</span></div>
+      <h3>Claude can now install artifacts as desktop apps on Mac and Windows</h3>
+      <p><span class="label">What happened</span>Anthropic launched an "Install as app" beta that turns a Claude artifact into an app with its own window and Dock or taskbar icon. Users choose one of three permission levels, from browser-level access up to full computer access, which is allowed only for apps the user or their organisation built; permissions must be granted again after every update. Apps use the person's Claude account and usage limits, and Anthropic does not review apps before they are installed.</p>
+      <p><span class="label">Why it matters</span>Small, AI-built personal tools are becoming installable software, which raises new questions about permissions, trust and who maintains these apps inside organisations.</p>
+      <p class="source">Source: <a href="https://claude.com/resources/articles/install-as-app" target="_blank" rel="noopener">Anthropic help article</a> · 24 Nov 2026, and <a href="https://www.macrumors.com/2026/11/25/claude-install-artifacts-desktop-apps/" target="_blank" rel="noopener">MacRumors</a> · 25 Nov 2026</p>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2>Worth watching</h2>
+  <ul class="watch">
+    <li><strong>OpenAI claims a breakthrough on the speed limit of matrix multiplication</strong>An OpenAI preprint claims to prove that the matrix multiplication exponent is 9/4, a long-standing question in computer science. It has not been checked by outside mathematicians yet. <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-25-2026/" target="_blank" rel="noopener">The Neuron</a> · 25 Nov 2026</li>
+    <li><strong>AI labels in photo metadata worry newsrooms</strong>The New York Times told freelance photographers not to update to Photoshop 2027 because new AI features may write metadata that marks their photos as AI-generated. Adobe has not responded. <a href="https://samonai.substack.com/p/ai-brief-november-25-2026" target="_blank" rel="noopener">Sam on AI, citing The Verge</a> · 25 Nov 2026</li>
+    <li><strong>Amazon and Meta discuss ending the block on Meta's shopping agent</strong>The two companies are reportedly negotiating a deal that would let Meta's Muse agent shop on Amazon; advertising revenue and control of results are still open. No deal has been announced. <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-26-2026/" target="_blank" rel="noopener">The Neuron</a> · 26 Nov 2026</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Top 3 videos</h2>
+  <p class="note">We could not find a Claude Desktop video from the last three months that we could confirm today (YouTube blocked most checks, and the recent ones we found were already in earlier digests), so we took a second video on video editing. View counts could not be confirmed; dates come from the video pages.</p>
+  <ol class="cards">
+    <li class="card video">
+      <div class="card-top"><span class="num">V1</span><span class="pill video">Editing video with Claude</span></div>
+      <h3>Learn 90% of Claude Video Editing in under 20 Minutes</h3>
+      <div class="facts"><span><b>Channel:</b> Grow with Alex</span><span><b>Published:</b> 22 Oct 2026</span><span><b>Views:</b> not confirmed</span></div>
+      <p><span class="label">What it is about</span>The video shows how to have Claude turn raw talking-head footage into a finished short reel with cuts, captions, colour, zooms and a hook. It also shows how to check the edit with a beat table and contact sheet and how to save the process as a reusable Claude skill.</p>
+      <p><span class="label">Why it is worth watching</span>It is a complete, practical workflow in about 20 minutes, from first prompt to a repeatable process.</p>
+      <button type="button" class="yt" data-id="03BNd8ygnq8" aria-label="Play video"><img src="https://i.ytimg.com/vi/03BNd8ygnq8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=03BNd8ygnq8" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V2</span><span class="pill video">Creating AI agents with Claude</span></div>
+      <h3>Claude Agent SDK Tutorial – Build AI Agents with Claude Code</h3>
+      <div class="facts"><span><b>Channel:</b> ExamPro</span><span><b>Published:</b> 14 Sep 2026</span><span><b>Views:</b> not confirmed</span></div>
+      <p><span class="label">What it is about</span>A hands-on lesson that sets up the Anthropic SDK and the Claude Agent SDK and takes the first steps toward building an agent. It is part of ExamPro's course for the Claude Certified Architect Foundations exam.</p>
+      <p><span class="label">Why it is worth watching</span>ExamPro is a well-known certification-training channel, and this is a clean, structured starting point for students who want to build agents themselves.</p>
+      <button type="button" class="yt" data-id="SM-Fy8e3nFk" aria-label="Play video"><img src="https://i.ytimg.com/vi/SM-Fy8e3nFk/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=SM-Fy8e3nFk" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V3</span><span class="pill video">Editing video with Claude (second pick)</span></div>
+      <h3>Claude Edited This Video (And I'll Teach You How)</h3>
+      <div class="facts"><span><b>Channel:</b> 100x Engineers</span><span><b>Published:</b> 20 Oct 2026</span><span><b>Views:</b> not confirmed</span></div>
+      <p><span class="label">What it is about</span>A six-step workflow for using Claude to plan and produce AI-generated video, from style tests and storyboards to the final edit. It also shows how to turn the result into editable After Effects projects and connect Claude with Premiere Pro.</p>
+      <p><span class="label">Why it is worth watching</span>It goes beyond simple cuts and shows how Claude can fit into professional editing tools.</p>
+      <button type="button" class="yt" data-id="Ct5_C2xC-oo" aria-label="Play video"><img src="https://i.ytimg.com/vi/Ct5_C2xC-oo/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=Ct5_C2xC-oo" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </li>
+  </ol>
+</section>
+
+<footer>Collected by web search on 26 November 2026. Summaries are written in the agent's own words; follow the links for the full reports.</footer>
+</div>
+
+
+<!-- ===================== FARSI ===================== -->
+<div class="lang" lang="fa" dir="rtl" id="content-fa">
+
+<header class="masthead">
+  <p class="hello">سلام کیوان،</p>
+  <h1>خلاصهٔ اخبار</h1>
+  <div class="date">پنجشنبه ۲۶ نوامبر ۲۰۲۶</div>
+  <a class="archive" href="../index.html#archive">همهٔ خلاصه‌ها</a>
+</header>
+
+<section>
+  <h2>شعرهای روز</h2>
+  <div class="poems">
+    <figure class="quote">
+      <span class="q-label">حافظ</span>
+      <p>سال‌ها دل طلب جام جم از ما می‌کرد<br>وان چه خود داشت ز بیگانه تمنا می‌کرد</p>
+      <cite>حافظ، دیوان (سدهٔ چهاردهم میلادی)</cite>
+    </figure>
+    <figure class="quote">
+      <span class="q-label">سعدی</span>
+      <p>بنی‌آدم اعضای یکدیگرند<br>که در آفرینش ز یک گوهرند<br>چو عضوی به درد آورد روزگار<br>دگر عضوها را نماند قرار</p>
+      <cite>سعدی، گلستان، باب اول (۱۲۵۸ میلادی)</cite>
+    </figure>
+    <figure class="quote">
+      <span class="q-label">مولوی</span>
+      <p>آب کم جو تشنگی آور به دست<br>تا بجوشد آبت از بالا و پست</p>
+      <cite>مولوی، مثنوی معنوی، دفتر سوم (سدهٔ سیزدهم میلادی)</cite>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <h2>نگاه کلی</h2>
+  <p class="overview">موضوع امروز این است که چه کسی دادهٔ شخصی را در اختیار دارد و هوش مصنوعی به چه چیزهایی اجازهٔ دسترسی دارد. ۴۲ دادستان کل ایالتی در آمریکا با فروش گفت‌وگوهای خصوصی ۲۱ میلیون کاربر Character.AI در روند ورشکستگی مخالفت می‌کنند، استرالیا قانون گسترده‌ای دربارهٔ «وظیفهٔ مراقبت» تصویب کرد که چت‌بات‌ها را هم در بر می‌گیرد، و نیویورک اسباب‌بازی‌های دارای چت‌بات هوش مصنوعی را برای پنج سال ممنوع کرد. در حوزهٔ امنیت، Microsoft می‌گوید گروه‌های هکری دولتی اکنون از عامل حملهٔ هوش مصنوعی ARTEX استفاده می‌کنند و 1Password از نفوذ از راه حساب GitHub یک کارمند خبر داد. Nvidia ارسال سرورهای هوش مصنوعی به چهار کشور جنوب شرق آسیا را به دلیل قواعد تازهٔ آمریکا متوقف کرد و Anthropic نشان داد چگونه با عامل‌های Claude رابط برنامه‌نویسی اصلی خود را بازنویسی کرده است.</p>
+  <p class="note">امروز در آمریکا روز شکرگزاری است، پس جریان خبر کمتر از معمول بود. در ۲۴ ساعت گذشته خبر مهم تازه‌ای دربارهٔ EU AI Act، اجرای GDPR یا بازار کار پیدا نکردیم. قانون اسباب‌بازی‌های نیویورک در ۲۴ نوامبر امضا شد اما در خلاصهٔ دیروز نبود. YouTube باز هم بیشتر بررسی‌های ما را مسدود کرد، پس برخی جزئیات ویدیوها «تأیید نشده» آمده‌اند.</p>
+</section>
+
+<section>
+  <h2>اخبار</h2>
+  <ol class="cards">
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">۰۱</span><span class="pill is">حریم خصوصی · حکمرانی داده</span></div>
+      <h3>۴۲ ایالت آمریکا می‌کوشند جلوی حراج گفت‌وگوهای خصوصی ۲۱ میلیون کاربر Character.AI را بگیرند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>ائتلافی از ۴۲ دادستان کل ایالتی وارد پروندهٔ ورشکستگی (فصل ۱۱) شرکت Character.AI شده تا جلوی فروش دادهٔ کاربران را بگیرد. به گفتهٔ آن‌ها این داده بیش از ۲۱ میلیون حساب در آمریکا را در بر می‌گیرد که حدود ۲٫۱ میلیون از آن‌ها به نام افراد زیر سن قانونی ثبت شده‌اند، همراه با تاریخچهٔ گفت‌وگوها و نشانی‌های IP؛ طبق این پرونده، برخی گفت‌وگوها شامل اطلاعات سلامت روان و پزشکی است. تنها خریدار شناخته‌شده شرکتی در Delaware است که ۱۳ نوامبر تأسیس شده و حراج برای ۱ دسامبر برنامه‌ریزی شده است.</p>
+      <p><span class="label">چرا مهم است</span>این آزمونی است برای اینکه آیا وعدهٔ حریم خصوصی پس از ورشکستگی پابرجا می‌ماند یا نه: اگر دادهٔ کاربران دارایی قابل فروش به شمار آید، ممکن است مالک تازه به سیاست حریم خصوصی قبلی پایبند نباشد.</p>
+      <p class="caveat">توجه: ادعاهای ایالت‌ها در یک پروندهٔ دادگاهی مطرح شده و هنوز حکم نیست. Character.AI می‌گوید اطلاعات کاربران طبق سیاست حریم خصوصی‌اش محافظت می‌شود. TechCrunch و Gizmodo دربارهٔ زمان تأیید خریدار اصلی از سوی دادگاه کمی اختلاف دارند.</p>
+      <p class="source">منبع: <a href="https://techcrunch.com/2026/11/25/state-ags-fight-character-ais-plan-to-auction-off-users-private-chats/" target="_blank" rel="noopener">TechCrunch</a> · ۲۵ نوامبر ۲۰۲۶، و <a href="https://gizmodo.com/character-ai-wants-to-sell-millions-of-user-chats-to-the-highest-bidder-2000845664" target="_blank" rel="noopener">Gizmodo</a> · ۲۵ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">۰۲</span><span class="pill field">کل حوزه · قانون</span></div>
+      <h3>استرالیا قانون «وظیفهٔ مراقبت دیجیتال» را تصویب کرد که اپلیکیشن‌ها، بازی‌ها و چت‌بات‌ها را در بر می‌گیرد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>پارلمان استرالیا قانون Digital Duty of Care Act را تصویب کرد که سرویس‌های آنلاین، از جمله چت‌بات‌های هوش مصنوعی، را موظف می‌کند خطر آسیب جدی به کاربران را فعالانه کاهش دهند. پس از توافق با حزب سبز، سقف جریمه از ۱۰۹ میلیون دلار استرالیا به ۵ درصد درآمد جهانی شرکت افزایش یافت؛ رأی سنا ۳۶ در برابر ۲۳ بود. اپوزیسیون این قانون را «اقتدارگرا» خواند و وعدهٔ لغو آن را داد، و سفیر آمریکا گفت این قانون پلتفرم‌ها را به سانسور سخن قانونی وادار می‌کند.</p>
+      <p><span class="label">چرا مهم است</span>این قانون، مانند Digital Services Act اتحادیهٔ اروپا و Online Safety Act بریتانیا، مسئولیت آسیب را به طراحی سیستم منتقل می‌کند؛ پس ارزیابی خطر بخشی از ساخت هر سرویس اطلاعاتی می‌شود که در استرالیا به کار می‌رود.</p>
+      <p class="source">منبع: <a href="https://www.fastcompany.com/91648939/digital-duty-care-act-passes-australia-opposition-says-law-authoritarian" target="_blank" rel="noopener">Associated Press از طریق Fast Company</a> · ۲۵ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">۰۳</span><span class="pill ai">هوش مصنوعی · امنیت</span></div>
+      <h3>Microsoft: هکرهای دولتی چین و کرهٔ شمالی اکنون از عامل حملهٔ هوش مصنوعی ARTEX استفاده می‌کنند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Microsoft در گزارشی تهدیدشناسانه در ۲۵ نوامبر گفت گروه‌های وابسته به دولت، از جمله Salt Typhoon و Crystal Typhoon از چین و Onyx Sleet و Pearl Sleet از کرهٔ شمالی، ARTEX را به ابزارهای خود افزوده‌اند. ARTEX یک عامل هوش مصنوعی متن‌باز برای آزمون نفوذ است که ابزارهای شناخته‌شده را به هم زنجیر می‌کند تا سیستم‌ها را پویش کند، گذرواژه‌ها را حدس بزند و کلیدهای افشاشده را پیدا کند، بسیار سریع‌تر از یک انسان. کد اصلی آن از GitHub حذف شده، اما نسخه‌هایی از آن و یک نسخهٔ پولی از یک شرکت چینی همچنان در دسترس است، و Microsoft توصیه می‌کند آن را از روی سرعت غیرعادی فعالیتش شناسایی کنند.</p>
+      <p><span class="label">چرا مهم است</span>عامل‌های هوش مصنوعی بیشتر بهره‌برداری از ضعف‌های قدیمی (گذرواژهٔ ضعیف، کلیدهای افشاشده، اپلیکیشن‌های وصله‌نشده) را در مقیاس بزرگ آسان می‌کنند؛ پس بهداشت امنیتی پایه در سیستم‌های دانشگاه‌ها و شرکت‌ها از همیشه مهم‌تر است.</p>
+      <p class="caveat">توجه: نتوانستیم خود گزارش Microsoft را باز کنیم؛ جزئیات از گزارش The Record (از طریق Techmeme) و یک سایت خبری امنیتی با کمک هوش مصنوعی است. Microsoft نمی‌گوید هر گروه با این ابزار چه کرده است.</p>
+      <p class="source">منبع: <a href="https://www.techmeme.com/261126/p3" target="_blank" rel="noopener">The Record از طریق Techmeme</a> · ۲۶ نوامبر ۲۰۲۶، و <a href="https://i10x.ai/news/artex-state-hackers-microsoft-defender-guide-detect-ai-pentest-agent" target="_blank" rel="noopener">i10x</a> · ۲۵ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">۰۴</span><span class="pill ai">هوش مصنوعی · قانون</span></div>
+      <h3>نیویورک اسباب‌بازی‌های دارای چت‌بات هوش مصنوعی را برای پنج سال ممنوع کرد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Kathy Hochul، فرماندار نیویورک، قانونی را امضا کرد که ساخت، توزیع و فروش اسباب‌بازی‌های دارای چت‌بات هوش مصنوعی را در این ایالت برای پنج سال متوقف می‌کند. این قانون ۹۰ روز پس از امضا اجرا می‌شود، پس در این فصل تعطیلات اجرایی نیست، و دادستان کل می‌تواند برای هر تخلف روزانه تا ۱۵ هزار دلار جریمه بخواهد. ایالت به آزمون‌هایی استناد می‌کند که در آن‌ها برخی اسباب‌بازی‌های چت‌بات‌دار برای کودکان ۳ تا ۱۲ سال دربارهٔ موضوعات جنسی سخن گفتند و می‌توانستند صدا ضبط کنند یا چهره را اسکن کنند.</p>
+      <p><span class="label">چرا مهم است</span>پس از ممنوعیت چهارسالهٔ کالیفرنیا در سپتامبر، ایالت‌های آمریکا اکنون هوش مصنوعی را بر پایهٔ نوع محصول و مخاطب تنظیم می‌کنند؛ این برای هر کسی که سیستم‌های گفت‌وگومحور طراحی می‌کند که کودکان ممکن است از آن استفاده کنند مهم است.</p>
+      <p class="caveat">توجه: این اطلاعیهٔ خود ایالت است و نام سازمان انجام‌دهندهٔ آزمون در آن نیامده است.</p>
+      <p class="source">منبع: <a href="https://www.governor.ny.gov/news/consumers-begin-their-holiday-shopping-season-governor-hochul-signs-five-year-ban-ai-chatbot" target="_blank" rel="noopener">دفتر فرماندار نیویورک</a> · ۲۴ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-chip"/></svg></span><span class="num">۰۵</span><span class="pill field">کل حوزه · سخت‌افزار هوش مصنوعی</span></div>
+      <h3>گزارش: Nvidia ارسال سرورهای هوش مصنوعی به چهار کشور جنوب شرق آسیا را متوقف کرد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>به گزارش Financial Times، شرکت Nvidia به سازندگان سرور مانند Dell و Supermicro گفته است ارسال سرورهای هوش مصنوعی به مالزی، سنگاپور، تایلند و اندونزی را متوقف کنند. عامل آن قواعد تازهٔ وزارت بازرگانی آمریکاست که به ارائه‌دهندگان ابری منطقه ۹۰ روز فرصت می‌دهد با اثبات اینکه شرکت‌های چینی محدودشده در میان مشتریانشان نیستند مجوز صادرات بگیرند. وام‌دهندگان هم تأمین مالی مراکز دادهٔ مرتبط با شرکت‌های ابری چینی را متوقف کرده‌اند.</p>
+      <p><span class="label">چرا مهم است</span>جنوب شرق آسیا مرکز مهمی برای اجارهٔ توان محاسباتی هوش مصنوعی است؛ اکنون قواعد صادرات تعیین می‌کند ظرفیت هوش مصنوعی کجا ساخته شود و چه کسی از آن استفاده کند، و این بر هزینه و دسترسی پژوهشگران در سراسر جهان اثر می‌گذارد.</p>
+      <p class="caveat">توجه: این گزارش بر منابع بی‌نام تکیه دارد؛ Nvidia از اظهار نظر خودداری کرد و روشن نیست این توقف موقت است یا نه.</p>
+      <p class="source">منبع: <a href="https://www.malaymail.com/news/money/2026/11/26/ft-nvidia-stops-ai-shipments-to-malaysia-singapore-thailand-indonesia-as-us-tightens-china-curbs/244856" target="_blank" rel="noopener">Malay Mail به نقل از Financial Times</a> · ۲۶ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">۰۶</span><span class="pill is">امنیت · حفاظت از داده</span></div>
+      <h3>1Password می‌گوید هکرها از راه حساب GitHub یک کارمند به سیستم‌های داخلی‌اش نفوذ کردند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>شرکت مدیریت گذرواژهٔ 1Password گفت در ۱۹ نوامبر مهاجمی را شناسایی کرد که حساب GitHub سازمانی یک کارمند را در دست گرفته و با آن کد مخرب به سرورهای داخلی فرستاده بود. مهاجم نام مشتریان، نشانی‌های ایمیل ورود و تاریخ ساخت حساب و آخرین ورود را دانلود کرد. شرکت می‌گوید هرگز به گاوصندوق‌های مشتریان دسترسی پیدا نشد و گذرواژهٔ اصلی یا کلیدهای مخفی را نگه نمی‌دارد.</p>
+      <p><span class="label">چرا مهم است</span>یک حساب توسعه‌دهنده راه ورود به زیرساخت یک شرکت امنیتی شد؛ زنجیرهٔ تأمین نرم‌افزار و حساب‌های میزبانی کد اکنون بخش اصلی حکمرانی داده‌اند.</p>
+      <p class="caveat">توجه: هنوز روشن نیست حساب کارمند چگونه به خطر افتاد و چند مشتری آسیب دیده‌اند.</p>
+      <p class="source">منبع: <a href="https://techcrunch.com/2026/11/25/1password-said-hackers-broke-into-its-internal-systems-but-customer-passwords-are-safe/" target="_blank" rel="noopener">TechCrunch</a> · ۲۵ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">۰۷</span><span class="pill field">کل حوزه · زیرساخت</span></div>
+      <h3>نهاد ناظر آمریکا به SpaceX اجازه داد تا یک میلیون ماهواره را به‌عنوان مرکز داده به فضا بفرستد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>کمیسیون ارتباطات فدرال آمریکا (FCC) شبکهٔ «Starmind» شرکت SpaceX را با حداکثر یک میلیون ماهواره برای پردازش داده در مدار مجاز کرد؛ رئیس این نهاد آن را نخستین مجوز آمریکا برای مراکز داده در فضا خواند. نخستین ماهواره باید تا ۲۰۳۳ و کل شبکه تا ۲۰۴۰ فعال شود و شرایطی مانند برنامهٔ کاهش زبالهٔ فضایی دارد. FCC اعتراض‌های Amazon، Viasat و انجمن نجوم آمریکا را رد کرد.</p>
+      <p><span class="label">چرا مهم است</span>این یک مجوز است، نه سیستمی در حال کار، اما نشان می‌دهد عطش توان محاسباتی هوش مصنوعی زیرساخت و پرسش‌های حکمرانی آن را به جاهای تازه می‌برد.</p>
+      <p class="caveat">توجه: دانشمندان دربارهٔ خنک‌سازی، هزینه، زبالهٔ فضایی و آسیب به رصد نجومی تردید دارند؛ هنوز هیچ ماهوارهٔ Starmind در مدار نیست.</p>
+      <p class="source">منبع: <a href="https://www.geekwire.com/2026/fcc-clears-spacex-million-satellites-starmind-data-center/" target="_blank" rel="noopener">GeekWire</a> · ۲۵ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">۰۸</span><span class="pill ai">هوش مصنوعی · مهندسی نرم‌افزار</span></div>
+      <h3>Anthropic با عامل‌های Claude رابط برنامه‌نویسی اصلی خود را به Rust بازنویسی کرد و آن را با ترافیک واقعی سنجید</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Anthropic شرح داد که چگونه Messages API، راه اصلی دسترسی مشتریان به Claude، را از Python به Rust منتقل کرده و حدود ۷۰ درصد مصرف CPU کمتر در هر درخواست و حدود ۲۰ درصد زمان کوتاه‌تر تا نخستین توکن گزارش می‌کند. Claude نسخهٔ اول را در حدود یک هفته نوشت، اما کد بازنویسی‌شده با اینکه ۹۸ درصد آزمون‌های قدیمی را گذراند، تنها در حدود یک‌چهارم ورودی‌های واقعی با Python یکسان بود. سپس تیم دو نسخه را روی ترافیک واقعی مقایسه کرد و برای حفظ حریم خصوصی فقط شکل هر تفاوت را ثبت کرد، و عامل‌ها زیر بازبینی انسانی ناهمخوانی‌ها را رفع کردند تا ۹۹٫۶ درصد یکسان شد.</p>
+      <p><span class="label">چرا مهم است</span>یک نمونهٔ روشن برای تدریس: گذراندن آزمون‌ها با رفتار درست یکی نیست، و سنجش کد نوشته‌شده با هوش مصنوعی در برابر کاربرد واقعی، همراه با بازبینی انسانی، این انتقال را امن کرد.</p>
+      <p class="caveat">توجه: اعداد عملکرد از خود شرکت است.</p>
+      <p class="source">منبع: <a href="https://www.anthropic.com/research/migrating-api-to-rust" target="_blank" rel="noopener">Anthropic Engineering</a> · ۲۵ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-layout"/></svg></span><span class="num">۰۹</span><span class="pill ai">هوش مصنوعی · ابزارها</span></div>
+      <h3>Claude اکنون می‌تواند artifactها را به‌صورت اپلیکیشن دسکتاپ روی Mac و Windows نصب کند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Anthropic نسخهٔ آزمایشی قابلیت «Install as app» را عرضه کرد که یک artifact در Claude را به اپلیکیشنی با پنجره و نماد جداگانه در Dock یا نوار وظیفه تبدیل می‌کند. کاربر یکی از سه سطح دسترسی را برمی‌گزیند، از دسترسی در حد مرورگر تا دسترسی کامل به رایانه که فقط برای اپلیکیشن‌های ساختهٔ خود کاربر یا سازمانش مجاز است؛ پس از هر به‌روزرسانی باید دوباره اجازه داد. این اپلیکیشن‌ها از حساب و سهمیهٔ مصرف Claude کاربر استفاده می‌کنند و Anthropic پیش از نصب آن‌ها را بررسی نمی‌کند.</p>
+      <p><span class="label">چرا مهم است</span>ابزارهای کوچک و شخصی ساخته‌شده با هوش مصنوعی در حال تبدیل شدن به نرم‌افزار قابل نصب‌اند؛ این پرسش‌های تازه‌ای دربارهٔ مجوزها، اعتماد و نگهداری این اپلیکیشن‌ها در سازمان‌ها پیش می‌کشد.</p>
+      <p class="source">منبع: <a href="https://claude.com/resources/articles/install-as-app" target="_blank" rel="noopener">مقالهٔ راهنمای Anthropic</a> · ۲۴ نوامبر ۲۰۲۶، و <a href="https://www.macrumors.com/2026/11/25/claude-install-artifacts-desktop-apps/" target="_blank" rel="noopener">MacRumors</a> · ۲۵ نوامبر ۲۰۲۶</p>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2>ارزش دنبال کردن</h2>
+  <ul class="watch">
+    <li><strong>ادعای OpenAI دربارهٔ پیشرفتی در حد سرعت ضرب ماتریس‌ها</strong>یک پیش‌انتشار از OpenAI ادعا می‌کند ثابت کرده که توان ضرب ماتریس برابر ۹/۴ است؛ پرسشی قدیمی در علوم رایانه. هنوز ریاضیدانان مستقل آن را بررسی نکرده‌اند. <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-25-2026/" target="_blank" rel="noopener">The Neuron</a> · ۲۵ نوامبر ۲۰۲۶</li>
+    <li><strong>برچسب‌های هوش مصنوعی در فراداده‌های عکس، نگرانی اتاق‌های خبر</strong>روزنامهٔ New York Times به عکاسان آزادکار گفته Photoshop 2027 را نصب نکنند، چون قابلیت‌های تازهٔ هوش مصنوعی آن ممکن است در فراداده عکس‌ها را ساختهٔ هوش مصنوعی علامت بزند. Adobe هنوز پاسخی نداده است. <a href="https://samonai.substack.com/p/ai-brief-november-25-2026" target="_blank" rel="noopener">Sam on AI به نقل از The Verge</a> · ۲۵ نوامبر ۲۰۲۶</li>
+    <li><strong>گفت‌وگوی Amazon و Meta برای پایان مسدودسازی عامل خرید Meta</strong>گزارش شده این دو شرکت دربارهٔ توافقی گفت‌وگو می‌کنند که به عامل Muse از Meta اجازهٔ خرید در Amazon بدهد؛ درآمد تبلیغات و کنترل نتایج هنوز حل نشده است. هنوز توافقی اعلام نشده. <a href="https://www.theneuron.ai/digest/everything-that-happened-in-ai-today-november-26-2026/" target="_blank" rel="noopener">The Neuron</a> · ۲۶ نوامبر ۲۰۲۶</li>
+  </ul>
+</section>
+
+<section>
+  <h2>سه ویدیوی برتر</h2>
+  <p class="note">نتوانستیم ویدیویی دربارهٔ Claude Desktop از سه ماه گذشته پیدا کنیم که امروز قابل تأیید باشد (YouTube بیشتر بررسی‌ها را مسدود کرد و ویدیوهای تازه‌ای که یافتیم پیش‌تر در خلاصه‌ها آمده بودند)، پس ویدیوی دومی دربارهٔ ویرایش ویدیو برگزیدیم. تعداد بازدیدها تأیید نشد؛ تاریخ‌ها از صفحهٔ ویدیوهاست.</p>
+  <ol class="cards">
+    <li class="card video">
+      <div class="card-top"><span class="num">V1</span><span class="pill video">ویرایش ویدیو با Claude</span></div>
+      <h3 dir="ltr" style="text-align:right">Learn 90% of Claude Video Editing in under 20 Minutes</h3>
+      <div class="facts"><span><b>کانال:</b> Grow with Alex</span><span><b>تاریخ انتشار:</b> ۲۲ اکتبر ۲۰۲۶</span><span><b>بازدید:</b> تأیید نشده</span></div>
+      <p><span class="label">دربارهٔ چیست</span>این ویدیو نشان می‌دهد چگونه Claude فیلم خام یک گوینده را به یک ویدیوی کوتاه کامل با برش، زیرنویس، رنگ، زوم و قلاب آغازین تبدیل می‌کند. همچنین نشان می‌دهد چگونه با جدول ضرب‌آهنگ و برگهٔ تماس، ویرایش را بررسی کنیم و روند کار را به یک skill قابل استفادهٔ دوباره در Claude تبدیل کنیم.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>یک روند کاری کامل و عملی در حدود ۲۰ دقیقه، از نخستین پرامپت تا فرایندی تکرارپذیر.</p>
+      <button type="button" class="yt" data-id="03BNd8ygnq8" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/03BNd8ygnq8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=03BNd8ygnq8" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V2</span><span class="pill video">ساخت عامل‌های هوش مصنوعی با Claude</span></div>
+      <h3 dir="ltr" style="text-align:right">Claude Agent SDK Tutorial – Build AI Agents with Claude Code</h3>
+      <div class="facts"><span><b>کانال:</b> ExamPro</span><span><b>تاریخ انتشار:</b> ۱۴ سپتامبر ۲۰۲۶</span><span><b>بازدید:</b> تأیید نشده</span></div>
+      <p><span class="label">دربارهٔ چیست</span>درسی عملی که Anthropic SDK و Claude Agent SDK را راه‌اندازی می‌کند و نخستین گام‌های ساخت یک عامل را برمی‌دارد. این ویدیو بخشی از دورهٔ ExamPro برای آزمون Claude Certified Architect Foundations است.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>ExamPro کانالی شناخته‌شده در آموزش گواهی‌نامه‌هاست و این نقطهٔ شروعی تمیز و ساختارمند برای دانشجویانی است که می‌خواهند خودشان عامل بسازند.</p>
+      <button type="button" class="yt" data-id="SM-Fy8e3nFk" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/SM-Fy8e3nFk/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=SM-Fy8e3nFk" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V3</span><span class="pill video">ویرایش ویدیو با Claude (انتخاب دوم)</span></div>
+      <h3 dir="ltr" style="text-align:right">Claude Edited This Video (And I'll Teach You How)</h3>
+      <div class="facts"><span><b>کانال:</b> 100x Engineers</span><span><b>تاریخ انتشار:</b> ۲۰ اکتبر ۲۰۲۶</span><span><b>بازدید:</b> تأیید نشده</span></div>
+      <p><span class="label">دربارهٔ چیست</span>روندی شش‌مرحله‌ای برای برنامه‌ریزی و تولید ویدیوی ساخته‌شده با هوش مصنوعی به کمک Claude، از آزمون سبک و استوری‌بورد تا ویرایش نهایی. همچنین نشان می‌دهد چگونه نتیجه را به پروژه‌های قابل ویرایش After Effects تبدیل کنیم و Claude را به Premiere Pro وصل کنیم.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>از برش‌های ساده فراتر می‌رود و نشان می‌دهد Claude چگونه در ابزارهای حرفه‌ای ویرایش جا می‌گیرد.</p>
+      <button type="button" class="yt" data-id="Ct5_C2xC-oo" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/Ct5_C2xC-oo/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=Ct5_C2xC-oo" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+    </li>
+  </ol>
+</section>
+
+<footer>گردآوری‌شده با جست‌وجوی وب در ۲۶ نوامبر ۲۰۲۶. خلاصه‌ها با کلمات خود عامل نوشته شده‌اند؛ برای گزارش کامل روی پیوندها کلیک کنید.</footer>
+</div>
+
+
+</div>
+<script>
+(function () {
+  var en = document.getElementById("content-en");
+  var fa = document.getElementById("content-fa");
+  var bEn = document.getElementById("btn-en");
+  var bFa = document.getElementById("btn-fa");
+  function show(lang) {
+    var isFa = lang === "fa";
+    en.hidden = isFa;
+    fa.hidden = !isFa;
+    bEn.setAttribute("aria-pressed", String(!isFa));
+    bFa.setAttribute("aria-pressed", String(isFa));
+    document.documentElement.lang = isFa ? "fa" : "en";
+    try { localStorage.setItem("digest-lang", lang); } catch (e) {}
+  }
+  bEn.addEventListener("click", function () { show("en"); });
+  bFa.addEventListener("click", function () { show("fa"); });
+  var saved = null;
+  try { saved = localStorage.getItem("digest-lang"); } catch (e) {}
+  show(saved === "en" ? "en" : "fa");
+})();
+
+(function () {
+  document.querySelectorAll("button.yt").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var f = document.createElement("iframe");
+      f.className = "yt-frame";
+      f.src = "https://www.youtube-nocookie.com/embed/" + b.dataset.id + "?autoplay=1&rel=0";
+      f.title = b.getAttribute("aria-label");
+      f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      f.allowFullscreen = true;
+      b.replaceWith(f);
+    });
+  });
+})();
+
+(function () {
+  var hues = [215, 160, 280, 25, 340, 195, 95];
+  var d = document.body.getAttribute("data-date") || "";
+  var t = Date.parse(d + "T00:00:00Z");
+  var day = isNaN(t) ? 0 : Math.floor(t / 86400000);
+  document.documentElement.style.setProperty("--h", hues[day % hues.length]);
+  var seed = day * 2654435761 >>> 0;
+  function rnd() { seed = (seed + 0x6D2B79F5) >>> 0; var x = seed; x = Math.imul(x ^ (x >>> 15), x | 1); x ^= x + Math.imul(x ^ (x >>> 7), x | 61); return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }
+  var c = document.getElementById("hero-art");
+  if (!c || !c.getContext) return;
+  function draw() {
+    var s0 = day * 2654435761 >>> 0; seed = s0;
+    var r = window.devicePixelRatio || 1, w = c.clientWidth, h = c.clientHeight;
+    c.width = w * r; c.height = h * r;
+    var g = c.getContext("2d"); g.scale(r, r); g.clearRect(0, 0, w, h);
+    for (var i = 0; i < 16; i++) {
+      g.beginPath(); g.arc(rnd() * w, rnd() * h, 10 + rnd() * 70, 0, Math.PI * 2);
+      g.fillStyle = "rgba(255,255,255," + (0.04 + rnd() * 0.12) + ")"; g.fill();
+    }
+    for (var k = 0; k < 7; k++) {
+      var amp = 8 + rnd() * 28, freq = 0.004 + rnd() * 0.012, ph = rnd() * 6.3, y0 = h * (0.15 + rnd() * 0.7);
+      g.beginPath();
+      for (var x = 0; x <= w; x += 4) { var y = y0 + Math.sin(x * freq + ph) * amp + Math.sin(x * freq * 2.3 + ph) * amp * 0.3; if (x === 0) g.moveTo(x, y); else g.lineTo(x, y); }
+      g.strokeStyle = "rgba(255,255,255," + (0.18 + rnd() * 0.3) + ")"; g.lineWidth = 1 + rnd() * 2; g.stroke();
+    }
+  }
+  draw();
+  var to; window.addEventListener("resize", function () { clearTimeout(to); to = setTimeout(draw, 150); });
+})();
+</script>
+</body>
+</html>
