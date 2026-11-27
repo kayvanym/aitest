@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>News digest 27 Nov 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one reading column, dated masthead with a language switch, stacked cards with a coloured category stripe. */
+:root {
+  --bg: #f3f5f8; --surface: #ffffff; --ink: #17212c; --muted: #586473; --line: #dbe1e8; --accent: #1d5bb8;
+  --cat-ai: #4a3fc4; --cat-ai-bg: #ecebfb; --cat-is: #0d7468; --cat-is-bg: #e2f3f0;
+  --cat-field: #9a5a00; --cat-field-bg: #fbf0dc; --cat-video: #b02a4c; --cat-video-bg: #fbe6ec;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-fa: "Vazirmatn", Tahoma, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f141a; --surface: #182029; --ink: #e7ecf2; --muted: #9ba8b6; --line: #2b3643; --accent: #86b4ff;
+    --cat-ai: #b3adff; --cat-ai-bg: #272452; --cat-is: #6fd3c5; --cat-is-bg: #123a36;
+    --cat-field: #f0b660; --cat-field-bg: #3d2c10; --cat-video: #ff9db5; --cat-video-bg: #47182a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f141a; --surface: #182029; --ink: #e7ecf2; --muted: #9ba8b6; --line: #2b3643; --accent: #86b4ff;
+  --cat-ai: #b3adff; --cat-ai-bg: #272452; --cat-is: #6fd3c5; --cat-is-bg: #123a36;
+  --cat-field: #f0b660; --cat-field-bg: #3d2c10; --cat-video: #ff9db5; --cat-video-bg: #47182a;
+  color-scheme: dark;
+}
+
+/* Daily colour: --h (hue) is set by the script from the digest date. */
+:root { --h: 215; --bg: hsl(var(--h) 30% 96%); --accent: hsl(var(--h) 65% 38%); --hero-a: hsl(var(--h) 70% 42%); --hero-b: hsl(calc(var(--h) + 45) 70% 55%); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: hsl(var(--h) 25% 8%); --accent: hsl(var(--h) 85% 74%); --hero-a: hsl(var(--h) 55% 28%); --hero-b: hsl(calc(var(--h) + 45) 55% 36%); } }
+:root[data-theme="dark"] { --bg: hsl(var(--h) 25% 8%); --accent: hsl(var(--h) 85% 74%); --hero-a: hsl(var(--h) 55% 28%); --hero-b: hsl(calc(var(--h) + 45) 55% 36%); }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+.page { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; display: flex; flex-direction: column; gap: 24px; }
+.switch { display: flex; gap: 8px; justify-content: flex-end; }
+.switch button {
+  font: 600 0.9rem var(--font-body); padding: 6px 16px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+}
+.switch button[lang="fa"] { font-family: var(--font-fa); }
+.switch button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.lang { display: flex; flex-direction: column; gap: 40px; }
+.lang[hidden] { display: none; }
+.lang[lang="fa"] { font-family: var(--font-fa); line-height: 1.9; }
+.lang[lang="fa"] h1, .lang[lang="fa"] h2, .lang[lang="fa"] h3 { font-family: var(--font-fa); font-weight: 700; letter-spacing: 0; }
+.lang[lang="fa"] .label { text-transform: none; letter-spacing: 0; }
+header.masthead { border-bottom: 3px solid var(--ink); padding-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
+.masthead h1 { font-family: var(--font-display); font-size: clamp(2rem, 6vw, 2.9rem); line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
+.masthead .hello { margin: 0; font-size: 1.15rem; color: var(--accent); font-weight: 600; }
+.masthead .date { color: var(--muted); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+.masthead .archive { font-size: 0.9rem; }
+.overview { font-size: 1.1rem; margin: 0; }
+.note { margin: 0; color: var(--muted); font-size: 0.9rem; border-inline-start: 3px solid var(--line); padding-inline-start: 12px; }
+section { display: flex; flex-direction: column; gap: 16px; }
+section > h2 { font-family: var(--font-display); font-size: 1.45rem; margin: 0; text-wrap: balance; }
+.cards { display: flex; flex-direction: column; gap: 16px; list-style: none; margin: 0; padding: 0; }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-inline-start: 5px solid var(--stripe, var(--line));
+  border-radius: 8px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;
+}
+.card.ai { --stripe: var(--cat-ai); } .card.is { --stripe: var(--cat-is); }
+.card.field { --stripe: var(--cat-field); } .card.video { --stripe: var(--cat-video); }
+.card-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.num { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 0.85rem; font-weight: 600; }
+.pill { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em; padding: 3px 10px; border-radius: 999px; }
+.lang[lang="fa"] .pill { letter-spacing: 0; font-size: 0.8rem; }
+.pill.ai { color: var(--cat-ai); background: var(--cat-ai-bg); } .pill.is { color: var(--cat-is); background: var(--cat-is-bg); }
+.pill.field { color: var(--cat-field); background: var(--cat-field-bg); } .pill.video { color: var(--cat-video); background: var(--cat-video-bg); }
+.card h3 { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.35; margin: 0; text-wrap: balance; }
+.card p { margin: 0; }
+.label { font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); display: block; margin-bottom: 2px; }
+.caveat { color: var(--muted); font-size: 0.92rem; }
+.source { border-top: 1px solid var(--line); padding-top: 10px; font-size: 0.88rem; color: var(--muted); }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.facts { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 0.9rem; color: var(--muted); }
+.facts b { color: var(--ink); font-weight: 600; }
+.watch { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.watch li { background: var(--surface); border: 1px dashed var(--line); border-radius: 8px; padding: 14px 18px; }
+.watch strong { display: block; margin-bottom: 2px; }
+.archive-list { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--line); padding-top: 24px; }
+.archive-list h2 { font-size: 1.1rem; margin: 0; }
+.archive-list h2 .fa, .archive-list .fa { font-family: var(--font-fa); }
+.archive-list ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.archive-list a { display: inline-block; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; text-decoration: none; font-variant-numeric: tabular-nums; }
+.yt { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; padding: 0; border-radius: 8px; overflow: hidden; background: #000; cursor: pointer; }
+.yt img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.9; transition: opacity .2s; }
+.yt:hover img, .yt:focus-visible img { opacity: 1; }
+.yt:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.yt .play { position: absolute; inset: 0; margin: auto; width: 68px; height: 48px; border-radius: 12px; background: rgba(204,0,0,.92); display: grid; place-items: center; }
+.yt .play::after { content: ""; border-style: solid; border-width: 10px 0 10px 18px; border-color: transparent transparent transparent #fff; margin-left: 4px; }
+.yt-frame { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 8px; display: block; }
+.hero { position: relative; height: 170px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, var(--hero-a), var(--hero-b)); }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.quote { margin: 0; padding: 16px 20px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); border-inline-start: 5px solid var(--accent); display: flex; flex-direction: column; gap: 6px; }
+.quote .q-label { font-size: 0.8rem; font-weight: 600; color: var(--accent); }
+.quote p { margin: 0; font-size: 1.15rem; line-height: 1.7; }
+.quote cite { font-style: normal; color: var(--muted); font-size: 0.88rem; }
+.icon-tile { width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; flex: none; }
+.icon-tile svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.card.ai .icon-tile { background: var(--cat-ai-bg); color: var(--cat-ai); }
+.card.is .icon-tile { background: var(--cat-is-bg); color: var(--cat-is); }
+.card.field .icon-tile { background: var(--cat-field-bg); color: var(--cat-field); }
+.poems { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.poems .quote p { font-size: 1.02rem; }
+@media (max-width: 720px) { .poems { grid-template-columns: 1fr; } }
+footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 16px; }
+@media (max-width: 480px) { .page { padding: 24px 16px 48px; } .card { padding: 16px; } }
+</style>
+</head>
+<body data-date="2026-11-27">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.2 4.5 4.5 0 0 0 7 18z"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M15.5 14.5h2.5"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M11 3l1.8 5.2L18 10l-5.2 1.8L11 17l-1.8-5.2L4 10l5.2-1.8z"/><path d="M19 15l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16M7 20h10M5 7h14M5 7l-3 6h6zM19 7l-3 6h6z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16M7 16v-5M12 16V7M17 16v-8"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/></symbol>
+</svg>
+
+<div class="page">
+
+<div class="switch" role="group" aria-label="Language">
+  <button type="button" id="btn-en" lang="en" aria-pressed="false">English</button>
+  <button type="button" id="btn-fa" lang="fa" aria-pressed="true">فارسی</button>
+</div>
+
+<div class="hero" aria-hidden="true"><canvas id="hero-art"></canvas></div>
+
+
+
+<!-- ===================== ENGLISH ===================== -->
+<div class="lang" lang="en" dir="ltr" id="content-en" hidden>
+
+<header class="masthead">
+  <p class="hello">Hello Kayvan,</p>
+  <h1>News digest</h1>
+  <div class="date">Friday 27 November 2026</div>
+  <a class="archive" href="../index.html#archive">All digests</a>
+</header>
+
+<section>
+  <h2>Poems of the day</h2>
+  <div class="poems">
+    <figure class="quote">
+      <span class="q-label">Hafez</span>
+      <p>You who do not know, strive to become one who knows;<br>until you walk the road yourself, how could you guide others?</p>
+      <cite>Hafez, Divan (14th century) · our own translation</cite>
+    </figure>
+    <figure class="quote">
+      <span class="q-label">Rumi</span>
+      <p>Each one became my friend through his own guess;<br>none searched within me for my secrets.</p>
+      <cite>Rumi, Masnavi, Book 1 (13th century) · our own translation</cite>
+    </figure>
+    <figure class="quote">
+      <span class="q-label">Ferdowsi</span>
+      <p>Wisdom is better than all that God has given;<br>to praise wisdom is better than any good deed.</p>
+      <cite>Ferdowsi, Shahnameh, "In praise of wisdom" (c. 1010) · our own translation</cite>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <h2>Overview</h2>
+  <p class="overview">Today is mostly about security and trust in shared systems. Switzerland's cyber agency confirmed the first attacks in the country that used AI agents, and most of them got in. A critical flaw was found in DIGIT, a free e-government platform used across India and in other countries, and 1Password revealed that its break-in was worse than first reported. Rackspace is closing a whole cloud service after a breach, the Bank of England warned that AI financing has become "circular and opaque", and Meta defended its camera glasses in a Dutch privacy case.</p>
+  <p class="note">It was the day after Thanksgiving in the US, so there was little new news. In the last 24 hours we found no important new story on new AI models, the EU AI Act, the job market or education. Two items (1Password and the Dutch court case) follow earlier stories but contain real new facts. YouTube view counts could mostly not be confirmed.</p>
+</section>
+
+<section>
+  <h2>News</h2>
+  <ol class="cards">
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">01</span><span class="pill ai">Artificial intelligence · security</span></div>
+      <h3>Switzerland confirms its first cyberattacks carried out with AI agents, and most succeeded</h3>
+      <p><span class="label">What happened</span>The Swiss Federal Office for Cybersecurity (BACS) said AI agents were used in five attacks in recent days on companies and critical infrastructure operators, three of them in sectors such as electricity, water and telecoms. According to Reuters, four of the five attacks broke into their targets. BACS director Florian Schütz said there were no major disruptions and that it is not known who is behind the attacks.</p>
+      <p><span class="label">Why it matters</span>This is one of the first official confirmations by a government that autonomous AI tools are being used in real attacks, so security planning for public and university systems can no longer treat this as a future risk.</p>
+      <p class="caveat">Note: sources differ on how many attacks succeeded (four of five per Reuters; one Swiss report says two). The victims and the tools used were not named. The count is incomplete, because only critical infrastructure operators must report attacks.</p>
+      <p class="source">Source: <a href="https://www.globalbankingandfinance.com/ai-agents-used-five-cyber-attacks-switzerland-government/" target="_blank" rel="noopener">Reuters via Global Banking &amp; Finance Review</a> · 26 Nov 2026, and <a href="https://www.bluewin.ch/en/news/ai-hackers-target-swiss-electricity-and-water-utilities-li.3687598" target="_blank" rel="noopener">blue News</a> · 26 Nov 2026</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-chart"/></svg></span><span class="num">02</span><span class="pill field">Field-wide · market</span></div>
+      <h3>Bank of England warns that AI financing is "complex, circular and opaque"</h3>
+      <p><span class="label">What happened</span>In its Financial Stability Report, the Bank of England said AI investment has supported growth, but the money behind it increasingly flows in complex and circular ways, for example AI firms financing other AI firms against future revenue promises. It expects bond issuance by the big cloud companies to pass $305 billion in 2026, about 8% of all investment-grade bonds worldwide. It also names AI agents, open-weight models and dependence on a few cloud providers as growing cyber and operational risks.</p>
+      <p><span class="label">Why it matters</span>A central bank now treats the AI boom as a possible risk to the financial system; a sharp correction would affect funding for AI research, cloud prices and tech jobs.</p>
+      <p class="caveat">Note: some figures reported in the press (such as total hyperscaler exposure of just over $4 trillion) come from parts of the report we could not read in full.</p>
+      <p class="source">Source: <a href="https://www.bankofengland.co.uk/financial-stability-report/2026/november-2026" target="_blank" rel="noopener">Bank of England</a> · 26 Nov 2026</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">03</span><span class="pill is">Information systems · e-government</span></div>
+      <h3>Critical flaw found in DIGIT, the open-source e-government platform used across India and beyond</h3>
+      <p><span class="label">What happened</span>India's cyber agency CERT-In warned of an SQL injection flaw in the user and access control service of DIGIT, a free, modular platform for services such as property tax, licences, water and birth certificates. The Register reports that every Indian state and over 20,000 local bodies use it, along with countries such as Nigeria, Indonesia, Ethiopia and Sri Lanka, and that an attacker can reach the flaw without logging in (CVE-2026-136706, score 9.3). A fixed version, 2.9.3, is available.</p>
+      <p><span class="label">Why it matters</span>Shared digital public infrastructure means one bug in a common component can expose citizen data in many countries at once, which is a strong case study for teaching software supply chains and patch governance.</p>
+      <p class="caveat">Note: no attack using the flaw has been confirmed. The "two billion people" figure is The Register's estimate of the population covered, not a user count; CERT-In rates the flaw "high", The Register "critical".</p>
+      <p class="source">Source: <a href="https://www.theregister.com/security/2026/11/27/free-e-government-platform-that-serves-two-billion-people-in-ten-countries-has-critical-sql-injection-bug/5312449" target="_blank" rel="noopener">The Register</a> · 27 Nov 2026, and <a href="https://www.medianama.com/2026/11/223-cert-in-high-severity-vulnerability-egov-digit-platform/" target="_blank" rel="noopener">MediaNama</a> · 26 Nov 2026</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">04</span><span class="pill is">Privacy · GDPR</span></div>
+      <h3>Meta defends its camera glasses in a Dutch court as three groups demand changes or a sales ban</h3>
+      <p><span class="label">What happened</span>At a hearing in the Amsterdam District Court, the Dutch Consumers' Association (Consumentenbond), Offlimits and The Firewall argued that Ray-Ban Meta glasses allow covert filming of bystanders and break privacy law; two groups want a ban, while the Consumentenbond asks for safeguards and an end to using device data for AI training. Meta said any product can be misused, that a light shows when it records, and that it does not train AI on photos and videos taken with the glasses unless users share them publicly. A ruling is expected by 24 December.</p>
+      <p><span class="label">Why it matters</span>The case tests how GDPR applies to always-available wearable cameras and to using device data for AI training, a question that will shape design rules for smart devices across Europe.</p>
+      <p class="caveat">Note: these are the parties' arguments in court; the ruling date comes from press reports.</p>
+      <p class="source">Source: <a href="https://nltimes.nl/2026/11/26/meta-defends-ai-glasses-court-dutch-groups-demand-ban" target="_blank" rel="noopener">NL Times (ANP)</a> · 26 Nov 2026, and <a href="https://www.consumentenbond.nl/nieuws/2026/consumentenbond-start-rechtszaak-tegen-meta-om-camerabril" target="_blank" rel="noopener">Consumentenbond</a> · 15 Oct 2026</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">05</span><span class="pill is">Security · data protection</span></div>
+      <h3>1Password breach update: attackers also copied source code and reached the build system</h3>
+      <p><span class="label">What happened</span>In an updated statement, 1Password said the attacker who took over an employee's GitHub account also copied source code from private repositories and got into its CI/CD (build and deployment) system. Besides names and emails, the stolen records included public keys, account IDs and, for a small number of users, tokens from invitation and account-recovery emails. The company says vaults, passwords and recovery keys were not touched, rotated its credentials and lengthened email verification codes from six digits to ten characters.</p>
+      <p><span class="label">Why it matters</span>Yesterday's digest reported only names and emails; access to source code and the build pipeline is a far more serious supply-chain risk, even for a company whose design keeps user secrets encrypted.</p>
+      <p class="caveat">Note: 1Password has not said how many customers were affected, and its statements have not been checked independently.</p>
+      <p class="source">Source: <a href="https://1password.com/blog/update-on-nov-2026-security-incident" target="_blank" rel="noopener">1Password blog</a> · 25 Nov 2026, and <a href="https://thehackernews.com/2026/11/1password-hacked-customer-data-and.html" target="_blank" rel="noopener">The Hacker News</a> · 26 Nov 2026</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">06</span><span class="pill field">Field-wide · cloud</span></div>
+      <h3>Rackspace will shut down its Spot cloud service on 8 December after a breach</h3>
+      <p><span class="label">What happened</span>Rackspace is closing Spot, its low-cost auction-based Kubernetes cloud, on 8 December; workloads still running then will be deleted. On 17 November attackers used a leaked credential, reportedly from an observability system, to access the platform for almost 22 hours, creating pods in customer clusters and reading Kubernetes secrets. Customers must move their workloads and rotate API tokens, database passwords and other keys.</p>
+      <p><span class="label">Why it matters</span>A provider ending a service with about two weeks' notice shows the real risk of depending on a single cloud, and why exit plans and secret rotation belong in any information system design.</p>
+      <p class="caveat">Note: Rackspace has not said how many customers were affected or why it chose closure instead of recovery.</p>
+      <p class="source">Source: <a href="https://www.theregister.com/cyber-crime/2026/11/26/rackspace-pulls-plug-on-spot-cloud-service-after-security-breach/5312352" target="_blank" rel="noopener">The Register</a> · 26 Nov 2026, and <a href="https://www.scworld.com/brief/rackspace-to-shut-down-spot-cloud-platform-following-security-breach" target="_blank" rel="noopener">SC Media</a> · date not shown</p>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2>Worth watching</h2>
+  <ul class="watch">
+    <li><strong>OpenAI tests "Private Inference" for sensitive business work</strong>Sam Altman announced a small pilot in which business prompts run on isolated hardware that OpenAI staff cannot read. We could not confirm the details from an official OpenAI page. <a href="https://kellyabbott1.substack.com/p/ai-frontier-daily-2026-11-26" target="_blank" rel="noopener">AI Frontier Daily, citing The Decoder</a> · 26 Nov 2026</li>
+    <li><strong>Huawei shows a new AI memory design</strong>Bloomberg reports that Huawei will present a high-bandwidth memory (HBM) design with twice the data-pin density at the ISSCC conference in February, a sign of China's push to build its own AI hardware. <a href="https://aiweekly.co/alerts/huawei-teases-hbm-design-with-2x-data-pin-density-isscc-reveal-set-for-february" target="_blank" rel="noopener">AI Weekly, citing Bloomberg</a> · 26 Nov 2026</li>
+    <li><strong>Banks try to pass on AI data-centre loans</strong>Semafor reports that Citi and JPMorgan are offering parts of their AI-related loan portfolios to investors, which fits the Bank of England's warning above. <a href="https://aiweekly.co/alerts/citi-and-jpmorgan-shop-ai-data-center-loan-portfolios-to-investors-as" target="_blank" rel="noopener">AI Weekly, citing Semafor</a> · 26 Nov 2026</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Top 3 videos</h2>
+  <p class="note">View counts could not be confirmed because YouTube showed a bot-protection page; dates come from the video pages.</p>
+  <ol class="cards">
+    <li class="card video">
+      <div class="card-top"><span class="num">V1</span><span class="pill video">Claude Desktop</span></div>
+      <h3>How to Create a New Project in Claude Desktop | Organize &amp; Set Custom Instructions (2026)</h3>
+      <div class="facts"><span><b>Channel:</b> The Code City</span><span><b>Published:</b> 28 Oct 2026</span><span><b>Views:</b> not confirmed</span></div>
+      <p><span class="label">What it is about</span>A short tutorial on creating Projects in the Claude Desktop app and writing custom instructions for each one. It shows how to keep related chats and files together so Claude works with the right context.</p>
+      <p><span class="label">Why it is worth watching</span>Projects are one of the most useful Desktop features for teaching and research work, and this explains them in a few minutes.</p>
+      <button type="button" class="yt" data-id="jdrhFXf1WMo" aria-label="Play video"><img src="https://i.ytimg.com/vi/jdrhFXf1WMo/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=jdrhFXf1WMo" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V2</span><span class="pill video">Editing video with Claude</span></div>
+      <h3>The ONLY Claude AI Video Editing Tutorial You'll Need (Premiere Pro + Claude)</h3>
+      <div class="facts"><span><b>Channel:</b> Roberto Blake</span><span><b>Published:</b> 29 Oct 2026 (live stream)</span><span><b>Views:</b> not confirmed</span></div>
+      <p><span class="label">What it is about</span>A live session in which Claude Desktop controls Adobe Premiere Pro to edit a video from a written brief and brand rules. It is the first of a planned series, so viewers see both what works and where the edit needs a human.</p>
+      <p><span class="label">Why it is worth watching</span>Roberto Blake is a long-standing, well-known creator educator, and the live format shows the real workflow without heavy editing.</p>
+      <button type="button" class="yt" data-id="vJY72V8bJG0" aria-label="Play video"><img src="https://i.ytimg.com/vi/vJY72V8bJG0/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=vJY72V8bJG0" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V3</span><span class="pill video">Creating AI agents with Claude</span></div>
+      <h3>How to Build Your First AI Agent in Claude Code (It Runs Your Week)</h3>
+      <div class="facts"><span><b>Channel:</b> Teacher's Tech</span><span><b>Published:</b> 11 Nov 2026</span><span><b>Views:</b> not confirmed</span></div>
+      <p><span class="label">What it is about</span>A beginner tutorial that builds an agent for weekly tasks in Claude Code, using a CLAUDE.md file, Plan mode, a reusable skill and a reviewer subagent. It also explains why the agent writes drafts instead of sending messages, and how to steer it from a phone.</p>
+      <p><span class="label">Why it is worth watching</span>Teacher's Tech is a well-known educational channel, and the video teaches safe agent design (human approval before actions) step by step.</p>
+      <button type="button" class="yt" data-id="p_8qG98AtgY" aria-label="Play video"><img src="https://i.ytimg.com/vi/p_8qG98AtgY/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=p_8qG98AtgY" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </li>
+  </ol>
+</section>
+
+<footer>Collected by web search on 27 November 2026. Summaries are written in the agent's own words; follow the links for the full reports.</footer>
+</div>
+
+
+<!-- ===================== FARSI ===================== -->
+<div class="lang" lang="fa" dir="rtl" id="content-fa">
+
+<header class="masthead">
+  <p class="hello">سلام کیوان،</p>
+  <h1>خلاصهٔ اخبار</h1>
+  <div class="date">جمعه ۲۷ نوامبر ۲۰۲۶</div>
+  <a class="archive" href="../index.html#archive">همهٔ خلاصه‌ها</a>
+</header>
+
+<section>
+  <h2>شعرهای روز</h2>
+  <div class="poems">
+    <figure class="quote">
+      <span class="q-label">حافظ</span>
+      <p>ای بی‌خبر بکوش که صاحب‌خبر شوی<br>تا راهرو نباشی کی راهبر شوی</p>
+      <cite>حافظ، دیوان (سدهٔ چهاردهم میلادی)</cite>
+    </figure>
+    <figure class="quote">
+      <span class="q-label">مولوی</span>
+      <p>هر کسی از ظن خود شد یار من<br>از درون من نجست اسرار من</p>
+      <cite>مولوی، مثنوی معنوی، دفتر اول (سدهٔ سیزدهم میلادی)</cite>
+    </figure>
+    <figure class="quote">
+      <span class="q-label">فردوسی</span>
+      <p>خرد بهتر از هر چه ایزد بداد<br>ستایش خرد را به از راه داد</p>
+      <cite>فردوسی، شاهنامه، «گفتار اندر ستایش خرد» (حدود ۱۰۱۰ میلادی)</cite>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <h2>نگاه کلی</h2>
+  <p class="overview">موضوع امروز بیشتر امنیت و اعتماد به سیستم‌های مشترک است. نهاد امنیت سایبری سوئیس نخستین حمله‌های انجام‌شده با عامل‌های هوش مصنوعی در این کشور را تأیید کرد و بیشتر آن‌ها موفق به نفوذ شدند. یک نقص جدی در DIGIT، سکوی رایگان دولت الکترونیک که در سراسر هند و چند کشور دیگر به کار می‌رود، پیدا شد و 1Password اعلام کرد نفوذ به سیستم‌هایش جدی‌تر از گزارش اول بوده است. Rackspace پس از یک نفوذ، یک سرویس ابری کامل را تعطیل می‌کند، Bank of England هشدار داد که تأمین مالی هوش مصنوعی «چرخشی و مبهم» شده است، و Meta در یک پروندهٔ حریم خصوصی در هلند از عینک‌های دوربین‌دار خود دفاع کرد.</p>
+  <p class="note">دیروز در آمریکا روز پس از شکرگزاری بود و خبر تازه کم بود. در ۲۴ ساعت گذشته خبر مهم تازه‌ای دربارهٔ مدل‌های جدید هوش مصنوعی، EU AI Act، بازار کار یا آموزش پیدا نکردیم. دو خبر (1Password و پروندهٔ دادگاه هلند) دنبالهٔ خبرهای قبلی‌اند اما واقعیت‌های تازه‌ای دارند. تعداد بازدید بیشتر ویدیوهای YouTube تأیید نشد.</p>
+</section>
+
+<section>
+  <h2>اخبار</h2>
+  <ol class="cards">
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">۰۱</span><span class="pill ai">هوش مصنوعی · امنیت</span></div>
+      <h3>سوئیس نخستین حمله‌های سایبری با عامل‌های هوش مصنوعی را تأیید کرد و بیشتر آن‌ها موفق بودند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>ادارهٔ فدرال امنیت سایبری سوئیس (BACS) گفت در روزهای اخیر در پنج حمله به شرکت‌ها و گردانندگان زیرساخت‌های حیاتی از عامل‌های هوش مصنوعی استفاده شده است؛ سه مورد در بخش‌هایی مانند برق، آب و مخابرات بوده‌اند. به گزارش Reuters، چهار حمله از پنج حمله به سیستم هدف نفوذ کردند. Florian Schütz، مدیر BACS، گفت اختلال بزرگی رخ نداده و معلوم نیست چه کسی پشت این حمله‌هاست.</p>
+      <p><span class="label">چرا مهم است</span>این یکی از نخستین تأییدهای رسمی یک دولت است که ابزارهای خودکار هوش مصنوعی در حمله‌های واقعی به کار می‌روند؛ پس برنامه‌ریزی امنیتی برای سیستم‌های دولتی و دانشگاهی دیگر نمی‌تواند این را خطری مربوط به آینده بداند.</p>
+      <p class="caveat">توجه: منابع دربارهٔ تعداد حمله‌های موفق اختلاف دارند (به گزارش Reuters چهار از پنج؛ یک گزارش سوئیسی می‌گوید دو). نام قربانیان و ابزارهای به‌کاررفته اعلام نشده است. این آمار ناقص است، چون فقط گردانندگان زیرساخت‌های حیاتی موظف به گزارش حمله‌اند.</p>
+      <p class="source">منبع: <a href="https://www.globalbankingandfinance.com/ai-agents-used-five-cyber-attacks-switzerland-government/" target="_blank" rel="noopener">Reuters از طریق Global Banking &amp; Finance Review</a> · ۲۶ نوامبر ۲۰۲۶، و <a href="https://www.bluewin.ch/en/news/ai-hackers-target-swiss-electricity-and-water-utilities-li.3687598" target="_blank" rel="noopener">blue News</a> · ۲۶ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-chart"/></svg></span><span class="num">۰۲</span><span class="pill field">کل حوزه · بازار</span></div>
+      <h3>Bank of England هشدار داد که تأمین مالی هوش مصنوعی «پیچیده، چرخشی و مبهم» شده است</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Bank of England در گزارش ثبات مالی خود گفت سرمایه‌گذاری در هوش مصنوعی به رشد اقتصادی کمک کرده، اما پول پشت آن بیش از پیش به شکل‌های پیچیده و چرخشی جابه‌جا می‌شود؛ برای نمونه، شرکت‌های هوش مصنوعی در برابر وعدهٔ درآمد آینده به شرکت‌های دیگر هوش مصنوعی پول می‌دهند. این بانک انتظار دارد انتشار اوراق قرضهٔ شرکت‌های بزرگ ابری در ۲۰۲۶ از ۳۰۵ میلیارد دلار بگذرد، یعنی حدود ۸ درصد کل اوراق با رتبهٔ سرمایه‌گذاری در جهان. گزارش همچنین عامل‌های هوش مصنوعی، مدل‌های open-weight و وابستگی به چند ارائه‌دهندهٔ ابری محدود را خطرهای رو به رشد سایبری و عملیاتی می‌داند.</p>
+      <p><span class="label">چرا مهم است</span>اکنون یک بانک مرکزی رونق هوش مصنوعی را خطری احتمالی برای نظام مالی می‌داند؛ یک اصلاح شدید بازار می‌تواند بر بودجهٔ پژوهش هوش مصنوعی، قیمت خدمات ابری و مشاغل فناوری اثر بگذارد.</p>
+      <p class="caveat">توجه: برخی اعداد که در رسانه‌ها آمده (مانند مجموع وابستگی شرکت‌های بزرگ ابری، کمی بیش از ۴ تریلیون دلار) از بخش‌هایی از گزارش است که نتوانستیم کامل بخوانیم.</p>
+      <p class="source">منبع: <a href="https://www.bankofengland.co.uk/financial-stability-report/2026/november-2026" target="_blank" rel="noopener">Bank of England</a> · ۲۶ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">۰۳</span><span class="pill is">سیستم‌های اطلاعاتی · دولت الکترونیک</span></div>
+      <h3>نقصی جدی در DIGIT، سکوی متن‌باز دولت الکترونیک که در سراسر هند و فراتر از آن به کار می‌رود</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>CERT-In، نهاد امنیت سایبری هند، دربارهٔ یک نقص SQL injection در سرویس کاربران و کنترل دسترسی DIGIT هشدار داد؛ DIGIT سکویی رایگان و ماژولار برای خدماتی مانند مالیات ملک، مجوزها، آب و گواهی تولد است. به گزارش The Register، همهٔ ایالت‌های هند و بیش از ۲۰ هزار نهاد محلی و نیز کشورهایی مانند نیجریه، اندونزی، اتیوپی و سری‌لانکا از آن استفاده می‌کنند، و مهاجم بدون ورود به سیستم می‌تواند به این نقص برسد (CVE-2026-136706، امتیاز ۹٫۳). نسخهٔ اصلاح‌شدهٔ ۲٫۹٫۳ منتشر شده است.</p>
+      <p><span class="label">چرا مهم است</span>در زیرساخت عمومی دیجیتال مشترک، یک باگ در یک جزء مشترک می‌تواند دادهٔ شهروندان را هم‌زمان در چند کشور در معرض خطر بگذارد؛ این نمونهٔ خوبی برای تدریس زنجیرهٔ تأمین نرم‌افزار و حکمرانی وصله‌هاست.</p>
+      <p class="caveat">توجه: هیچ حمله‌ای با استفاده از این نقص تأیید نشده است. رقم «دو میلیارد نفر» برآورد The Register از جمعیت تحت پوشش است، نه تعداد کاربران؛ CERT-In شدت نقص را «بالا» و The Register آن را «بحرانی» می‌داند.</p>
+      <p class="source">منبع: <a href="https://www.theregister.com/security/2026/11/27/free-e-government-platform-that-serves-two-billion-people-in-ten-countries-has-critical-sql-injection-bug/5312449" target="_blank" rel="noopener">The Register</a> · ۲۷ نوامبر ۲۰۲۶، و <a href="https://www.medianama.com/2026/11/223-cert-in-high-severity-vulnerability-egov-digit-platform/" target="_blank" rel="noopener">MediaNama</a> · ۲۶ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">۰۴</span><span class="pill is">حریم خصوصی · GDPR</span></div>
+      <h3>Meta در دادگاه هلند از عینک‌های دوربین‌دارش دفاع کرد و سه گروه خواستار تغییر یا ممنوعیت فروش شدند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>در جلسه‌ای در دادگاه منطقه‌ای آمستردام، انجمن مصرف‌کنندگان هلند (Consumentenbond)، Offlimits و The Firewall گفتند عینک‌های Ray-Ban Meta امکان فیلم‌برداری پنهانی از دیگران را می‌دهند و قانون حریم خصوصی را نقض می‌کنند؛ دو گروه خواستار ممنوعیت‌اند و Consumentenbond خواستار تدابیر حفاظتی و توقف استفاده از دادهٔ دستگاه برای آموزش هوش مصنوعی است. Meta گفت هر محصولی ممکن است سوءاستفاده شود، هنگام ضبط چراغی روشن می‌شود، و از عکس‌ها و ویدیوهای گرفته‌شده با عینک برای آموزش هوش مصنوعی استفاده نمی‌کند مگر کاربر آن‌ها را عمومی منتشر کند. حکم دادگاه تا ۲۴ دسامبر انتظار می‌رود.</p>
+      <p><span class="label">چرا مهم است</span>این پرونده می‌آزماید که GDPR چگونه دربارهٔ دوربین‌های پوشیدنی همیشه‌آماده و استفاده از دادهٔ دستگاه برای آموزش هوش مصنوعی اعمال می‌شود؛ پاسخ آن قواعد طراحی دستگاه‌های هوشمند را در اروپا شکل می‌دهد.</p>
+      <p class="caveat">توجه: این‌ها استدلال‌های طرفین در دادگاه است؛ تاریخ صدور حکم از گزارش‌های رسانه‌ای آمده است.</p>
+      <p class="source">منبع: <a href="https://nltimes.nl/2026/11/26/meta-defends-ai-glasses-court-dutch-groups-demand-ban" target="_blank" rel="noopener">NL Times (ANP)</a> · ۲۶ نوامبر ۲۰۲۶، و <a href="https://www.consumentenbond.nl/nieuws/2026/consumentenbond-start-rechtszaak-tegen-meta-om-camerabril" target="_blank" rel="noopener">Consumentenbond</a> · ۱۵ اکتبر ۲۰۲۶</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">۰۵</span><span class="pill is">امنیت · حفاظت از داده</span></div>
+      <h3>به‌روزرسانی نفوذ به 1Password: مهاجمان کد منبع را هم کپی کردند و به سیستم ساخت رسیدند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>1Password در بیانیهٔ به‌روزشده‌ای گفت مهاجمی که حساب GitHub یک کارمند را در دست گرفته بود، کد منبع مخزن‌های خصوصی را هم کپی کرد و به سیستم CI/CD (ساخت و استقرار) شرکت دسترسی پیدا کرد. افزون بر نام و ایمیل، سوابق دزدیده‌شده شامل کلیدهای عمومی، شناسه‌های حساب و، برای شمار کمی از کاربران، توکن‌های موجود در ایمیل‌های دعوت و بازیابی حساب بود. شرکت می‌گوید به گاوصندوق‌ها، گذرواژه‌ها و کلیدهای بازیابی دسترسی پیدا نشد، اعتبارنامه‌هایش را عوض کرد و کدهای تأیید ایمیلی را از شش رقم به ده نویسه افزایش داد.</p>
+      <p><span class="label">چرا مهم است</span>خلاصهٔ دیروز فقط از نام و ایمیل خبر داده بود؛ دسترسی به کد منبع و زنجیرهٔ ساخت خطر بسیار جدی‌تری برای زنجیرهٔ تأمین است، حتی برای شرکتی که طراحی‌اش اسرار کاربران را رمزگذاری‌شده نگه می‌دارد.</p>
+      <p class="caveat">توجه: 1Password نگفته چند مشتری آسیب دیده‌اند و ادعاهایش به‌طور مستقل بررسی نشده است.</p>
+      <p class="source">منبع: <a href="https://1password.com/blog/update-on-nov-2026-security-incident" target="_blank" rel="noopener">وبلاگ 1Password</a> · ۲۵ نوامبر ۲۰۲۶، و <a href="https://thehackernews.com/2026/11/1password-hacked-customer-data-and.html" target="_blank" rel="noopener">The Hacker News</a> · ۲۶ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">۰۶</span><span class="pill field">کل حوزه · ابر</span></div>
+      <h3>Rackspace سرویس ابری Spot را پس از یک نفوذ در ۸ دسامبر تعطیل می‌کند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Rackspace سرویس Spot، ابر ارزان Kubernetes بر پایهٔ حراج، را در ۸ دسامبر می‌بندد و بارهای کاری که تا آن زمان در حال اجرا باشند حذف می‌شوند. در ۱۷ نوامبر مهاجمان با یک اعتبارنامهٔ افشاشده، که گفته می‌شود از یک سیستم پایش (observability) بوده، نزدیک ۲۲ ساعت به سکو دسترسی داشتند، در خوشه‌های مشتریان pod ساختند و اسرار Kubernetes را خواندند. مشتریان باید بارهای کاری خود را منتقل کنند و توکن‌های API، گذرواژه‌های پایگاه داده و کلیدهای دیگر را عوض کنند.</p>
+      <p><span class="label">چرا مهم است</span>پایان دادن به یک سرویس با حدود دو هفته فرصت، خطر واقعی وابستگی به یک ارائه‌دهندهٔ ابری را نشان می‌دهد و اینکه چرا برنامهٔ خروج و چرخش اسرار باید بخشی از طراحی هر سیستم اطلاعاتی باشد.</p>
+      <p class="caveat">توجه: Rackspace نگفته چند مشتری آسیب دیده‌اند و چرا به جای بازیابی، تعطیلی را برگزیده است.</p>
+      <p class="source">منبع: <a href="https://www.theregister.com/cyber-crime/2026/11/26/rackspace-pulls-plug-on-spot-cloud-service-after-security-breach/5312352" target="_blank" rel="noopener">The Register</a> · ۲۶ نوامبر ۲۰۲۶، و <a href="https://www.scworld.com/brief/rackspace-to-shut-down-spot-cloud-platform-following-security-breach" target="_blank" rel="noopener">SC Media</a> · تاریخ نشان داده نشده</p>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2>ارزش دنبال کردن</h2>
+  <ul class="watch">
+    <li><strong>OpenAI «Private Inference» را برای کارهای حساس سازمانی آزمایش می‌کند</strong>Sam Altman از یک آزمایش کوچک خبر داد که در آن درخواست‌های سازمان‌ها روی سخت‌افزار جداشده‌ای پردازش می‌شود که کارکنان OpenAI نمی‌توانند آن را بخوانند. نتوانستیم جزئیات را از صفحه‌ای رسمی از OpenAI تأیید کنیم. <a href="https://kellyabbott1.substack.com/p/ai-frontier-daily-2026-11-26" target="_blank" rel="noopener">AI Frontier Daily به نقل از The Decoder</a> · ۲۶ نوامبر ۲۰۲۶</li>
+    <li><strong>Huawei طرح تازه‌ای برای حافظهٔ هوش مصنوعی نشان می‌دهد</strong>به گزارش Bloomberg، شرکت Huawei طرحی از حافظهٔ پرپهنای باند (HBM) با دو برابر تراکم پین داده را در کنفرانس ISSCC در فوریه ارائه می‌کند؛ نشانه‌ای از تلاش چین برای ساخت سخت‌افزار هوش مصنوعی خودی. <a href="https://aiweekly.co/alerts/huawei-teases-hbm-design-with-2x-data-pin-density-isscc-reveal-set-for-february" target="_blank" rel="noopener">AI Weekly به نقل از Bloomberg</a> · ۲۶ نوامبر ۲۰۲۶</li>
+    <li><strong>بانک‌ها می‌کوشند وام‌های مراکز دادهٔ هوش مصنوعی را واگذار کنند</strong>به گزارش Semafor، بانک‌های Citi و JPMorgan بخشی از سبد وام‌های مرتبط با هوش مصنوعی خود را به سرمایه‌گذاران عرضه می‌کنند؛ این با هشدار Bank of England در بالا همخوان است. <a href="https://aiweekly.co/alerts/citi-and-jpmorgan-shop-ai-data-center-loan-portfolios-to-investors-as" target="_blank" rel="noopener">AI Weekly به نقل از Semafor</a> · ۲۶ نوامبر ۲۰۲۶</li>
+  </ul>
+</section>
+
+<section>
+  <h2>سه ویدیوی برتر</h2>
+  <p class="note">تعداد بازدیدها تأیید نشد، چون YouTube صفحهٔ محافظت در برابر ربات نشان داد؛ تاریخ‌ها از صفحهٔ ویدیوها آمده است.</p>
+  <ol class="cards">
+    <li class="card video">
+      <div class="card-top"><span class="num">V1</span><span class="pill video">Claude Desktop</span></div>
+      <h3>How to Create a New Project in Claude Desktop | Organize &amp; Set Custom Instructions (2026)</h3>
+      <div class="facts"><span><b>کانال:</b> The Code City</span><span><b>تاریخ انتشار:</b> ۲۸ اکتبر ۲۰۲۶</span><span><b>بازدید:</b> تأیید نشده</span></div>
+      <p><span class="label">دربارهٔ چیست</span>آموزشی کوتاه دربارهٔ ساختن Projects در برنامهٔ Claude Desktop و نوشتن دستورالعمل‌های سفارشی برای هر کدام. نشان می‌دهد چگونه گفت‌وگوها و فایل‌های مرتبط را کنار هم نگه داریم تا Claude با زمینهٔ درست کار کند.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>Projects یکی از سودمندترین قابلیت‌های Desktop برای کار آموزشی و پژوهشی است و این ویدیو آن را در چند دقیقه توضیح می‌دهد.</p>
+      <button type="button" class="yt" data-id="jdrhFXf1WMo" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/jdrhFXf1WMo/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=jdrhFXf1WMo" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V2</span><span class="pill video">ویرایش ویدیو با Claude</span></div>
+      <h3>The ONLY Claude AI Video Editing Tutorial You'll Need (Premiere Pro + Claude)</h3>
+      <div class="facts"><span><b>کانال:</b> Roberto Blake</span><span><b>تاریخ انتشار:</b> ۲۹ اکتبر ۲۰۲۶ (پخش زنده)</span><span><b>بازدید:</b> تأیید نشده</span></div>
+      <p><span class="label">دربارهٔ چیست</span>جلسه‌ای زنده که در آن Claude Desktop برنامهٔ Adobe Premiere Pro را کنترل می‌کند تا ویدیویی را بر پایهٔ یک شرح کار نوشتاری و قواعد برند ویرایش کند. این نخستین قسمت از یک مجموعه است، پس بیننده هم می‌بیند چه چیزی کار می‌کند و هم کجا ویرایش به انسان نیاز دارد.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>Roberto Blake آموزش‌دهنده‌ای باسابقه و شناخته‌شده برای تولیدکنندگان محتواست و قالب زنده، روند واقعی کار را بدون تدوین سنگین نشان می‌دهد.</p>
+      <button type="button" class="yt" data-id="vJY72V8bJG0" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/vJY72V8bJG0/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=vJY72V8bJG0" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V3</span><span class="pill video">ساخت عامل‌های هوش مصنوعی با Claude</span></div>
+      <h3>How to Build Your First AI Agent in Claude Code (It Runs Your Week)</h3>
+      <div class="facts"><span><b>کانال:</b> Teacher's Tech</span><span><b>تاریخ انتشار:</b> ۱۱ نوامبر ۲۰۲۶</span><span><b>بازدید:</b> تأیید نشده</span></div>
+      <p><span class="label">دربارهٔ چیست</span>آموزشی برای مبتدیان که در Claude Code یک عامل برای کارهای هفتگی می‌سازد و از فایل CLAUDE.md، حالت Plan، یک skill قابل استفادهٔ دوباره و یک زیرعامل بازبین بهره می‌گیرد. همچنین توضیح می‌دهد چرا عامل به جای فرستادن پیام، پیش‌نویس می‌نویسد و چگونه می‌توان آن را از گوشی هدایت کرد.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>Teacher's Tech کانال آموزشی شناخته‌شده‌ای است و این ویدیو طراحی امن عامل (تأیید انسان پیش از اقدام) را گام‌به‌گام آموزش می‌دهد.</p>
+      <button type="button" class="yt" data-id="p_8qG98AtgY" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/p_8qG98AtgY/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=p_8qG98AtgY" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+    </li>
+  </ol>
+</section>
+
+<footer>گردآوری‌شده با جست‌وجوی وب در ۲۷ نوامبر ۲۰۲۶. خلاصه‌ها با کلمات خود عامل نوشته شده‌اند؛ برای گزارش کامل روی پیوندها کلیک کنید.</footer>
+</div>
+
+
+
+</div>
+<script>
+(function () {
+  var en = document.getElementById("content-en");
+  var fa = document.getElementById("content-fa");
+  var bEn = document.getElementById("btn-en");
+  var bFa = document.getElementById("btn-fa");
+  function show(lang) {
+    var isFa = lang === "fa";
+    en.hidden = isFa;
+    fa.hidden = !isFa;
+    bEn.setAttribute("aria-pressed", String(!isFa));
+    bFa.setAttribute("aria-pressed", String(isFa));
+    document.documentElement.lang = isFa ? "fa" : "en";
+    try { localStorage.setItem("digest-lang", lang); } catch (e) {}
+  }
+  bEn.addEventListener("click", function () { show("en"); });
+  bFa.addEventListener("click", function () { show("fa"); });
+  var saved = null;
+  try { saved = localStorage.getItem("digest-lang"); } catch (e) {}
+  show(saved === "en" ? "en" : "fa");
+})();
+
+(function () {
+  document.querySelectorAll("button.yt").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var f = document.createElement("iframe");
+      f.className = "yt-frame";
+      f.src = "https://www.youtube-nocookie.com/embed/" + b.dataset.id + "?autoplay=1&rel=0";
+      f.title = b.getAttribute("aria-label");
+      f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      f.allowFullscreen = true;
+      b.replaceWith(f);
+    });
+  });
+})();
+
+(function () {
+  var hues = [215, 160, 280, 25, 340, 195, 95];
+  var d = document.body.getAttribute("data-date") || "";
+  var t = Date.parse(d + "T00:00:00Z");
+  var day = isNaN(t) ? 0 : Math.floor(t / 86400000);
+  document.documentElement.style.setProperty("--h", hues[day % hues.length]);
+  var seed = day * 2654435761 >>> 0;
+  function rnd() { seed = (seed + 0x6D2B79F5) >>> 0; var x = seed; x = Math.imul(x ^ (x >>> 15), x | 1); x ^= x + Math.imul(x ^ (x >>> 7), x | 61); return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }
+  var c = document.getElementById("hero-art");
+  if (!c || !c.getContext) return;
+  function draw() {
+    var s0 = day * 2654435761 >>> 0; seed = s0;
+    var r = window.devicePixelRatio || 1, w = c.clientWidth, h = c.clientHeight;
+    c.width = w * r; c.height = h * r;
+    var g = c.getContext("2d"); g.scale(r, r); g.clearRect(0, 0, w, h);
+    for (var i = 0; i < 16; i++) {
+      g.beginPath(); g.arc(rnd() * w, rnd() * h, 10 + rnd() * 70, 0, Math.PI * 2);
+      g.fillStyle = "rgba(255,255,255," + (0.04 + rnd() * 0.12) + ")"; g.fill();
+    }
+    for (var k = 0; k < 7; k++) {
+      var amp = 8 + rnd() * 28, freq = 0.004 + rnd() * 0.012, ph = rnd() * 6.3, y0 = h * (0.15 + rnd() * 0.7);
+      g.beginPath();
+      for (var x = 0; x <= w; x += 4) { var y = y0 + Math.sin(x * freq + ph) * amp + Math.sin(x * freq * 2.3 + ph) * amp * 0.3; if (x === 0) g.moveTo(x, y); else g.lineTo(x, y); }
+      g.strokeStyle = "rgba(255,255,255," + (0.18 + rnd() * 0.3) + ")"; g.lineWidth = 1 + rnd() * 2; g.stroke();
+    }
+  }
+  draw();
+  var to; window.addEventListener("resize", function () { clearTimeout(to); to = setTimeout(draw, 150); });
+})();
+</script>
+</body>
+</html>
