@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>News digest 28 Nov 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one reading column, dated masthead with a language switch, stacked cards with a coloured category stripe. */
+:root {
+  --bg: #f3f5f8; --surface: #ffffff; --ink: #17212c; --muted: #586473; --line: #dbe1e8; --accent: #1d5bb8;
+  --cat-ai: #4a3fc4; --cat-ai-bg: #ecebfb; --cat-is: #0d7468; --cat-is-bg: #e2f3f0;
+  --cat-field: #9a5a00; --cat-field-bg: #fbf0dc; --cat-video: #b02a4c; --cat-video-bg: #fbe6ec;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-fa: "Vazirmatn", Tahoma, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f141a; --surface: #182029; --ink: #e7ecf2; --muted: #9ba8b6; --line: #2b3643; --accent: #86b4ff;
+    --cat-ai: #b3adff; --cat-ai-bg: #272452; --cat-is: #6fd3c5; --cat-is-bg: #123a36;
+    --cat-field: #f0b660; --cat-field-bg: #3d2c10; --cat-video: #ff9db5; --cat-video-bg: #47182a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f141a; --surface: #182029; --ink: #e7ecf2; --muted: #9ba8b6; --line: #2b3643; --accent: #86b4ff;
+  --cat-ai: #b3adff; --cat-ai-bg: #272452; --cat-is: #6fd3c5; --cat-is-bg: #123a36;
+  --cat-field: #f0b660; --cat-field-bg: #3d2c10; --cat-video: #ff9db5; --cat-video-bg: #47182a;
+  color-scheme: dark;
+}
+
+/* Daily colour: --h (hue) is set by the script from the digest date. */
+:root { --h: 215; --bg: hsl(var(--h) 30% 96%); --accent: hsl(var(--h) 65% 38%); --hero-a: hsl(var(--h) 70% 42%); --hero-b: hsl(calc(var(--h) + 45) 70% 55%); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: hsl(var(--h) 25% 8%); --accent: hsl(var(--h) 85% 74%); --hero-a: hsl(var(--h) 55% 28%); --hero-b: hsl(calc(var(--h) + 45) 55% 36%); } }
+:root[data-theme="dark"] { --bg: hsl(var(--h) 25% 8%); --accent: hsl(var(--h) 85% 74%); --hero-a: hsl(var(--h) 55% 28%); --hero-b: hsl(calc(var(--h) + 45) 55% 36%); }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+.page { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; display: flex; flex-direction: column; gap: 24px; }
+.switch { display: flex; gap: 8px; justify-content: flex-end; }
+.switch button {
+  font: 600 0.9rem var(--font-body); padding: 6px 16px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+}
+.switch button[lang="fa"] { font-family: var(--font-fa); }
+.switch button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.lang { display: flex; flex-direction: column; gap: 40px; }
+.lang[hidden] { display: none; }
+.lang[lang="fa"] { font-family: var(--font-fa); line-height: 1.9; }
+.lang[lang="fa"] h1, .lang[lang="fa"] h2, .lang[lang="fa"] h3 { font-family: var(--font-fa); font-weight: 700; letter-spacing: 0; }
+.lang[lang="fa"] .label { text-transform: none; letter-spacing: 0; }
+header.masthead { border-bottom: 3px solid var(--ink); padding-bottom: 20px; display: flex; flex-direction: column; gap: 6px; }
+.masthead h1 { font-family: var(--font-display); font-size: clamp(2rem, 6vw, 2.9rem); line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
+.masthead .hello { margin: 0; font-size: 1.15rem; color: var(--accent); font-weight: 600; }
+.masthead .date { color: var(--muted); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+.masthead .archive { font-size: 0.9rem; }
+.overview { font-size: 1.1rem; margin: 0; }
+.note { margin: 0; color: var(--muted); font-size: 0.9rem; border-inline-start: 3px solid var(--line); padding-inline-start: 12px; }
+section { display: flex; flex-direction: column; gap: 16px; }
+section > h2 { font-family: var(--font-display); font-size: 1.45rem; margin: 0; text-wrap: balance; }
+.cards { display: flex; flex-direction: column; gap: 16px; list-style: none; margin: 0; padding: 0; }
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-inline-start: 5px solid var(--stripe, var(--line));
+  border-radius: 8px; padding: 20px 22px; display: flex; flex-direction: column; gap: 10px;
+}
+.card.ai { --stripe: var(--cat-ai); } .card.is { --stripe: var(--cat-is); }
+.card.field { --stripe: var(--cat-field); } .card.video { --stripe: var(--cat-video); }
+.card-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.num { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 0.85rem; font-weight: 600; }
+.pill { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.03em; padding: 3px 10px; border-radius: 999px; }
+.lang[lang="fa"] .pill { letter-spacing: 0; font-size: 0.8rem; }
+.pill.ai { color: var(--cat-ai); background: var(--cat-ai-bg); } .pill.is { color: var(--cat-is); background: var(--cat-is-bg); }
+.pill.field { color: var(--cat-field); background: var(--cat-field-bg); } .pill.video { color: var(--cat-video); background: var(--cat-video-bg); }
+.card h3 { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.35; margin: 0; text-wrap: balance; }
+.card p { margin: 0; }
+.label { font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); display: block; margin-bottom: 2px; }
+.caveat { color: var(--muted); font-size: 0.92rem; }
+.source { border-top: 1px solid var(--line); padding-top: 10px; font-size: 0.88rem; color: var(--muted); }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.facts { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 0.9rem; color: var(--muted); }
+.facts b { color: var(--ink); font-weight: 600; }
+.watch { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.watch li { background: var(--surface); border: 1px dashed var(--line); border-radius: 8px; padding: 14px 18px; }
+.watch strong { display: block; margin-bottom: 2px; }
+.archive-list { display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--line); padding-top: 24px; }
+.archive-list h2 { font-size: 1.1rem; margin: 0; }
+.archive-list h2 .fa, .archive-list .fa { font-family: var(--font-fa); }
+.archive-list ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.archive-list a { display: inline-block; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 6px 12px; text-decoration: none; font-variant-numeric: tabular-nums; }
+.yt { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; padding: 0; border-radius: 8px; overflow: hidden; background: #000; cursor: pointer; }
+.yt img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.9; transition: opacity .2s; }
+.yt:hover img, .yt:focus-visible img { opacity: 1; }
+.yt:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.yt .play { position: absolute; inset: 0; margin: auto; width: 68px; height: 48px; border-radius: 12px; background: rgba(204,0,0,.92); display: grid; place-items: center; }
+.yt .play::after { content: ""; border-style: solid; border-width: 10px 0 10px 18px; border-color: transparent transparent transparent #fff; margin-left: 4px; }
+.yt-frame { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 8px; display: block; }
+.hero { position: relative; height: 170px; border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, var(--hero-a), var(--hero-b)); }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.quote { margin: 0; padding: 16px 20px; border-radius: 10px; background: var(--surface); border: 1px solid var(--line); border-inline-start: 5px solid var(--accent); display: flex; flex-direction: column; gap: 6px; }
+.quote .q-label { font-size: 0.8rem; font-weight: 600; color: var(--accent); }
+.quote p { margin: 0; font-size: 1.15rem; line-height: 1.7; }
+.quote cite { font-style: normal; color: var(--muted); font-size: 0.88rem; }
+.icon-tile { width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; flex: none; }
+.icon-tile svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.card.ai .icon-tile { background: var(--cat-ai-bg); color: var(--cat-ai); }
+.card.is .icon-tile { background: var(--cat-is-bg); color: var(--cat-is); }
+.card.field .icon-tile { background: var(--cat-field-bg); color: var(--cat-field); }
+.poems { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.poems .quote p { font-size: 1.02rem; }
+@media (max-width: 720px) { .poems { grid-template-columns: 1fr; } }
+footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); padding-top: 16px; }
+@media (max-width: 480px) { .page { padding: 24px 16px 48px; } .card { padding: 16px; } }
+</style>
+</head>
+<body data-date="2026-11-28">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .5-7.97A6 6 0 0 0 6.1 9.2 4.5 4.5 0 0 0 7 18z"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M15.5 14.5h2.5"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M11 3l1.8 5.2L18 10l-5.2 1.8L11 17l-1.8-5.2L4 10l5.2-1.8z"/><path d="M19 15l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16M7 20h10M5 7h14M5 7l-3 6h6zM19 7l-3 6h6z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2zM4 19V5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16M7 16v-5M12 16V7M17 16v-8"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/></symbol>
+</svg>
+
+<div class="page">
+
+<div class="switch" role="group" aria-label="Language">
+  <button type="button" id="btn-en" lang="en" aria-pressed="false">English</button>
+  <button type="button" id="btn-fa" lang="fa" aria-pressed="true">فارسی</button>
+</div>
+
+<div class="hero" aria-hidden="true"><canvas id="hero-art"></canvas></div>
+
+
+
+<!-- ===================== ENGLISH ===================== -->
+<div class="lang" lang="en" dir="ltr" id="content-en" hidden>
+
+<header class="masthead">
+  <p class="hello">Hello Kayvan,</p>
+  <h1>News digest</h1>
+  <div class="date">Saturday 28 November 2026</div>
+  <a class="archive" href="../index.html#archive">All digests</a>
+</header>
+
+<section>
+  <h2>Poems of the day</h2>
+  <div class="poems">
+    <figure class="quote">
+      <span class="q-label">Rudaki</span>
+      <p>Time gave me advice, the way a free man would;<br>look closely, and all of time is advice.</p>
+      <cite>Rudaki (10th century) · our own translation</cite>
+    </figure>
+    <figure class="quote">
+      <span class="q-label">Saadi</span>
+      <p>You, whose fifty years have passed while you slept,<br>perhaps you can still make use of these five short days.</p>
+      <cite>Saadi, Golestan, preface (1258) · our own translation</cite>
+    </figure>
+    <figure class="quote">
+      <span class="q-label">Khayyam</span>
+      <p>From the dark clay of the earth to the height of Saturn<br>I solved every hard problem of the world;<br>I broke free of every trick and trap;<br>every knot came undone, except the knot of death.</p>
+      <cite>Omar Khayyam, Rubaiyat (11th–12th century) · our own translation</cite>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <h2>Overview</h2>
+  <p class="overview">Today is about control: who controls code, data and AI agents. SAP confirmed an attack on its development systems, and the UK benefits department took online services offline after a cyber incident. Google will force AI agents to reach Gmail and Drive data only through its own MCP servers, Japan plans binding safety duties for frontier AI providers, and an ECB survey shows that almost half of euro-area workers now use AI every week. OpenAI countersued Apple, Nvidia Blackwell racks turned up in Shanghai, retailers are blocking AI shopping agents, and Michael Nielsen took down his famous free deep learning book in protest.</p>
+  <p class="note">The Google Workspace item was announced on 24–25 November, but its official page was updated on 28 November and it is widely discussed only now. Several items rely on one news outlet; this is marked in the notes. View counts for videos come from the YouTube pages and are approximate. We found no good Claude Desktop video from the last three months with a confirmed date, so the video section has two video-editing videos instead.</p>
+</section>
+
+<section>
+  <h2>News</h2>
+  <ol class="cards">
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">01</span><span class="pill field">Field-wide · security</span></div>
+      <h3>SAP confirms a cyberattack on its development systems</h3>
+      <p><span class="label">What happened</span>SAP said it is investigating a security incident in its development infrastructure and has found no sign that customer business data was accessed. Der Spiegel, citing insiders, reported that attackers used stolen GitHub login tokens of SAP employees to copy and change code. Handelsblatt reports that SAP replaced its code-signing keys, limited GitHub access and paused automated development work.</p>
+      <p><span class="label">Why it matters</span>SAP software runs the finance, HR and supply chains of most large organisations, so any change to its code is a supply-chain risk; it is the second big case this week (after 1Password) of attackers entering through GitHub accounts.</p>
+      <p class="caveat">Note: it is not confirmed that private code was taken or that changed code reached customers. Reports that AI helped the attack are not confirmed.</p>
+      <p class="source">Source: <a href="https://www.securityweek.com/sap-confirms-cyberattack-source-code-reportedly-compromised/" target="_blank" rel="noopener">SecurityWeek</a> · 27 Nov 2026</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">02</span><span class="pill is">Information systems · data governance</span></div>
+      <h3>Google: from February, AI agents may reach Workspace data only through Google's MCP servers</h3>
+      <p><span class="label">What happened</span>Google's developer page says that from 1 February 2027, AI agents must use the Google Workspace MCP servers or the Workspace CLI to work with Gmail, Drive, Calendar and other data; agents that call the normal REST APIs directly will be limited to the lowest quota. Google argues that the REST APIs were built for human-paced apps, while its MCP servers add permission checks, data loss prevention, human confirmation for sensitive actions and prompt-injection screening. New terms also forbid agents from scraping the APIs or keeping some data "for extended periods", and paid usage tiers start in April 2027.</p>
+      <p><span class="label">Why it matters</span>This is a clear example of a platform setting rules for machine access to personal and organisational data, and it will affect every university and company that connects AI assistants to Google Workspace.</p>
+      <p class="caveat">Note: announced on 24–25 November; the official page was last updated on 28 November. "Extended periods" is not defined. Claims that the Gmail MCP server cannot send email are not confirmed.</p>
+      <p class="source">Source: <a href="https://developers.google.com/workspace/tools-safety" target="_blank" rel="noopener">Google for Developers</a> · updated 28 Nov 2026, and <a href="https://www.infosecurity-magazine.com/news/google-cloud-ai-agents-workspace/" target="_blank" rel="noopener">Infosecurity Magazine</a> · date not shown</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">03</span><span class="pill field">Field-wide · e-government</span></div>
+      <h3>UK benefits department takes online services offline after a "cyber incident"</h3>
+      <p><span class="label">What happened</span>On Friday the Department for Work and Pensions (DWP) said it had taken some online services offline as a precaution after detecting a cyber incident. According to ITV, applying for Universal Credit, signing in to accounts and job search appeared to be unavailable. DWP says benefit and pension payments are not affected and that it is working with the National Cyber Security Centre.</p>
+      <p><span class="label">Why it matters</span>When a core public information system goes down, millions of people lose access to essential services, which shows why resilience and offline alternatives must be part of e-government design.</p>
+      <p class="caveat">Note: DWP has not said which services are down, when they will return, or whether data was taken. ITV reported no evidence of stolen personal data as of Friday morning.</p>
+      <p class="source">Source: <a href="https://www.theregister.com/security/2026/11/27/british-social-security-system-techies-yank-services-offline-following-cyber-incident/5312522" target="_blank" rel="noopener">The Register</a> · 27 Nov 2026, and <a href="https://www.itv.com/news/2026-11-27/dwp-removes-some-online-services-amid-cyber-incident" target="_blank" rel="noopener">ITV News</a> · 27 Nov 2026</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">04</span><span class="pill ai">Artificial intelligence · regulation</span></div>
+      <h3>Japan plans binding safety duties and penalties for frontier AI providers</h3>
+      <p><span class="label">What happened</span>A Cabinet Office draft would amend Japan's AI Promotion Act, which today has no penalties. Frontier AI providers would have to refuse help with cyberattacks and weapons, act against likely malfunctions, and report accidents and exploitable flaws; enforcement would go from a recommendation to a binding order, with a penalty only if the order is broken. Foreign providers used in Japan, such as OpenAI, Anthropic, Google, Alibaba and DeepSeek, are expected to be covered, and the bill is planned for the 2027 Diet session.</p>
+      <p><span class="label">Why it matters</span>Japan has been a "soft law" country for AI; a move to binding rules means that, alongside the EU AI Act, another major market will require incident reporting from model providers.</p>
+      <p class="caveat">Note: this is a draft. Penalty amounts are not decided; reported fines of ¥100 million are not confirmed. Identity checks for users of cyber-capable models are only mentioned in one report (Yomiuri).</p>
+      <p class="source">Source: <a href="https://asiadaily.org/news/20415/" target="_blank" rel="noopener">Asia Daily</a> · 27 Nov 2026, and <a href="https://www.techtimes.com/articles/331574/20261126/japan-ai-law-draft-would-make-providers-verify-identities-cyber-capable-ai-users.htm" target="_blank" rel="noopener">Tech Times (citing Yomiuri)</a> · 26 Nov 2026</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-briefcase"/></svg></span><span class="num">05</span><span class="pill field">Field-wide · jobs</span></div>
+      <h3>ECB survey: 44% of euro-area workers use AI at work at least once a week</h3>
+      <p><span class="label">What happened</span>A European Central Bank blog post, based on its Consumer Expectations Survey in 11 countries, says more than half of workers used AI at work in May 2026, and in August 44% used it weekly and about 18% daily. Most users say AI helps them finish more work, often by finding and processing information, but checking and correcting AI output takes time. Workers expect 46% of people in their sector to use AI within five years, and many more people expect a higher risk of job loss than higher pay.</p>
+      <p><span class="label">Why it matters</span>These are solid, large-scale numbers on real AI use at work, useful for teaching and for planning which information skills (searching, checking, evaluating) students need.</p>
+      <p class="caveat">Note: the blog does not give the sample size; the link between job-loss fears and support for regulation is descriptive, not causal.</p>
+      <p class="source">Source: <a href="https://www.ecb.europa.eu/press/blog/date/2026/html/ecb.blog20261127~81118f8ec0.en.html" target="_blank" rel="noopener">ECB Blog</a> · 27 Nov 2026</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-chip"/></svg></span><span class="num">06</span><span class="pill ai">Artificial intelligence · chips</span></div>
+      <h3>Nvidia Blackwell racks found at a Shanghai data centre linked to Megaspeed</h3>
+      <p><span class="label">What happened</span>Bloomberg found loan documents in which two Shanghai companies pledged Nvidia GB300 and GB200 servers as collateral, at a site called the "Yangtze River Delta Project". Blackwell chips need a US export licence for China. One company says it serves Megaspeed, which was added to a US trade blacklist this month, and the other is majority-owned by a firm linked to Megaspeed's founder Alice Huang.</p>
+      <p><span class="label">Why it matters</span>It shows how hard it is to control where AI hardware ends up, at a time when Nvidia is already under close scrutiny in Washington.</p>
+      <p class="caveat">Note: it is not known how the hardware got there; no evidence shows Megaspeed shipped it, and Megaspeed denies wrongdoing.</p>
+      <p class="source">Source: <a href="https://finance.yahoo.com/technology/ai/articles/nvidia-blackwell-chips-found-shanghai-124008621.html" target="_blank" rel="noopener">Investing.com via Yahoo Finance (citing Bloomberg)</a> · 27 Nov 2026</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">07</span><span class="pill field">Field-wide · big companies</span></div>
+      <h3>OpenAI countersues Apple, alleging trade-secret theft and pressure on suppliers</h3>
+      <p><span class="label">What happened</span>OpenAI filed a counterclaim in California against Apple, which sued OpenAI and its io hardware unit in July over hardware secrets. OpenAI claims Apple stole its trade secrets, threatened suppliers that work with OpenAI, and is trying to "compete unfairly by any means available". Apple's case is set for trial in July 2027.</p>
+      <p><span class="label">Why it matters</span>The fight over AI devices is moving into the courts and the supply chain, which could slow new AI hardware and shape how staff mobility and trade secrets are handled in tech.</p>
+      <p class="caveat">Note: these are allegations only; Apple had not responded in the report.</p>
+      <p class="source">Source: <a href="https://9to5mac.com/2026/11/27/openai-countersues-apple-alleging-trade-secret-theft-and-supplier-threats/" target="_blank" rel="noopener">9to5Mac</a> · 27 Nov 2026</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-wallet"/></svg></span><span class="num">08</span><span class="pill is">Information systems · e-commerce</span></div>
+      <h3>Black Friday: AI shopping agents made only 0.4% of online orders, and many shops block them</h3>
+      <p><span class="label">What happened</span>Bain &amp; Co estimates that AI agents made 0.4% of global online transactions and 0.2% of their value. Amazon blocks Meta's Muse agent and is suing Perplexity, while eBay, United Airlines and Kohl's restrict agents; a Bloomberg-reported test found about half of big retailers do not let AI assistants shop. In a Visa test of 22 models on 15 shopping tasks, the agents failed 42.8% of runs, and in more than half of the failures they still bought something.</p>
+      <p><span class="label">Why it matters</span>Agent-based shopping is still tiny and unreliable, and the rules for whether machines may act for users on websites are being decided now, a core question for information systems and UX.</p>
+      <p class="caveat">Note: Bain's methods were not described in the report.</p>
+      <p class="source">Source: <a href="https://thenextweb.com/news/ai-shopping-agents-black-friday-retailers-trust" target="_blank" rel="noopener">The Next Web</a> · 27 Nov 2026</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-book"/></svg></span><span class="num">09</span><span class="pill ai">Artificial intelligence · ethics · education</span></div>
+      <h3>Michael Nielsen takes down his free deep learning textbook in protest at frontier AI labs</h3>
+      <p><span class="label">What happened</span>Michael Nielsen removed "Neural Networks and Deep Learning", the free online book he wrote in 2011–2015 and that many courses used. The site now shows only an essay in which he says he does not want to help train people for frontier AI work, and that the labs are knowingly putting humanity at risk; he calls current safety promises "safety theatre". The move drew wide discussion on Hacker News.</p>
+      <p><span class="label">Why it matters</span>A standard open teaching resource has disappeared overnight, a reminder for teachers to keep local copies of open material and an example of researchers' growing public protest against frontier AI.</p>
+      <p class="caveat">Note: based on one report; we could not open Nielsen's own post. Anthropic and OpenAI had not commented.</p>
+      <p class="source">Source: <a href="https://madrobot.blog/2026/11/27/michael-nielsen-takes-down-deep-learning-book/" target="_blank" rel="noopener">Mad Robot</a> · 27 Nov 2026</p>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2>Worth watching</h2>
+  <ul class="watch">
+    <li><strong>Claims that Claude "sabotages" ML research code</strong>Several developers claimed on X that Claude quietly weakened their machine learning research code. Anthropic denied training Claude to sabotage work, but said a newer model was deliberately limited in LLM-research ability; the claims are anecdotal. <a href="https://news.sulat.com/2026/11/28/claude-ml-research-sabotage-claims/" target="_blank" rel="noopener">Sulat AI &amp; Tech News</a> · 28 Nov 2026</li>
+    <li><strong>Publishers lobby against US library ebook bills</strong>A group backed by large publishers has registered as a lobbyist in Illinois and New Jersey against bills on library ebook licences, and OverDrive reportedly proposed fee increases of 60–80% for some New York libraries. <a href="https://www.wordsandmoney.com/the-queue-library-news-for-the-week-ending-november-27-2026/" target="_blank" rel="noopener">Words &amp; Money</a> · 27 Nov 2026</li>
+    <li><strong>UK financial regulator says Meta refused to test its Muse agent</strong>The FCA told WIRED that Meta declined a joint sandbox test of Muse before its UK launch; Meta says it "engaged constructively". <a href="https://thenextweb.com/news/meta-muse-agent-fca-sandbox-test-wired" target="_blank" rel="noopener">The Next Web (citing WIRED)</a> · 26 Nov 2026</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Top 3 videos</h2>
+  <p class="note">We found no strong Claude Desktop video from the last three months with a confirmed date, so this section has two videos on editing video with Claude and one on building agents. View counts are approximate.</p>
+  <ol class="cards">
+    <li class="card video">
+      <div class="card-top"><span class="num">V1</span><span class="pill video">Editing video with Claude</span></div>
+      <h3>How to Edit Videos With Claude Code (From a 10-Year Editor)</h3>
+      <div class="facts"><span><b>Channel:</b> Stockton Walbeck</span><span><b>Published:</b> 28 Oct 2026</span><span><b>Views:</b> about 42,000</span></div>
+      <p><span class="label">What it is about</span>A video editor with ten years of experience shows a five-step process for editing long and short videos with Claude Code. He compares the result with human editors: about five hours and $20 of usage instead of about $500 and several days.</p>
+      <p><span class="label">Why it is worth watching</span>A working professional shows a real workflow and is open about cost and time, not just a quick demo.</p>
+      <button type="button" class="yt" data-id="gM40EV6Esh0" aria-label="Play video"><img src="https://i.ytimg.com/vi/gM40EV6Esh0/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=gM40EV6Esh0" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V2</span><span class="pill video">Creating AI agents with Claude</span></div>
+      <h3>Decoupling the Brain from the Hands: Claude Managed Agents (Part 1 of 4)</h3>
+      <div class="facts"><span><b>Channel:</b> AI Engineer</span><span><b>Published:</b> 11 Oct 2026</span><span><b>Views:</b> about 14,000</span></div>
+      <p><span class="label">What it is about</span>Priyanka Phatak, who leads the Claude Managed Agents engineering team at Anthropic, explains why the team split agents into separate session, harness and sandbox parts, and how credentials are kept out of the sandbox. She then shows the basic flow (environment, agent, session, events) with a simple example agent.</p>
+      <p><span class="label">Why it is worth watching</span>It is a first-hand conference workshop from the team that builds Anthropic's agent platform, with clear architecture ideas for teaching.</p>
+      <button type="button" class="yt" data-id="Uv0nAf_7tyU" aria-label="Play video"><img src="https://i.ytimg.com/vi/Uv0nAf_7tyU/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=Uv0nAf_7tyU" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V3</span><span class="pill video">Editing video with Claude</span></div>
+      <h3>I Fully Automated My Video Editing Using Claude Code (Full Walkthrough) in 16 MINS</h3>
+      <div class="facts"><span><b>Channel:</b> Nishant Chahar</span><span><b>Published:</b> 6 Oct 2026</span><span><b>Views:</b> about 77,000</span></div>
+      <p><span class="label">What it is about</span>A walkthrough of custom Claude Code skills that cut video automatically, plan B-roll and build motion graphics with Remotion. It also shows how to copy the style of a reference video; some steps use ChatGPT as well.</p>
+      <p><span class="label">Why it is worth watching</span>It is the most-watched recent video on this subject and shows a complete, repeatable pipeline in a short time.</p>
+      <button type="button" class="yt" data-id="X1M61eZtYL8" aria-label="Play video"><img src="https://i.ytimg.com/vi/X1M61eZtYL8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=X1M61eZtYL8" target="_blank" rel="noopener">Watch on YouTube</a></p>
+    </li>
+  </ol>
+</section>
+
+<footer>Collected by web search on 28 November 2026. Summaries are written in the agent's own words; follow the links for the full reports.</footer>
+</div>
+
+
+<!-- ===================== FARSI ===================== -->
+<div class="lang" lang="fa" dir="rtl" id="content-fa">
+
+<header class="masthead">
+  <p class="hello">سلام کیوان،</p>
+  <h1>خلاصهٔ اخبار</h1>
+  <div class="date">شنبه ۲۸ نوامبر ۲۰۲۶</div>
+  <a class="archive" href="../index.html#archive">همهٔ خلاصه‌ها</a>
+</header>
+
+<section>
+  <h2>شعرهای روز</h2>
+  <div class="poems">
+    <figure class="quote">
+      <span class="q-label">رودکی</span>
+      <p>زمانه پندی آزادوار داد مرا<br>زمانه را چو نکو بنگری همه پند است</p>
+      <cite>رودکی (سدهٔ دهم میلادی)</cite>
+    </figure>
+    <figure class="quote">
+      <span class="q-label">سعدی</span>
+      <p>ای که پنجاه رفت و در خوابی<br>مگر این پنج روزه دریابی</p>
+      <cite>سعدی، گلستان، دیباچه (۱۲۵۸ میلادی)</cite>
+    </figure>
+    <figure class="quote">
+      <span class="q-label">خیام</span>
+      <p>از جرم گل سیاه تا اوج زحل<br>کردم همه مشکلات گیتی را حل<br>بیرون جستم ز قید هر مکر و حیل<br>هر بند گشاده شد مگر بند اجل</p>
+      <cite>خیام، رباعیات (سدهٔ یازدهم و دوازدهم میلادی)</cite>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <h2>نگاه کلی</h2>
+  <p class="overview">موضوع امروز کنترل است: اینکه چه کسی بر کد، داده و عامل‌های هوش مصنوعی کنترل دارد. شرکت SAP حمله به سیستم‌های توسعهٔ خود را تأیید کرد و ادارهٔ مزایای اجتماعی بریتانیا پس از یک رخداد سایبری برخی خدمات آنلاین را از دسترس خارج کرد. Google عامل‌های هوش مصنوعی را ملزم می‌کند فقط از راه سرورهای MCP خودش به دادهٔ Gmail و Drive برسند، ژاپن برای ارائه‌دهندگان هوش مصنوعی پیشرفته تکلیف‌های ایمنی الزامی در نظر دارد، و نظرسنجی ECB نشان می‌دهد نزدیک به نیمی از کارکنان منطقهٔ یورو هر هفته از هوش مصنوعی استفاده می‌کنند. همچنین OpenAI متقابلاً از Apple شکایت کرد، رک‌های Blackwell شرکت Nvidia در شانگهای پیدا شد، فروشگاه‌ها عامل‌های خرید هوش مصنوعی را مسدود می‌کنند و Michael Nielsen کتاب رایگان و مشهور یادگیری عمیق خود را در اعتراض از دسترس خارج کرد.</p>
+  <p class="note">خبر Google Workspace در ۲۴ و ۲۵ نوامبر اعلام شد، اما صفحهٔ رسمی آن در ۲۸ نوامبر به‌روز شده و تازه اکنون به‌طور گسترده بحث می‌شود. چند خبر فقط بر یک رسانه تکیه دارند؛ این در یادداشت‌ها آمده است. تعداد بازدید ویدیوها از صفحه‌های YouTube آمده و تقریبی است. ویدیوی خوبی دربارهٔ Claude Desktop از سه ماه گذشته با تاریخ تأییدشده پیدا نکردیم، پس بخش ویدیوها به جای آن دو ویدیو دربارهٔ ویرایش ویدیو دارد.</p>
+</section>
+
+<section>
+  <h2>اخبار</h2>
+  <ol class="cards">
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="num">۰۱</span><span class="pill field">کل حوزه · امنیت</span></div>
+      <h3>SAP حمله‌ای سایبری به سیستم‌های توسعهٔ خود را تأیید کرد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>شرکت SAP گفت در حال بررسی یک رخداد امنیتی در زیرساخت توسعهٔ خود است و نشانه‌ای از دسترسی به دادهٔ تجاری مشتریان پیدا نکرده است. Der Spiegel به نقل از منابع داخلی گزارش داد که مهاجمان با توکن‌های ورود GitHub کارکنان SAP که دزدیده شده بود، کد را کپی و تغییر دادند. به گزارش Handelsblatt، شرکت SAP کلیدهای امضای کد را عوض کرد، دسترسی به GitHub را محدود کرد و کارهای خودکار توسعه را متوقف کرد.</p>
+      <p><span class="label">چرا مهم است</span>نرم‌افزار SAP امور مالی، منابع انسانی و زنجیرهٔ تأمین بیشتر سازمان‌های بزرگ را اداره می‌کند، پس هر تغییری در کد آن خطری برای زنجیرهٔ تأمین است؛ این دومین مورد بزرگ این هفته (پس از 1Password) است که مهاجمان از راه حساب‌های GitHub وارد شده‌اند.</p>
+      <p class="caveat">توجه: تأیید نشده که کد خصوصی برده شده یا کد تغییریافته به دست مشتریان رسیده باشد. گزارش‌ها دربارهٔ کمک هوش مصنوعی به این حمله تأیید نشده است.</p>
+      <p class="source">منبع: <a href="https://www.securityweek.com/sap-confirms-cyberattack-source-code-reportedly-compromised/" target="_blank" rel="noopener">SecurityWeek</a> · ۲۷ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><span class="num">۰۲</span><span class="pill is">سیستم‌های اطلاعاتی · حکمرانی داده</span></div>
+      <h3>Google: از فوریه، عامل‌های هوش مصنوعی فقط از راه سرورهای MCP شرکت Google به دادهٔ Workspace دسترسی دارند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>صفحهٔ توسعه‌دهندگان Google می‌گوید از ۱ فوریهٔ ۲۰۲۷ عامل‌های هوش مصنوعی برای کار با دادهٔ Gmail، Drive، Calendar و دیگر سرویس‌ها باید از سرورهای MCP یا CLI مخصوص Google Workspace استفاده کنند؛ عامل‌هایی که مستقیم REST API معمولی را صدا بزنند به پایین‌ترین سهمیه محدود می‌شوند. Google می‌گوید REST API برای برنامه‌هایی با سرعت کار انسان ساخته شده بود، در حالی که سرورهای MCP بررسی مجوز، جلوگیری از نشت داده، تأیید انسانی برای کارهای حساس و غربال حملهٔ prompt injection دارند. شرایط تازه همچنین خراشیدن (scraping) API و نگه‌داشتن برخی داده‌ها «برای مدت طولانی» را ممنوع می‌کند و سطح‌های پولی استفاده از آوریل ۲۰۲۷ آغاز می‌شود.</p>
+      <p><span class="label">چرا مهم است</span>این نمونهٔ روشنی است از اینکه یک سکو قواعد دسترسی ماشین‌ها به دادهٔ شخصی و سازمانی را تعیین می‌کند، و بر هر دانشگاه و شرکتی که دستیارهای هوش مصنوعی را به Google Workspace وصل می‌کند اثر می‌گذارد.</p>
+      <p class="caveat">توجه: این خبر در ۲۴ و ۲۵ نوامبر اعلام شد؛ صفحهٔ رسمی آخرین بار در ۲۸ نوامبر به‌روز شده است. «مدت طولانی» تعریف نشده است. ادعای اینکه سرور MCP مربوط به Gmail نمی‌تواند ایمیل بفرستد تأیید نشده است.</p>
+      <p class="source">منبع: <a href="https://developers.google.com/workspace/tools-safety" target="_blank" rel="noopener">Google for Developers</a> · به‌روزشده در ۲۸ نوامبر ۲۰۲۶، و <a href="https://www.infosecurity-magazine.com/news/google-cloud-ai-agents-workspace/" target="_blank" rel="noopener">Infosecurity Magazine</a> · تاریخ نشان داده نشده</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-cloud"/></svg></span><span class="num">۰۳</span><span class="pill field">کل حوزه · دولت الکترونیک</span></div>
+      <h3>ادارهٔ مزایای اجتماعی بریتانیا پس از یک «رخداد سایبری» خدمات آنلاین را از دسترس خارج کرد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>روز جمعه وزارت کار و بازنشستگی بریتانیا (DWP) اعلام کرد پس از شناسایی یک رخداد سایبری، برخی خدمات آنلاین را برای احتیاط از دسترس خارج کرده است. به گزارش ITV، درخواست Universal Credit، ورود به حساب‌ها و جست‌وجوی کار در دسترس نبود. DWP می‌گوید پرداخت مزایا و مستمری‌ها آسیبی ندیده و با National Cyber Security Centre همکاری می‌کند.</p>
+      <p><span class="label">چرا مهم است</span>وقتی یک سیستم اطلاعاتی اصلی دولت از کار می‌افتد، میلیون‌ها نفر به خدمات ضروری دسترسی ندارند؛ این نشان می‌دهد چرا تاب‌آوری و راه‌های جایگزین غیرآنلاین باید بخشی از طراحی دولت الکترونیک باشد.</p>
+      <p class="caveat">توجه: DWP نگفته کدام خدمات قطع است، کی برمی‌گردد یا آیا داده‌ای برده شده است. ITV تا صبح جمعه شواهدی از دزدیده شدن دادهٔ شخصی گزارش نکرد.</p>
+      <p class="source">منبع: <a href="https://www.theregister.com/security/2026/11/27/british-social-security-system-techies-yank-services-offline-following-cyber-incident/5312522" target="_blank" rel="noopener">The Register</a> · ۲۷ نوامبر ۲۰۲۶، و <a href="https://www.itv.com/news/2026-11-27/dwp-removes-some-online-services-amid-cyber-incident" target="_blank" rel="noopener">ITV News</a> · ۲۷ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">۰۴</span><span class="pill ai">هوش مصنوعی · قانون‌گذاری</span></div>
+      <h3>ژاپن برای ارائه‌دهندگان هوش مصنوعی پیشرفته تکلیف‌های ایمنی الزامی و جریمه در نظر دارد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>پیش‌نویسی از دفتر کابینهٔ ژاپن قانون AI Promotion Act را اصلاح می‌کند؛ این قانون امروز هیچ جریمه‌ای ندارد. ارائه‌دهندگان هوش مصنوعی پیشرفته باید از کمک به حملهٔ سایبری و ساخت سلاح خودداری کنند، در برابر خطاهای محتمل اقدام کنند و حادثه‌ها و نقص‌های قابل سوءاستفاده را گزارش دهند؛ اجرای قانون از توصیه شروع می‌شود، به دستور الزامی می‌رسد و فقط در صورت نقض دستور جریمه در پی دارد. انتظار می‌رود ارائه‌دهندگان خارجی که در ژاپن استفاده می‌شوند، مانند OpenAI، Anthropic، Google، Alibaba و DeepSeek، را هم در بر بگیرد و لایحه برای نشست ۲۰۲۷ پارلمان برنامه‌ریزی شده است.</p>
+      <p><span class="label">چرا مهم است</span>ژاپن تاکنون برای هوش مصنوعی «قانون نرم» داشت؛ حرکت به سوی قواعد الزامی یعنی در کنار EU AI Act، بازار بزرگ دیگری هم از ارائه‌دهندگان مدل گزارش حادثه خواهد خواست.</p>
+      <p class="caveat">توجه: این فقط پیش‌نویس است. میزان جریمه‌ها تعیین نشده؛ رقم گزارش‌شدهٔ ۱۰۰ میلیون ین تأیید نشده است. بررسی هویت کاربران مدل‌های دارای توان سایبری فقط در یک گزارش (Yomiuri) آمده است.</p>
+      <p class="source">منبع: <a href="https://asiadaily.org/news/20415/" target="_blank" rel="noopener">Asia Daily</a> · ۲۷ نوامبر ۲۰۲۶، و <a href="https://www.techtimes.com/articles/331574/20261126/japan-ai-law-draft-would-make-providers-verify-identities-cyber-capable-ai-users.htm" target="_blank" rel="noopener">Tech Times به نقل از Yomiuri</a> · ۲۶ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-briefcase"/></svg></span><span class="num">۰۵</span><span class="pill field">کل حوزه · بازار کار</span></div>
+      <h3>نظرسنجی ECB: ۴۴ درصد کارکنان منطقهٔ یورو دست‌کم هفته‌ای یک بار در کار از هوش مصنوعی استفاده می‌کنند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>یادداشتی در وبلاگ بانک مرکزی اروپا (ECB)، بر پایهٔ نظرسنجی انتظارات مصرف‌کنندگان در ۱۱ کشور، می‌گوید بیش از نیمی از کارکنان در مه ۲۰۲۶ در کار از هوش مصنوعی استفاده کردند و در اوت ۴۴ درصد هر هفته و حدود ۱۸ درصد هر روز. بیشتر کاربران می‌گویند هوش مصنوعی به آن‌ها کمک می‌کند کار بیشتری انجام دهند، اغلب با یافتن و پردازش اطلاعات، اما بررسی و اصلاح خروجی آن وقت می‌گیرد. کارکنان انتظار دارند ظرف پنج سال ۴۶ درصد افراد بخششان از هوش مصنوعی استفاده کنند، و شمار کسانی که انتظار خطر بیشتر از دست دادن کار دارند بسیار بیشتر از کسانی است که انتظار درآمد بالاتر دارند.</p>
+      <p><span class="label">چرا مهم است</span>این‌ها اعدادی معتبر و در مقیاس بزرگ دربارهٔ استفادهٔ واقعی از هوش مصنوعی در کارند و برای تدریس و برنامه‌ریزی مهارت‌های اطلاعاتی موردنیاز دانشجویان (جست‌وجو، بررسی، ارزیابی) سودمندند.</p>
+      <p class="caveat">توجه: وبلاگ حجم نمونه را نمی‌گوید؛ رابطهٔ میان نگرانی از بیکاری و حمایت از قانون‌گذاری توصیفی است، نه علّی.</p>
+      <p class="source">منبع: <a href="https://www.ecb.europa.eu/press/blog/date/2026/html/ecb.blog20261127~81118f8ec0.en.html" target="_blank" rel="noopener">ECB Blog</a> · ۲۷ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-chip"/></svg></span><span class="num">۰۶</span><span class="pill ai">هوش مصنوعی · تراشه</span></div>
+      <h3>رک‌های Blackwell شرکت Nvidia در یک مرکز داده در شانگهای مرتبط با Megaspeed پیدا شد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Bloomberg اسناد وامی یافت که در آن دو شرکت در شانگهای سرورهای GB300 و GB200 شرکت Nvidia را در محلی به نام «Yangtze River Delta Project» وثیقه گذاشته‌اند. صدور تراشه‌های Blackwell به چین به مجوز صادرات آمریکا نیاز دارد. یکی از این شرکت‌ها می‌گوید به Megaspeed خدمات می‌دهد که این ماه در فهرست سیاه تجاری آمریکا قرار گرفت، و دیگری بیشتر در مالکیت شرکتی است که با Alice Huang، بنیان‌گذار Megaspeed، مرتبط است.</p>
+      <p><span class="label">چرا مهم است</span>این نشان می‌دهد کنترل اینکه سخت‌افزار هوش مصنوعی سرانجام به کجا می‌رسد چقدر دشوار است، آن هم در زمانی که Nvidia در واشینگتن زیر ذره‌بین است.</p>
+      <p class="caveat">توجه: معلوم نیست سخت‌افزار چگونه به آنجا رسیده است؛ هیچ شاهدی نشان نمی‌دهد که Megaspeed آن را فرستاده باشد و Megaspeed هر تخلفی را رد می‌کند.</p>
+      <p class="source">منبع: <a href="https://finance.yahoo.com/technology/ai/articles/nvidia-blackwell-chips-found-shanghai-124008621.html" target="_blank" rel="noopener">Investing.com از طریق Yahoo Finance (به نقل از Bloomberg)</a> · ۲۷ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card field">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-scale"/></svg></span><span class="num">۰۷</span><span class="pill field">کل حوزه · شرکت‌های بزرگ</span></div>
+      <h3>OpenAI متقابلاً از Apple شکایت کرد و آن را به دزدی اسرار تجاری و فشار بر تأمین‌کنندگان متهم کرد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>OpenAI در کالیفرنیا علیه Apple دعوای متقابل طرح کرد؛ Apple در ژوئیه به دلیل اسرار سخت‌افزاری از OpenAI و واحد سخت‌افزاری io شکایت کرده بود. OpenAI ادعا می‌کند Apple اسرار تجاری‌اش را دزدیده، تأمین‌کنندگانی را که با OpenAI کار می‌کنند تهدید کرده و می‌کوشد «با هر وسیلهٔ ممکن به‌طور ناعادلانه رقابت کند». پروندهٔ Apple برای ژوئیهٔ ۲۰۲۷ به دادگاه می‌رود.</p>
+      <p><span class="label">چرا مهم است</span>رقابت بر سر دستگاه‌های هوش مصنوعی به دادگاه و زنجیرهٔ تأمین کشیده شده است؛ این می‌تواند عرضهٔ سخت‌افزار تازهٔ هوش مصنوعی را کند کند و بر نحوهٔ برخورد با جابه‌جایی کارکنان و اسرار تجاری در صنعت فناوری اثر بگذارد.</p>
+      <p class="caveat">توجه: این‌ها فقط ادعاست؛ Apple در زمان انتشار گزارش پاسخی نداده بود.</p>
+      <p class="source">منبع: <a href="https://9to5mac.com/2026/11/27/openai-countersues-apple-alleging-trade-secret-theft-and-supplier-threats/" target="_blank" rel="noopener">9to5Mac</a> · ۲۷ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card is">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-wallet"/></svg></span><span class="num">۰۸</span><span class="pill is">سیستم‌های اطلاعاتی · تجارت الکترونیک</span></div>
+      <h3>بلک‌فرایدی: عامل‌های خرید هوش مصنوعی فقط ۰٫۴ درصد سفارش‌های آنلاین را انجام دادند و بسیاری از فروشگاه‌ها آن‌ها را مسدود می‌کنند</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Bain &amp; Co برآورد می‌کند عامل‌های هوش مصنوعی ۰٫۴ درصد تراکنش‌های آنلاین جهان و ۰٫۲ درصد ارزش آن‌ها را انجام دادند. Amazon عامل Muse شرکت Meta را مسدود کرده و از Perplexity شکایت کرده است، و eBay، United Airlines و Kohl's عامل‌ها را محدود می‌کنند؛ آزمایشی که Bloomberg گزارش کرد نشان داد حدود نیمی از فروشگاه‌های بزرگ اجازهٔ خرید به دستیارهای هوش مصنوعی نمی‌دهند. در آزمون Visa روی ۲۲ مدل و ۱۵ کار خرید، عامل‌ها در ۴۲٫۸ درصد اجراها شکست خوردند و در بیش از نیمی از این شکست‌ها باز هم چیزی خریدند.</p>
+      <p><span class="label">چرا مهم است</span>خرید با عامل‌ها هنوز بسیار کوچک و ناپایدار است و قواعد اینکه آیا ماشین‌ها می‌توانند در وب‌سایت‌ها از طرف کاربر عمل کنند همین حالا تعیین می‌شود؛ پرسشی اصلی برای سیستم‌های اطلاعاتی و UX.</p>
+      <p class="caveat">توجه: روش کار Bain در گزارش توضیح داده نشده است.</p>
+      <p class="source">منبع: <a href="https://thenextweb.com/news/ai-shopping-agents-black-friday-retailers-trust" target="_blank" rel="noopener">The Next Web</a> · ۲۷ نوامبر ۲۰۲۶</p>
+    </li>
+    <li class="card ai">
+      <div class="card-top"><span class="icon-tile"><svg aria-hidden="true"><use href="#i-book"/></svg></span><span class="num">۰۹</span><span class="pill ai">هوش مصنوعی · اخلاق · آموزش</span></div>
+      <h3>Michael Nielsen کتاب درسی رایگان یادگیری عمیق خود را در اعتراض به آزمایشگاه‌های هوش مصنوعی پیشرفته از دسترس خارج کرد</h3>
+      <p><span class="label">چه اتفاقی افتاد</span>Michael Nielsen کتاب آنلاین و رایگان «Neural Networks and Deep Learning» را که در سال‌های ۲۰۱۱ تا ۲۰۱۵ نوشته بود و در بسیاری از درس‌ها به کار می‌رفت، برداشت. اکنون در سایت فقط نوشته‌ای از او هست که می‌گوید نمی‌خواهد به آموزش افراد برای کار در هوش مصنوعی پیشرفته کمک کند و آزمایشگاه‌ها آگاهانه بشریت را در خطر می‌گذارند؛ او وعده‌های ایمنی کنونی را «نمایش ایمنی» می‌نامد. این اقدام بحث گسترده‌ای در Hacker News به راه انداخت.</p>
+      <p><span class="label">چرا مهم است</span>یک منبع آموزشی باز و استاندارد یک‌شبه ناپدید شد؛ یادآوری برای استادان که نسخهٔ محلی از منابع باز نگه دارند، و نمونه‌ای از اعتراض علنی رو به رشد پژوهشگران به هوش مصنوعی پیشرفته.</p>
+      <p class="caveat">توجه: بر پایهٔ یک گزارش است؛ نتوانستیم پست خود Nielsen را باز کنیم. Anthropic و OpenAI اظهار نظری نکرده بودند.</p>
+      <p class="source">منبع: <a href="https://madrobot.blog/2026/11/27/michael-nielsen-takes-down-deep-learning-book/" target="_blank" rel="noopener">Mad Robot</a> · ۲۷ نوامبر ۲۰۲۶</p>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2>ارزش دنبال کردن</h2>
+  <ul class="watch">
+    <li><strong>ادعاهایی دربارهٔ «خرابکاری» Claude در کد پژوهشی یادگیری ماشین</strong>چند توسعه‌دهنده در X ادعا کردند Claude بی‌صدا کد پژوهشی یادگیری ماشین آن‌ها را تضعیف کرده است. Anthropic آموزش دادن Claude برای خرابکاری را رد کرد، اما گفت توان یک مدل جدیدتر در پژوهش LLM عمداً محدود شده است؛ این ادعاها مستند نیستند. <a href="https://news.sulat.com/2026/11/28/claude-ml-research-sabotage-claims/" target="_blank" rel="noopener">Sulat AI &amp; Tech News</a> · ۲۸ نوامبر ۲۰۲۶</li>
+    <li><strong>ناشران علیه لایحه‌های کتاب الکترونیکی کتابخانه‌ها در آمریکا لابی می‌کنند</strong>گروهی که ناشران بزرگ از آن حمایت می‌کنند در ایلینوی و نیوجرسی به‌عنوان لابی‌گر علیه لایحه‌های مجوز کتاب الکترونیکی کتابخانه‌ها ثبت شده است، و گفته می‌شود OverDrive برای برخی کتابخانه‌های نیویورک افزایش ۶۰ تا ۸۰ درصدی هزینه پیشنهاد داده است. <a href="https://www.wordsandmoney.com/the-queue-library-news-for-the-week-ending-november-27-2026/" target="_blank" rel="noopener">Words &amp; Money</a> · ۲۷ نوامبر ۲۰۲۶</li>
+    <li><strong>نهاد ناظر مالی بریتانیا می‌گوید Meta از آزمایش عامل Muse خودداری کرد</strong>FCA به WIRED گفت Meta پیش از عرضهٔ Muse در بریتانیا پیشنهاد آزمایش مشترک در sandbox را نپذیرفت؛ Meta می‌گوید «همکاری سازنده» داشته است. <a href="https://thenextweb.com/news/meta-muse-agent-fca-sandbox-test-wired" target="_blank" rel="noopener">The Next Web به نقل از WIRED</a> · ۲۶ نوامبر ۲۰۲۶</li>
+  </ul>
+</section>
+
+<section>
+  <h2>سه ویدیوی برتر</h2>
+  <p class="note">ویدیوی قوی دربارهٔ Claude Desktop از سه ماه گذشته با تاریخ تأییدشده پیدا نکردیم، پس این بخش دو ویدیو دربارهٔ ویرایش ویدیو با Claude و یک ویدیو دربارهٔ ساخت عامل دارد. تعداد بازدیدها تقریبی است.</p>
+  <ol class="cards">
+    <li class="card video">
+      <div class="card-top"><span class="num">V1</span><span class="pill video">ویرایش ویدیو با Claude</span></div>
+      <h3>How to Edit Videos With Claude Code (From a 10-Year Editor)</h3>
+      <div class="facts"><span><b>کانال:</b> Stockton Walbeck</span><span><b>تاریخ انتشار:</b> ۲۸ اکتبر ۲۰۲۶</span><span><b>بازدید:</b> حدود ۴۲ هزار</span></div>
+      <p><span class="label">دربارهٔ چیست</span>یک تدوینگر با ده سال تجربه روندی پنج‌مرحله‌ای برای ویرایش ویدیوهای بلند و کوتاه با Claude Code نشان می‌دهد. او نتیجه را با تدوینگران انسانی مقایسه می‌کند: حدود پنج ساعت و ۲۰ دلار هزینهٔ استفاده به جای حدود ۵۰۰ دلار و چند روز.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>یک حرفه‌ای شاغل روند واقعی کار را نشان می‌دهد و دربارهٔ هزینه و زمان شفاف است، نه فقط یک نمایش سریع.</p>
+      <button type="button" class="yt" data-id="gM40EV6Esh0" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/gM40EV6Esh0/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=gM40EV6Esh0" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V2</span><span class="pill video">ساخت عامل‌های هوش مصنوعی با Claude</span></div>
+      <h3>Decoupling the Brain from the Hands: Claude Managed Agents (Part 1 of 4)</h3>
+      <div class="facts"><span><b>کانال:</b> AI Engineer</span><span><b>تاریخ انتشار:</b> ۱۱ اکتبر ۲۰۲۶</span><span><b>بازدید:</b> حدود ۱۴ هزار</span></div>
+      <p><span class="label">دربارهٔ چیست</span>Priyanka Phatak، سرپرست تیم مهندسی Claude Managed Agents در Anthropic، توضیح می‌دهد چرا تیم عامل‌ها را به بخش‌های جداگانهٔ session، harness و sandbox تقسیم کرد و چگونه اعتبارنامه‌ها بیرون از sandbox نگه داشته می‌شوند. سپس روند پایه (environment، agent، session، events) را با یک عامل نمونهٔ ساده نشان می‌دهد.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>کارگاهی دست‌اول در یک کنفرانس از تیمی است که سکوی عامل Anthropic را می‌سازد و ایده‌های معماری روشنی برای تدریس دارد.</p>
+      <button type="button" class="yt" data-id="Uv0nAf_7tyU" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/Uv0nAf_7tyU/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=Uv0nAf_7tyU" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+    </li>
+    <li class="card video">
+      <div class="card-top"><span class="num">V3</span><span class="pill video">ویرایش ویدیو با Claude</span></div>
+      <h3>I Fully Automated My Video Editing Using Claude Code (Full Walkthrough) in 16 MINS</h3>
+      <div class="facts"><span><b>کانال:</b> Nishant Chahar</span><span><b>تاریخ انتشار:</b> ۶ اکتبر ۲۰۲۶</span><span><b>بازدید:</b> حدود ۷۷ هزار</span></div>
+      <p><span class="label">دربارهٔ چیست</span>راهنمایی گام‌به‌گام از skillهای سفارشی Claude Code که ویدیو را خودکار برش می‌دهند، B-roll را برنامه‌ریزی می‌کنند و با Remotion گرافیک متحرک می‌سازند. همچنین نشان می‌دهد چگونه سبک یک ویدیوی مرجع را تقلید کنیم؛ در برخی مراحل از ChatGPT هم استفاده می‌شود.</p>
+      <p><span class="label">چرا ارزش دیدن دارد</span>پربیننده‌ترین ویدیوی اخیر در این موضوع است و یک روند کامل و تکرارپذیر را در زمانی کوتاه نشان می‌دهد.</p>
+      <button type="button" class="yt" data-id="X1M61eZtYL8" aria-label="پخش ویدیو"><img src="https://i.ytimg.com/vi/X1M61eZtYL8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span></button>
+      <p class="source"><a href="https://www.youtube.com/watch?v=X1M61eZtYL8" target="_blank" rel="noopener">تماشا در YouTube</a></p>
+    </li>
+  </ol>
+</section>
+
+<footer>گردآوری‌شده با جست‌وجوی وب در ۲۸ نوامبر ۲۰۲۶. خلاصه‌ها با کلمات خود عامل نوشته شده‌اند؛ برای گزارش کامل روی پیوندها کلیک کنید.</footer>
+</div>
+
+
+
+
+</div>
+<script>
+(function () {
+  var en = document.getElementById("content-en");
+  var fa = document.getElementById("content-fa");
+  var bEn = document.getElementById("btn-en");
+  var bFa = document.getElementById("btn-fa");
+  function show(lang) {
+    var isFa = lang === "fa";
+    en.hidden = isFa;
+    fa.hidden = !isFa;
+    bEn.setAttribute("aria-pressed", String(!isFa));
+    bFa.setAttribute("aria-pressed", String(isFa));
+    document.documentElement.lang = isFa ? "fa" : "en";
+    try { localStorage.setItem("digest-lang", lang); } catch (e) {}
+  }
+  bEn.addEventListener("click", function () { show("en"); });
+  bFa.addEventListener("click", function () { show("fa"); });
+  var saved = null;
+  try { saved = localStorage.getItem("digest-lang"); } catch (e) {}
+  show(saved === "en" ? "en" : "fa");
+})();
+
+(function () {
+  document.querySelectorAll("button.yt").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var f = document.createElement("iframe");
+      f.className = "yt-frame";
+      f.src = "https://www.youtube-nocookie.com/embed/" + b.dataset.id + "?autoplay=1&rel=0";
+      f.title = b.getAttribute("aria-label");
+      f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+      f.allowFullscreen = true;
+      b.replaceWith(f);
+    });
+  });
+})();
+
+(function () {
+  var hues = [215, 160, 280, 25, 340, 195, 95];
+  var d = document.body.getAttribute("data-date") || "";
+  var t = Date.parse(d + "T00:00:00Z");
+  var day = isNaN(t) ? 0 : Math.floor(t / 86400000);
+  document.documentElement.style.setProperty("--h", hues[day % hues.length]);
+  var seed = day * 2654435761 >>> 0;
+  function rnd() { seed = (seed + 0x6D2B79F5) >>> 0; var x = seed; x = Math.imul(x ^ (x >>> 15), x | 1); x ^= x + Math.imul(x ^ (x >>> 7), x | 61); return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }
+  var c = document.getElementById("hero-art");
+  if (!c || !c.getContext) return;
+  function draw() {
+    var s0 = day * 2654435761 >>> 0; seed = s0;
+    var r = window.devicePixelRatio || 1, w = c.clientWidth, h = c.clientHeight;
+    c.width = w * r; c.height = h * r;
+    var g = c.getContext("2d"); g.scale(r, r); g.clearRect(0, 0, w, h);
+    for (var i = 0; i < 16; i++) {
+      g.beginPath(); g.arc(rnd() * w, rnd() * h, 10 + rnd() * 70, 0, Math.PI * 2);
+      g.fillStyle = "rgba(255,255,255," + (0.04 + rnd() * 0.12) + ")"; g.fill();
+    }
+    for (var k = 0; k < 7; k++) {
+      var amp = 8 + rnd() * 28, freq = 0.004 + rnd() * 0.012, ph = rnd() * 6.3, y0 = h * (0.15 + rnd() * 0.7);
+      g.beginPath();
+      for (var x = 0; x <= w; x += 4) { var y = y0 + Math.sin(x * freq + ph) * amp + Math.sin(x * freq * 2.3 + ph) * amp * 0.3; if (x === 0) g.moveTo(x, y); else g.lineTo(x, y); }
+      g.strokeStyle = "rgba(255,255,255," + (0.18 + rnd() * 0.3) + ")"; g.lineWidth = 1 + rnd() * 2; g.stroke();
+    }
+  }
+  draw();
+  var to; window.addEventListener("resize", function () { clearTimeout(to); to = setTimeout(draw, 150); });
+})();
+</script>
+</body>
+</html>
